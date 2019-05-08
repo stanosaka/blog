@@ -122,6 +122,14 @@ git commit -m "committing .gitignore"
 
 git clean -xf
 ```
+```sh
+#  ####  ######   ######  ##     ## ######## 
+#   ##  ##    ## ##    ## ##     ## ##       
+#   ##  ##       ##       ##     ## ##       
+#   ##   ######   ######  ##     ## ######   
+#   ##        ##       ## ##     ## ##       
+#   ##  ##    ## ##    ## ##     ## ##       
+#  ####  ######   ######   #######  ######## 
 
 #  ██╗███████╗███████╗██╗   ██╗███████╗
 #  ██║██╔════╝██╔════╝██║   ██║██╔════╝
@@ -130,6 +138,7 @@ git clean -xf
 #  ██║███████║███████║╚██████╔╝███████╗
 #  ╚═╝╚══════╝╚══════╝ ╚═════╝ ╚══════╝
 #                                      
+```
 If github ask for username and password:
 > `git remote set-url origin git@github.com:szhouchoice/EffectiveDevOpsTerraform.git`
 
