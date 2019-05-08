@@ -1,5 +1,5 @@
 ---
-title: amazon_linux2
+title: amazon linux 2
 tags: 'aws, linux'
 date: 2019-05-05 20:46:16
 ---
