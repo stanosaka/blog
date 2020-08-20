@@ -1,6 +1,6 @@
 ---
 title: PXE + kickstart unattend install centos 6
-tags: 'pxe,kickstart'
+tags: [pxe,kickstart]
 date: 2016-08-29 16:25:00
 ---
 

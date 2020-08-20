@@ -1,6 +1,6 @@
 ---
 title: MySQL分库分表备份脚本
-tags: 'mysql,backup'
+tags: [mysql,backup]
 date: 2016-08-28 16:46:20
 ---
 

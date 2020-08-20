@@ -1,6 +1,6 @@
 ---
 title: ubuntu
-tags: 'ubuntu, java'
+tags: [ubuntu, java]
 date: 2016-09-21 23:19:19
 ---
 

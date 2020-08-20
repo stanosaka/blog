@@ -1,6 +1,6 @@
 ---
 title: Install zabbix server on aws ec2
-tags: 'zabbix,ec2'
+tags: [zabbix,ec2]
 date: 2016-08-19 13:46:10
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: saltstack minion
 date: 2016-09-18 17:58:08
-tags: saltstack, minion
+tags: [saltstack, minion]
 ---
 ### 1. Install minion:
 ```sh

@@ -1,6 +1,6 @@
 ---
 title: docker tomcat7
-tags: 'docker,tomcat'
+tags: [docker,tomcat]
 date: 2016-08-24 11:15:59
 ---
 

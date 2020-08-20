@@ -1,8 +1,6 @@
 ---
 title: optimize nginx performance
-tags:
-  - centos
-  - nginx
+tags: [centos,nginx]
 date: 2016-10-17 14:45:29
 ---
 

@@ -3,12 +3,19 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Stan Zhou's Hexo Blog
-subtitle: linux geek
-description:
+title: Stan Zhou's Hexo Technical Blog
+subtitle: Innovation Evangelist
+description: a Site Reliability Engineer working and living in Sydney.
 author: Stan Zhou
 language: en
 timezone: 
+
+# mermaid chart
+mermaid: ## mermaid url https://github.com/knsv/mermaid
+  enable: true  # default true
+  version: "7.1.2" # default v7.1.2
+  options:  # find more api options from https://github.com/knsv/mermaid/blob/master/src/mermaidAPI.js
+    #startOnload: true  // default true
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -31,7 +38,7 @@ skip_render:
 new_post_name: :title.md # File name of new posts
 default_layout: draft
 titlecase: false # Transform title into titlecase
-external_link: true # Open external links in new tab
+external_link: false # Open external links in new tab
 filename_case: 0
 render_drafts: false
 post_asset_folder: false
@@ -72,5 +79,14 @@ deploy:
   type: git
   repo:
         github: git@github.com:stanosaka/stanosaka.github.io.git,master
-        coding: git@git.coding.net:stanosaka/stanosaka.git,master
+#        coding: git@git.coding.net:stanosaka/stanosaka.coding.me.git,master
   branch: master
+
+backup:
+  type: git
+  theme: jacman
+  message: Backup stanosaka.github.io blog
+  repository:
+        github: git@github.com:stanosaka/stanosaka.github.io.git,backup
+#        coding: git@git.coding.net:stanosaka/stanosaka.coding.me.git,master
+ 

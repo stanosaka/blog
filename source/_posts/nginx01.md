@@ -1,5 +1,5 @@
 ---
-title: Nginx部署
+title: Nginx Deploy
 tags:
   - nginx
   - centos
@@ -8,7 +8,7 @@ date: 2016-10-27 15:31:14
 
 
 ## Install Nginx ##
-### 安装Nginx所需的库
+### Install Nginx Package
 ```sh
 [root@huoq bin]# yum install pcre pcre-devel -y
 check by:
