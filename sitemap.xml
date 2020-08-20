@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://223.95.78.227/2019/06/24/practical-jenkins/</loc>
+    
+    <lastmod>2020-08-20T11:27:33.275Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://223.95.78.227/2019/05/06/git/</loc>
     
     <lastmod>2020-08-20T02:25:09.790Z</lastmod>
@@ -236,13 +243,6 @@
     <loc>http://223.95.78.227/2019/07/15/splunk/</loc>
     
     <lastmod>2019-07-19T12:38:59.302Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://223.95.78.227/2019/06/24/practical-jenkins/</loc>
-    
-    <lastmod>2019-07-16T07:02:23.721Z</lastmod>
     
   </url>
   
