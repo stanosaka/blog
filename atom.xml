@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://223.95.78.227/"/>
-  <updated>2020-11-11T01:14:08.382Z</updated>
+  <updated>2020-11-11T05:01:39.584Z</updated>
   <id>http://223.95.78.227/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://223.95.78.227/2020/11/11/influxdb/"/>
     <id>http://223.95.78.227/2020/11/11/influxdb/</id>
     <published>2020-11-11T01:09:59.000Z</published>
-    <updated>2020-11-11T01:14:08.382Z</updated>
+    <updated>2020-11-11T05:01:39.584Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="1-Connect"><a href="#1-Connect" class="headerlink" title="1. Connect"></a>1. Connect</h1><p><code>influx</code></p><h1 id="2-Show"><a href="#2-Show" class="headerlink" title="2. Show"></a>2. Show</h1><p><code>show databases;</code><br><code>show measurements;</code><br><code>select * from foobar;</code></p><p><a href="https://songrgg.github.io/operation/influxdb-command-cheatsheet/" title="cheetsheet">cheetsheet</a></p>]]></content>
+    <content type="html"><![CDATA[<h1 id="1-Connect"><a href="#1-Connect" class="headerlink" title="1. Connect"></a>1. Connect</h1><p><code>influx</code></p><h1 id="2-Show"><a href="#2-Show" class="headerlink" title="2. Show"></a>2. Show</h1><p><code>show databases;</code><br><code>show measurements;</code><br><code>select * from foobar;</code></p><p><a href="https://songrgg.github.io/operation/influxdb-command-cheatsheet/" title="cheetsheet">cheetsheet</a><br><a href="https://i.imgur.com/PR99Mx5.png">grafana</a></p><h1 id="Telegraf"><a href="#Telegraf" class="headerlink" title="Telegraf"></a>Telegraf</h1><h2 id="check"><a href="#check" class="headerlink" title="check"></a>check</h2><p><code>telegraf --test</code></p>]]></content>
     
     <summary type="html">
     
