@@ -83,6 +83,264 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2019/07/17/devops/" title="DevOps" itemprop="url">DevOps</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Stan Zhou" target="_blank" itemprop="author">Stan Zhou</a>
+		
+  <p class="article-time">
+    <time datetime="2019-07-17T11:23:02.000Z" itemprop="datePublished"> Published 2019-07-17</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p><strong>What is DevOps?</strong></p>
+<ul>
+<li>Speed and agility enable organizations to better serve their customers and compete more effectively in the market</li>
+<li>Combination of cultural philosophies, practices, and tools</li>
+<li>Increases an organization’s ability to deliver applications and services at high velocity</li>
+<li>Evolves and imprvoes products faster</li>
+</ul>
+<p><strong>Why DevOps?</strong></p>
+<ul>
+<li>Antomate manual tasks, help teams manage complex environments at scale, and keep engineers in control of the velocity that is enabled by DevOps:<ul>
+<li>Speed</li>
+<li>Rapid delivery</li>
+<li>Reliability</li>
+<li>Scale</li>
+<li>Improved collaboration</li>
+<li>Security</li>
+</ul>
+</li>
+</ul>
+<p>Standard Continuous delivery (CD) techniques</p>
+<ul>
+<li>Blue/Green deployment (where “live” and “last” deployments are maintained on live)<br>Blue-green deployment is a technique that reduces downtime and risk by running two identical production environments called Blue and Green.</li>
+</ul>
+<p>At any time, only one of the environments is live, with the live environment serving all production traffic. For this example, Blue is currently live and Green is idle.</p>
+<p>As you prepare a new version of your software, deployment and the final stage of testing takes place in the environment that is not live: in this example, Green. Once you have deployed and fully tested the software in Green, you switch the router so all incoming requests now go to Green instead of Blue. Green is now live, and Blue is idle.</p>
+<p>This technique can eliminate downtime due to app deployment. In addition, blue-green deployment reduces risk: if something unexpected happens with your new version on Green, you can immediately roll back to the last version by switching back to Blue.</p>
+<ul>
+<li>Phoenix deployment (where whole system are rebuilt on each release).<br><img src="https://i.imgur.com/DXtJZOm.png" alt="devops tools"></li>
+</ul>
+<p><strong>Goals</strong></p>
+<ul>
+<li>Culture for collaboration<blockquote>
+<p>lack of collaboration is one of the root causes of the issues</p>
+</blockquote>
+</li>
+<li>Automate<blockquote>
+<p>Manual tests that consume resources are better left to machines. This frees time that is better spent elsewhere, and provides a better environment by relinquishing mundane tasks</p>
+</blockquote>
+</li>
+<li>Optimize and reduce issue in SDLC(software development life cycle)<blockquote>
+<p>The processes being comprised in a logical order allows for optimizations to be made from recorded metrics.</p>
+</blockquote>
+</li>
+<li>Consistency in process<blockquote>
+<p>This stems mostly from automation, and provides the foundation to ensure quality. It also provides a certain level of peace of mind, having confidence that the same process that successfully ran last time will run the same the next.</p>
+</blockquote>
+</li>
+<li>Improve quality and security<blockquote>
+<p>Automation combined with consistency in process, along with the tools and practices in place to perform the necessary testing and scans, removes the possibility of human error from subsequent processes</p>
+</blockquote>
+</li>
+<li>Improve deployment frequency<blockquote>
+<p>Agile methodologies proved effective for development, and sparked the idea to apply similar principles to other areas. Deployment frequency has always been a target for efficiency, as shown by the migration to waterfall, where deployments were seldom; to hybrid methodologies that produced releases four or five times per month; to agile, where deployments are dependent upon sprint links. With DevOps, there’s a potential to release multiple times per day.</p>
+</blockquote>
+</li>
+</ul>
+<p><strong>DevOps Methodologies and Concepts</strong></p>
+<ul>
+<li>Automation<ul>
+<li>Not duplicate of goals</li>
+<li>Automation in context of applying automation to deveopment, integration, and deployment process</li>
+</ul>
+</li>
+<li>CI/CD/CD<ul>
+<li>CI: continuous integration<ul>
+<li>Focusses on sub process of SDLC to build features and fixes perform preliminary testing then merge to master if successful</li>
+</ul>
+</li>
+<li>CD: continuous delivery<ul>
+<li>tail end of CI</li>
+<li>refers to archiving build artifacts</li>
+</ul>
+</li>
+<li>CD: continous deployment<ul>
+<li>deploy all necessary artifacts and perform any configuration</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Infrastructure as code, configuration as code: fail fast<ul>
+<li>Don’t waste resources on something that will fail</li>
+<li>Organize and optimize for efficiency</li>
+</ul>
+</li>
+<li>Frequent feedback<ul>
+<li>Compilation of a series of small and frequent feedback loops</li>
+</ul>
+</li>
+</ul>
+<p><strong>DevOps engineer’s role within a devops organization</strong></p>
+<ul>
+<li>Continually research, refine, and create conceopts, methodologies, practices, and tools in order to optimize the SDLC.</li>
+<li>Implement core standards, plicies, and tools based on the previous</li>
+<li>Asses infrastructure requirements”<ul>
+<li>Global and application sacle</li>
+</ul>
+</li>
+<li>Crate and manage infrastructure</li>
+<li>Coordinate with other teams</li>
+<li>Troubleshoot issues with code and infrastructure</li>
+<li>Work with one or more teams to:<ul>
+<li>Assess their current state</li>
+<li>Formulate end goals</li>
+<li>Adapt to requirements</li>
+<li>Develop a plan of implementation</li>
+<li>Formulate milestones</li>
+<li>Provide instruction on the core standards, policies, and tools</li>
+<li>Develop a pipeline</li>
+<li>Help to change their code and processes to work with the plan</li>
+</ul>
+</li>
+</ul>
+<p><strong>philosophy</strong><br>DevOps is not something you do. It is something you are. </p>
+<p>Devops culture is the one based on a set of principles, hierarchy of rules, by which each person operates.<br>A DevOps culture is one that allows more freedom but more responsibility.</p>
+<p><strong>Devops lifecycle</strong></p>
+<ul>
+<li><p>Continuous integration</p>
+<ul>
+<li>Central repository</li>
+<li>Continuous compiling, testing</li>
+<li>Code verification</li>
+<li>Identifying bugs early</li>
+<li>Software in smaller chunks</li>
+<li>Easy integration<br>Continuous integration (CI) requires developers to integrate code into a centralized repository as they finish coding and successfully pass unit testing, several times per day. The end goal is to create small workable chunks of code that are validated and integrated back into the code repository as frequently as possible. </li>
+</ul>
+</li>
+<li><p>Configuration management</p>
+<ul>
+<li>System changes</li>
+<li>Multiple servers</li>
+<li>Tracking changes</li>
+<li>Types of CM tools</li>
+<li>Scripted builds</li>
+<li>Identical development and production environments</li>
+</ul>
+</li>
+<li><p>Continous delivery</p>
+<ul>
+<li>Deploying the application</li>
+<li>Incremental or small changes</li>
+<li>Compatible with schedule releases</li>
+<li>Every change-ready to deploy<br>Continuous delivery simply means that every change is ready to be deployed to production as soon as automated testing validates it.<br>Note there are two manual checkpoints in this example. One is for a technical decision to approve the code before initiating activities in the CI environment. The second is a business decision to accept the changes and continue with the automated steps to production deployment.<br><img src="https://i.imgur.com/XzLyd0g.png" alt="reference pipeline-continous delivery"><br><strong>Deploying to production</strong></li>
+</ul>
+</li>
+<li><p>Canary releases</p>
+<blockquote>
+<p>Continuous delivery deploys many builds to production. In a canary deployment, the new code is delivered only to a percentage of the existing infrastructure. For example, if the system is running on 10 load-balanced virtual servers, you can define a canary cluster of one or two servers. This way, if the deployment is not successful due to an escaped defect, it can be caught before the build is deployed to all of the servers. Canary releases are also used for pilot features to determine performance and acceptance prior to a full rollout.</p>
+</blockquote>
+</li>
+<li><p>Blue/green deployment</p>
+<blockquote>
+<p>This is a zero-downtime deployment technique that involves a gradual release to ensure uninterrupted service. The blue/green approach is effective in virtualized environments, especially if IaaS is used. Although a blue/green deployment is a deep topic that deserves an entire chapter on its own, simply put, it includes maintaining two identical development environments—Blue and Green. One is a live environment for production traffic, whereas the other is used to deploy the new release. In our example, let’s say that Green is the current live production environment and Blue is the idle identical production environment. After the code is deployed and tested in the Blue environment, we can begin directing traffic of incoming requests from Green (current production) to Blue. You can do this gradually until the traffic redirect is 100 percent to the Blue environment. If unexpected issues occur during this gradual release, we can roll back. When it is completed, the Green environment becomes idle and the Blue environment is now the live production environment.</p>
+</blockquote>
+</li>
+<li><p>Continous monitoring<br>Continous monitoring is the practice that connects operations back to development,providing visibility and relevant data throughout the development lifecycle including production monitoring. continuous monitoring aims to reduce the time between identification of a problem and deployment of the fix.<br>Monitoring begins with <strong>Sprint 1</strong> and should be integrated into the development work. As the system is built, monitoring solutions are also designed. </p>
+</li>
+</ul>
+<p><strong>four different types of continuous monitoring</strong></p>
+<ul>
+<li>Infrastructure monitoring<blockquote>
+<p>Visualize infrastructure events coming from all computing resources, storage and network, and measure the usage and health of infrastructure resources. <strong>AWS CloudWatch</strong> and <strong>CloudTrail</strong> are examples of infrastructure monitoring tools.</p>
+</blockquote>
+</li>
+<li>Application performance monitoring (APM)<blockquote>
+<p>Target bottlenecks in the application’s framework. <strong>Appdynamics</strong> and <strong>New Relic</strong> are industry-leading APM tools.</p>
+</blockquote>
+</li>
+<li>Log management monitoring<blockquote>
+<p>Collect performance logs in a standardized way and use analytics to identify application and system problems. <strong>Splunk</strong> and <strong>ELK</strong> are two leading products in this area.</p>
+</blockquote>
+</li>
+<li>Security monitoring<blockquote>
+<p>Reduce security and compliance risk through automation. Security configuration management, vulnerability management, and intelligence to detect attacks and breaches before they do serious damage are achieved through continuous monitoring. For example, <strong>Netflix’s Security Monkey</strong> is a tool that checks the security configuration of your cloud implementation on AWS.</p>
+</blockquote>
+</li>
+</ul>
+<p><strong>three major setps</strong></p>
+<ol>
+<li>monitoring</li>
+<li>an alert system to warn the team about a problem</li>
+<li>actions to take when an alert occurs</li>
+</ol>
+<ul>
+<li>Continous testing<ul>
+<li>Speed and quality</li>
+<li>Testing incremental changes</li>
+<li>Automated tests</li>
+<li>Tests to be atomic: small test<ul>
+<li>Continous testing during development (e.g. use open source tools like Selenium for testing)</li>
+<li>Confidence to release</li>
+<li>Integration with CI</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Continous deployment<ul>
+<li>Superset of Continuous Delivery</li>
+<li>Deploying to production</li>
+<li>Automates the deployment pipeline<br>Unlike continuous delivery, which means that every change is deployable but might be held back because of business considerations or other manual steps, continuous deployment strives to automate production deployment end to end. With this practice, confidence in the automated tests is extremely high, and as long as the code has passed all the tests, it will be deployed.<br><img src="https://i.imgur.com/Aq1VaJb.png" alt="cd"></li>
+</ul>
+</li>
+</ul>
+<p>DevOps: culture, automation, measurement, and sharing (CAMS)</p>
+<p><strong>DevOps architecutres and practics</strong><br>From the DevOps movement, a set of software architectural patterns and practices have become increasingly popular. The primary logic behind the development of these architectural patterns and practices is derived from the need for scalability, no-downtime deployments, and minimizing negative customer reactions to upgrades and releases. Some of these you may have heard of (microservices), while others may be a bit vague (blue-green deployments).</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Devops/">Devops</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2019/07/17/aws-admin/" title="aws administration" itemprop="url">aws administration</a>
   </h1>
   <p class="article-author">By
@@ -2204,82 +2462,6 @@
   <div class="article-tags">
   
   <span></span> <a href="/tags/Jenkins/">Jenkins</a><a href="/tags/Devops/">Devops</a><a href="/tags/CD-CI/">CD/CI</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2019/06/19/useful-commands/" title="useful commands" itemprop="url">useful commands</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Stan Zhou" target="_blank" itemprop="author">Stan Zhou</a>
-		
-  <p class="article-time">
-    <time datetime="2019-06-19T07:11:17.000Z" itemprop="datePublished"> Published 2019-06-19</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br></pre></td><td class="code"><pre><span class="line">cp /etc/vsftpd/vsftpd.conf&#123;,.bak&#125;</span><br><span class="line"></span><br><span class="line">[root@agent1 ~]# &gt;/etc/motd #删除文件内容</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[root@puppetmaster ~]# mv /etc/puppet/autosign.conf&#123;,.bak&#125;   #删除自动注册ACL列表</span><br><span class="line"></span><br><span class="line">[root@linux-node1 /]# grep &apos;^[a-z]&apos; /etc/elasticsearch/elasticsearch.yml</span><br><span class="line"></span><br><span class="line">sudo tar xfz pycharm-*.tar.gz -C /opt/</span><br><span class="line"></span><br><span class="line">nohup &amp; screen</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># send a command to be executed on the remote machine and send back the output:</span><br><span class="line">ssh -t user1@server1.packt.co.uk cat /etc/hosts</span><br><span class="line"></span><br><span class="line">#use SSH to send files between two machines to or from a remote machine, using the scp command:</span><br><span class="line">scp user1@server1.packt.co.uk:/home/user1/Desktop/file1.txt  ./Desktop/</span><br><span class="line"></span><br><span class="line">ssh key-based authentication</span><br><span class="line">ssh-keygen -t rsa -b 2048 -v</span><br><span class="line">ssh-copy-id user1@server1.packt.co.uk</span><br><span class="line"></span><br><span class="line">[root@ip-172-31-5-191 ~]# cat /tmp/passwd-truncated</span><br><span class="line">root:x:0:0:root:/root:/bin/bash</span><br><span class="line">bin:x:1:1:bin:/bin:/sbin/nologin</span><br><span class="line">daemon:x:2:2:daemon:/sbin:/sbin/nologin</span><br><span class="line">adm:x:3:4:adm:/var/adm:/sbin/nologin</span><br><span class="line">lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin</span><br><span class="line">[root@ip-172-31-5-191 ~]# cut -d: -f2,3 /tmp/passwd-truncated</span><br><span class="line">x:0</span><br><span class="line">x:1</span><br><span class="line">x:2</span><br><span class="line">x:3</span><br><span class="line">x:4</span><br><span class="line">[root@ip-172-31-5-191 ~]# cut -d: -f2,3 --output-delimiter &quot; &quot; /tmp/passwd-truncated</span><br><span class="line">x 0</span><br><span class="line">x 1</span><br><span class="line">x 2</span><br><span class="line">x 3</span><br><span class="line">x 4</span><br><span class="line">[root@ip-172-31-5-191 ~]# egrep -v &apos;#|^$&apos; /etc/services |head -5 &gt; /tmp/services-truncated</span><br><span class="line">[root@ip-172-31-5-191 ~]# cat /tmp/services-truncated</span><br><span class="line">echo            7/tcp</span><br><span class="line">echo            7/udp</span><br><span class="line">discard         9/tcp           sink null</span><br><span class="line">discard         9/udp           sink null</span><br><span class="line">systat          11/tcp          users</span><br><span class="line">[root@ip-172-31-5-191 ~]# sed  &apos;s/ /*/g&apos; /tmp/services-truncated</span><br><span class="line">echo************7/tcp</span><br><span class="line">echo************7/udp</span><br><span class="line">discard*********9/tcp***********sink*null</span><br><span class="line">discard*********9/udp***********sink*null</span><br><span class="line">systat**********11/tcp**********users</span><br><span class="line">[root@ip-172-31-5-191 ~]# awk -F&apos; &apos; &apos;&#123;print $2&quot; &quot;$3&#125;&apos; /tmp/services-truncated</span><br><span class="line">7/tcp</span><br><span class="line">7/udp</span><br><span class="line">9/tcp sink</span><br><span class="line">9/udp sink</span><br><span class="line">11/tcp users</span><br><span class="line">[root@ip-172-31-5-191 ~]# # tr [CHARACTER_FROM] [CHARACTER_TO]</span><br><span class="line">[root@ip-172-31-5-191 ~]# cat /tmp/services-truncated |tr &apos;a&apos; &apos;X&apos;</span><br><span class="line">echo            7/tcp</span><br><span class="line">echo            7/udp</span><br><span class="line">discXrd         9/tcp           sink null</span><br><span class="line">discXrd         9/udp           sink null</span><br><span class="line">systXt          11/tcp          users</span><br><span class="line">[root@ip-172-31-5-191 ~]# cat /tmp/services-truncated |tr &apos;[a-z]&apos; &apos;[A-Z]&apos;</span><br><span class="line">ECHO            7/TCP</span><br><span class="line">ECHO            7/UDP</span><br><span class="line">DISCARD         9/TCP           SINK NULL</span><br><span class="line">DISCARD         9/UDP           SINK NULL</span><br><span class="line">SYSTAT          11/TCP          USERS</span><br><span class="line">[root@ip-172-31-5-191 ~]# awk -F &apos; &apos; &apos;&#123;print $1&#125;&apos; /etc/services |egrep -v &apos;^#|^$&apos;| sort| uniq -c| sort -n -k1,1 -r|head</span><br><span class="line">      4 exp2</span><br><span class="line">      4 exp1</span><br><span class="line">      4 discard</span><br><span class="line">      3 v5ua</span><br><span class="line">      3 syslog-tls</span><br><span class="line">      3 sua</span><br><span class="line">      3 ssh</span><br><span class="line">      3 nfsrdma</span><br><span class="line">      3 nfs</span><br><span class="line">      3 megaco-h248</span><br><span class="line"></span><br><span class="line">[root@ip-172-31-5-191 ~]# cp /etc/services /tmp/services</span><br><span class="line">[root@ip-172-31-5-191 ~]# gzip /tmp/services</span><br><span class="line">[root@ip-172-31-5-191 ~]# ls -lh /etc/services /tmp/services.gz</span><br><span class="line">-rw-r--r--. 1 root root 655K Jun  7  2013 /etc/services</span><br><span class="line">-rw-r--r--. 1 root root 133K Jun 19 06:01 /tmp/services.gz</span><br><span class="line">[root@ip-172-31-5-191 ~]# gunzip /tmp/services.gz</span><br><span class="line"></span><br><span class="line">[root@ip-172-31-5-191 ~]# tar zcf /tmp/archive.tar.gz /home/centos</span><br><span class="line">tar: Removing leading `/&apos; from member names</span><br><span class="line">[root@ip-172-31-5-191 ~]# mkdir /tmp/extracted</span><br><span class="line">[root@ip-172-31-5-191 ~]# tar xvf /tmp/archive.tar.gz -C /tmp/extracted</span><br><span class="line">home/centos/</span><br><span class="line">home/centos/.bash_logout</span><br><span class="line">home/centos/.bash_profile</span><br><span class="line">home/centos/.bashrc</span><br><span class="line">home/centos/.ssh/</span><br><span class="line">home/centos/.ssh/authorized_keys</span><br><span class="line">home/centos/.bash_history</span><br><span class="line">[root@ip-172-31-5-191 ~]# cat /proc/meminfo</span><br><span class="line">MemTotal:        3878872 kB</span><br><span class="line">MemFree:         2586524 kB</span><br><span class="line"></span><br><span class="line">[root@ip-172-31-5-191 ~]# free -mh</span><br><span class="line">              total        used        free      shared  buff/cache   available</span><br><span class="line">Mem:           3.7G        716M        2.5G         16M        546M        2.7G</span><br><span class="line">Swap:            0B          0B          0B</span><br><span class="line">[root@ip-172-31-5-191 ~]# df -h</span><br><span class="line">Filesystem      Size  Used Avail Use% Mounted on</span><br><span class="line">/dev/xvda1       60G  2.2G   58G   4% /</span><br><span class="line">devtmpfs        1.9G     0  1.9G   0% /dev</span><br><span class="line">tmpfs           1.9G     0  1.9G   0% /dev/shm</span><br><span class="line">tmpfs           1.9G   17M  1.9G   1% /run</span><br><span class="line">tmpfs           1.9G     0  1.9G   0% /sys/fs/cgroup</span><br><span class="line">tmpfs           379M     0  379M   0% /run/user/1000</span><br><span class="line">[root@ip-172-31-5-191 ~]# du -h</span><br><span class="line">4.0K	./.ssh</span><br><span class="line">0	./.pki/nssdb</span><br><span class="line">0	./.pki</span><br><span class="line">52K	.</span><br><span class="line">[root@ip-172-31-5-191 ~]# du -h / --max-depth=1</span><br><span class="line">0	/dev</span><br><span class="line">du: cannot access ‘/proc/14331/task/14331/fd/3’: No such file or directory</span><br><span class="line">du: cannot access ‘/proc/14331/task/14331/fdinfo/3’: No such file or directory</span><br><span class="line">du: cannot access ‘/proc/14331/fd/4’: No such file or directory</span><br><span class="line">du: cannot access ‘/proc/14331/fdinfo/4’: No such file or directory</span><br><span class="line">0	/proc</span><br><span class="line">17M	/run</span><br><span class="line">0	/sys</span><br><span class="line">35M	/etc</span><br><span class="line">52K	/root</span><br><span class="line">641M	/var</span><br><span class="line">4.5M	/tmp</span><br><span class="line">1.3G	/usr</span><br><span class="line">183M	/boot</span><br><span class="line">76K	/home</span><br><span class="line">0	/media</span><br><span class="line">0	/mnt</span><br><span class="line">0	/opt</span><br><span class="line">0	/srv</span><br><span class="line">2.2G	/</span><br><span class="line">root@ip-172-31-5-191 ~]# dd if=/dev/zero of=/tmp/lgig_file.empty bs=1M count=1024</span><br><span class="line">1024+0 records in</span><br><span class="line">1024+0 records out</span><br><span class="line">1073741824 bytes (1.1 GB) copied, 3.61028 s, 297 MB/s</span><br><span class="line">$ su -c &apos;dd if=/dev/sda1 of=/tmp/img.image&apos;</span><br><span class="line">[root@ip-172-31-5-191 ~]# dd if=/home/centos/.bashrc of=/tmp/.bashrc-copy</span><br><span class="line">0+1 records in</span><br><span class="line">0+1 records out</span><br><span class="line">231 bytes (231 B) copied, 0.000164855 s, 1.4 MB/s</span><br><span class="line">[root@ip-172-31-5-191 ~]# rsync -rav /home/centos/ /tmp/new-centos-home</span><br><span class="line">sending incremental file list</span><br><span class="line">created directory /tmp/new-centos-home</span><br><span class="line">./</span><br><span class="line">.bash_history</span><br><span class="line">.bash_logout</span><br><span class="line">.bash_profile</span><br><span class="line">.bashrc</span><br><span class="line">.ssh/</span><br><span class="line">.ssh/authorized_keys</span><br><span class="line"></span><br><span class="line">sent 1,280 bytes  received 169 bytes  2,898.00 bytes/sec</span><br><span class="line">total size is 843  speedup is 0.58</span><br><span class="line"></span><br><span class="line"># rsync -rav /home/centos/ stan@192.168.178.300:/tmp</span><br><span class="line"># rsync -rav stan@192.168.178.300:/tmp/stan /tmp/another-copy</span><br><span class="line"></span><br><span class="line">[root@ip-172-31-5-191 ~]# telnet google.com 80</span><br><span class="line">Trying 216.58.200.110...</span><br><span class="line">Connected to google.com.</span><br><span class="line">Escape character is &apos;^]&apos;.</span><br><span class="line">^]</span><br><span class="line">HTTP/1.0 400 Bad Request</span><br><span class="line">Content-Type: text/html; charset=UTF-8</span><br><span class="line">Referrer-Policy: no-referrer</span><br><span class="line">Content-Length: 1555</span><br><span class="line">Date: Wed, 19 Jun 2019 06:30:24 GMT</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=en&gt;</span><br><span class="line">  &lt;meta charset=utf-8&gt;</span><br><span class="line">  &lt;meta name=viewport content=&quot;initial-scale=1, minimum-scale=1, width=device-width&quot;&gt;</span><br><span class="line">  &lt;title&gt;Error 400 (Bad Request)!!1&lt;/title&gt;</span><br><span class="line">  &lt;style&gt;</span><br><span class="line">    *&#123;margin:0;padding:0&#125;html,code&#123;font:15px/22px arial,sans-serif&#125;html&#123;background:#fff;color:#222;padding:15px&#125;body&#123;margin:7% auto 0;max-width:390px;min-height:180px;padding:30px 0 15px&#125;* &gt; body&#123;background:url(//www.google.com/images/errors/robot.png) 100% 5px no-repeat;padding-right:205px&#125;p&#123;margin:11px 0 22px;overflow:hidden&#125;ins&#123;color:#777;text-decoration:none&#125;a img&#123;border:0&#125;@media screen and (max-width:772px)&#123;body&#123;background:none;margin-top:0;max-width:none;padding-right:0&#125;&#125;#logo&#123;background:url(//www.google.com/images/branding/googlelogo/1x/googlelogo_color_150x54dp.png) no-repeat;margin-left:-5px&#125;@media only screen and (min-resolution:192dpi)&#123;#logo&#123;background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png) no-repeat 0% 0%/100% 100%;-moz-border-image:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png) 0&#125;&#125;@media only screen and (-webkit-min-device-pixel-ratio:2)&#123;#logo&#123;background:url(//www.google.com/images/branding/googlelogo/2x/googlelogo_color_150x54dp.png) no-repeat;-webkit-background-size:100% 100%&#125;&#125;#logo&#123;display:inline-block;height:54px;width:150px&#125;</span><br><span class="line">  &lt;/style&gt;</span><br><span class="line">  &lt;a href=//www.google.com/&gt;&lt;span id=logo aria-label=Google&gt;&lt;/span&gt;&lt;/a&gt;</span><br><span class="line">  &lt;p&gt;&lt;b&gt;400.&lt;/b&gt; &lt;ins&gt;That’s an error.&lt;/ins&gt;</span><br><span class="line">  &lt;p&gt;Your client has issued a malformed or illegal request.  &lt;ins&gt;That’s all we know.&lt;/ins&gt;</span><br><span class="line">Connection closed by foreign host.</span><br><span class="line"></span><br><span class="line">[root@ip-172-31-5-191 ~]# wget -O /tmp/output.txt http://whatthecommit.com/index.txt</span><br><span class="line">--2019-06-19 06:32:13--  http://whatthecommit.com/index.txt</span><br><span class="line">Resolving whatthecommit.com (whatthecommit.com)... 52.86.186.182, 52.200.233.201, 52.202.60.111, ...</span><br><span class="line">Connecting to whatthecommit.com (whatthecommit.com)|52.86.186.182|:80... connected.</span><br><span class="line">HTTP request sent, awaiting response... 200 OK</span><br><span class="line">Length: 14 [text/plain]</span><br><span class="line">Saving to: ‘/tmp/output.txt’</span><br><span class="line"></span><br><span class="line">100%[=============================================================&gt;] 14          --.-K/s   in 0s</span><br><span class="line"></span><br><span class="line">2019-06-19 06:32:13 (1.88 MB/s) - ‘/tmp/output.txt’ saved [14/14]</span><br><span class="line"></span><br><span class="line">[root@ip-172-31-5-191 ~]# cat /tmp/output.txt</span><br><span class="line">Popping stash</span><br><span class="line">[root@ip-172-31-5-191 ~]# wget -qO- http://whatthecommit.com/index.txt</span><br><span class="line">clarify further the brokenness of C++. why the fuck are we using C++?</span><br><span class="line"></span><br><span class="line">root@stan-OptiPlex-380:~|⇒  nc -l -p 9999 &lt; /etc/lsb-release</span><br><span class="line">stan-OptiPlex-380% nc 192.168.199.178 9999 &gt; /tmp/redhat-release</span><br><span class="line">^C</span><br><span class="line">stan-OptiPlex-380% cat /tmp/redhat-release</span><br><span class="line">DISTRIB_ID=LinuxMint</span><br><span class="line">DISTRIB_RELEASE=19</span><br><span class="line">DISTRIB_CODENAME=tara</span><br><span class="line">DISTRIB_DESCRIPTION=&quot;Linux Mint 19 Tara&quot;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># links www.duckduckgo.com</span><br><span class="line"></span><br><span class="line">[root@ip-172-31-5-191 ~]# echo &apos;(8-(3+1))/4&apos; |bc</span><br><span class="line">1</span><br><span class="line"></span><br><span class="line">[root@ip-172-31-5-191 ~]# screen</span><br><span class="line"></span><br><span class="line">Ctrl + A + D</span><br><span class="line"></span><br><span class="line">[detached from 17091.pts-0.ip-172-31-5-191]</span><br><span class="line">[root@ip-172-31-5-191 ~]# exit</span><br><span class="line">logout</span><br><span class="line">[centos@ip-172-31-5-191 ~]$ exit</span><br><span class="line">logout</span><br><span class="line">Connection to 54.66.232.147 closed.</span><br><span class="line"></span><br><span class="line">ssh cicd</span><br><span class="line">Last login: Wed Jun 19 05:39:48 2019 from 220.240.212.9</span><br><span class="line">[centos@ip-172-31-5-191 ~]$ sudo -i</span><br><span class="line">[root@ip-172-31-5-191 ~]# screen -list</span><br><span class="line">There is a screen on:</span><br><span class="line">	17091.pts-0.ip-172-31-5-191	(Detached)</span><br><span class="line">1 Socket in /var/run/screen/S-root.</span><br><span class="line"></span><br><span class="line">[root@ip-172-31-5-191 ~]# screen -r 17091.pts-0.ip-172-31-5-191</span><br><span class="line"></span><br><span class="line">Type exit for quit</span><br><span class="line">[screen is terminating]</span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="various-top-like-programs"><a href="#various-top-like-programs" class="headerlink" title="various top-like programs"></a>various top-like programs</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">iotop ## Get a live view on the input and output, or short I/O, bandwidth usage of your system</span><br><span class="line"></span><br><span class="line">iftop ## which gets a live view on network traffic and network bandwidth usage and monitor</span><br><span class="line"></span><br><span class="line">htop ## improved version of the normal top program</span><br><span class="line">lsof | grep lib64 ## To print out a list of all open files, which means programs accessing files at the moment</span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="Largest-files-and-directories-report"><a href="#Largest-files-and-directories-report" class="headerlink" title="Largest files and directories report"></a>Largest files and directories report</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">FS=&apos;./&apos;;resize;clear;echo &quot;== Server Time: ==&quot;;date;echo -e &quot;\n== Filesystem Information: ==&quot;;df -PTh $&#123;FS&#125; | column -t;echo -e &quot;\n== Inode Information: ==&quot;;df -PTi $&#123;FS&#125; | column -t;echo -e &quot;\n== Largest Directories: ==&quot;;du -hcx --max-depth=2 $&#123;FS&#125; 2&gt;/dev/null | grep -P &apos;^([0-9]\.*)*G(?!.*(\btotal\b|\./$))&apos; | sort -rnk1,1 | head -10 | column -t;echo -e &quot;\n== Largest Files: ==&quot;;find $&#123;FS&#125; -mount -ignore_readdir_race -type f -exec du &#123;&#125; + 2&gt;&amp;1 | sort -rnk1,1 | head -20 | awk &apos;BEGIN&#123; CONVFMT=&quot;%.2f&quot;;&#125;&#123; $1=( $1 / 1024 )&quot;M&quot;; print;&#125;&apos; | column -t;echo -e &quot;\n== Largest Files Older Than 30 Days: ==&quot;;find $&#123;FS&#125; -mount -ignore_readdir_race -type f -mtime +30 -exec du &#123;&#125; + 2&gt;&amp;1 | sort -rnk1,1 | head -20 | awk &apos;BEGIN&#123; CONVFMT=&quot;%.2f&quot;;&#125;&#123; $1=( $1 / 1024 )&quot;M&quot;; print; &#125;&apos; | column -t;</span><br><span class="line"></span><br><span class="line">== Server Time: ==</span><br><span class="line">Thu Jun 20 04:57:53 UTC 2019</span><br><span class="line"></span><br><span class="line">== Filesystem Information: ==</span><br><span class="line">Filesystem  Type  Size  Used  Avail  Use%  Mounted  on</span><br><span class="line">/dev/xvda1  xfs   60G   3.9G  57G    7%    /</span><br><span class="line"></span><br><span class="line">== Inode Information: ==</span><br><span class="line">Filesystem  Type  Inodes    IUsed  IFree     IUse%  Mounted  on</span><br><span class="line">/dev/xvda1  xfs   31456704  62835  31393869  1%     /</span><br><span class="line"></span><br><span class="line">== Largest Directories: ==</span><br><span class="line"></span><br><span class="line">== Largest Files: ==</span><br><span class="line">0.00M  ./.ssh/authorized_keys</span><br><span class="line">0.00M  ./.lesshst</span><br><span class="line">0.00M  ./.bashrc</span><br><span class="line">0.00M  ./.bash_profile</span><br><span class="line">0.00M  ./.bash_logout</span><br><span class="line">0.00M  ./.bash_history</span><br><span class="line">0M     ./stuff/5.txt</span><br><span class="line">0M     ./stuff/4.txt</span><br><span class="line">0M     ./stuff/3.txt</span><br><span class="line">0M     ./stuff/2.txt</span><br><span class="line">0M     ./stuff/1.txt</span><br><span class="line"></span><br><span class="line">== Largest Files Older Than 30 Days: ==</span><br><span class="line">0.00M  ./.bashrc</span><br><span class="line">0.00M  ./.bash_profile</span><br><span class="line">0.00M  ./.bash_logout</span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="check-the-port-is-open-or-not"><a href="#check-the-port-is-open-or-not" class="headerlink" title="check the port is open or not"></a>check the port is open or not</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -vv -n -sS -sU -p443 52.62.248.48/32 | grep &quot;Discovered open port&quot; |awk &#123;&apos;print $6&apos;&#125; | awk -F/ &#123;&apos;print$1&apos;</span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="AWS-cli-commands"><a href="#AWS-cli-commands" class="headerlink" title="AWS cli commands"></a>AWS cli commands</h2><p>List all the ec2 instances details:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aws ec2 describe-instances --output text --query &apos;Reservations[*].Instances[*].[InstanceId, InstanceType, ImageId, State.Name, LaunchTime, Placement.AvailabilityZone, Placement.Tenancy, PrivateIpAddress, PrivateDnsName, PublicDnsName, [Tags[?Key==`Name`].Value] [0][0], [Tags[?Key==`purpose`].Value] [0][0], [Tags[?Key==`environment`].Value] [0][0], [Tags[?Key==`team`].Value] [0][0] ]&apos;&#125;`</span><br></pre></td></tr></table></figure></p>
-<hr>
-<p><strong>List server files information</strong><br><code>FS=&#39;./&#39;;resize;clear;echo &quot;== Server Time: ==&quot;;date;echo -e &quot;\n== Filesystem Information: ==&quot;;df -PTh ${FS} | column -t;echo -e &quot;\n== Inode Information: ==&quot;;df -PTi ${FS} | column -t;echo -e &quot;\n== Largest Directories: ==&quot;;du -hcx --max-depth=2 ${FS} 2&gt;/dev/null | grep -P &#39;^([0-9]\.*)*G(?!.*(\btotal\b|\./$))&#39; | sort -rnk1,1 | head -10 | column -t;echo -e &quot;\n== Largest Files: ==&quot;;find ${FS} -mount -ignore_readdir_race -type f -exec du {} + 2&gt;&amp;1 | sort -rnk1,1 | head -20 | awk &#39;BEGIN{ CONVFMT=&quot;%.2f&quot;;}{ $1=( $1 / 1024 )&quot;M&quot;; print;}&#39; | column -t;echo -e &quot;\n== Largest Files Older Than 30 Days: ==&quot;;find ${FS} -mount -ignore_readdir_race -type f -mtime +30 -exec du {} + 2&gt;&amp;1 | sort -rnk1,1 | head -20 | awk &#39;BEGIN{ CONVFMT=&quot;%.2f&quot;;}{ $1=( $1 / 1024 )&quot;M&quot;; print; }&#39; | column -t;</code></p>
-<hr>
-<h1 id="about-file"><a href="#about-file" class="headerlink" title="about file"></a>about file</h1><p><strong>Change the extension of multiple files</strong></p>
-<h2 id="add-an-extension-for-the-source-files"><a href="#add-an-extension-for-the-source-files" class="headerlink" title="add an extension for the source files"></a>add an extension for the source files</h2><p><code>for f in *; do mv -- &quot;$f&quot; &quot;${f%.\*}.pdf&quot;;done</code></p>
-<h2 id="find-the-file-size"><a href="#find-the-file-size" class="headerlink" title="find the file size"></a>find the file size</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">root@stan-OptiPlex-380:~|⇒  du -sh /*</span><br><span class="line">17M     /bin</span><br><span class="line">77M     /boot</span><br><span class="line">4.0K    /cdrom</span><br><span class="line">0       /dev</span><br><span class="line">17M     /etc</span><br><span class="line">1.6G    /home</span><br><span class="line">0       /initrd.img</span><br><span class="line">0       /initrd.img.old</span><br><span class="line">582M    /lib</span><br><span class="line">4.0K    /lib64</span><br><span class="line">16K     /lost+found</span><br><span class="line">4.0K    /media</span><br></pre></td></tr></table></figure>
-<p><strong>about node process</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">cat startApp.sh</span><br><span class="line">#!/bin/sh</span><br><span class="line">export NODE_ENV=production</span><br><span class="line">export DB_PRD_HOST=stantest-postgresql.c3mzoji03zxf.ap-southeast-2.rds.amazonaws.com</span><br><span class="line">export DB_PRD_USER=stantest</span><br><span class="line">export NODE_HOST=localhost</span><br><span class="line">export NODE_PORT=8080</span><br><span class="line">node /myapp/index.js&amp;</span><br><span class="line">exit 0</span><br><span class="line">cat stopApp.sh</span><br><span class="line">#!/bin/sh</span><br><span class="line">kill `ps -axf |grep node |grep -v grep|awk &apos;&#123;print $1&#125;&apos;` | exit 0</span><br></pre></td></tr></table></figure></p>
-<p>pgrep: pgrep, pkill - look up or signal processes based on name and other attributes</p>
-<hr>
-<h1 id="python"><a href="#python" class="headerlink" title="python"></a>python</h1><p>create a random password:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">stan@dockerfordevops:~/Projects/MobyDock$ python</span><br><span class="line">Python 2.7.12 (default, Nov 12 2018, 14:36:49) </span><br><span class="line">[GCC 5.4.0 20160609] on linux2</span><br><span class="line">Type <span class="string">"help"</span>, <span class="string">"copyright"</span>, <span class="string">"credits"</span> or <span class="string">"license"</span> <span class="keyword">for</span> more information.</span><br><span class="line">&gt;&gt;&gt; import os</span><br><span class="line">&gt;&gt;&gt; import binascii</span><br><span class="line">&gt;&gt;&gt; binascii.b2a_hex(os.urandom(31))</span><br></pre></td></tr></table></figure></p>
-<h1 id="postgres"><a href="#postgres" class="headerlink" title="postgres"></a>postgres</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">kubernetes-release-1.5 psql -h database -U postgres</span><br><span class="line">psql (11.4 (Ubuntu 11.4-1.pgdg18.04+1), server 9.4.23)</span><br><span class="line">Type &quot;help&quot; for help.</span><br><span class="line"></span><br><span class="line">postgres-# \dd</span><br><span class="line">         Object descriptions</span><br><span class="line"> Schema | Name | Object | Description</span><br><span class="line">--------+------+--------+-------------</span><br><span class="line">(0 rows)</span><br></pre></td></tr></table></figure>
-<p>$ mkdir vagrant_ubuntu_xenial_1 &amp;&amp; cd $_</p>
-<p>wget <a href="https://raw.githubusercontent.com/yogeshraheja/Effective-DevOps-with-AWS/master/Chapter02/helloworld.conf">https://raw.githubusercontent.com/yogeshraheja/Effective-DevOps-with-AWS/master/Chapter02/helloworld.conf</a> -O scripts/helloworld.conf</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/linux/">linux</a><a href="/tags/commands/">commands</a>
   </div>
 
 </div>

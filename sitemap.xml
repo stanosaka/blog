@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://223.95.78.227/2020/11/11/influxdb/</loc>
+    
+    <lastmod>2020-11-11T01:14:08.382Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://223.95.78.227/2020/06/23/spacemacs/</loc>
     
     <lastmod>2020-11-10T06:36:36.532Z</lastmod>

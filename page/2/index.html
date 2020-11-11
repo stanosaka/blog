@@ -83,6 +83,336 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2019/09/26/pipeline/" title="pipeline" itemprop="url">pipeline</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Stan Zhou" target="_blank" itemprop="author">Stan Zhou</a>
+		
+  <p class="article-time">
+    <time datetime="2019-09-26T04:48:03.587Z" itemprop="datePublished"> Published 2019-09-26</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>Pipeline</p>
+<p>Represents a part of:</p>
+<ul>
+<li>Software delivery</li>
+<li>Quality assurance process</li>
+</ul>
+<p>Benefits:</p>
+<ul>
+<li>Operation grouping</li>
+<li>Visibility</li>
+<li>Feedback<br><strong>Automated deployment pipeline</strong><br>3 stages:<br>code change-&gt; Continuous Integration-&gt; Automated acceptance testing-&gt; Configuration management</li>
+</ul>
+<ol>
+<li>Continuous Integration<br>The continuous integration phase provides the first feedback to the developers. It checks out the code from the repository, compiles it, runs unit tests and verifies the code quality. If any step fails the pipeline execution is stopped and the first thing the developer should do is fix the continuous integration build. The continuous integration pipeline is usually the starting point.</li>
+</ol>
+<ul>
+<li>first feedback</li>
+<li>checks code</li>
+<li>starting point</li>
+<li>simple to setup</li>
+</ul>
+<ol start="2">
+<li>Automated acceptance testing</li>
+</ol>
+<ul>
+<li>Suites of tests</li>
+<li>A quality gate</li>
+<li>Pipeline execution is stopped if test fails</li>
+<li>Prevents movement</li>
+<li>Lot of confusion</li>
+</ul>
+<p><img src="https://i.imgur.com/KGWFQPx.png" alt="Agile testing matrix"></p>
+<ol>
+<li>Acceptance testing</li>
+</ol>
+<ul>
+<li>Represent functional requirements</li>
+<li>Wrtten in the form of stories or examples</li>
+</ul>
+<ol start="2">
+<li>Unit Testing</li>
+</ol>
+<ul>
+<li>Provide the high-quality software</li>
+<li>Minimize the number of bugs</li>
+</ul>
+<ol start="3">
+<li>Exploratory Testing</li>
+</ol>
+<ul>
+<li>Manual black-box testing</li>
+<li>Breaks or improves the system</li>
+</ul>
+<ol start="4">
+<li>Non-functional testing</li>
+</ol>
+<ul>
+<li>Represent properties:<ul>
+<li>Performance</li>
+<li>Scalability</li>
+<li>Security</li>
+</ul>
+</li>
+</ul>
+<ol start="3">
+<li>Configuration management</li>
+</ol>
+<ul>
+<li>Replaces the manual operations</li>
+<li>Responsible for tracking and controlling changes</li>
+<li>Solution to the problems</li>
+<li>Enable storing configuration files<br>Configuration management is a solution to the problems posed by manually deploying and configuring applications on the production. Configuration management tools enables storing configuration files in the version control system and tracking every change that was made on the production servers.</li>
+</ul>
+<p><strong>Technical and development prerequisites</strong></p>
+<ul>
+<li>Automated build, test, package, and deploy operations</li>
+<li>Quick pipeline execution</li>
+<li>Quick failure recovery</li>
+<li>Zero-downtime deployment</li>
+<li>Trunk-based deployment</li>
+</ul>
+<p><strong>Building the continuous delivery process</strong><br>Jenkins</p>
+<ul>
+<li>Popular automation server</li>
+<li>Helps create automated sequence of scripts</li>
+<li>Plugin-oriented</li>
+</ul>
+<p>Ansible<br>Helps with:</p>
+<ul>
+<li>Software provisioning</li>
+<li>Configuration management</li>
+<li>Application deployment</li>
+</ul>
+<p>Java</p>
+<ul>
+<li>Most popular programming language</li>
+<li>Develop with the Spring framework</li>
+<li>Gradle-build tool<br>Jenkins is by far the most popular automation server on the market. It helps to create continuous integration and continuous delivery pipelines and in general any other automated sequence of scripts. Highly plug-in oriented it has a greater community which constantly extends it with new features. Another one is Ansible. Ansible is an automation tool that helps with software provisioning configuration management and application deployment. Next comes Java. Java has been the most popular programming language for years, that is why it is being used for most code examples. Together with Java, most companies develop with the Spring framework so we used it to create a simple web service needed to explain some concepts. Gradle is used as a build tool. It is less popular than Maven however trending much faster.</li>
+</ul>
+<p><strong>Pipeline elements</strong></p>
+<ul>
+<li>Basic elements</li>
+<li>Stage - Logical separation</li>
+<li>Setp - Used to visualize process<br><img src="https://i.imgur.com/J7xJ8KG.png" alt="elements"></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">pipeline &#123;</span><br><span class="line">   //agent any</span><br><span class="line">   agent &#123;</span><br><span class="line">      label &apos;linux&apos;</span><br><span class="line">   &#125;</span><br><span class="line">   stages &#123;</span><br><span class="line">      stage(&apos;First Stage&apos;) &#123;</span><br><span class="line">          steps &#123;</span><br><span class="line">              echo &apos;Step 1. Hello World&apos;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      stage(&apos;Second Stage&apos;) &#123;</span><br><span class="line">          steps &#123;</span><br><span class="line">              echo &apos;Step 2. Second time Hello&apos;</span><br><span class="line">              echo &apos;Step 3. Third time Hello&apos;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   post &#123;</span><br><span class="line">     always &#123;</span><br><span class="line">        echo &quot;Pipeline executed!&quot;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Define pipeline structure<br>A declarative pipeline is always specified inside the pipeline block and contains sections, directives and steps. </li>
+</ul>
+<p>A declarative pipeline has a simplified and opinionated syntax on top of the pipeline sub-system.</p>
+<p><strong>Sections</strong></p>
+<ul>
+<li>Keywords are:<ul>
+<li>Agent-defines on which agent the pipeline or the stage will be executed</li>
+<li>Stages-defines the stages of the pipeline</li>
+<li>Step</li>
+<li>Post-defines the post build steps</li>
+</ul>
+</li>
+</ul>
+<p>Sections define the pipeline structure and usually contain one or more directives or steps. They are defined with the key words, stages, step and post.</p>
+<p>Stages defines a series of one or more stage directives.</p>
+<p>Steps defines a series of one or more step instructions.</p>
+<p>Steps are the most fundamental part of the pipeline they define the operations that are executed so they actually tell Jenkins what to do.</p>
+<p>Defined using:</p>
+<ul>
+<li>sh: executes the shell command</li>
+<li>custom</li>
+<li>script</li>
+</ul>
+<p>Posts defines a series of one or more step instructions that are run at the end of the pipeline build.</p>
+<p><strong>Directives</strong></p>
+<ul>
+<li>Expresses the configuration of a pipeline or its parts</li>
+<li>Defined by:<ul>
+<li>Agent: specifies where the execution takes place</li>
+<li>Triggers: define automated ways to trigger the pipeline and can use cron to set the time based scheduling</li>
+<li>Options: specified pipeline specific options</li>
+<li>Environment: deinfes a set of key values used a s environment variables</li>
+<li>Parameters: define a list of user input parameters</li>
+<li>Tools: defines the tools configured on Jenkins</li>
+<li>Stage: allows for logical grouping of steps; contains steps and agent </li>
+<li>When: determines whether the stage should be executed depending on the given condition</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">pipeline &#123;</span><br><span class="line">   agent any</span><br><span class="line">   tools &#123;</span><br><span class="line">      maven &apos;M3&apos;</span><br><span class="line">   &#125;</span><br><span class="line">  </span><br><span class="line">   parameters &#123;</span><br><span class="line">      string(name: &apos;VERSION&apos;,</span><br><span class="line">          defaultValue: &apos;1.0.0&apos;,</span><br><span class="line">          description: &apos;What is the version to build?&apos;)</span><br><span class="line">   &#125;</span><br><span class="line">  </span><br><span class="line">   stages &#123;</span><br><span class="line">      stage(&apos;Build&apos;)&#123;</span><br><span class="line">          steps &#123;</span><br><span class="line">             sh &quot;./build.sh $&#123;params.VERSION&#125;&quot;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Commit-Pipeline"><a href="#Commit-Pipeline" class="headerlink" title="Commit Pipeline"></a>Commit Pipeline</h2><ul>
+<li>Basic continuous integration process</li>
+<li>Results in a report about the build</li>
+<li>Runs after each change in the code</li>
+<li>Consume a reasonable amount of resources</li>
+<li>Starting point</li>
+</ul>
+<p>Since it runs after every change in the code, the build should take no more than five minutes and should consume a reasonable amount of resources. The commit phase is always the starting point of the continuous delivery process and it provides the most important feedback cycle in the development process.</p>
+<p>In the commit phase a developer checks in the code to the repository.<br>The continuous integration server detects the change and the build starts.<br>The most fundamental commit pipeline contains three stages </p>
+<ul>
+<li>checkout</li>
+<li>compile</li>
+<li>unit test</li>
+</ul>
+<h2 id="Code-Quality-Stages"><a href="#Code-Quality-Stages" class="headerlink" title="Code Quality Stages"></a>Code Quality Stages</h2><p><strong>Extending continuous integration</strong></p>
+<ul>
+<li>The most widely used are: Code coverage and Static analysis</li>
+</ul>
+<p><strong>Code coverage</strong></p>
+<ul>
+<li>Scenario:<ul>
+<li>Nobody writes unit tests</li>
+<li>Passes all the builds</li>
+</ul>
+</li>
+<li>Solution:<ul>
+<li>Add coverage code tools</li>
+</ul>
+</li>
+<li>Creates report</li>
+<li>Make build fail<br><strong>Available tools</strong></li>
+<li>JaCoCo</li>
+<li>Clover</li>
+<li>Cobertura<br><strong>Static Code Analysis</strong></li>
+<li>Checks without execution</li>
+<li>Checks number of rules</li>
+<li>Rules apply to wide range of aspects</li>
+<li>Popular tools are Checkstyle, FindBugs, and PMD</li>
+</ul>
+<p><strong>SonarQube</strong></p>
+<ul>
+<li>Quality management tool</li>
+<li>An alternative</li>
+<li>Aggregates different code analysis frameworks</li>
+<li>Has own dashboards</li>
+<li>User friendly web interface</li>
+</ul>
+<h2 id="Triggers-and-notifications"><a href="#Triggers-and-notifications" class="headerlink" title="Triggers and notifications"></a>Triggers and notifications</h2><p><strong>Triggers</strong></p>
+<ul>
+<li>Automatic action to start the build</li>
+<li>Manay options to choose from</li>
+<li>Three types:<ul>
+<li>External</li>
+<li>Polling SCM</li>
+<li>Scheduled build<br><strong>External Trigger</strong></li>
+</ul>
+</li>
+<li>Natural to understand</li>
+<li>Starts the build after it’s called by the notifier</li>
+</ul>
+<p>GitHub -&gt; trigger-&gt; Jenkins</p>
+<p><strong>Polling SCM</strong></p>
+<ul>
+<li>Periodically calls Github</li>
+<li>Sound counter-intuitive<br>Polling SCM trigger is less intuitive.<br><img src="https://i.imgur.com/s6L2bbo.png" alt="Polling SCM figure"><br>Jenkins periodically calls GitHub and checks if there were any push to the repository. Then it starts the build.</li>
+</ul>
+<p><strong>Scheduled build</strong></p>
+<ul>
+<li>Jenkins runs the build periodically</li>
+<li>No communication with any system</li>
+<li>Implementation of scheduled build is same as polling SCM</li>
+<li>Used for the commit pipeline</li>
+</ul>
+<p><strong>Notifications</strong></p>
+<ul>
+<li>Lot</li>
+</ul>
+<h2 id="Team-development-strategies"><a href="#Team-development-strategies" class="headerlink" title="Team development strategies"></a>Team development strategies</h2><p><strong>Development workflows</strong></p>
+<ul>
+<li>Put the code into the repostitory</li>
+<li>Depends on many factors</li>
+<li>Classify into three types:<ul>
+<li><img src="https://i.imgur.com/WXIl9qU.png" alt="Trunk-based workflow"></li>
+<li><img src="https://i.imgur.com/Oiury7J.png" alt="Branching workflow"></li>
+<li><img src="https://i.imgur.com/5Uo3Ac9.png" alt="Forking workflow"><br><strong>Feature toggle</strong><br>Feature toggle is a technique that is an alternative to maintaining multiple source code branches such that the feature can be tested before it is completed and ready for use. It is used to disable the feature for users but enables it for developers while testing. Feature toggles are essentially variables used in conditional statements the simplest implementation of feature toggles are flags and the if statements.</li>
+</ul>
+</li>
+</ul>
+<p><strong>acceptance testing</strong><br>Acceptance testing is a test performed to determine if business requirements or contracts are met. </p>
+<ul>
+<li>Invovles black-box testing</li>
+<li>Imply the acceptance of the software delivery</li>
+<li>Also called UAT</li>
+<li>Rely on manual steps</li>
+<li>Reaonable to run them as programmed repeatable operations<br><strong>Artifact repository</strong><br>While the source control management stores the source code the artifact repository is dedicated for storing software binary artifacts, for example, compiled libraries or components later used to build a complete application.</li>
+<li>Store binaries on a separate server due to:<ul>
+<li>File size</li>
+<li>Versions</li>
+<li>Revision mapping</li>
+<li>Packages</li>
+<li>Access Control</li>
+<li>Clients</li>
+<li>Use cases<br><img src="https://i.imgur.com/5gDLWLc.png" alt="working"><br><strong>private docker registry</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p certs</span><br><span class="line"></span><br><span class="line">openssl req \\n  -newkey rsa:4096 -nodes -sha256 -keyout certs/domain.key \\n  -x509 -days 365 -out certs/domain.crt</span><br><span class="line"></span><br><span class="line">docker run -d -p 5000:5000 --restart=always --name registry -v `pwd`/auth:/auth -e &quot;REGISTRY_AUTH=htpasswd&quot; -e &quot;REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm&quot; -e REGISTRY_AUTH_HTPASSWD_PATH=/auth/passwords -v `pwd`/certs:/certs -e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/domain.crt -e REGISTRY_HTTP_TLS_KEY=/certs/domain.key registry:2</span><br><span class="line"></span><br><span class="line">docker tag ubuntu_with_python stanosaka/ubuntu_with_python:1</span><br><span class="line">docker push stanosaka/ubuntu_with_python:1</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Acceptance test in pipeline</strong><br><img src="https://i.imgur.com/06nJoTO.png" alt="process"></p>
+<ol>
+<li>The developer pushes a code change to Github.</li>
+<li>Jenkins detects the change, triggers the build and checks out the current code.</li>
+<li>Jenkins executes the commit phase and builds the Docker image</li>
+<li>Jenkins pushes the image to Docker Registry</li>
+<li>Jenkins runs the Docker container in the staging environment</li>
+</ol>
+<p><strong>Configuration management</strong></p>
+<ul>
+<li>Process of controlling configuration changes</li>
+<li>Used to refer to the software and the hardware</li>
+</ul>
+<p>Application Configuration| Infrastructre Configuration<br>Decides how the system works| Server infrastructure and environment configuration<br>Expressed in the form of flags| Takes care of the deployment process<br><img src="https://i.imgur.com/L4k4cb0.png" alt="working"><br><strong>Traits</strong></p>
+<ul>
+<li>Automation</li>
+<li>Version Control</li>
+<li>Incremental changes</li>
+<li>Server provisioning</li>
+<li>Security</li>
+<li>Simplicity</li>
+</ul>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/pipeline/">pipeline</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2019/09/20/anatomy-of-containers/" title="anatomy-of-containers" itemprop="url">anatomy-of-containers</a>
   </h1>
   <p class="article-author">By
@@ -1530,264 +1860,6 @@
   <div class="article-tags">
   
   <span></span> <a href="/tags/python/">python</a><a href="/tags/programming/">programming</a><a href="/tags/systemadmin/">systemadmin</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2019/07/17/devops/" title="DevOps" itemprop="url">DevOps</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Stan Zhou" target="_blank" itemprop="author">Stan Zhou</a>
-		
-  <p class="article-time">
-    <time datetime="2019-07-17T11:23:02.000Z" itemprop="datePublished"> Published 2019-07-17</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p><strong>What is DevOps?</strong></p>
-<ul>
-<li>Speed and agility enable organizations to better serve their customers and compete more effectively in the market</li>
-<li>Combination of cultural philosophies, practices, and tools</li>
-<li>Increases an organization’s ability to deliver applications and services at high velocity</li>
-<li>Evolves and imprvoes products faster</li>
-</ul>
-<p><strong>Why DevOps?</strong></p>
-<ul>
-<li>Antomate manual tasks, help teams manage complex environments at scale, and keep engineers in control of the velocity that is enabled by DevOps:<ul>
-<li>Speed</li>
-<li>Rapid delivery</li>
-<li>Reliability</li>
-<li>Scale</li>
-<li>Improved collaboration</li>
-<li>Security</li>
-</ul>
-</li>
-</ul>
-<p>Standard Continuous delivery (CD) techniques</p>
-<ul>
-<li>Blue/Green deployment (where “live” and “last” deployments are maintained on live)<br>Blue-green deployment is a technique that reduces downtime and risk by running two identical production environments called Blue and Green.</li>
-</ul>
-<p>At any time, only one of the environments is live, with the live environment serving all production traffic. For this example, Blue is currently live and Green is idle.</p>
-<p>As you prepare a new version of your software, deployment and the final stage of testing takes place in the environment that is not live: in this example, Green. Once you have deployed and fully tested the software in Green, you switch the router so all incoming requests now go to Green instead of Blue. Green is now live, and Blue is idle.</p>
-<p>This technique can eliminate downtime due to app deployment. In addition, blue-green deployment reduces risk: if something unexpected happens with your new version on Green, you can immediately roll back to the last version by switching back to Blue.</p>
-<ul>
-<li>Phoenix deployment (where whole system are rebuilt on each release).<br><img src="https://i.imgur.com/DXtJZOm.png" alt="devops tools"></li>
-</ul>
-<p><strong>Goals</strong></p>
-<ul>
-<li>Culture for collaboration<blockquote>
-<p>lack of collaboration is one of the root causes of the issues</p>
-</blockquote>
-</li>
-<li>Automate<blockquote>
-<p>Manual tests that consume resources are better left to machines. This frees time that is better spent elsewhere, and provides a better environment by relinquishing mundane tasks</p>
-</blockquote>
-</li>
-<li>Optimize and reduce issue in SDLC(software development life cycle)<blockquote>
-<p>The processes being comprised in a logical order allows for optimizations to be made from recorded metrics.</p>
-</blockquote>
-</li>
-<li>Consistency in process<blockquote>
-<p>This stems mostly from automation, and provides the foundation to ensure quality. It also provides a certain level of peace of mind, having confidence that the same process that successfully ran last time will run the same the next.</p>
-</blockquote>
-</li>
-<li>Improve quality and security<blockquote>
-<p>Automation combined with consistency in process, along with the tools and practices in place to perform the necessary testing and scans, removes the possibility of human error from subsequent processes</p>
-</blockquote>
-</li>
-<li>Improve deployment frequency<blockquote>
-<p>Agile methodologies proved effective for development, and sparked the idea to apply similar principles to other areas. Deployment frequency has always been a target for efficiency, as shown by the migration to waterfall, where deployments were seldom; to hybrid methodologies that produced releases four or five times per month; to agile, where deployments are dependent upon sprint links. With DevOps, there’s a potential to release multiple times per day.</p>
-</blockquote>
-</li>
-</ul>
-<p><strong>DevOps Methodologies and Concepts</strong></p>
-<ul>
-<li>Automation<ul>
-<li>Not duplicate of goals</li>
-<li>Automation in context of applying automation to deveopment, integration, and deployment process</li>
-</ul>
-</li>
-<li>CI/CD/CD<ul>
-<li>CI: continuous integration<ul>
-<li>Focusses on sub process of SDLC to build features and fixes perform preliminary testing then merge to master if successful</li>
-</ul>
-</li>
-<li>CD: continuous delivery<ul>
-<li>tail end of CI</li>
-<li>refers to archiving build artifacts</li>
-</ul>
-</li>
-<li>CD: continous deployment<ul>
-<li>deploy all necessary artifacts and perform any configuration</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Infrastructure as code, configuration as code: fail fast<ul>
-<li>Don’t waste resources on something that will fail</li>
-<li>Organize and optimize for efficiency</li>
-</ul>
-</li>
-<li>Frequent feedback<ul>
-<li>Compilation of a series of small and frequent feedback loops</li>
-</ul>
-</li>
-</ul>
-<p><strong>DevOps engineer’s role within a devops organization</strong></p>
-<ul>
-<li>Continually research, refine, and create conceopts, methodologies, practices, and tools in order to optimize the SDLC.</li>
-<li>Implement core standards, plicies, and tools based on the previous</li>
-<li>Asses infrastructure requirements”<ul>
-<li>Global and application sacle</li>
-</ul>
-</li>
-<li>Crate and manage infrastructure</li>
-<li>Coordinate with other teams</li>
-<li>Troubleshoot issues with code and infrastructure</li>
-<li>Work with one or more teams to:<ul>
-<li>Assess their current state</li>
-<li>Formulate end goals</li>
-<li>Adapt to requirements</li>
-<li>Develop a plan of implementation</li>
-<li>Formulate milestones</li>
-<li>Provide instruction on the core standards, policies, and tools</li>
-<li>Develop a pipeline</li>
-<li>Help to change their code and processes to work with the plan</li>
-</ul>
-</li>
-</ul>
-<p><strong>philosophy</strong><br>DevOps is not something you do. It is something you are. </p>
-<p>Devops culture is the one based on a set of principles, hierarchy of rules, by which each person operates.<br>A DevOps culture is one that allows more freedom but more responsibility.</p>
-<p><strong>Devops lifecycle</strong></p>
-<ul>
-<li><p>Continuous integration</p>
-<ul>
-<li>Central repository</li>
-<li>Continuous compiling, testing</li>
-<li>Code verification</li>
-<li>Identifying bugs early</li>
-<li>Software in smaller chunks</li>
-<li>Easy integration<br>Continuous integration (CI) requires developers to integrate code into a centralized repository as they finish coding and successfully pass unit testing, several times per day. The end goal is to create small workable chunks of code that are validated and integrated back into the code repository as frequently as possible. </li>
-</ul>
-</li>
-<li><p>Configuration management</p>
-<ul>
-<li>System changes</li>
-<li>Multiple servers</li>
-<li>Tracking changes</li>
-<li>Types of CM tools</li>
-<li>Scripted builds</li>
-<li>Identical development and production environments</li>
-</ul>
-</li>
-<li><p>Continous delivery</p>
-<ul>
-<li>Deploying the application</li>
-<li>Incremental or small changes</li>
-<li>Compatible with schedule releases</li>
-<li>Every change-ready to deploy<br>Continuous delivery simply means that every change is ready to be deployed to production as soon as automated testing validates it.<br>Note there are two manual checkpoints in this example. One is for a technical decision to approve the code before initiating activities in the CI environment. The second is a business decision to accept the changes and continue with the automated steps to production deployment.<br><img src="https://i.imgur.com/XzLyd0g.png" alt="reference pipeline-continous delivery"><br><strong>Deploying to production</strong></li>
-</ul>
-</li>
-<li><p>Canary releases</p>
-<blockquote>
-<p>Continuous delivery deploys many builds to production. In a canary deployment, the new code is delivered only to a percentage of the existing infrastructure. For example, if the system is running on 10 load-balanced virtual servers, you can define a canary cluster of one or two servers. This way, if the deployment is not successful due to an escaped defect, it can be caught before the build is deployed to all of the servers. Canary releases are also used for pilot features to determine performance and acceptance prior to a full rollout.</p>
-</blockquote>
-</li>
-<li><p>Blue/green deployment</p>
-<blockquote>
-<p>This is a zero-downtime deployment technique that involves a gradual release to ensure uninterrupted service. The blue/green approach is effective in virtualized environments, especially if IaaS is used. Although a blue/green deployment is a deep topic that deserves an entire chapter on its own, simply put, it includes maintaining two identical development environments—Blue and Green. One is a live environment for production traffic, whereas the other is used to deploy the new release. In our example, let’s say that Green is the current live production environment and Blue is the idle identical production environment. After the code is deployed and tested in the Blue environment, we can begin directing traffic of incoming requests from Green (current production) to Blue. You can do this gradually until the traffic redirect is 100 percent to the Blue environment. If unexpected issues occur during this gradual release, we can roll back. When it is completed, the Green environment becomes idle and the Blue environment is now the live production environment.</p>
-</blockquote>
-</li>
-<li><p>Continous monitoring<br>Continous monitoring is the practice that connects operations back to development,providing visibility and relevant data throughout the development lifecycle including production monitoring. continuous monitoring aims to reduce the time between identification of a problem and deployment of the fix.<br>Monitoring begins with <strong>Sprint 1</strong> and should be integrated into the development work. As the system is built, monitoring solutions are also designed. </p>
-</li>
-</ul>
-<p><strong>four different types of continuous monitoring</strong></p>
-<ul>
-<li>Infrastructure monitoring<blockquote>
-<p>Visualize infrastructure events coming from all computing resources, storage and network, and measure the usage and health of infrastructure resources. <strong>AWS CloudWatch</strong> and <strong>CloudTrail</strong> are examples of infrastructure monitoring tools.</p>
-</blockquote>
-</li>
-<li>Application performance monitoring (APM)<blockquote>
-<p>Target bottlenecks in the application’s framework. <strong>Appdynamics</strong> and <strong>New Relic</strong> are industry-leading APM tools.</p>
-</blockquote>
-</li>
-<li>Log management monitoring<blockquote>
-<p>Collect performance logs in a standardized way and use analytics to identify application and system problems. <strong>Splunk</strong> and <strong>ELK</strong> are two leading products in this area.</p>
-</blockquote>
-</li>
-<li>Security monitoring<blockquote>
-<p>Reduce security and compliance risk through automation. Security configuration management, vulnerability management, and intelligence to detect attacks and breaches before they do serious damage are achieved through continuous monitoring. For example, <strong>Netflix’s Security Monkey</strong> is a tool that checks the security configuration of your cloud implementation on AWS.</p>
-</blockquote>
-</li>
-</ul>
-<p><strong>three major setps</strong></p>
-<ol>
-<li>monitoring</li>
-<li>an alert system to warn the team about a problem</li>
-<li>actions to take when an alert occurs</li>
-</ol>
-<ul>
-<li>Continous testing<ul>
-<li>Speed and quality</li>
-<li>Testing incremental changes</li>
-<li>Automated tests</li>
-<li>Tests to be atomic: small test<ul>
-<li>Continous testing during development (e.g. use open source tools like Selenium for testing)</li>
-<li>Confidence to release</li>
-<li>Integration with CI</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Continous deployment<ul>
-<li>Superset of Continuous Delivery</li>
-<li>Deploying to production</li>
-<li>Automates the deployment pipeline<br>Unlike continuous delivery, which means that every change is deployable but might be held back because of business considerations or other manual steps, continuous deployment strives to automate production deployment end to end. With this practice, confidence in the automated tests is extremely high, and as long as the code has passed all the tests, it will be deployed.<br><img src="https://i.imgur.com/Aq1VaJb.png" alt="cd"></li>
-</ul>
-</li>
-</ul>
-<p>DevOps: culture, automation, measurement, and sharing (CAMS)</p>
-<p><strong>DevOps architecutres and practics</strong><br>From the DevOps movement, a set of software architectural patterns and practices have become increasingly popular. The primary logic behind the development of these architectural patterns and practices is derived from the need for scalability, no-downtime deployments, and minimizing negative customer reactions to upgrades and releases. Some of these you may have heard of (microservices), while others may be a bit vague (blue-green deployments).</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/Devops/">Devops</a>
   </div>
 
 </div>
