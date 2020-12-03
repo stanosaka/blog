@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="Stan Zhou&#39;s Hexo Technical Blog">
 <meta property="og:description" content="system admin tooliostat介绍全能系统监控工具dstat most use:1[root@toad pxe]# dstat -cmsdnl -D sda3 -N lo,eth0 100 5 网络监控工具本地服务器的网卡吞吐量：1iptraf -d eth0  123456789101112131415161718192021222324252627# bothwget ftp:">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-09-16T11:46:43.000Z">
+<meta property="og:updated_time" content="2020-12-03T06:26:05.669Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="system admin tools">
 <meta name="twitter:description" content="system admin tooliostat介绍全能系统监控工具dstat most use:1[root@toad pxe]# dstat -cmsdnl -D sda3 -N lo,eth0 100 5 网络监控工具本地服务器的网卡吞吐量：1iptraf -d eth0  123456789101112131415161718192021222324252627# bothwget ftp:">
@@ -99,7 +99,7 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#system-admin-tool"><span class="toc-number">1.</span> <span class="toc-text">system admin tool</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#system-admin-tool"><span class="toc-number">1.</span> <span class="toc-text">system admin tool</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#useful-commands"><span class="toc-number"></span> <span class="toc-text">useful commands</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Create-a-configuration-file-and-add-your-license-key"><span class="toc-number"></span> <span class="toc-text">Create a configuration file and add your license key \</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Create-the-agent’s-yum-repository"><span class="toc-number"></span> <span class="toc-text">Create the agent’s yum repository \</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Update-your-yum-cache"><span class="toc-number"></span> <span class="toc-text">Update your yum cache \</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Run-the-installation-script"><span class="toc-number"></span> <span class="toc-text">Run the installation script \</span></a>
 		
 		</div>
 		
@@ -111,6 +111,13 @@
 <blockquote>
 <p>Reference <a href="https://www.ibm.com/developerworks/cn/linux/l-netperf/">netperf 与网络性能测量</a></p>
 </blockquote>
+<h1 id="useful-commands"><a href="#useful-commands" class="headerlink" title="useful commands"></a>useful commands</h1><h1 id="Create-a-configuration-file-and-add-your-license-key"><a href="#Create-a-configuration-file-and-add-your-license-key" class="headerlink" title="Create a configuration file and add your license key \"></a>Create a configuration file and add your license key \</h1><p>echo “license_key: a61ac49b8930c041d9d940b8227f5d716819NRAL” | sudo tee -a /etc/newrelic-infra.yml &amp;&amp; \</p>
+<p>\</p>
+<h1 id="Create-the-agent’s-yum-repository"><a href="#Create-the-agent’s-yum-repository" class="headerlink" title="Create the agent’s yum repository \"></a>Create the agent’s yum repository \</h1><p>sudo curl -o /etc/yum.repos.d/newrelic-infra.repo <a href="https://download.newrelic.com/infrastructure_agent/linux/yum/el/7/x86_64/newrelic-infra.repo">https://download.newrelic.com/infrastructure_agent/linux/yum/el/7/x86_64/newrelic-infra.repo</a> &amp;&amp; \</p>
+<p>\</p>
+<h1 id="Update-your-yum-cache"><a href="#Update-your-yum-cache" class="headerlink" title="Update your yum cache \"></a>Update your yum cache \</h1><p>sudo yum -q makecache -y –disablerepo=’*’ –enablerepo=’newrelic-infra’ &amp;&amp; \</p>
+<p>\</p>
+<h1 id="Run-the-installation-script"><a href="#Run-the-installation-script" class="headerlink" title="Run the installation script \"></a>Run the installation script \</h1><p>sudo yum install newrelic-infra -y</p>
 <blockquote>
 <p>Written with <a href="https://stackedit.io/">StackEdit</a>.</p>
 </blockquote>
@@ -171,7 +178,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#system-admin-tool"><span class="toc-number">1.</span> <span class="toc-text">system admin tool</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#system-admin-tool"><span class="toc-number">1.</span> <span class="toc-text">system admin tool</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#useful-commands"><span class="toc-number"></span> <span class="toc-text">useful commands</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Create-a-configuration-file-and-add-your-license-key"><span class="toc-number"></span> <span class="toc-text">Create a configuration file and add your license key \</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Create-the-agent’s-yum-repository"><span class="toc-number"></span> <span class="toc-text">Create the agent’s yum repository \</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Update-your-yum-cache"><span class="toc-number"></span> <span class="toc-text">Update your yum cache \</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Run-the-installation-script"><span class="toc-number"></span> <span class="toc-text">Run the installation script \</span></a>
  
   </div>
 
