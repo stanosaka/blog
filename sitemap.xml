@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://223.95.78.227/2020/04/26/puppet/</loc>
+    
+    <lastmod>2020-12-15T06:56:17.842Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://223.95.78.227/2019/07/23/LinuxSystemAdmin/</loc>
     
     <lastmod>2020-12-09T05:34:20.371Z</lastmod>
@@ -82,13 +89,6 @@
     <loc>http://223.95.78.227/2020/02/09/SRE/</loc>
     
     <lastmod>2020-07-19T11:33:33.739Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://223.95.78.227/2020/04/26/puppet/</loc>
-    
-    <lastmod>2020-06-20T03:00:36.433Z</lastmod>
     
   </url>
   
