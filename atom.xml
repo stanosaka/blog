@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://223.95.78.227/"/>
-  <updated>2020-12-16T00:09:40.030Z</updated>
+  <updated>2020-12-16T00:11:02.757Z</updated>
   <id>http://223.95.78.227/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>IaC (Infrastructure as Code)</title>
+    <link href="http://223.95.78.227/2020/12/08/IaC/"/>
+    <id>http://223.95.78.227/2020/12/08/IaC/</id>
+    <published>2020-12-08T01:07:49.000Z</published>
+    <updated>2020-12-16T00:11:02.757Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Infrastructure-automation-tool-registries"><a href="#Infrastructure-automation-tool-registries" class="headerlink" title="Infrastructure automation tool registries"></a>Infrastructure automation tool registries</h1><ul><li>Chef Infra Server</li><li>PuppetDB</li><li>Ansible Tower</li><li>Salt Mine</li></ul><h1 id="General-purpose-configuration-registry-products"><a href="#General-purpose-configuration-registry-products" class="headerlink" title="General-purpose configuration registry products"></a>General-purpose configuration registry products</h1><ul><li>Zookeeper</li><li>etcd</li><li>Consul</li><li>doozerd</li></ul><h1 id="Handling-secrets-as-parameters"><a href="#Handling-secrets-as-parameters" class="headerlink" title="Handling secrets as parameters"></a>Handling secrets as parameters</h1><h2 id="Encrypting-secrets"><a href="#Encrypting-secrets" class="headerlink" title="Encrypting secrets"></a>Encrypting secrets</h2><ul><li><a href="https://oreil.ly/-ZBmS">git-crypt</a> </li><li><a href="https://oreil.ly/ZT99R">blackbox</a> </li><li><a href="https://oreil.ly/7md-J">sops</a> </li><li><a href="https://oreil.ly/2os70">transcript</a></li></ul><h2 id="Disposable-secrets"><a href="#Disposable-secrets" class="headerlink" title="Disposable secrets"></a>Disposable secrets</h2><ul><li>HashiCorp Vault</li></ul><h1 id="Continuously-Test-and-Deliver"><a href="#Continuously-Test-and-Deliver" class="headerlink" title="Continuously Test and Deliver"></a>Continuously Test and Deliver</h1><h2 id="Delivery-pipeline-software-dnd-services"><a href="#Delivery-pipeline-software-dnd-services" class="headerlink" title="Delivery pipeline software dnd services"></a>Delivery pipeline software dnd services</h2><h3 id="Build-server"><a href="#Build-server" class="headerlink" title="Build server"></a>Build server</h3><ul><li>Jenkins</li><li>Team City</li><li>Bamboo</li><li>Github Actions<h3 id="CD-software"><a href="#CD-software" class="headerlink" title="CD software"></a>CD software</h3></li><li>GoCD</li><li>ConcourseCI</li><li>BuildKite<h3 id="SaaS-services"><a href="#SaaS-services" class="headerlink" title="SaaS services"></a>SaaS services</h3></li><li>CircleCI</li><li>TravisCI</li><li>AppVeyor</li><li>Drone</li><li>BoxFuse<h3 id="Cloud-platform-services"><a href="#Cloud-platform-services" class="headerlink" title="Cloud platform services"></a>Cloud platform services</h3></li><li>AWS CodeBuild(CI)</li><li>AWS CodePipeline(CD)</li><li>Azure Pipelines<h3 id="Source-code-repository-services"><a href="#Source-code-repository-services" class="headerlink" title="Source code repository services"></a>Source code repository services</h3></li><li>Github Actions</li><li>GitLab CI and CD<h3 id="Evaluating-tools"><a href="#Evaluating-tools" class="headerlink" title="Evaluating tools"></a>Evaluating tools</h3></li><li>Atlantis (manage pull requests for Terraform projects)</li><li>Terraform Cloud</li><li>WeaveWorks(managing Kubernetes clusters)</li></ul><h2 id="Deployment-packages"><a href="#Deployment-packages" class="headerlink" title="Deployment packages"></a>Deployment packages</h2><table><thead><tr><th>Target runtime</th><th>Example packages</th></tr></thead><tbody><tr><td>Server oprating system</td><td>Red Hat RPM files, Debian .deb files, Windows MSI installer packages</td></tr><tr><td>Language runtime engine</td><td>Ruby gems, Python pip packages, Java .jar, .war, and .ear files</td></tr><tr><td>Container runtime</td><td>Docker images</td></tr><tr><td>Application clusters</td><td>Kubernetes Deployment Descriptors, Helm charts</td></tr><tr><td>FaaS serverless</td><td>Lambda deployment package</td></tr><tr><td></td></tr></tbody></table>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Infrastructure-automation-tool-registries&quot;&gt;&lt;a href=&quot;#Infrastructure-automation-tool-registries&quot; class=&quot;headerlink&quot; title=&quot;Infrastruc
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>influxdb</title>
@@ -481,33 +502,6 @@
     
     
       <category term="Linux" scheme="http://223.95.78.227/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>programming4sysadmins</title>
-    <link href="http://223.95.78.227/2019/07/19/programming4sysadmins/"/>
-    <id>http://223.95.78.227/2019/07/19/programming4sysadmins/</id>
-    <published>2019-07-19T06:10:53.000Z</published>
-    <updated>2019-07-19T14:27:15.327Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="python"><a href="#python" class="headerlink" title="python"></a>python</h1><h2 id="What-can-you-do-with-python"><a href="#What-can-you-do-with-python" class="headerlink" title="What can you do with python?"></a>What can you do with python?</h2><ul><li>Versatile language, can use it across a lot of different domains</li><li>really fast to learn and fast to develop in<h2 id="Environment-Setup"><a href="#Environment-Setup" class="headerlink" title="Environment Setup"></a>Environment Setup</h2><a href="https://wiki.openhatch.org/wiki/O%27Reilly_Introduction_to_Python">link</a><h2 id="Python-basic-data-types"><a href="#Python-basic-data-types" class="headerlink" title="Python basic data types"></a>Python basic data types</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; type(1)</span><br><span class="line">&lt;type &apos;int&apos;&gt;</span><br><span class="line">&gt;&gt;&gt; type(1.0)</span><br><span class="line">&lt;type &apos;float&apos;&gt;</span><br><span class="line">Type is a functions that takes input and spits out output.</span><br></pre></td></tr></table></figure></li></ul><p><strong>a function</strong> is just the name and then input inside parentheses, and it’ll spit out output.</p><p>If you need to include the string delimiter inside the string just precede it with a backslash, as in ‘It\’s a wrap’<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; &quot;Hello &quot; + str(1)</span><br><span class="line">&apos;Hello 1&apos;</span><br></pre></td></tr></table></figure></p><h2 id="Making-choices-boolean-if-eif-else-compound-conditionals"><a href="#Making-choices-boolean-if-eif-else-compound-conditionals" class="headerlink" title="Making choices: boolean, if/eif/else, compound conditionals"></a>Making choices: boolean, if/eif/else, compound conditionals</h2><p>Boolean:</p><ul><li>True</li><li>False<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; x = 1</span><br><span class="line">&gt;&gt;&gt; x &gt; 0 and x &lt; 2</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; &quot;a&quot; in &quot;hello&quot; or &quot;e&quot; in &quot;hello&quot;</span><br><span class="line">True</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; temp = 32</span><br><span class="line">&gt;&gt;&gt; if temp &gt; 60 and temp &lt; 75:</span><br><span class="line">...     print(&quot;Nice and cozy&quot;)</span><br><span class="line">... else:</span><br><span class="line">...     print(&quot;Too extreme for me&quot;)</span><br><span class="line">...</span><br><span class="line">Too extreme for me</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; sister = 15</span><br><span class="line">&gt;&gt;&gt; brother =15</span><br><span class="line">&gt;&gt;&gt; if sister &gt; brother:</span><br><span class="line">...     print(&quot;Sister is older&quot;)</span><br><span class="line">... elif sister == brother:</span><br><span class="line">...     print(&quot;Same age!&quot;)</span><br><span class="line">... else:</span><br><span class="line">...     print(&quot;Brother is older&quot;)</span><br><span class="line">...</span><br><span class="line">Same age!</span><br></pre></td></tr></table></figure></li></ul><h2 id="Lists"><a href="#Lists" class="headerlink" title="Lists"></a>Lists</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; names = [&quot;Alice&quot;, &quot;Amy&quot;]</span><br><span class="line">&gt;&gt;&gt; names.append(&quot;Adam&quot;)</span><br><span class="line">&gt;&gt;&gt; names</span><br><span class="line">[&apos;Alice&apos;, &apos;Amy&apos;, &apos;Adam&apos;]</span><br><span class="line">&gt;&gt;&gt; names[len(names)-1]</span><br><span class="line">&apos;Adam&apos;</span><br><span class="line">&gt;&gt;&gt; names[-1]</span><br><span class="line">&apos;Adam&apos;</span><br></pre></td></tr></table></figure><p>The real superpower when using lists is actually to be able to loop over them.</p><h2 id="Loops"><a href="#Loops" class="headerlink" title="Loops"></a>Loops</h2><h1 id="Great-Bash"><a href="#Great-Bash" class="headerlink" title="Great Bash"></a>Great Bash</h1><ul><li><p>Redirect the output of commands</p><ul><li>Standard error is file descriptor “2” <code>ls -l myscript not.here &gt; lsout 2&gt; lserr</code></li><li>Out and error can be redirected separately or together <code>ls -l myscript not.here &amp;&gt; lsboth</code></li><li>The order of redirection is important<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ls -l myscript not.here &gt; lsout 2&gt;&amp;1</span><br><span class="line">## Redirectin error output to standard output</span><br><span class="line">## Standard output is already being re-directed to file &gt; dirlist</span><br><span class="line">## Hence, both error and standard output are written to file lsout</span><br></pre></td></tr></table></figure></li></ul></li><li><p>Redirecting and piping input and output</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ls &gt; /tmp/lsout</span><br><span class="line">wc &lt; /tmp/lsout</span><br></pre></td></tr></table></figure></li></ul><p>Use the vertical bar character | to create a pipe: <code>ls|wc</code></p><p>Connect a series of commands with | symbols to make a pipeline.</p><ul><li>Create input with here documents</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;python&quot;&gt;&lt;a href=&quot;#python&quot; class=&quot;headerlink&quot; title=&quot;python&quot;&gt;&lt;/a&gt;python&lt;/h1&gt;&lt;h2 id=&quot;What-can-you-do-with-python&quot;&gt;&lt;a href=&quot;#What-can-y
-      
-    
-    </summary>
-    
-    
-      <category term="python" scheme="http://223.95.78.227/tags/python/"/>
-    
-      <category term="programming" scheme="http://223.95.78.227/tags/programming/"/>
-    
-      <category term="systemadmin" scheme="http://223.95.78.227/tags/systemadmin/"/>
     
   </entry>
   
