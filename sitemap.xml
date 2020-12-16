@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://223.95.78.227/2020/11/11/influxdb/</loc>
+    
+    <lastmod>2020-12-16T00:09:40.030Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://223.95.78.227/2020/04/26/puppet/</loc>
     
     <lastmod>2020-12-15T06:56:17.842Z</lastmod>
@@ -40,13 +47,6 @@
     <loc>http://223.95.78.227/2016/10/13/sysadmintool/</loc>
     
     <lastmod>2020-12-03T06:26:05.669Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://223.95.78.227/2020/11/11/influxdb/</loc>
-    
-    <lastmod>2020-11-11T05:01:39.584Z</lastmod>
     
   </url>
   
