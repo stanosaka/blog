@@ -1824,13 +1824,9 @@
 <p>$ sudo journalctl -p err _TRANSPORT=syslog –since 18:00– Logs begin at Tue 2018-10-09 18:43:07 UTC, end at Wed 2018-10-10 18:11:15 UTC. –Oct 10 18:08:18 centos1 vagrant[1736]: I’M ANOTHER PARADOXICAL LOG MESSAGE.</p>
 <p>The options SystemMaxUse and RuntimeMaxUse govern the maximum disk space the journal can use</p>
 <p>The SystemKeepFree and RuntimeKeepFree options govern how much disk space journald leaves free for other uses</p>
-<h1 id="journalctl-–vacuum-size-2G"><a href="#journalctl-–vacuum-size-2G" class="headerlink" title="journalctl –vacuum-size=2G"></a>journalctl –vacuum-size=2G</h1><p><code>`</code></p>
-<h2 id="Exclude-a-specific-directory-in-ncdu-command"><a href="#Exclude-a-specific-directory-in-ncdu-command" class="headerlink" title="Exclude a specific directory in ncdu command"></a>Exclude a specific directory in ncdu command</h2><p>ncdu -x / –exclude /mnt</p>
-<h2 id="repeat-currently-typed-in-parameter-on-bash-console"><a href="#repeat-currently-typed-in-parameter-on-bash-console" class="headerlink" title="repeat currently typed in parameter on bash console"></a>repeat currently typed in parameter on bash console</h2><p>cp /etc/systemd/{journald,journald-bk}.conf</p>
-<h2 id="Lost-password"><a href="#Lost-password" class="headerlink" title="Lost password"></a>Lost password</h2><p>Boot the Ubuntu Live CD.<br>Press Ctrl-Alt-F1</p>
-<p>sudo mount /dev/sda1 /mnt</p>
-<p>If you created a custom partition layout when installing Ubuntu you have to find your root partition using the fdisk utility. See the section Finding your root partition.</p>
-<p>sudo chroot /mnt</p>
+<h1 id="journalctl-–vacuum-size-2G"><a href="#journalctl-–vacuum-size-2G" class="headerlink" title="journalctl –vacuum-size=2G"></a>journalctl –vacuum-size=2G</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">## Exclude a specific directory in ncdu command</span><br><span class="line">ncdu -x / --exclude /mnt</span><br><span class="line"></span><br><span class="line">## repeat currently typed in parameter on bash console</span><br><span class="line">cp /etc/systemd/&#123;journald,journald-bk&#125;.conf</span><br><span class="line"></span><br><span class="line">## Lost password</span><br><span class="line">Boot the Ubuntu Live CD.</span><br><span class="line">Press Ctrl-Alt-F1</span><br><span class="line"></span><br><span class="line">sudo mount /dev/sda1 /mnt</span><br><span class="line"></span><br><span class="line">If you created a custom partition layout when installing Ubuntu you have to find your root partition using the fdisk utility. See the section Finding your root partition.</span><br><span class="line"></span><br><span class="line">sudo chroot /mnt</span><br><span class="line"></span><br><span class="line">## Print line only if the first field start with string, and copy it to clipboard</span><br></pre></td></tr></table></figure>
+<p>awk ‘$1~/Value/‘ sau2-db-06.txt |cut -d “:” -f 2|xsel -b</p>
+<h2 id="Print-the-line-start-with-string"><a href="#Print-the-line-start-with-string" class="headerlink" title="Print the line start with string"></a>Print the line start with string</h2><p>awk ‘/^Variable_name/‘ eqx1-db-02.txt |cut -d “:” -f 2|xsel -b<br><code>`</code></p>
 
         
         
@@ -1940,11 +1936,11 @@
 			
 		
 			
-				<li><a href="/tags/ec2/" title="ec2">ec2<sup>2</sup></a></li>
+				<li><a href="/tags/backup/" title="backup">backup<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/backup/" title="backup">backup<sup>2</sup></a></li>
+				<li><a href="/tags/ec2/" title="ec2">ec2<sup>2</sup></a></li>
 			
 		
 			
@@ -1960,11 +1956,11 @@
 			
 		
 			
-				<li><a href="/tags/Blue-Ocean/" title="Blue Ocean">Blue Ocean<sup>1</sup></a></li>
+				<li><a href="/tags/python/" title="python">python<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/python/" title="python">python<sup>1</sup></a></li>
+				<li><a href="/tags/Blue-Ocean/" title="Blue Ocean">Blue Ocean<sup>1</sup></a></li>
 			
 		
 			
