@@ -20,7 +20,7 @@
 <meta property="og:description" content="puppet 6Local environment installationPuppet 6 downloadhttp://apt.puppet.com/http://yum.puppet.com/puppet6/http://downloads.puppet.com/windows/puppet6/http://yum.puppet.com/mac/puppet6/12345678vagrant">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://i.imgur.com/BGh6QOP.png">
-<meta property="og:updated_time" content="2021-01-31T12:51:38.872Z">
+<meta property="og:updated_time" content="2021-02-01T01:21:38.794Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="puppet6">
 <meta name="twitter:description" content="puppet 6Local environment installationPuppet 6 downloadhttp://apt.puppet.com/http://yum.puppet.com/puppet6/http://downloads.puppet.com/windows/puppet6/http://yum.puppet.com/mac/puppet6/12345678vagrant">
@@ -122,7 +122,7 @@
 <h3 id="famlfile-puppet-provider-yaml-file-manipluation"><a href="#famlfile-puppet-provider-yaml-file-manipluation" class="headerlink" title="famlfile: puppet provider yaml file manipluation"></a>famlfile: puppet provider yaml file manipluation</h3><p><a href="https://forge.puppet.com/reidmv/yamlfile/types">reidmv yamlfile</a></p>
 <h2 id="puppet-cookbook"><a href="#puppet-cookbook" class="headerlink" title="puppet cookbook"></a>puppet cookbook</h2><p><a href="https://www.puppetcookbook.com/">cookbook</a></p>
 <h2 id="Configure-r10k"><a href="#Configure-r10k" class="headerlink" title="Configure r10k"></a>Configure r10k</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo puppet module install puppet/r10k --modulepath=/etc/puppetlabs/code/modules/</span><br><span class="line">sudo puppet apply -e &apos;class &#123;&quot;r10k&quot;: remote =&gt; &quot;https://github.com/stanosaka/control-repo&quot;&#125;&apos; --modulepath=/etc/puppetlabs/code/modules/</span><br><span class="line">r10k deploy environment -p</span><br></pre></td></tr></table></figure>
-<p>in control-repo Settings webhooks<br>Payload URL: <a href="http://puppet:puppet@foobar.cwzhou.win:8088/payload">http://puppet:puppet@foobar.cwzhou.win:8088/payload</a></p>
+<p>in control-repo Settings webhooks<br>Payload URL: <a href="http://puppet:puppet@foobar.cwzhou.win:8088/payload">http://puppet:puppet@foobar.cwzhou.win:8088/payload</a><br><a href="https://github.com/Zetten/puppet-hiera-enc">Hiera-based Puppet ENC</a></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -250,11 +250,11 @@
 			
 		
 			
-				<li><a href="/tags/backup/" title="backup">backup<sup>2</sup></a></li>
+				<li><a href="/tags/ec2/" title="ec2">ec2<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/ec2/" title="ec2">ec2<sup>2</sup></a></li>
+				<li><a href="/tags/backup/" title="backup">backup<sup>2</sup></a></li>
 			
 		
 			
@@ -270,11 +270,11 @@
 			
 		
 			
-				<li><a href="/tags/python/" title="python">python<sup>1</sup></a></li>
+				<li><a href="/tags/Blue-Ocean/" title="Blue Ocean">Blue Ocean<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/Blue-Ocean/" title="Blue Ocean">Blue Ocean<sup>1</sup></a></li>
+				<li><a href="/tags/python/" title="python">python<sup>1</sup></a></li>
 			
 		
 			
