@@ -4,24 +4,25 @@
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
   
-    <title>monitoring | Stan Zhou&#39;s Hexo Technical Blog</title>
+    <title>spacemacs | Stan Zhou&#39;s Hexo Technical Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Stan Zhou">
     
 
     
-    <meta name="description" content="Frontend MonitoringTwo approaches to frontend monitoring real user monitoring (RUM) synthetic tools: webpagetest.orgBrowsers expose page performance metrics visa the Navigation Timing API    Applicati">
+    <meta name="description" content="Basic   Key Description     SPC p f search find in the same project   SPC p p open project   SPC w m max the current windows   ALT ; uncomment   gcc comment out a line   gc comment out highlighted tex">
+<meta name="keywords" content="spacemacs">
 <meta property="og:type" content="article">
-<meta property="og:title" content="monitoring">
-<meta property="og:url" content="http://223.95.78.227/2020/02/26/monitoring/index.html">
+<meta property="og:title" content="spacemacs">
+<meta property="og:url" content="http://223.95.78.227/2021/02/09/spacemacs/index.html">
 <meta property="og:site_name" content="Stan Zhou&#39;s Hexo Technical Blog">
-<meta property="og:description" content="Frontend MonitoringTwo approaches to frontend monitoring real user monitoring (RUM) synthetic tools: webpagetest.orgBrowsers expose page performance metrics visa the Navigation Timing API    Applicati">
+<meta property="og:description" content="Basic   Key Description     SPC p f search find in the same project   SPC p p open project   SPC w m max the current windows   ALT ; uncomment   gcc comment out a line   gc comment out highlighted tex">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-03-19T06:36:08.726Z">
+<meta property="og:updated_time" content="2021-02-08T23:53:34.996Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="monitoring">
-<meta name="twitter:description" content="Frontend MonitoringTwo approaches to frontend monitoring real user monitoring (RUM) synthetic tools: webpagetest.orgBrowsers expose page performance metrics visa the Navigation Timing API    Applicati">
+<meta name="twitter:title" content="spacemacs">
+<meta name="twitter:description" content="Basic   Key Description     SPC p f search find in the same project   SPC p p open project   SPC w m max the current windows   ALT ; uncomment   gcc comment out a line   gc comment out highlighted tex">
 <meta name="twitter:creator" content="@stanosaka">
 
     
@@ -82,14 +83,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2020/02/26/monitoring/" title="monitoring" itemprop="url">monitoring</a>
+      <a href="/2021/02/09/spacemacs/" title="spacemacs" itemprop="url">spacemacs</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Stan Zhou" target="_blank" itemprop="author">Stan Zhou</a>
 		
   <p class="article-time">
-    <time datetime="2020-02-26T10:52:07.000Z" itemprop="datePublished"> Published 2020-02-26</time>
+    <time datetime="2021-02-08T23:52:48.976Z" itemprop="datePublished"> Published 2021-02-09</time>
     
   </p>
 </header>
@@ -98,28 +99,322 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Frontend-Monitoring"><span class="toc-number">1.</span> <span class="toc-text">Frontend Monitoring</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Two-approaches-to-frontend-monitoring"><span class="toc-number">1.1.</span> <span class="toc-text">Two approaches to frontend monitoring</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Application-Monitoring"><span class="toc-number">2.</span> <span class="toc-text">Application Monitoring</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Telegraf-InfluxDB-Grafana"><span class="toc-number">3.</span> <span class="toc-text">Telegraf, InfluxDB + Grafana</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Basic"><span class="toc-number">1.</span> <span class="toc-text">Basic</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Movement"><span class="toc-number">2.</span> <span class="toc-text">Movement</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Magit"><span class="toc-number">3.</span> <span class="toc-text">Magit</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Org-mode"><span class="toc-number">4.</span> <span class="toc-text">Org mode</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Dired-mode"><span class="toc-number">5.</span> <span class="toc-text">Dired mode</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Helm"><span class="toc-number">6.</span> <span class="toc-text">Helm</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#tumx"><span class="toc-number">7.</span> <span class="toc-text">tumx</span></a></li></ol>
 		
 		</div>
 		
-		<h1 id="Frontend-Monitoring"><a href="#Frontend-Monitoring" class="headerlink" title="Frontend Monitoring"></a>Frontend Monitoring</h1><h2 id="Two-approaches-to-frontend-monitoring"><a href="#Two-approaches-to-frontend-monitoring" class="headerlink" title="Two approaches to frontend monitoring"></a>Two approaches to frontend monitoring</h2><ul>
-<li>real user monitoring (RUM)</li>
-<li>synthetic<ul>
-<li>tools: webpagetest.org<br><strong>Browsers expose page performance metrics visa the Navigation Timing API</strong></li>
-</ul>
-</li>
-</ul>
-<h1 id="Application-Monitoring"><a href="#Application-Monitoring" class="headerlink" title="Application Monitoring"></a>Application Monitoring</h1><p><strong>Application Performance Monitoring(APM) Tools</strong></p>
+		<h1 id="Basic"><a href="#Basic" class="headerlink" title="Basic"></a>Basic</h1><table>
+<thead>
+<tr>
+<th>Key</th>
+<th style="text-align:center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SPC p f</td>
+<td style="text-align:center">search find in the same project</td>
+</tr>
+<tr>
+<td>SPC p p</td>
+<td style="text-align:center">open project</td>
+</tr>
+<tr>
+<td>SPC w m</td>
+<td style="text-align:center">max the current windows</td>
+</tr>
+<tr>
+<td>ALT ;</td>
+<td style="text-align:center">uncomment</td>
+</tr>
+<tr>
+<td>gcc</td>
+<td style="text-align:center">comment out a line</td>
+</tr>
+<tr>
+<td>gc</td>
+<td style="text-align:center">comment out highlighted text</td>
+</tr>
+<tr>
+<td>SPC w /</td>
+<td style="text-align:center">vertical</td>
+</tr>
+<tr>
+<td>SPC w -</td>
+<td style="text-align:center">horizontal</td>
+</tr>
+<tr>
+<td>SPC f e d</td>
+<td style="text-align:center">edit spacemacs profile</td>
+</tr>
+<tr>
+<td>SPC f f</td>
+<td style="text-align:center">open file</td>
+</tr>
+<tr>
+<td>SPC w c</td>
+<td style="text-align:center">close the window</td>
+</tr>
+<tr>
+<td>SPC t l</td>
+<td style="text-align:center">toggle lines</td>
+</tr>
+<tr>
+<td>C-x h</td>
+<td style="text-align:center">select the entire buffer</td>
+</tr>
+<tr>
+<td>C-h m</td>
+<td style="text-align:center">show available commands for the current modes</td>
+</tr>
+<tr>
+<td>SPC a d</td>
+<td style="text-align:center">Dired mode : 1. Copy file : C 2. Delete the file : D 3. Rename the file : R 4. Create a new directory : + 5. Reload directory listing : g</td>
+</tr>
+<tr>
+<td>C-b</td>
+<td style="text-align:center">Move back one full screen</td>
+</tr>
+<tr>
+<td>C-f</td>
+<td style="text-align:center">Move forward one full screen</td>
+</tr>
+<tr>
+<td>C-d</td>
+<td style="text-align:center">Move forward 1/2 screen</td>
+</tr>
+<tr>
+<td>C-u</td>
+<td style="text-align:center">Move back (upA)1/2 screen</td>
+</tr>
+<tr>
+<td>/sudo::/path/to/file</td>
+<td style="text-align:center">Open a file with su/sudo</td>
+</tr>
+<tr>
+<td>r in <em>spacemacs</em> buffer</td>
+<td style="text-align:center">Open from the recent file list</td>
+</tr>
+<tr>
+<td>SPC o y</td>
+<td style="text-align:center">Copy to clipboard</td>
+</tr>
+<tr>
+<td>SPC o p</td>
+<td style="text-align:center">Paste from clipboard</td>
+</tr>
+<tr>
+<td>/ssh: :/home/szhou/</td>
+<td style="text-align:center">ssh remote edit file</td>
+</tr>
+<tr>
+<td>SPC s c</td>
+<td style="text-align:center">clear the highlight of search</td>
+</tr>
+<tr>
+<td>“2p</td>
+<td style="text-align:center">paste the 2nd-last yanked lines</td>
+</tr>
+<tr>
+<td>SPC r l</td>
+<td style="text-align:center">resume the last helm session</td>
+</tr>
+</tbody>
+</table>
+<h1 id="Movement"><a href="#Movement" class="headerlink" title="Movement"></a>Movement</h1><table>
+<thead>
+<tr>
+<th>Key</th>
+<th style="text-align:center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C-u</td>
+<td style="text-align:center">up half page</td>
+</tr>
+<tr>
+<td>C-d</td>
+<td style="text-align:center">down half page</td>
+</tr>
+<tr>
+<td>d-0</td>
+<td style="text-align:center">delete to the beginning of the line</td>
+</tr>
+</tbody>
+</table>
+<h1 id="Magit"><a href="#Magit" class="headerlink" title="Magit"></a>Magit</h1><table>
+<thead>
+<tr>
+<th>Key</th>
+<th style="text-align:center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SPC g s</td>
+<td style="text-align:center">show Magit status view</td>
+</tr>
+<tr>
+<td>j k</td>
+<td style="text-align:center">position the cursor on a file</td>
+</tr>
+<tr>
+<td>TAB</td>
+<td style="text-align:center">show and hide the diff for the file</td>
+</tr>
+<tr>
+<td>s</td>
+<td style="text-align:center">stage a file (u to unstage fa file and x to discard changes to a file)</td>
+</tr>
+<tr>
+<td>cc</td>
+<td style="text-align:center">commit</td>
+</tr>
+<tr>
+<td>,c</td>
+<td style="text-align:center">finish the commit message</td>
+</tr>
+<tr>
+<td>p u</td>
+<td style="text-align:center">Push to upstream</td>
+</tr>
+<tr>
+<td>F (r) u</td>
+<td style="text-align:center">Pull tracked branch and rebase</td>
+</tr>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://www.saltycrane.com/blog/2018/11/magit-spacemacs-evil-magit-notes/" title="magit">magit</a></p>
+<h1 id="Org-mode"><a href="#Org-mode" class="headerlink" title="Org mode"></a>Org mode</h1><table>
+<thead>
+<tr>
+<th>Key</th>
+<th style="text-align:center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M-x org-mode</td>
+<td style="text-align:center">enable Org mode</td>
+</tr>
+<tr>
+<td>M-shift-RET</td>
+<td style="text-align:center">Add a TODO list</td>
+</tr>
+<tr>
+<td>C-c C-t</td>
+<td style="text-align:center">Mark as completed</td>
+</tr>
+<tr>
+<td>C-c C-x C-b</td>
+<td style="text-align:center">toogle checkbox</td>
+</tr>
+<tr>
+<td>C-c C-t</td>
+<td style="text-align:center">TODO to DONE</td>
+</tr>
+<tr>
+<td>Alt-Up or Down</td>
+<td style="text-align:center">Move the item</td>
+</tr>
+<tr>
+<td>C-c C-x C-w</td>
+<td style="text-align:center">Delete the item</td>
+</tr>
+<tr>
+<td>Alt-Right</td>
+<td style="text-align:center">Demote a headline</td>
+</tr>
+<tr>
+<td>Alt-Shit-Left</td>
+<td style="text-align:center">To promote a subtree</td>
+</tr>
+<tr>
+<td>C-c C-e</td>
+<td style="text-align:center">To start the exporter</td>
+</tr>
+<tr>
+<td>h o</td>
+<td style="text-align:center">Export to a web page and open</td>
+</tr>
+<tr>
+<td>t A</td>
+<td style="text-align:center">Export as an ADCII text file</td>
+</tr>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id="Dired-mode"><a href="#Dired-mode" class="headerlink" title="Dired mode"></a>Dired mode</h1><table>
+<thead>
+<tr>
+<th>Key</th>
+<th style="text-align:center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SPC a d</td>
+<td style="text-align:center">enable Dired Mode</td>
+</tr>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id="Helm"><a href="#Helm" class="headerlink" title="Helm"></a>Helm</h1><table>
+<thead>
+<tr>
+<th>Key</th>
+<th style="text-align:center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SPC r l</td>
+<td style="text-align:center">resume the last helm session</td>
+</tr>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id="tumx"><a href="#tumx" class="headerlink" title="tumx"></a>tumx</h1><table>
+<thead>
+<tr>
+<th>Key</th>
+<th style="text-align:center">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>prefix :setw synchronize-panes off</td>
+<td style="text-align:center">(ctrl + y)stop sending same command for all paines in windows</td>
+</tr>
+<tr>
+<td>prefix :setw synchronize-panes on</td>
+<td style="text-align:center">(ctrl + u)start sending same command for all paines in windows</td>
+</tr>
+<tr>
+<td>prefix r</td>
+<td style="text-align:center">reload the tmux configuration</td>
+</tr>
+<tr>
+<td>prefix d</td>
+<td style="text-align:center">Deatach the session</td>
+</tr>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
 <ul>
-<li>StatsD is a tool used to add metrics inside of your code.</li>
-</ul>
-<h1 id="Telegraf-InfluxDB-Grafana"><a href="#Telegraf-InfluxDB-Grafana" class="headerlink" title="Telegraf, InfluxDB + Grafana"></a>Telegraf, InfluxDB + Grafana</h1><ul>
-<li><p>Grafana: Grafana is “The open platform for beautiful analytics and monitoring.” It makes it easy to create dashboards for displaying data from many sources, particularly time-series data. It works with several different data sources such as Graphite, Elasticsearch, InfluxDB, and OpenTSDB. We’re going to use this as our main front end for visualizing our network statistics.</p>
-</li>
-<li><p>InfluxDB: InfluxDB is “…a data store for any use case involving large amounts of timestamped data.” This is where we’re going to store our network statistics. It is designed for exactly this use-case, where metrics are collected over time.</p>
-</li>
-<li><p>Telegraf: Telegraf is “…a plugin-driven server agent for collecting and reporting metrics.” This can collect data from a wide variety of sources, e.g. system statistics, API calls, DB queries, and SNMP. It can then send those metrics to a variety of datastores, e.g. Graphite, OpenTSDB, Datadog, Librato. Telegraf is maintained by InfluxData, the people behind InfluxDB. So it has very good support for writing data to InfluxDB.</p>
-</li>
+<li><a href="https://orgmode.org/manual/index.html">https://orgmode.org/manual/index.html</a><br><a href="https://gist.github.com/rnwolf/e09ae9ad6d3ac759767d129d52cab1f1" title="spacemacs keybindings">keybindings</a></li>
 </ul>
   
 	</div>
@@ -127,13 +422,18 @@
 <div class="article-catetags">
 
 
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/spacemacs/">spacemacs</a>
+  </div>
+
 </div>
 
 
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://223.95.78.227/2020/02/26/monitoring/" data-title="monitoring | Stan Zhou&#39;s Hexo Technical Blog" data-tsina="undefined" class="share clearfix">
+	  <div data-url="http://223.95.78.227/2021/02/09/spacemacs/" data-title="spacemacs | Stan Zhou&#39;s Hexo Technical Blog" data-tsina="undefined" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -146,19 +446,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2020/03/16/i3/" title="i3">
-  <strong>上一篇：</strong><br/>
-  <span>
-  i3</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2020/02/09/SRE/"  title="SRE">
+<a href="/2020/12/08/IaC/"  title="IaC (Infrastructure as Code)">
  <strong>下一篇：</strong><br/> 
- <span>SRE
+ <span>IaC (Infrastructure as Code)
 </span>
 </a>
 </div>
@@ -173,7 +465,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Frontend-Monitoring"><span class="toc-number">1.</span> <span class="toc-text">Frontend Monitoring</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Two-approaches-to-frontend-monitoring"><span class="toc-number">1.1.</span> <span class="toc-text">Two approaches to frontend monitoring</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Application-Monitoring"><span class="toc-number">2.</span> <span class="toc-text">Application Monitoring</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Telegraf-InfluxDB-Grafana"><span class="toc-number">3.</span> <span class="toc-text">Telegraf, InfluxDB + Grafana</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Basic"><span class="toc-number">1.</span> <span class="toc-text">Basic</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Movement"><span class="toc-number">2.</span> <span class="toc-text">Movement</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Magit"><span class="toc-number">3.</span> <span class="toc-text">Magit</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Org-mode"><span class="toc-number">4.</span> <span class="toc-text">Org mode</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Dired-mode"><span class="toc-number">5.</span> <span class="toc-text">Dired mode</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Helm"><span class="toc-number">6.</span> <span class="toc-text">Helm</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#tumx"><span class="toc-number">7.</span> <span class="toc-text">tumx</span></a></li></ol>
  
   </div>
 
