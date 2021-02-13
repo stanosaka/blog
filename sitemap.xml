@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://223.95.78.227/2019/06/04/k8s/</loc>
+    
+    <lastmod>2021-02-13T05:02:11.724Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://223.95.78.227/2021/02/09/spacemacs/</loc>
     
     <lastmod>2021-02-08T23:53:34.996Z</lastmod>
@@ -33,13 +40,6 @@
     <loc>http://223.95.78.227/2019/07/23/LinuxSystemAdmin/</loc>
     
     <lastmod>2021-01-22T05:57:22.360Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://223.95.78.227/2019/06/04/k8s/</loc>
-    
-    <lastmod>2021-01-17T00:40:08.249Z</lastmod>
     
   </url>
   
