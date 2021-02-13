@@ -292,3 +292,45 @@ root@toad:~# ssh -p 2222 root@localhost
 vim /etc/fstab
 /dev/xvdc1	/data	ext4	defaults     0   0
 ```
+### pass the output of one command as the command-line argument to another
+```
+find / -name pg_hba.conf|xargs cat
+```
+### Using journalctl on systemd systems
+
+```
+## man system.jounal-fields
+## after err level messages
+#journalctl -p err
+# configured in /etc/systemd/journald.conf
+$ logger -p cron.err "I'M ANOTHER PARADOXICAL LOG MESSAGE."
+
+$ sudo journalctl -p err _TRANSPORT=syslog --since 18:00-- Logs begin at Tue 2018-10-09 18:43:07 UTC, end at Wed 2018-10-10 18:11:15 UTC. --Oct 10 18:08:18 centos1 vagrant[1736]: I'M ANOTHER PARADOXICAL LOG MESSAGE.
+
+The options SystemMaxUse and RuntimeMaxUse govern the maximum disk space the journal can use
+
+The SystemKeepFree and RuntimeKeepFree options govern how much disk space journald leaves free for other uses
+# journalctl --vacuum-size=2G
+```
+## Exclude a specific directory in ncdu command
+ncdu -x / --exclude /mnt
+
+## repeat currently typed in parameter on bash console
+cp /etc/systemd/{journald,journald-bk}.conf
+
+## Lost password
+Boot the Ubuntu Live CD.
+Press Ctrl-Alt-F1
+
+sudo mount /dev/sda1 /mnt
+
+If you created a custom partition layout when installing Ubuntu you have to find your root partition using the fdisk utility. See the section Finding your root partition.
+
+sudo chroot /mnt
+
+## Print line only if the first field start with string, and copy it to clipboard
+```
+awk '$1~/Value/' sau2-db-06.txt |cut -d ":" -f 2|xsel -b
+## Print the line start with string
+awk '/^Variable_name/' eqx1-db-02.txt |cut -d ":" -f 2|xsel -b
+```

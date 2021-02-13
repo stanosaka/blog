@@ -26,15 +26,21 @@ tags: spacemacs
 | C-u                     | Move back (upA)1/2 screen                                                                                                                 |
 | /sudo::/path/to/file    | Open a file with su/sudo                                                                                                                  |
 | r in *spacemacs* buffer | Open from the recent file list                                                                                                            |
+| SPC o y                 | Copy to clipboard                                                                                                                         |
+| SPC o p                 | Paste from clipboard                                                                                                                      |
+| /ssh: :/home/szhou/     | ssh remote edit file                                                                                                                      |
+| SPC s c                 | clear the highlight of search                                                                                                             |
+| "2p                     | paste the 2nd-last yanked lines                                                                                                           |
+| SPC r l                 | resume the last helm session                                                                                                              |
 
 # Movement
-| Key       | Description                     |
-| --------- | :-----------------------------: |
-| C-u       | up half page                    |
-| C-d       | down half page                  |
-|           |                                 |
+| Key       | Description                         |
+| --------- | :-----------------------------:     |
+| C-u       | up half page                        |
+| C-d       | down half page                      |
+| d-0       | delete to the beginning of the line |
 
-# Stage files and commit
+# Magit 
 | Key       | Description                                                            |
 | --------- | :-----------------------------:                                        |
 | SPC g s   | show Magit status view                                                 |
@@ -46,25 +52,45 @@ tags: spacemacs
 | p u       | Push to upstream                                                       |
 | F (r) u   | Pull tracked branch and rebase                                         |
 |           |                                                                        |
-
+[magit](https://www.saltycrane.com/blog/2018/11/magit-spacemacs-evil-magit-notes/ "magit")
 
 # Org mode
-| Key          | Description                     |
-| ---------    | :-----------------------------: |
-| M-x org-mode | enable Org mode                 |
-| M-shift-RET  | Add a TODO list                 |
-| C-c C-t      | Mark as completed               |
-| C-c C-x C-b  | toogle checkbox                 |
-|              |                                 |
+| Key            | Description                     |
+| ---------      | :-----------------------------: |
+| M-x org-mode   | enable Org mode                 |
+| M-shift-RET    | Add a TODO list                 |
+| C-c C-t        | Mark as completed               |
+| C-c C-x C-b    | toogle checkbox                 |
+| C-c C-t        | TODO to DONE                    |
+| Alt-Up or Down | Move the item                   |
+| C-c C-x C-w    | Delete the item                 |
+| Alt-Right      | Demote a headline               |
+| Alt-Shit-Left  | To promote a subtree            |
+| C-c C-e        | To start the exporter           |
+| h o            | Export to a web page and open   |
+| t A            | Export as an ADCII text file    |
+|                |                                 |
 
+# Dired mode
+| Key       | Description                     |
+| --------- | :-----------------------------: |
+| SPC a d   | enable Dired Mode               |
+|           |                                 |
 
+# Helm
+| Key       | Description                     |
+| --------- | :-----------------------------: |
+| SPC r l   | resume the last helm session    |
+|           |                                 |
 # tumx
 | Key                                | Description                                                    |
 | ---------                          | :-----------------------------:                                |
 | prefix :setw synchronize-panes off | (ctrl + y)stop sending same command for all paines in windows  |
 | prefix :setw synchronize-panes on  | (ctrl + u)start sending same command for all paines in windows |
 | prefix r                           | reload the tmux configuration                                  |
+| prefix d                           | Deatach the session                                            |
 |                                    |                                                                |
 
 - 
 <https://orgmode.org/manual/index.html>
+[keybindings](https://gist.github.com/rnwolf/e09ae9ad6d3ac759767d129d52cab1f1 "spacemacs keybindings")

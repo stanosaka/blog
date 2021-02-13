@@ -317,3 +317,9 @@ Common usage: git status -sb
   git log --oneline <file-name>   e.g. teststatusfile
   git log --oneline -n <limit> e.g. 2
 ```
+
+
+## git useful command
+```
+git clone git@bitbucket.org:foobar/pagerduty.git --config core.autocrlf=input
+```

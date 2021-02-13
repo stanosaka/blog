@@ -125,3 +125,21 @@ Quality/Control
 |Lack of prcess improvement|Retrospective meeting/Continous improvement|
 |Bad Requirements estimations|Story points/Planning poker|
 |Not honouring past our commitments|Track team's velocity|
+
+## Scrum Sprints
+- Sprint goal is the high-level goal of each time-boxed sprint written as concisely as possible
+- The development team then plans how to convert the goal times into a product increment
+- The sprint backlog is a subset of the product backlog and contains items selected for the sprint, plus additional iteams for
+the development team
+
+## The scrum pillars (TIA)
+- Transparency
+- Inspcection
+- Adaptation
+## Scrum roles: Product Owner
+- Anyone on Scrum team may change the product backlog, but must do it with product owner's knowledge
+- Product owner is accountable for the product backlog
+## Scrum roles: The development team
+- The development team is self-organized and operates with minimal input from external sources
+- The development team owns the entire sprint backlog(selected product backlog iteams, plus development tasks)
+- The are no managers or team leads-it is a flat hierarchy

@@ -71,3 +71,22 @@ Output:
         └── wgzy_w_sign_in_2016-08-28.sql.gz
 4 directories, 172 files
 ```
+
+# my.cnf file
+```
+# cat /root/.my.cnf
+[client]
+host=hostname
+user=foo
+password=xxxxxxxxx
+
+
+
+[client_replica]
+host=hostname-replica
+user=bar
+password=xxxxxxxxxx
+
+mysql -e 'show master status\G';
+mysql --defaults-group-suffix=_replica -e 'show slave status\G'
+```

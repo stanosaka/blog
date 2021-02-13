@@ -59,4 +59,26 @@ Netperf缺省情况下进行TCP批量传输，即-t TCP_STREAM。测试过程中
 > Reference [netperf 与网络性能测量](https://www.ibm.com/developerworks/cn/linux/l-netperf/)
 
 
+# useful commands
+# Create a configuration file and add your license key \
+
+echo "license_key: a61ac49b8930c041d9d940b8227f5d716819NRAL" | sudo tee -a /etc/newrelic-infra.yml && \
+
+\
+
+# Create the agent’s yum repository \
+
+sudo curl -o /etc/yum.repos.d/newrelic-infra.repo https://download.newrelic.com/infrastructure_agent/linux/yum/el/7/x86_64/newrelic-infra.repo && \
+
+\
+
+# Update your yum cache \
+
+sudo yum -q makecache -y --disablerepo='*' --enablerepo='newrelic-infra' && \
+
+\
+
+# Run the installation script \
+
+sudo yum install newrelic-infra -y
 > Written with [StackEdit](https://stackedit.io/).

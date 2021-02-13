@@ -56,7 +56,7 @@ terraform init
 git status
 echo ".terraform" >> .gitignore
 git status
-git add .gitignore&& git commit -m "Add .gitignore"
+git add .gitignore && git commit -m "Add .gitignore"
 terraform plan # creates an execution plan
 ```
 ## Deploy an s3 bucket into aws
@@ -571,7 +571,7 @@ psql -U terraform -d todoapp
 todoapp=> \d+
                              List of relations
  Schema |      Name       |   Type   |   Owner   |    Size    | Description
---------+-----------------+----------+-----------+------------+-------------
+--------|-----------------|----------|-----------|------------|-------------
  public | projects        | table    | terraform | 16 kB      |
  public | projects_id_seq | sequence | terraform | 8192 bytes |
  public | tasks           | table    | terraform | 8192 bytes |
@@ -579,7 +579,7 @@ todoapp=> \d+
 (4 rows)
 todoapp=> select * from projects;
  id |          created_at           |          updated_at           | deleted_at |     title      | archived
-----+-------------------------------+-------------------------------+------------+----------------+----------
+----|-------------------------------|-------------------------------|------------|----------------|----------
   1 | 2019-07-21 12:20:38.881103+00 | 2019-07-21 12:20:38.881103+00 |            | sample project | f
 (1 row)
 ```

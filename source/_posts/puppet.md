@@ -100,3 +100,49 @@ case statement:
 ```
 
 ```
+# How to add a new module in puppet
+## 1. modified Puppetfile
+```
+mod 'puppetlabs-lvm',  '1.4.0'
+```
+
+## 2. ssh to puppet master
+```
+cd /etc/puppetlabs/code/environments/production/
+librarian-puppeet install --verbose
+```
+
+## 3. modified data/common.yaml and base.pp
+```
+profile::base::enable_lvm: false
+vim base.pp
+if $enable_lvm {
+   include lvm
+}
+
+```
+## 4. new file data/node-overrides/hostname.yaml
+```
+profile::base::enable_lvm: true
+lvm::volume_groups:
+  mysql_vg:
+    createonly: true
+    physical_volumes:
+      /dev/sdb:
+    logical_volumes:
+      ipscape_db:
+        size: undef 
+        mountpath: /dev/mysql_vg/ipscape_db
+        mountpath_require: true
+
+```
+## 5. file_line 
+[file_line types](https://forge.puppet.com/modules/puppetlabs/stdlib/4.9.1/readme)
+```
+  file_line { 'asterisk_setting':
+    path => '/etc/ipscape-api/server.settings',
+    line => 'asterisk_pool_max_idle = 0',
+    ensure => present
+  }
+
+```

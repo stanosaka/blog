@@ -358,3 +358,18 @@ Notice: role::scope::example is A scoped variable
 Notice: /Stage[main]/Main/Notify[role::scope::example is A scoped variable]/message: defined 'message' as 'role::scope::example is A scoped variable'
 Notice: Applied catalog in 0.01 seconds
 ```
+### famlfile: puppet provider yaml file manipluation
+[reidmv yamlfile](https://forge.puppet.com/reidmv/yamlfile/types)
+
+## puppet cookbook
+[cookbook](https://www.puppetcookbook.com/)
+
+## Configure r10k
+```
+sudo puppet module install puppet/r10k --modulepath=/etc/puppetlabs/code/modules/
+sudo puppet apply -e 'class {"r10k": remote => "https://github.com/stanosaka/control-repo"}' --modulepath=/etc/puppetlabs/code/modules/
+r10k deploy environment -p
+```
+in control-repo Settings webhooks
+Payload URL: http://puppet:puppet@foobar.cwzhou.win:8088/payload
+[Hiera-based Puppet ENC](https://github.com/Zetten/puppet-hiera-enc)
