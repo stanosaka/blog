@@ -1,0 +1,1160 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+  
+    <title>kubernetes-on-the-cloud | Stan Zhou&#39;s Hexo Technical Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Stan Zhou">
+    
+
+    
+    <meta name="description" content="Kubernetes on the GKEuse cloud shell12345678910111213141516#setup zonegcloud config set compute/zone australia-southeast1-a#setup regiongcloud config set compute/region australia-southeast1# create a">
+<meta name="keywords" content="k8s">
+<meta property="og:type" content="article">
+<meta property="og:title" content="kubernetes-on-the-cloud">
+<meta property="og:url" content="http://223.95.78.227/2021/02/15/kubernetes-on-the-cloud/index.html">
+<meta property="og:site_name" content="Stan Zhou&#39;s Hexo Technical Blog">
+<meta property="og:description" content="Kubernetes on the GKEuse cloud shell12345678910111213141516#setup zonegcloud config set compute/zone australia-southeast1-a#setup regiongcloud config set compute/region australia-southeast1# create a">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://i.imgur.com/m8uoP3H.png">
+<meta property="og:image" content="https://i.imgur.com/GryAqTK.png">
+<meta property="og:image" content="https://i.imgur.com/GA0zKFs.png">
+<meta property="og:image" content="https://i.imgur.com/kQQe478.png">
+<meta property="og:image" content="https://i.imgur.com/erz1Rpw.png">
+<meta property="og:image" content="https://i.imgur.com/iQpH2WD.png">
+<meta property="og:image" content="https://i.imgur.com/ql9VYxt.png">
+<meta property="og:image" content="https://i.imgur.com/lXOojJr.png">
+<meta property="og:image" content="https://i.imgur.com/dft7Zwy.png">
+<meta property="og:image" content="https://i.imgur.com/5qt1aB6.png">
+<meta property="og:image" content="https://i.imgur.com/ollFuAy.png">
+<meta property="og:image" content="https://i.imgur.com/kan5QHv.png">
+<meta property="og:image" content="https://i.imgur.com/0DJ10wq.png">
+<meta property="og:image" content="https://i.imgur.com/Yk4bu0J.png">
+<meta property="og:image" content="https://i.imgur.com/KnjqWkU.png">
+<meta property="og:image" content="https://i.imgur.com/GGAyCl0.png">
+<meta property="og:image" content="https://i.imgur.com/pzfvzAb.png">
+<meta property="og:image" content="https://i.imgur.com/EPHpRzS.png">
+<meta property="og:image" content="https://i.imgur.com/GkC7kjP.png">
+<meta property="og:updated_time" content="2021-02-15T12:39:41.399Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="kubernetes-on-the-cloud">
+<meta name="twitter:description" content="Kubernetes on the GKEuse cloud shell12345678910111213141516#setup zonegcloud config set compute/zone australia-southeast1-a#setup regiongcloud config set compute/region australia-southeast1# create a">
+<meta name="twitter:image" content="https://i.imgur.com/m8uoP3H.png">
+<meta name="twitter:creator" content="@stanosaka">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Stan Zhou&#39;s Hexo Technical Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/toad.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/toadman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/toadman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/toadman.png" alt="Stan Zhou&#39;s Hexo Technical Blog" title="Stan Zhou&#39;s Hexo Technical Blog"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Stan Zhou&#39;s Hexo Technical Blog">Stan Zhou&#39;s Hexo Technical Blog</a></h1>
+				<h2 class="blog-motto">Innovation Evangelist</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:223.95.78.227">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2021/02/15/kubernetes-on-the-cloud/" title="kubernetes-on-the-cloud" itemprop="url">kubernetes-on-the-cloud</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Stan Zhou" target="_blank" itemprop="author">Stan Zhou</a>
+		
+  <p class="article-time">
+    <time datetime="2021-02-15T12:39:41.399Z" itemprop="datePublished"> Published 2021-02-15</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Kubernetes-on-the-GKE"><span class="toc-number">1.</span> <span class="toc-text">Kubernetes on the GKE</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#How-do-master-nodes-communicate"><span class="toc-number">1.1.</span> <span class="toc-text">How do master nodes communicate?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Where-can-we-run-Kubernetes"><span class="toc-number">1.2.</span> <span class="toc-text">Where can we run Kubernetes?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Can-K8s-be-used-in-a-hybird-multi-cloud-world"><span class="toc-number">1.3.</span> <span class="toc-text">Can K8s be used in a hybird, multi-cloud world?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Interacting-with-K8s"><span class="toc-number">1.4.</span> <span class="toc-text">Interacting with K8s</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Names-and-UIDs"><span class="toc-number">1.5.</span> <span class="toc-text">Names and UIDs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Namespaces"><span class="toc-number">1.6.</span> <span class="toc-text">Namespaces</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Labels"><span class="toc-number">1.7.</span> <span class="toc-text">Labels</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Volumes"><span class="toc-number">1.8.</span> <span class="toc-text">Volumes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lab-Volumes-and-the-exmptydir-volume"><span class="toc-number">1.9.</span> <span class="toc-text">Lab: Volumes and the exmptydir volume</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Persistent-Volumes"><span class="toc-number">1.10.</span> <span class="toc-text">Persistent Volumes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lab-use-of-secrets-pass-information-to-pods"><span class="toc-number">1.11.</span> <span class="toc-text">Lab: use of secrets pass information to pods</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Debugging"><span class="toc-number">2.</span> <span class="toc-text">Debugging</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Insufficient-cpu"><span class="toc-number">2.1.</span> <span class="toc-text">Insufficient cpu</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h1 id="Kubernetes-on-the-GKE"><a href="#Kubernetes-on-the-GKE" class="headerlink" title="Kubernetes on the GKE"></a>Kubernetes on the GKE</h1><p><strong>use cloud shell</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#setup zone</span><br><span class="line">gcloud config set compute/zone australia-southeast1-a</span><br><span class="line">#setup region</span><br><span class="line">gcloud config set compute/region australia-southeast1</span><br><span class="line"># create a single node cluster</span><br><span class="line">gcloud container clusters create my-first-cluster --num-nodes 1</span><br><span class="line"># see the list of clusters</span><br><span class="line">gcloud compute instances list</span><br><span class="line"># deploy a wordpress Docker container to our single node cluster</span><br><span class="line"># --image=tutum/wordpress: An out-fo-the-box image which includes everything you need</span><br><span class="line"># to run this site-including a MySQL database</span><br><span class="line">kubectl run wordpress --image=tutum/wordpress --port=80</span><br><span class="line"># see the status of pods running</span><br><span class="line">stancloud9@cloudshell:~ (scenic-torch-250909)$ kubectl get pods</span><br><span class="line">NAME                         READY   STATUS    RESTARTS   AGE</span><br><span class="line">wordpress-7fff795d48-kzbfr   1/1     Running   0          5m36s</span><br></pre></td></tr></table></figure></p>
+<p>By default a pod is accessible to only other internal machines in the cluster<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">#kubectl expose pod: Exposed the pod a a service so it can be accessed externally</span><br><span class="line">#--type=LoadBalancer: Creates an external IP that this pod can use to accept traffic</span><br><span class="line">kubectl expose pod wordpress-7fff795d48-kzbfr --name=wordpress --type=LoadBalancer</span><br><span class="line"># check </span><br><span class="line">stancloud9@cloudshell:~ (scenic-torch-250909)$ kubectl describe svc wordpress</span><br><span class="line">Name:                     wordpress</span><br><span class="line">Namespace:                default</span><br><span class="line">Labels:                   pod-template-hash=7fff795d48</span><br><span class="line">                          run=wordpress</span><br><span class="line">Annotations:              &lt;none&gt;</span><br><span class="line">Selector:                 pod-template-hash=7fff795d48,run=wordpress</span><br><span class="line">Type:                     LoadBalancer</span><br><span class="line">IP:                       10.27.245.246</span><br><span class="line">LoadBalancer Ingress:     35.189.22.57</span><br><span class="line">Port:                     &lt;unset&gt;  80/TCP</span><br><span class="line">TargetPort:               80/TCP</span><br><span class="line">NodePort:                 &lt;unset&gt;  31344/TCP</span><br><span class="line">Endpoints:                10.24.0.11:80</span><br><span class="line">Session Affinity:         None</span><br><span class="line">External Traffic Policy:  Cluster</span><br><span class="line">Events:</span><br><span class="line">  Type    Reason                Age    From                Message</span><br><span class="line">  ----    ------                ----   ----                -------</span><br><span class="line">  Normal  EnsuringLoadBalancer  2m17s  service-controller  Ensuring load balancer</span><br><span class="line">  Normal  EnsuredLoadBalancer   81s    service-controller  Ensured load balancer</span><br></pre></td></tr></table></figure></p>
+<p><strong>How Kubernetes Works</strong><br>Kubernetes: Orchestration technology- convert isolated containers running on different hardware into a cluster</p>
+<p>Pod: Atomic unit of deployment in Kubernetes.</p>
+<ul>
+<li>Consists of 1 or more tightly coupled containers.</li>
+<li>Pod runs on node, which is controlled by master.</li>
+<li>Kubernetes only knows about pods</li>
+<li>Cannot start container without a pod</li>
+<li>Pod =&gt; Sandbox for 1 or more cntainers</li>
+</ul>
+<p><img src="https://i.imgur.com/m8uoP3H.png" alt="pods"><br>Kubernetes::Hadoop</p>
+<ul>
+<li>Docker Container Engine -&gt; Java Runtime</li>
+<li>Docker containers -&gt; Jars</li>
+<li>Kubernetes -&gt; Hadoop</li>
+</ul>
+<p><strong>Kubernetes for Orchestration</strong></p>
+<ul>
+<li>Fault-tolerance: Pod/Nod failures</li>
+<li>Auto-scaling: More clients? More demand</li>
+<li>Rollback: Advanced deployment options</li>
+<li>Auto-healing: Crashed containers restart</li>
+<li>Load-balancing: Distribute client requests</li>
+<li>Isolation: Sandboxes so that containers don’t interfere</li>
+</ul>
+<p><strong>kubectl</strong><br><img src="https://i.imgur.com/GryAqTK.png" alt="kubectl"><br>Telling k8s what the desire state is.</p>
+<p><strong>What does the k8s master do?</strong><br>Kubernetes Master</p>
+<ul>
+<li>One or more nodes designated as master</li>
+<li>Several k8s processes run on master</li>
+<li>Multi-master for high-availability</li>
+</ul>
+<p><strong>kube-apiserver</strong></p>
+<ul>
+<li>Communicates with user</li>
+<li>RESTful API end-points</li>
+<li>Manifest yaml files are accepted by apiserver<br><img src="https://i.imgur.com/GA0zKFs.png" alt="apiserver"><br><strong>etcd</strong><br>Cluster Store for Metadata</li>
+<li>Metadata about spec and status of cluster</li>
+<li>etcd is consistent and highly available key-value store</li>
+<li>source-of-truth for cluster state<br><img src="https://i.imgur.com/kQQe478.png" alt="etcd"></li>
+</ul>
+<p><strong>kube-scheduler</strong></p>
+<ul>
+<li>Handle pod creation and management</li>
+<li>Kube-scheduler match/assign nodes to pods</li>
+<li>Complex-affinities, taints, tolerations,…<br><img src="https://i.imgur.com/erz1Rpw.png" alt="scheduler"></li>
+</ul>
+<p><strong>controller-manager</strong></p>
+<ul>
+<li>Different master processes</li>
+<li>Actual state <-> Desired State</li>
+<li>cloud-controller-manager</li>
+<li>kube-controller-manager</li>
+<li>Node controller</li>
+<li>Replication controller</li>
+<li>Route controller</li>
+<li>Volume controller<br><img src="https://i.imgur.com/iQpH2WD.png" alt="controller"></li>
+</ul>
+<p><strong>Control Plane</strong></p>
+<ul>
+<li>Apiserver</li>
+<li>etc</li>
+<li>scheduler</li>
+<li>controller-manager<ul>
+<li>cloud-controller-manager</li>
+<li>kube-controller-manager<br><img src="https://i.imgur.com/ql9VYxt.png" alt="control plane"></li>
+</ul>
+</li>
+</ul>
+<p><strong>What runs on each node of a cluster?</strong><br>Kubernetes Node (Minion)</p>
+<ul>
+<li>Kubelet<ul>
+<li>Agent running on this node</li>
+<li>Listen to k8s master</li>
+<li>Port 10255</li>
+</ul>
+</li>
+<li>Kube-proxy<ul>
+<li>Needed because pod IP addresses are ephemeral</li>
+<li>Networking- will make sense when we discuss Service objects</li>
+</ul>
+</li>
+<li>Container engine<ul>
+<li>Works with kubelet</li>
+<li>Pulling images</li>
+<li>Start/stop</li>
+<li>Could be Docker or rkt<br><img src="https://i.imgur.com/lXOojJr.png" alt="Minion"><br><img src="https://i.imgur.com/dft7Zwy.png" alt="Pod Creation Request"></li>
+</ul>
+</li>
+</ul>
+<p><strong>What are Pods?</strong><br><img src="https://i.imgur.com/5qt1aB6.png" alt="pod creation yaml"><br>Multi-Container Pods</p>
+<ul>
+<li>Share access to memory space</li>
+<li>Connect to each other using localhost</li>
+<li>Share access to the same volumes (storage abstraction)</li>
+<li>Same parameters such as configMaps</li>
+<li>Tight coupling is dangerous</li>
+<li>Once crashes, all crash</li>
+</ul>
+<p><strong>Use cases for multi-container Pod</strong></p>
+<ul>
+<li>Main container, “sidecar” supporting containers<br><img src="https://i.imgur.com/ollFuAy.png" alt="main container"></li>
+<li>Proxies, Bridges, Adapters<br><img src="https://i.imgur.com/kan5QHv.png" alt="Proxies"></li>
+</ul>
+<p><strong>Anti-Patterns for multi-container pods</strong></p>
+<ul>
+<li>Avoid packing three-tier web app into 1 pod</li>
+<li>Do not pack multiple similar containers  in the same pod for scaling</li>
+<li>Use Deployments or ReplicaSet instead</li>
+<li>Micro0services: Simple, independent components</li>
+</ul>
+<p><strong>Pods limitations</strong></p>
+<ul>
+<li>No auto-healing or scaling</li>
+<li>Pod crashes? Must be handled at higher level<ul>
+<li>ReplicaSet,Deployment,Service</li>
+</ul>
+</li>
+<li>Ephemeral: Ip address are ephemeral<br><strong>Higer level k8s objects</strong></li>
+<li>ReplicaSet, ReplicationController: Scaling and healing</li>
+<li>Deployment: Versioning and rollback</li>
+<li>Service: Static (non-ephemeral) IP and networking</li>
+<li>Volume: Non-ephemeral storage<h2 id="How-do-master-nodes-communicate"><a href="#How-do-master-nodes-communicate" class="headerlink" title="How do master nodes communicate?"></a>How do master nodes communicate?</h2><strong>Cluster to master</strong></li>
+<li>All cluster -&gt; master communication only with apiserver</li>
+<li>HTTPS (443)</li>
+<li>Relatively secure<br><strong>Master to cluster</strong></li>
+<li>apiserver-&gt;kubelet<ul>
+<li>Certicate not verified by default</li>
+<li>Vulnerable to man-in-the-middle attacks</li>
+<li>Don’t run on public network</li>
+<li>To harden<ul>
+<li>set -kubelet-certificate-authority</li>
+<li>use SSH tunelling</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>apiserver-&gt;nodes/pods/services<ul>
+<li>Not safe</li>
+<li>Plain HTTP</li>
+<li>Neither authenticated for encrypted</li>
+<li>On public clouds, SSH tunnelling provided by cloud provider e.g. GCP<h2 id="Where-can-we-run-Kubernetes"><a href="#Where-can-we-run-Kubernetes" class="headerlink" title="Where can we run Kubernetes?"></a>Where can we run Kubernetes?</h2>Public Cloud: </li>
+</ul>
+</li>
+<li>aws(kops)</li>
+<li>azure </li>
+<li>gcp(kubectl)<ul>
+<li>GKE:Google Kubernetes Engine</li>
+<li>Infra on GCE Virtual machines</li>
+<li>GCE: Google Compute Engine (IaaS)<br>Bootstrap(kubeadm): On-prem, private cloud<br>Playgrounds:PWK(Browser-based,time-limited sessions), Minikube(Windows or Mac, Sets up VM on your machine)</li>
+</ul>
+</li>
+</ul>
+<h2 id="Can-K8s-be-used-in-a-hybird-multi-cloud-world"><a href="#Can-K8s-be-used-in-a-hybird-multi-cloud-world" class="headerlink" title="Can K8s be used in a hybird, multi-cloud world?"></a>Can K8s be used in a hybird, multi-cloud world?</h2><p>Hybrid=On-prem+Public Cloud</p>
+<ul>
+<li>On-premise: vare metal or VMs</li>
+<li>Legacy infra, large on-prem datacenters</li>
+<li>Medium-term importance</li>
+</ul>
+<p>Multi-Cloud</p>
+<ul>
+<li>More than 1 public cloud provider</li>
+<li>Strategic reasons, vendor lock-in (Amazon buying Whole Foods)</li>
+</ul>
+<h2 id="Interacting-with-K8s"><a href="#Interacting-with-K8s" class="headerlink" title="Interacting with K8s"></a>Interacting with K8s</h2><p><strong>How do we work with k8s</strong></p>
+<ul>
+<li>kubectl<ul>
+<li>Most common command line utility</li>
+<li>Make POST requests to apiserver of control plane</li>
+</ul>
+</li>
+<li>kubeadm<ul>
+<li>Bootstrap cluster when not on cloud Kubernetes service</li>
+<li>To create cluster out of individual infra nodes</li>
+</ul>
+</li>
+<li>kubefed<ul>
+<li>Administer federated clusters</li>
+<li>Federated cluster-&gt; group of multiple clusters (multi-cloud,hybrid)</li>
+</ul>
+</li>
+<li>kubelet</li>
+<li>kube-proxy</li>
+</ul>
+<p><strong>Objects</strong></p>
+<ul>
+<li>K8s objects are persistent entities</li>
+<li>Everything is an object…</li>
+<li>Pod,ReplicaSet, Deployment, Node … all are objects</li>
+<li>Send object specification (usually in .yaml or .json)</li>
+</ul>
+<p><strong>Three object management methods</strong></p>
+<ul>
+<li>Imperative commands<ul>
+<li>No .yaml or config files</li>
+<li>kubectl run …</li>
+<li>kubectl expose …</li>
+<li>kubectl autosacle …<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">kubectl run ningx --image nginx</span><br><span class="line">kubectl create deployment nginx --image nginx</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<p>No config file</p>
+<p>Imperative: intent is in command</p>
+<p>Pro:</p>
+<ul>
+<li>Simple<br>Cons:</li>
+<li>No audit trail or review mechanism</li>
+<li>Can’t reuse or use in template</li>
+</ul>
+<ul>
+<li>Imperative object configuration<ul>
+<li>kubectl + yaml or config files used</li>
+<li>kubectl create -f config.yaml</li>
+<li>kubectl replace -f config.yaml</li>
+<li>kubectl delete -f config.yaml</li>
+</ul>
+</li>
+</ul>
+<p>Config file required<br>Still Imperative: intent is in command</p>
+<p>Pros:</p>
+<ul>
+<li>Still simple</li>
+<li>Robust - files checked into repo</li>
+<li>One file for multiple operations</li>
+</ul>
+<ul>
+<li>Declarative object configuration<ul>
+<li>Only .yaml or config files used</li>
+<li>kubectl apply -f config.yaml<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl apply -f configs/</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<p>Config files(s) are all that is required<br>Declarative not imperative</p>
+<p>Pros:</p>
+<ul>
+<li>Most robust-review, repos, audit trails</li>
+<li>K8S will automatically figure out intents</li>
+<li><p>Can specify multiple files/directories recursively</p>
+</li>
+<li><p>Live object configuration: The live configuration values of an object, as observed by the Kubernetes cluster</p>
+</li>
+<li>Current object configuration files: The config file we are applying in the current command</li>
+<li>List-applied object configuration file: The last config file what was applied to the object</li>
+</ul>
+<p><em>Don’t mix and match!</em><br><em>Declarative is preferred</em></p>
+<p><strong>Merging Changes</strong></p>
+<ul>
+<li>Primitive fields<ul>
+<li>String, init, boolean, images or replicas</li>
+<li>Replace old state with Current object configuration file</li>
+</ul>
+</li>
+<li>Map fields<ul>
+<li>Merge old state with Current object configuration file</li>
+</ul>
+</li>
+<li>List field<ul>
+<li>Complex-varies by field</li>
+</ul>
+</li>
+</ul>
+<p><strong>The Pros and Cons of Declarative and Imperative object management</strong><br>Declarative</p>
+<p>kubectl apply -f config.yaml</p>
+<ul>
+<li>Robust</li>
+<li>Track in repos, review</li>
+<li>Recursively apply to directories</li>
+</ul>
+<p>Imperative<br>kubectl run …<br>kubectl expose…<br>kubectl autosacle…</p>
+<ul>
+<li>Simple, intention is very clear</li>
+<li>Preferred for deletion</li>
+</ul>
+<h2 id="Names-and-UIDs"><a href="#Names-and-UIDs" class="headerlink" title="Names and UIDs"></a>Names and UIDs</h2><p><strong>How are objects named?</strong></p>
+<ul>
+<li>Objects-persistent entities<ul>
+<li>pods,replicasets,services,volumes,nodes,…</li>
+<li>information maintained in etcd</li>
+</ul>
+</li>
+<li>Identified using<ul>
+<li>names: client-given</li>
+<li>UIDs: system-generated<h2 id="Namespaces"><a href="#Namespaces" class="headerlink" title="Namespaces"></a>Namespaces</h2></li>
+</ul>
+</li>
+<li>Divide physical cluster into multiple virtual clusters</li>
+<li>Three pre-defined namespaces:<ul>
+<li>default: if non specified</li>
+<li>kube-system: for internal k8s objects</li>
+<li>kub-public: auto-readable by all users</li>
+</ul>
+</li>
+<li>Name scopes: names need to be unique only inside a namespace</li>
+<li>Future version: namespace-&gt; common access control</li>
+<li>Don’t use namespaces for versioning<ul>
+<li>Just use labels instead</li>
+</ul>
+</li>
+</ul>
+<p><strong>Objects without namespaces</strong></p>
+<ul>
+<li>Nodes</li>
+<li>PersistentVolumes</li>
+<li>Namespace themselves</li>
+</ul>
+<h2 id="Labels"><a href="#Labels" class="headerlink" title="Labels"></a>Labels</h2><ul>
+<li>key/value pairs attached to objects</li>
+<li>metadata</li>
+<li>need not be unique (same label to mutiple objects)</li>
+<li>No sematics for k8s (meaningful only to humans)</li>
+<li>Loose coupling via selectors</li>
+<li>Can be added<ul>
+<li>at creation time</li>
+<li>after creation</li>
+</ul>
+</li>
+<li>Multiple objects can have same label</li>
+<li>Same label can’t repeat key though</li>
+</ul>
+<h2 id="Volumes"><a href="#Volumes" class="headerlink" title="Volumes"></a>Volumes</h2><ul>
+<li>Permanence: Storage that lasts longer than lifetime of a pod<ul>
+<li>a container inside pod (true for all volumes)</li>
+<li>a pod (only true for persistent volumes)</li>
+</ul>
+</li>
+<li>Shared State: multiple containers in a pod need to share state/files</li>
+<li>Volumes: address both these needs</li>
+<li>Volumes (in general): lifetime of abstraction=lifetime of pod<ul>
+<li>Note that this is longer than lifetime of any container inside pod</li>
+</ul>
+</li>
+<li>Persistent Volumes: lifetime of abstraction independent of pod lifetime<br><img src="https://i.imgur.com/0DJ10wq.png" alt="using volume"><br><strong>Types of Volumes</strong></li>
+<li>awsElasticBlockStore</li>
+<li>azureDisk</li>
+<li>azureFile</li>
+<li>gcePersistentDisk</li>
+<li>Many non-cloud-specific volume types as well<br><strong>Important type of volumes</strong></li>
+<li>configMap</li>
+<li>emptyDir</li>
+<li>gitRepo</li>
+<li>secret</li>
+<li>hostPath<h2 id="Lab-Volumes-and-the-exmptydir-volume"><a href="#Lab-Volumes-and-the-exmptydir-volume" class="headerlink" title="Lab: Volumes and the exmptydir volume"></a>Lab: Volumes and the exmptydir volume</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">stancloud9@cloudshell:~ (scenic-torch-250909)$ cat pod-redis.yaml</span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: Pod</span><br><span class="line">metadata:</span><br><span class="line">   name: redis</span><br><span class="line">spec:</span><br><span class="line">   containers:</span><br><span class="line">   - name: redis</span><br><span class="line">     image: redis</span><br><span class="line">     volumeMounts:</span><br><span class="line">     - name: redis-storage</span><br><span class="line">       mountPath: /data/redis</span><br><span class="line">   volumes:</span><br><span class="line">   - name: redis-storage</span><br><span class="line">     emptyDir: &#123;&#125;</span><br><span class="line">stancloud9@cloudshell:~ (scenic-torch-250909)$ k get pod redis --watch        NAME    READY   STATUS    RESTARTS   AGE</span><br><span class="line">redis   0/1     Pending   0          7m36s</span><br><span class="line">redis   0/1   Pending   0     7m36s</span><br><span class="line">redis   0/1   ContainerCreating   0     7m36s</span><br><span class="line">redis   1/1   Running   0     7m40s</span><br><span class="line">^Cstancloud9@cloudshell:~ (scenic-torch-250909)$ k exec -it redis -- /bin/bash</span><br><span class="line">root@redis:/data# cd /data/redis</span><br><span class="line">root@redis:/data/redis# echo Hello &gt; test-file</span><br><span class="line">root@redis:/data/redis# kill 1</span><br><span class="line">root@redis:/data/redis# command terminated with exit code 137</span><br><span class="line">stancloud9@cloudshell:~ (scenic-torch-250909)$ k get pod redis --watch</span><br><span class="line">NAME    READY   STATUS    RESTARTS   AGE</span><br><span class="line">redis   1/1     Running   1          18m</span><br><span class="line">^Cstancloud9@cloudshell:~ (scenic-torch-250909)$ k exec -it redis -- /bin/bash</span><br><span class="line">root@redis:/data# ls /data/redis</span><br><span class="line">test-file</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="Persistent-Volumes"><a href="#Persistent-Volumes" class="headerlink" title="Persistent Volumes"></a>Persistent Volumes</h2><ul>
+<li>Low-level objects, like nodes</li>
+<li>Two types of provisioning:<ul>
+<li>Static: administrator pre-creates the volumes</li>
+<li>Dynamic: containers need to file a PersistentVolumeClaim<br><img src="https://i.imgur.com/Yk4bu0J.png" alt="Cloud specific persistent volumes"><br><img src="https://i.imgur.com/KnjqWkU.png" alt="persisten volumes"><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line">gcloud compute disks create my-disk-1 --zone australia-southeast1-a</span><br><span class="line">gcloud compute disks list</span><br><span class="line">stancloud9@cloudshell:~ (scenic-torch-250909)$ cat volum-sample.yaml</span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: Pod</span><br><span class="line">metadata:</span><br><span class="line">  name: test-pd</span><br><span class="line">spec:</span><br><span class="line">  containers:</span><br><span class="line">  - image: k8s.gcr.io/test-webserver</span><br><span class="line">    name: test-container</span><br><span class="line">    volumeMounts:</span><br><span class="line">    - mountPath: /test-pd</span><br><span class="line">      name: test-volume</span><br><span class="line">  volumes:</span><br><span class="line">  - name: test-volume</span><br><span class="line">    gcePersistentDisk:</span><br><span class="line">      pdName: my-disk-1</span><br><span class="line">      fsType: ext4</span><br><span class="line">k create -f volum-sample.yaml --validate=false</span><br><span class="line">pod/test-pd created</span><br><span class="line">stancloud9@cloudshell:~ (scenic-torch-250909)$ k get pod test-pd --watch</span><br><span class="line">NAME      READY   STATUS              RESTARTS   AGE</span><br><span class="line">test-pd   0/1     ContainerCreating   0          23s</span><br><span class="line">test-pd   1/1   Running   0     29s</span><br><span class="line">^Cstancloud9@cloudshell:~ (scenic-torch-250909)$ k describe pod test-pd</span><br><span class="line">Name:               test-pd</span><br><span class="line">Namespace:          default</span><br><span class="line">Priority:           0</span><br><span class="line">PriorityClassName:  &lt;none&gt;</span><br><span class="line">Node:               gke-my-first-cluster-default-pool-8ca613e9-w13m/10.152.0.2</span><br><span class="line">Start Time:         Sat, 31 Aug 2019 11:39:22 +1000</span><br><span class="line">Labels:             &lt;none&gt;</span><br><span class="line">Annotations:        kubernetes.io/limit-ranger: LimitRanger plugin set: cpu request for container test-container</span><br><span class="line">Status:             Running</span><br><span class="line">IP:                 10.24.0.22</span><br><span class="line">Containers:</span><br><span class="line">  test-container:</span><br><span class="line">    Container ID:   docker://8b08b4cd144d256a078fe3c7b4031844e2c3355d854a711ec454611c0edea30b</span><br><span class="line">    Image:          k8s.gcr.io/test-webserver</span><br><span class="line">    Image ID:       docker-pullable://k8s.gcr.io/test-webserver@sha256:f63e365c13646f231ec4a16791c6133ddd7b80fcd1947f41ab193968e02b0745</span><br><span class="line">    Port:           &lt;none&gt;</span><br><span class="line">    Host Port:      &lt;none&gt;</span><br><span class="line">    State:          Running</span><br><span class="line">      Started:      Sat, 31 Aug 2019 11:39:50 +1000</span><br><span class="line">    Ready:          True</span><br><span class="line">    Restart Count:  0</span><br><span class="line">    Requests:</span><br><span class="line">      cpu:        100m</span><br><span class="line">    Environment:  &lt;none&gt;</span><br><span class="line">    Mounts:</span><br><span class="line">      /test-pd from test-volume (rw)</span><br><span class="line">      /var/run/secrets/kubernetes.io/serviceaccount from default-token-gw57h (ro)</span><br><span class="line">Conditions:</span><br><span class="line">  Type              Status</span><br><span class="line">  Initialized       True</span><br><span class="line">  Ready             True</span><br><span class="line">  ContainersReady   True</span><br><span class="line">  PodScheduled      True</span><br><span class="line">Volumes:</span><br><span class="line">  test-volume:</span><br><span class="line">    Type:       GCEPersistentDisk (a Persistent Disk resource in Google Compute Engine)</span><br><span class="line">    PDName:     my-disk-1</span><br><span class="line">    FSType:     ext4</span><br><span class="line">    Partition:  0</span><br><span class="line">    ReadOnly:   false</span><br><span class="line">  default-token-gw57h:</span><br><span class="line">    Type:        Secret (a volume populated by a Secret)</span><br><span class="line">    SecretName:  default-token-gw57h</span><br><span class="line">    Optional:    false</span><br><span class="line">QoS Class:       Burstable</span><br><span class="line">Node-Selectors:  &lt;none&gt;</span><br><span class="line">Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s</span><br><span class="line">                 node.kubernetes.io/unreachable:NoExecute for 300s</span><br><span class="line">Events:</span><br><span class="line">  Type    Reason                  Age    From                                                      Message</span><br><span class="line">  ----    ------                  ----   ----                                                      -------</span><br><span class="line">  Normal  Scheduled               2m15s  default-scheduler                                         Successfully assigned default/test-pd to gke-my-first-cluster-default-pool-8ca613e9-w13m</span><br><span class="line">  Normal  SuccessfulAttachVolume  2m9s   attachdetach-controller                                   AttachVolume.Attach succeeded for volume &quot;test-volume&quot;</span><br><span class="line">  Normal  Pulling                 109s   kubelet, gke-my-first-cluster-default-pool-8ca613e9-w13m  pulling image &quot;k8s.gcr.io/test-webserver&quot;</span><br><span class="line">  Normal  Pulled                  107s   kubelet, gke-my-first-cluster-default-pool-8ca613e9-w13m  Successfully pulled image &quot;k8s.gcr.io/test-webserver&quot;</span><br><span class="line">  Normal  Created                 107s   kubelet, gke-my-first-cluster-default-pool-8ca613e9-w13m  Created container</span><br><span class="line">  Normal  Started                 107s   kubelet, gke-my-first-cluster-default-pool-8ca613e9-w13m  Started container</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>What are some important types of volumes?</strong></p>
+<ul>
+<li><p>emptyDir</p>
+<ul>
+<li>Not persistent</li>
+<li>Created when pod is created on node</li>
+<li>Initially empty</li>
+<li>Share space/state across containers in same pod</li>
+<li>Containers acan mount at different times</li>
+<li>When pod removed/crashes, data lost</li>
+<li>When container carshes data remains</li>
+<li>Usecases: Scratch space, checkpointing…<br><img src="https://i.imgur.com/GGAyCl0.png" alt="emptyDir"></li>
+</ul>
+</li>
+<li><p>hostPath<br><img src="https://i.imgur.com/pzfvzAb.png" alt="hostPath"></p>
+<ul>
+<li>Mount file/directory from node filesystem into pod</li>
+<li>Uncommon- pods should be independent of nodes</li>
+<li>Makes pod-node coupling tight</li>
+<li>Usecases: Access docker internals, running cAdvisor</li>
+<li>Block devices or sockets on host</li>
+</ul>
+</li>
+<li><p>gitRepo<br><img src="https://i.imgur.com/EPHpRzS.png" alt="gitRepo"></p>
+</li>
+<li><p>configMap<br><img src="https://i.imgur.com/GkC7kjP.png" alt="conigMap"></p>
+<ul>
+<li>configMap volume mounts data from ConfigMap object</li>
+<li>configMap objects define key-value pairs</li>
+<li>configMap objects inject paramters into pods</li>
+<li>Two main usecases:<ul>
+<li>Providing config information for apps running inside pods</li>
+<li>Specifying config information for control plane (controllers)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>secret</p>
+<ul>
+<li>Pass ensitive inforamtion to pods</li>
+<li>First create secret so it is stored in control plane<ul>
+<li>kubectl create secret</li>
+</ul>
+</li>
+<li>Mount that secret as a volume so that it is available inside pod</li>
+<li>Secret is stored in RAM storage (not written to persistent disk)<h2 id="Lab-use-of-secrets-pass-information-to-pods"><a href="#Lab-use-of-secrets-pass-information-to-pods" class="headerlink" title="Lab: use of secrets pass information to pods"></a>Lab: use of secrets pass information to pods</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">stancloud9@cloudshell:~ (scenic-torch-250909)$ cat secrets.yaml</span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: Secret</span><br><span class="line">metadata:</span><br><span class="line">  name: test-secret</span><br><span class="line">data:</span><br><span class="line">  username: bXktYMxw</span><br><span class="line">  password: Mzk1MjqkdmRnN0pi</span><br><span class="line">stancloud9@cloudshell:~ (scenic-torch-250909)$ cat secrets-pod.yaml</span><br><span class="line">apiVersion: v1</span><br><span class="line">kind: Pod</span><br><span class="line">metadata:</span><br><span class="line">  name: secret-test-pod</span><br><span class="line">spec:</span><br><span class="line">  containers:</span><br><span class="line">    - name: test-container</span><br><span class="line">      image: nginx</span><br><span class="line">      volumeMounts:</span><br><span class="line">         # name must match the volume name below</span><br><span class="line">         - name: secret-volume</span><br><span class="line">           mountPath: /etc/secret-volume</span><br><span class="line">  # The secret data is exposed to Containers in the Pod through a Volume.</span><br><span class="line">  volumes:</span><br><span class="line">    - name: secret-volume</span><br><span class="line">      secret:</span><br><span class="line">        secretName: test-secret</span><br><span class="line">stancloud9@cloudshell:~ (scenic-torch-250909)$ k get pod secret-test-pod</span><br><span class="line">NAME              READY   STATUS    RESTARTS   AGE</span><br><span class="line">secret-test-pod   1/1     Running   0          19m</span><br><span class="line">stancloud9@cloudshell:~ (scenic-torch-250909)$ k exec -it secret-test-pod -- /bin/bash</span><br><span class="line">root@secret-test-pod:/# cd /etc/secret-volume/</span><br><span class="line">root@secret-test-pod:/etc/secret-volume# ls</span><br><span class="line">password  username</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="Debugging"><a href="#Debugging" class="headerlink" title="Debugging"></a>Debugging</h1><h2 id="Insufficient-cpu"><a href="#Insufficient-cpu" class="headerlink" title="Insufficient cpu"></a>Insufficient cpu</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">stancloud9@cloudshell:~ (scenic-torch-250909)$ k get pod secret-test-pod</span><br><span class="line">NAME              READY   STATUS    RESTARTS   AGE</span><br><span class="line">secret-test-pod   0/1     Pending   0          51s</span><br><span class="line">stancloud9@cloudshell:~ (scenic-torch-250909)$ k describe pod secret-test-pod</span><br><span class="line">Name:               secret-test-pod</span><br><span class="line">Namespace:          default</span><br><span class="line">Priority:           0</span><br><span class="line">PriorityClassName:  &lt;none&gt;</span><br><span class="line">Node:               &lt;none&gt;</span><br><span class="line">Labels:             &lt;none&gt;</span><br><span class="line">Annotations:        kubernetes.io/limit-ranger: LimitRanger plugin set: cpu request for container test-container</span><br><span class="line">Status:             Pending</span><br><span class="line">IP:</span><br><span class="line">Containers:</span><br><span class="line">  test-container:</span><br><span class="line">    Image:      nginx</span><br><span class="line">    Port:       &lt;none&gt;</span><br><span class="line">    Host Port:  &lt;none&gt;</span><br><span class="line">    Requests:</span><br><span class="line">      cpu:        100m</span><br><span class="line">    Environment:  &lt;none&gt;</span><br><span class="line">    Mounts:</span><br><span class="line">      /etc/secret-volume from secret-volume (rw)</span><br><span class="line">      /var/run/secrets/kubernetes.io/serviceaccount from default-token-gw57h (ro)</span><br><span class="line">Conditions:</span><br><span class="line">  Type           Status</span><br><span class="line">  PodScheduled   False</span><br><span class="line">Volumes:</span><br><span class="line">  secret-volume:</span><br><span class="line">    Type:        Secret (a volume populated by a Secret)</span><br><span class="line">    SecretName:  test-secret</span><br><span class="line">    Optional:    false</span><br><span class="line">  default-token-gw57h:</span><br><span class="line">    Type:        Secret (a volume populated by a Secret)</span><br><span class="line">    SecretName:  default-token-gw57h</span><br><span class="line">    Optional:    false</span><br><span class="line">QoS Class:       Burstable</span><br><span class="line">Node-Selectors:  &lt;none&gt;</span><br><span class="line">Tolerations:     node.kubernetes.io/not-ready:NoExecute for 300s</span><br><span class="line">                 node.kubernetes.io/unreachable:NoExecute for 300s</span><br><span class="line">Events:</span><br><span class="line">  Type     Reason            Age                  From               Message</span><br><span class="line">  ----     ------            ----                 ----               -------</span><br><span class="line">  Warning  FailedScheduling  11s (x8 over 4m25s)  default-scheduler  0/1 nodes are available: 1 Insufficient cpu.</span><br><span class="line"></span><br><span class="line">stancloud9@cloudshell:~ (scenic-torch-250909)$ gcloud container clusters resize my-first-cluster --num-nodes=3 --zone australia-southeast1-a</span><br><span class="line">Pool [default-pool] for [my-first-cluster] will be resized to 3.</span><br><span class="line"></span><br><span class="line">Do you want to continue (Y/n)?  Y</span><br><span class="line"></span><br><span class="line">Resizing my-first-cluster...done.</span><br><span class="line">Updated [https://container.googleapis.com/v1/projects/scenic-torch-250909/zones/australia-southeast1-a/clusters/my-first-cluster].</span><br><span class="line">stancloud9@cloudshell:~ (scenic-torch-250909)$ k get pod secret-test-pod</span><br><span class="line">NAME              READY   STATUS    RESTARTS   AGE</span><br><span class="line">secret-test-pod   1/1     Running   0          19m</span><br></pre></td></tr></table></figure>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/k8s/">k8s</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://223.95.78.227/2021/02/15/kubernetes-on-the-cloud/" data-title="kubernetes-on-the-cloud | Stan Zhou&#39;s Hexo Technical Blog" data-tsina="undefined" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2021/02/15/spacemacs/" title="spacemacs">
+  <strong>上一篇：</strong><br/>
+  <span>
+  spacemacs</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2021/02/15/photography/"  title="photography">
+ <strong>下一篇：</strong><br/> 
+ <span>photography
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Kubernetes-on-the-GKE"><span class="toc-number">1.</span> <span class="toc-text">Kubernetes on the GKE</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#How-do-master-nodes-communicate"><span class="toc-number">1.1.</span> <span class="toc-text">How do master nodes communicate?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Where-can-we-run-Kubernetes"><span class="toc-number">1.2.</span> <span class="toc-text">Where can we run Kubernetes?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Can-K8s-be-used-in-a-hybird-multi-cloud-world"><span class="toc-number">1.3.</span> <span class="toc-text">Can K8s be used in a hybird, multi-cloud world?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Interacting-with-K8s"><span class="toc-number">1.4.</span> <span class="toc-text">Interacting with K8s</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Names-and-UIDs"><span class="toc-number">1.5.</span> <span class="toc-text">Names and UIDs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Namespaces"><span class="toc-number">1.6.</span> <span class="toc-text">Namespaces</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Labels"><span class="toc-number">1.7.</span> <span class="toc-text">Labels</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Volumes"><span class="toc-number">1.8.</span> <span class="toc-text">Volumes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lab-Volumes-and-the-exmptydir-volume"><span class="toc-number">1.9.</span> <span class="toc-text">Lab: Volumes and the exmptydir volume</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Persistent-Volumes"><span class="toc-number">1.10.</span> <span class="toc-text">Persistent Volumes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lab-use-of-secrets-pass-information-to-pods"><span class="toc-number">1.11.</span> <span class="toc-text">Lab: use of secrets pass information to pods</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Debugging"><span class="toc-number">2.</span> <span class="toc-text">Debugging</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Insufficient-cpu"><span class="toc-number">2.1.</span> <span class="toc-text">Insufficient cpu</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="github-card">
+<p class="asidetitle">Github Card</p>
+<div class="github-card" data-github="stanosaka" data-width="220" data-height="119" data-theme="medium">
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+  </div>
+
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/Devops/" title="Devops">Devops<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/aws/" title="aws">aws<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/centos/" title="centos">centos<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Jenkins/" title="Jenkins">Jenkins<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/CD-CI/" title="CD/CI">CD/CI<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/docker/" title="docker">docker<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/linux/" title="linux">linux<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/git/" title="git">git<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/tomcat/" title="tomcat">tomcat<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/saltstack/" title="saltstack">saltstack<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/zabbix/" title="zabbix">zabbix<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ec2/" title="ec2">ec2<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/backup/" title="backup">backup<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/nginx/" title="nginx">nginx<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/github/" title="github">github<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Pipeline/" title="Pipeline">Pipeline<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Blue-Ocean/" title="Blue Ocean">Blue Ocean<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/python/" title="python">python<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/SRE/" title="SRE">SRE<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://github.com/kahun/awesome-sysadmin" target="_blank" title="Awesome-sysadmin">Awesome-sysadmin</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://github.com/crazy-canux/awesome-monitoring" target="_blank" title="Awesome-monitoring">Awesome-monitoring</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://www.opsschool.org/index.html" target="_blank" title="Ops School Curriculum">Ops School Curriculum</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://kupczynski.info/2018/04/18/spacemacs.html" target="_blank" title="Learning Spacemacs">Learning Spacemacs</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://landing.google.com/sre/books/" target="_blank" title="SRE Books">SRE Books</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://github.com/aws-samples" target="_blank" title="AWS Samples">AWS Samples</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://github.com/bikrambora/devlab-launchpad" target="_blank" title="Welcome to Dev Labs">Dev Labs</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://github.com/ansible/ansible-examples" target="_blank" title="Ansible GitHub repo">Ansible GitHub repo</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_best_practices.html" target="_blank" title="Ansible Best Practices">Ansible Best Practices</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://kubernetes.io/docs/reference/kubectl/cheatsheet/" target="_blank" title="kubectl cheat sheet">kubectl cheat sheet</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://rogerdudler.github.io/git-guide" target="_blank" title="Git commands">Git commands</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://docs.docker.com/engine/reference/builder/" target="_blank" title="Dockerfile reference">Dockerfile reference</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://bit.ly/2mTQr8l" target="_blank" title="Linux Command line cheat sheet">Linux Command line cheat sheet</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://bit.ly/2EPHxze" target="_blank" title="PowerShell Basic Cheat Sheet">PowerShell Basic Cheat Sheet</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://sed.sourceforge.net/sed1line_zh-CN.html" target="_blank" title="sed cheatsheet">sed cheatsheet</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://obsavus1p.bkt.clouddn.com/vim_cheat_sheet_for_programmers_print.png" target="_blank" title="vim cheatsheet">vim cheatsheet</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://www.gitbook.com/book/yeasy/docker_practice/details" target="_blank" title="Learn Docker">Learn Docker</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://www.unixhot.com/page/ops" target="_blank" title="运维知识体系">运维知识体系</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://www.tecmint.com/" target="_blank" title="tecmint">tecmint</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://www.lib.uts.edu.au" target="_blank" title="shoujin.wang@student.uts.edu.au">UTS Library</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://7esl.com" target="_blank" title="ESL">ESL</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://stanchou.wordpress.com" target="_blank" title="Stan&#39;s wordpress">Stan&#39;s wordpress</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://docs.00root.com" target="_blank" title="Stan&#39;s gitbook">Stan&#39;s gitbook</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://api.ipify.org" target="_blank" title="Your IP address">Your IP address</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://github.com/stanosaka/oreilly_sql_fundamentals_for_data/blob/master/notes_and_slides/sql_fundamentals_notes.md" target="_blank" title="sql fundamentials">sql fundamentials</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://www.nerdfonts.com" target="_blank" title="Nred Fonts">Nred Fonts</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://cb.vu/unixtoolbox.xhtml" target="_blank" title="UNIX TOOLBOX">UNIX TOOLBOX</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://github.com/Ben-PH/spacemacs-cheatsheet" target="_blank" title="spacemacs-cheatsheet">spacemacs-cheatsheet</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://rubular.com/" target="_blank" title="Regular expression editor 1">Regular expression editor 1</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://pythex.org/" target="_blank" title="Regular expression editor 2">Regular expression editor 2</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Stan. <br/>
+			I am a Site Reliability Engineer working and living in Sydney.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/stanosaka" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		<a href="http://stackoverflow.com/users/6724938" target="_blank" class="icon-stack-overflow" title="stackoverflow"></a>
+		
+		
+		<a href="https://twitter.com/stanosaka" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		<a href="https://www.facebook.com/stan.osaka" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		<a href="https://www.linkedin.com/in/00root" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		<a href="https://www.douban.com/people/btw01v" target="_blank" class="icon-douban" title="豆瓣"></a>
+		
+		
+		<a href="http://www.zhihu.com/people/stan-22-82" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		
+		<a href="mailto:devops@cwzhou.win" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2021 
+		
+		<a href="/about" target="_blank" title="Stan Zhou">Stan Zhou</a>
+		
+		
+		</p>
+</div>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+
+        
+  	    <script src='https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'></script>
+            <script>
+               if (window.mermaid) {
+                  mermaid.initialize({theme: 'forest'});
+               }
+            </script>
+        
+
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
