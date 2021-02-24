@@ -83,6 +83,82 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2020/06/14/azure/" title="azure" itemprop="url">azure</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Stan Zhou" target="_blank" itemprop="author">Stan Zhou</a>
+		
+  <p class="article-time">
+    <time datetime="2020-06-14T09:38:55.000Z" itemprop="datePublished"> Published 2020-06-14</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="Azure-architecturue-foundations"><a href="#Azure-architecturue-foundations" class="headerlink" title="Azure architecturue foundations"></a>Azure architecturue foundations</h1><blockquote>
+<p>subscriptions, management, governance</p>
+</blockquote>
+<h2 id="Resource-organization"><a href="#Resource-organization" class="headerlink" title="Resource organization"></a>Resource organization</h2><ul>
+<li>Management group for each environment (Prod, Dev, and Test)</li>
+<li>Subscription for each “application categorization”</li>
+<li>Separate resource group for each application</li>
+<li>Consistent nomenclature at each level of this hierarchy<br><img src="https://i.imgur.com/jpBakdZ.png" alt="resource organization" title="resource organization"> <h2 id="Naming-Standards"><a href="#Naming-Standards" class="headerlink" title="Naming Standards"></a>Naming Standards</h2></li>
+<li>Azure resource names are important</li>
+<li>it’s difficult to change names later</li>
+<li>Names must meet requirements specific to their resource type<br><a href="https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging">naming and tagging</a><h2 id="Organize-resources-by-Tag"><a href="#Organize-resources-by-Tag" class="headerlink" title="Organize resources by Tag"></a>Organize resources by Tag</h2></li>
+<li>Allows you to add metadata to Azure resources</li>
+<li>Allows you to query resources using the same tags</li>
+<li>Not all resource types support tags<h2 id="Azure-policy-and-RBAC"><a href="#Azure-policy-and-RBAC" class="headerlink" title="Azure policy and RBAC"></a>Azure policy and RBAC</h2></li>
+<li>Policies enforce rules against your resources</li>
+<li>Role-based access control (RBAC) controls user actions<h2 id="Resource-locks"><a href="#Resource-locks" class="headerlink" title="Resource locks"></a>Resource locks</h2></li>
+<li>Prevent accidental resource changes<h2 id="Monitorinig-and-alerting"><a href="#Monitorinig-and-alerting" class="headerlink" title="Monitorinig and alerting"></a>Monitorinig and alerting</h2><img src="https://i.imgur.com/5mS3fbB.png" alt="monitoring and alerting"> </li>
+</ul>
+<h1 id="Cloud-application-architecture"><a href="#Cloud-application-architecture" class="headerlink" title="Cloud application architecture"></a>Cloud application architecture</h1><p><a href="https://docs.microsoft.com/en-us/azure/architecture/" title="Azure architecture center">Azure architecture center</a></p>
+<h1 id="N-tier-application-architecture"><a href="#N-tier-application-architecture" class="headerlink" title="N-tier application architecture"></a>N-tier application architecture</h1><p><img src="https://i.imgur.com/ziZzQrN.png" alt="n-tier applicatioin architecuture"></p>
+<h1 id="Hybrid-cloud-architecture"><a href="#Hybrid-cloud-architecture" class="headerlink" title="Hybrid cloud architecture"></a>Hybrid cloud architecture</h1><p><img src="https://i.imgur.com/VxYsaXo.png" alt="hybrid cloud architecture"></p>
+<p>Azure bastion</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/azure/">azure</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2020/04/26/puppet/" title="puppet" itemprop="url">puppet</a>
   </h1>
   <p class="article-author">By
@@ -135,77 +211,6 @@
   <div class="article-tags">
   
   <span></span> <a href="/tags/puppet/">puppet</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2020/03/16/i3/" title="i3" itemprop="url">i3</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Stan Zhou" target="_blank" itemprop="author">Stan Zhou</a>
-		
-  <p class="article-time">
-    <time datetime="2020-03-16T03:53:08.000Z" itemprop="datePublished"> Published 2020-03-16</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <table>
-<thead>
-<tr>
-<th>Key</th>
-<th style="text-align:center">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>$mod+shift+direction</td>
-<td style="text-align:center">swap two windows</td>
-</tr>
-<tr>
-<td></td>
-</tr>
-</tbody>
-</table>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/i3-linux/">i3, linux</a>
   </div>
 
 </div>
@@ -1262,11 +1267,11 @@
 			
 		
 			
-				<li><a href="/tags/tomcat/" title="tomcat">tomcat<sup>3</sup></a></li>
+				<li><a href="/tags/saltstack/" title="saltstack">saltstack<sup>3</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/saltstack/" title="saltstack">saltstack<sup>3</sup></a></li>
+				<li><a href="/tags/tomcat/" title="tomcat">tomcat<sup>3</sup></a></li>
 			
 		
 			
@@ -1282,11 +1287,11 @@
 			
 		
 			
-				<li><a href="/tags/nginx/" title="nginx">nginx<sup>2</sup></a></li>
+				<li><a href="/tags/github/" title="github">github<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/github/" title="github">github<sup>2</sup></a></li>
+				<li><a href="/tags/nginx/" title="nginx">nginx<sup>2</sup></a></li>
 			
 		
 			
@@ -1302,11 +1307,11 @@
 			
 		
 			
-				<li><a href="/tags/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+				<li><a href="/tags/AKS/" title="AKS">AKS<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/SRE/" title="SRE">SRE<sup>1</sup></a></li>
+				<li><a href="/tags/Linux/" title="Linux">Linux<sup>1</sup></a></li>
 			
 		
 		</ul>

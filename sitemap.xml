@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://223.95.78.227/2021/02/24/AKS/</loc>
+    
+    <lastmod>2021-02-24T12:08:34.074Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://223.95.78.227/2016/09/18/saltstackformula/</loc>
     
     <lastmod>2021-02-15T12:39:41.403Z</lastmod>
@@ -156,13 +163,6 @@
   </url>
   
   <url>
-    <loc>http://223.95.78.227/2019/09/12/networking/</loc>
-    
-    <lastmod>2021-02-15T12:39:41.399Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://223.95.78.227/2016/10/17/nginx/</loc>
     
     <lastmod>2021-02-15T12:39:41.399Z</lastmod>
@@ -212,6 +212,13 @@
   </url>
   
   <url>
+    <loc>http://223.95.78.227/2019/09/12/networking/</loc>
+    
+    <lastmod>2021-02-15T12:39:41.399Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://223.95.78.227/2020/06/28/puppet6/</loc>
     
     <lastmod>2021-02-15T12:39:41.399Z</lastmod>
@@ -219,14 +226,14 @@
   </url>
   
   <url>
-    <loc>http://223.95.78.227/2017/09/06/redhat/</loc>
+    <loc>http://223.95.78.227/2016/09/15/saltstack/</loc>
     
     <lastmod>2021-02-15T12:39:41.399Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://223.95.78.227/2016/09/15/saltstack/</loc>
+    <loc>http://223.95.78.227/2017/09/06/redhat/</loc>
     
     <lastmod>2021-02-15T12:39:41.399Z</lastmod>
     
@@ -275,14 +282,14 @@
   </url>
   
   <url>
-    <loc>http://223.95.78.227/2016/08/28/backup-script/</loc>
+    <loc>http://223.95.78.227/2019/05/08/beginningDevOpsWithDocker/</loc>
     
     <lastmod>2021-02-15T12:39:41.395Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://223.95.78.227/2019/05/08/beginningDevOpsWithDocker/</loc>
+    <loc>http://223.95.78.227/2016/08/28/backup-script/</loc>
     
     <lastmod>2021-02-15T12:39:41.395Z</lastmod>
     
@@ -317,14 +324,7 @@
   </url>
   
   <url>
-    <loc>http://223.95.78.227/2016/08/24/docker-tomcat7/</loc>
-    
-    <lastmod>2021-02-15T12:39:41.395Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://223.95.78.227/2020/03/16/i3/</loc>
+    <loc>http://223.95.78.227/2019/05/06/git/</loc>
     
     <lastmod>2021-02-15T12:39:41.395Z</lastmod>
     
@@ -345,13 +345,6 @@
   </url>
   
   <url>
-    <loc>http://223.95.78.227/2019/05/06/git/</loc>
-    
-    <lastmod>2021-02-15T12:39:41.395Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://223.95.78.227/2019/08/16/effective-devops-with-aws/</loc>
     
     <lastmod>2021-02-15T12:39:41.395Z</lastmod>
@@ -360,6 +353,13 @@
   
   <url>
     <loc>http://223.95.78.227/2019/05/05/docker/</loc>
+    
+    <lastmod>2021-02-15T12:39:41.395Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://223.95.78.227/2016/08/24/docker-tomcat7/</loc>
     
     <lastmod>2021-02-15T12:39:41.395Z</lastmod>
     
