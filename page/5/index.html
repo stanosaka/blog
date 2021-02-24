@@ -83,6 +83,62 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2017/09/06/redhat/" title="redhat" itemprop="url">redhat</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Stan Zhou" target="_blank" itemprop="author">Stan Zhou</a>
+		
+  <p class="article-time">
+    <time datetime="2017-09-06T07:49:54.000Z" itemprop="datePublished"> Published 2017-09-06</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="Issue-1"><a href="#Issue-1" class="headerlink" title="Issue 1."></a>Issue 1.</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost stan]<span class="comment"># yum install -y ntp</span></span><br><span class="line">Loaded plugins: langpacks, product-id, search-disabled-repos, subscription-manager</span><br><span class="line">This system is not registered to Red Hat Subscription Management. You can use subscription-manager to register.</span><br><span class="line">There are no enabled repos.</span><br><span class="line"> Run <span class="string">"yum repolist all"</span> to see the repos you have.</span><br><span class="line"> You can <span class="built_in">enable</span> repos with yum-config-manager --<span class="built_in">enable</span> &lt;repo&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="Solve"><a href="#Solve" class="headerlink" title="Solve:"></a>Solve:</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost yum.repos.d]<span class="comment"># mkdir /cdrom</span></span><br><span class="line">[root@localhost yum.repos.d]<span class="comment"># mount /dev/cdrom /cdrom</span></span><br><span class="line">[root@localhost yum.repos.d]<span class="comment"># pwd</span></span><br><span class="line">/etc/yum.repos.d</span><br><span class="line">[root@localhost yum.repos.d]<span class="comment"># vim dvd.repo</span></span><br><span class="line">[dvd-source]</span><br><span class="line">name=RHEL 7.2 dvd repo</span><br><span class="line">baseurl=file:///cdrom</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=0</span><br><span class="line">[root@localhost yum.repos.d]<span class="comment"># yum repolist</span></span><br><span class="line">Loaded plugins: langpacks, product-id, search-disabled-repos, subscription-manager</span><br><span class="line">This system is not registered to Red Hat Subscription Management. You can use subscription-manager to register.</span><br><span class="line">dvd-source                                                                                     | 4.1 kB  00:00:00</span><br><span class="line">(1/2): dvd-source/group_gz                                                                     | 136 kB  00:00:00</span><br><span class="line">(2/2): dvd-source/primary_db                                                                   | 3.6 MB  00:00:00</span><br><span class="line">repo id                                             repo name                                                   status</span><br><span class="line">dvd-source                                          RHEL 7.2 dvd repo                                           4,620</span><br><span class="line">repolist: 4,620</span><br><span class="line">[root@localhost yum.repos.d]<span class="comment"># yum install rpm-build</span></span><br><span class="line">Loaded plugins: langpacks, product-id, search-disabled-repos, subscription-manager</span><br><span class="line">This system is not registered to Red Hat Subscription Management. You can use subscription-manager to register.</span><br><span class="line">Resolving Dependencies</span><br><span class="line">--&gt; Running transaction check</span><br><span class="line">---&gt; Package rpm-build.x86_64 0:4.11.3-17.el7 will be installed</span><br><span class="line">--&gt; Processing Dependency: perl(Thread::Queue) <span class="keyword">for</span> package: rpm-build-4.11.3-17.el7.x86_64</span><br><span class="line">--&gt; Processing Dependency: system-rpm-config <span class="keyword">for</span> package: rpm-build-4.11.3-17.el7.x86_64</span><br><span class="line">--&gt; Running transaction check</span><br><span class="line">---&gt; Package perl-Thread-Queue.noarch 0:3.02-2.el7 will be installed</span><br><span class="line">---&gt; Package redhat-rpm-config.noarch 0:9.1.0-68.el7 will be installed</span><br><span class="line">--&gt; Processing Dependency: dwz &gt;= 0.4 <span class="keyword">for</span> package: redhat-rpm-config-9.1.0-68.el7.noarch</span><br><span class="line">--&gt; Processing Dependency: perl-srpm-macros <span class="keyword">for</span> package: redhat-rpm-config-9.1.0-68.el7.noarch</span><br><span class="line">--&gt; Running transaction check</span><br><span class="line">---&gt; Package dwz.x86_64 0:0.11-3.el7 will be installed</span><br><span class="line">---&gt; Package perl-srpm-macros.noarch 0:1-8.el7 will be installed</span><br><span class="line">--&gt; Finished Dependency Resolution</span><br><span class="line"></span><br><span class="line">Dependencies Resolved</span><br><span class="line"></span><br><span class="line">======================================================================================================================</span><br><span class="line"> Package                          Arch                  Version                       Repository                 Size</span><br><span class="line">======================================================================================================================</span><br><span class="line">Installing:</span><br><span class="line"> rpm-build                        x86_64                4.11.3-17.el7                 dvd-source                144 k</span><br><span class="line">Installing <span class="keyword">for</span> dependencies:</span><br><span class="line"> dwz                              x86_64                0.11-3.el7                    dvd-source                 99 k</span><br><span class="line"> perl-Thread-Queue                noarch                3.02-2.el7                    dvd-source                 17 k</span><br><span class="line"> perl-srpm-macros                 noarch                1-8.el7                       dvd-source                4.7 k</span><br><span class="line"> redhat-rpm-config                noarch                9.1.0-68.el7                  dvd-source                 77 k</span><br><span class="line"></span><br><span class="line">Transaction Summary</span><br><span class="line">======================================================================================================================</span><br><span class="line">Install  1 Package (+4 Dependent packages)</span><br><span class="line"></span><br><span class="line">Total download size: 341 k</span><br><span class="line">Installed size: 734 k</span><br><span class="line">Is this ok [y/d/N]: y</span><br><span class="line">Downloading packages:</span><br><span class="line">----------------------------------------------------------------------------------------------------------------------</span><br><span class="line">Total                                                                                 1.9 MB/s | 341 kB  00:00:00</span><br><span class="line">Running transaction check</span><br><span class="line">Running transaction <span class="built_in">test</span></span><br><span class="line">Transaction <span class="built_in">test</span> succeeded</span><br><span class="line">Running transaction</span><br><span class="line">  Installing : perl-Thread-Queue-3.02-2.el7.noarch                                                                1/5</span><br><span class="line">  Installing : dwz-0.11-3.el7.x86_64                                                                              2/5</span><br><span class="line">  Installing : perl-srpm-macros-1-8.el7.noarch                                                                    3/5</span><br><span class="line">  Installing : redhat-rpm-config-9.1.0-68.el7.noarch                                                              4/5</span><br><span class="line">  Installing : rpm-build-4.11.3-17.el7.x86_64                                                                     5/5</span><br><span class="line">dvd-source/productid                                                                           | 1.6 kB  00:00:00</span><br><span class="line">  Verifying  : redhat-rpm-config-9.1.0-68.el7.noarch                                                              1/5</span><br><span class="line">  Verifying  : rpm-build-4.11.3-17.el7.x86_64                                                                     2/5</span><br><span class="line">  Verifying  : perl-srpm-macros-1-8.el7.noarch                                                                    3/5</span><br><span class="line">  Verifying  : dwz-0.11-3.el7.x86_64                                                                              4/5</span><br><span class="line">  Verifying  : perl-Thread-Queue-3.02-2.el7.noarch                                                                5/5</span><br><span class="line"></span><br><span class="line">Installed:</span><br><span class="line">  rpm-build.x86_64 0:4.11.3-17.el7</span><br><span class="line"></span><br><span class="line">Dependency Installed:</span><br><span class="line">  dwz.x86_64 0:0.11-3.el7                  perl-Thread-Queue.noarch 0:3.02-2.el7  perl-srpm-macros.noarch 0:1-8.el7</span><br><span class="line">  redhat-rpm-config.noarch 0:9.1.0-68.el7</span><br><span class="line"></span><br><span class="line">omplete!</span><br><span class="line"></span><br><span class="line">$(!!) to recompute the output of the last <span class="built_in">command</span></span><br></pre></td></tr></table></figure>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/redhat/">redhat</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2016/10/27/nginx01/" title="Nginx Deploy" itemprop="url">Nginx Deploy</a>
   </h1>
   <p class="article-author">By
@@ -693,208 +749,6 @@
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/09/15/saltstack/" title="saltstack" itemprop="url">saltstack</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Stan Zhou" target="_blank" itemprop="author">Stan Zhou</a>
-		
-  <p class="article-time">
-    <time datetime="2016-09-15T01:28:58.000Z" itemprop="datePublished"> Published 2016-09-15</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="bug-01"><a href="#bug-01" class="headerlink" title="bug 01:"></a>bug 01:</h2><pre><code>[root@toad salt]# salt &apos;*&apos; state.sls upload_data
-salt-minion01:
-Data failed to compile:
-----------
-Pillar failed to render with the following messages:
-----------
-Error encountered while render pillar top file.
-macadamina:
-Data failed to compile:
-----------
-Pillar failed to render with the following messages:
-----------
-Error encountered while render pillar top file.
-</code></pre><h2 id="Fix-01"><a href="#Fix-01" class="headerlink" title="Fix 01:"></a>Fix 01:</h2><pre><code>[root@toad salt]# salt &quot;*&quot; saltutil.refresh_pillar
-macadamina:
-True
-salt-minion01:
-True
-</code></pre><hr>
-<h2 id="copy-the-file-to-spe-location"><a href="#copy-the-file-to-spe-location" class="headerlink" title="copy the file to spe. location:"></a>copy the file to spe. location:</h2><pre><code>[root@toad salt]# tree
-.
-├── contab.sls
-├── createdir.sls
-├── createuser.sls
-├── del_cron.sls
-├── files
-│   ├── hosts
-│   ├── wgzy.sql
-│   └── zfgtai.zip
-├── host_file.sls
-├── nginx_install.sls
-├── top.sls
-├── upload_data.sls
-└── upload_mysql.sls
-
-[root@toad salt]# cat upload_mysql.sls
-/usr/share/tomcat/webapps/wgzy.sql:
-  file.managed:
-- source: salt://files/wgzy.sql
-- user: root
-- group: root
-- mode: 644
-
-[root@toad salt]# salt &apos;*&apos; state.sls upload_mysql
-salt-minion01:
-----------
-  ID: /usr/share/tomcat/webapps/wgzy.sql
-Function: file.managed
-  Result: True
- Comment: File /usr/share/tomcat/webapps/wgzy.sql updated
- Started: 17:11:02.739156
-Duration: 298.114 ms
- Changes:
-  ----------
-  diff:
-  New file
-  mode:
-  0644
-
-Summary
-------------
-Succeeded: 1 (changed=1)
-Failed:0
-------------
-Total states run: 1
-macadamina:
-----------
-  ID: /usr/share/tomcat/webapps/wgzy.sql
-Function: file.managed
-  Result: True
- Comment: File /usr/share/tomcat/webapps/wgzy.sql updated
- Started: 17:11:05.274496
-Duration: 254.31 ms
- Changes:
-  ----------
-  diff:
-  New file
-  mode:
-  0644
-
-Summary
-------------
-Succeeded: 1 (changed=1)
-Failed:0
-------------
-Total states run: 1
-</code></pre><p>Modify /etc/tomcat/server.xml<br> <Host name="localhost"  appBase="webapps"
-            unpackWARs="true" autoDeploy="true"></p>
-<p>to<br> <Host name="localhost"  appBase="/deploy/source/aofa_pro"
-            unpackWARs="true" autoDeploy="true"></p>
-<hr>
-<h2 id="saltstack-run-command"><a href="#saltstack-run-command" class="headerlink" title="saltstack run command:"></a>saltstack run command:</h2><pre><code>[root@toad salt]# cat modscript.sls
-sed -i &apos;125s#appBase=&quot;.*&quot;# appBase=&quot;/deploy/source/aofa_pro&quot;#&apos; /etc/tomcat/server.xml:
-  cmd.run
-
-
-[root@toad salt]# salt &apos;*&apos; state.sls modscript
-macadamina:
-----------
-  ID: sed -i &apos;125s#appBase=&quot;.*&quot;# appBase=&quot;/deploy/source/aofa_pro&quot;#&apos; /etc/tomcat/server.xml
-Function: cmd.run
-  Result: True
- Comment: Command &quot;sed -i &apos;125s#appBase=&quot;.*&quot;# appBase=&quot;/deploy/source/aofa_pro&quot;#&apos; /etc/tomcat/server.xml&quot; run
- Started: 11:06:15.245454
-Duration: 38.108 ms
- Changes:
-  ----------
-  pid:
-  38516
-  retcode:
-  0
-  stderr:
-  stdout:
-
-Summary
-------------
-Succeeded: 1 (changed=1)
-Failed:0
-------------
-Total states run: 1
-salt-minion01:
-----------
-  ID: sed -i &apos;125s#appBase=&quot;.*&quot;# appBase=&quot;/deploy/source/aofa_pro&quot;#&apos; /etc/tomcat/server.xml
-Function: cmd.run
-  Result: True
- Comment: Command &quot;sed -i &apos;125s#appBase=&quot;.*&quot;# appBase=&quot;/deploy/source/aofa_pro&quot;#&apos; /etc/tomcat/server.xml&quot; run
- Started: 11:06:16.505044
-Duration: 28.841 ms
- Changes:
-  ----------
-  pid:
-  37702
-  retcode:
-  0
-  stderr:
-  stdout:
-
-Summary
-------------
-Succeeded: 1 (changed=1)
-Failed:0
-------------
-Total states run: 1
-</code></pre><p>check result:<br>    [root@toad salt]# salt ‘*’ cmd.run ‘sed -n 125p /etc/tomcat/server.xml’<br>    macadamina:<br>      &lt;Host name=”localhost”   appBase=”/deploy/source/aofa_pro”<br>    salt-minion01:<br>      &lt;Host name=”localhost”   appBase=”/deploy/source/aofa_pro”</p>
-<hr>
-<p>copy the file form master to minion:<br>    [root@toad salt]# salt ‘macadamina’ cp.get_file salt://files/zfgtai.zip /deploy/source/aofa_pro/zfgtai.zip<br>    macadamina:<br>    /deploy/source/aofa_pro/zfgtai.zip</p>
-<p>Append text into file:</p>
-<pre><code>[root@salt-minion01 ~]# sed -i &apos;34 a&lt;Valve className=&quot;com.orangefunction.tomcat.redissessions.RedisSessionHandlerValve&quot; /&gt; &lt;Manager className=&quot;com.orangefunction.tomcat.redissessions.RedisSessionManager&quot; host=&quot;localhost&quot; port=&quot;6379&quot; database=&quot;0&quot; maxInactiveInterval=&quot;60&quot; /&gt;&apos; context.xml
-</code></pre>
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/saltstack/">saltstack</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <a class="extend prev" rel="prev" href="/page/4/"><span></span>Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/">Next<span></span></a>
@@ -945,11 +799,11 @@ Total states run: 1
 			
 		
 			
-				<li><a href="/tags/docker/" title="docker">docker<sup>3</sup></a></li>
+				<li><a href="/tags/linux/" title="linux">linux<sup>3</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/linux/" title="linux">linux<sup>3</sup></a></li>
+				<li><a href="/tags/docker/" title="docker">docker<sup>3</sup></a></li>
 			
 		
 			
@@ -973,15 +827,15 @@ Total states run: 1
 			
 		
 			
-				<li><a href="/tags/backup/" title="backup">backup<sup>2</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/github/" title="github">github<sup>2</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/nginx/" title="nginx">nginx<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/backup/" title="backup">backup<sup>2</sup></a></li>
 			
 		
 			

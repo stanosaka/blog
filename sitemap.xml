@@ -2,415 +2,422 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://223.95.78.227/2021/02/24/AKS/</loc>
+    <loc>http://223.95.78.227/2021/02/25/azure-mysql/</loc>
     
-    <lastmod>2021-02-24T12:08:34.074Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://223.95.78.227/2016/09/18/saltstackformula/</loc>
-    
-    <lastmod>2021-02-15T12:39:41.403Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://223.95.78.227/2016/09/18/saltstackminion/</loc>
-    
-    <lastmod>2021-02-15T12:39:41.403Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://223.95.78.227/2021/02/15/spacemacs/</loc>
-    
-    <lastmod>2021-02-15T12:39:41.403Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://223.95.78.227/2019/07/15/splunk/</loc>
-    
-    <lastmod>2021-02-15T12:39:41.403Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://223.95.78.227/2016/10/13/sysadmintool/</loc>
-    
-    <lastmod>2021-02-15T12:39:41.403Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://223.95.78.227/2019/07/13/terraform/</loc>
-    
-    <lastmod>2021-02-15T12:39:41.403Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://223.95.78.227/2016/08/12/tomcat/</loc>
-    
-    <lastmod>2021-02-15T12:39:41.403Z</lastmod>
+    <lastmod>2021-02-24T23:56:48.664Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://223.95.78.227/2016/10/27/tomcat01/</loc>
     
-    <lastmod>2021-02-15T12:39:41.403Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://223.95.78.227/2020/08/09/tools/</loc>
-    
-    <lastmod>2021-02-15T12:39:41.403Z</lastmod>
+    <lastmod>2021-02-24T12:17:21.632Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://223.95.78.227/2016/09/21/ubuntu/</loc>
     
-    <lastmod>2021-02-15T12:39:41.403Z</lastmod>
+    <lastmod>2021-02-24T12:17:21.632Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://223.95.78.227/2016/08/29/unattend-install/</loc>
     
-    <lastmod>2021-02-15T12:39:41.403Z</lastmod>
+    <lastmod>2021-02-24T12:17:21.632Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://223.95.78.227/2019/06/19/useful-commands/</loc>
     
-    <lastmod>2021-02-15T12:39:41.403Z</lastmod>
+    <lastmod>2021-02-24T12:17:21.632Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://223.95.78.227/2019/08/03/vagrant/</loc>
     
-    <lastmod>2021-02-15T12:39:41.403Z</lastmod>
+    <lastmod>2021-02-24T12:17:21.632Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://223.95.78.227/2019/07/03/version-control/</loc>
     
-    <lastmod>2021-02-15T12:39:41.403Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://223.95.78.227/2019/05/08/vim/</loc>
-    
-    <lastmod>2021-02-15T12:39:41.403Z</lastmod>
+    <lastmod>2021-02-24T12:17:21.632Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://223.95.78.227/2016/10/10/web-security/</loc>
     
-    <lastmod>2021-02-15T12:39:41.403Z</lastmod>
+    <lastmod>2021-02-24T12:17:21.632Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://223.95.78.227/2016/08/19/zabbix-client/</loc>
     
-    <lastmod>2021-02-15T12:39:41.403Z</lastmod>
+    <lastmod>2021-02-24T12:17:21.632Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://223.95.78.227/2016/08/19/zabbix-server/</loc>
     
-    <lastmod>2021-02-15T12:39:41.403Z</lastmod>
+    <lastmod>2021-02-24T12:17:21.632Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://223.95.78.227/2016/10/12/zabbix/</loc>
     
-    <lastmod>2021-02-15T12:39:41.403Z</lastmod>
+    <lastmod>2021-02-24T12:17:21.632Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://223.95.78.227/2021/02/15/kubernetes-on-the-cloud/</loc>
+    <loc>http://223.95.78.227/2020/08/09/tools/</loc>
     
-    <lastmod>2021-02-15T12:39:41.399Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://223.95.78.227/2020/02/26/monitoring/</loc>
-    
-    <lastmod>2021-02-15T12:39:41.399Z</lastmod>
+    <lastmod>2021-02-24T12:17:21.632Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://223.95.78.227/2016/08/28/mysql-backup/</loc>
+    <loc>http://223.95.78.227/2019/05/08/vim/</loc>
     
-    <lastmod>2021-02-15T12:39:41.399Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://223.95.78.227/2016/10/17/nginx/</loc>
-    
-    <lastmod>2021-02-15T12:39:41.399Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://223.95.78.227/2016/10/27/nginx01/</loc>
-    
-    <lastmod>2021-02-15T12:39:41.399Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://223.95.78.227/2021/02/15/photography/</loc>
-    
-    <lastmod>2021-02-15T12:39:41.399Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://223.95.78.227/2021/02/15/pipeline/</loc>
-    
-    <lastmod>2021-02-15T12:39:41.399Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://223.95.78.227/2019/06/24/practical-jenkins/</loc>
-    
-    <lastmod>2021-02-15T12:39:41.399Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://223.95.78.227/2019/07/19/programming4sysadmins/</loc>
-    
-    <lastmod>2021-02-15T12:39:41.399Z</lastmod>
+    <lastmod>2021-02-24T12:17:21.632Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://223.95.78.227/2020/04/26/puppet/</loc>
     
-    <lastmod>2021-02-15T12:39:41.399Z</lastmod>
+    <lastmod>2021-02-24T12:17:21.628Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://223.95.78.227/2019/09/12/networking/</loc>
+    <loc>http://223.95.78.227/2019/06/24/practical-jenkins/</loc>
     
-    <lastmod>2021-02-15T12:39:41.399Z</lastmod>
+    <lastmod>2021-02-24T12:17:21.628Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://223.95.78.227/2020/06/28/puppet6/</loc>
     
-    <lastmod>2021-02-15T12:39:41.399Z</lastmod>
+    <lastmod>2021-02-24T12:17:21.628Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://223.95.78.227/2016/09/15/saltstack/</loc>
+    <loc>http://223.95.78.227/2019/07/19/programming4sysadmins/</loc>
     
-    <lastmod>2021-02-15T12:39:41.399Z</lastmod>
+    <lastmod>2021-02-24T12:17:21.628Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://223.95.78.227/2017/09/06/redhat/</loc>
     
-    <lastmod>2021-02-15T12:39:41.399Z</lastmod>
+    <lastmod>2021-02-24T12:17:21.628Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://223.95.78.227/2016/09/18/saltstackformula/</loc>
+    
+    <lastmod>2021-02-24T12:17:21.628Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://223.95.78.227/2016/09/18/saltstackminion/</loc>
+    
+    <lastmod>2021-02-24T12:17:21.628Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://223.95.78.227/2021/02/24/spacemacs/</loc>
+    
+    <lastmod>2021-02-24T12:17:21.628Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://223.95.78.227/2019/07/15/splunk/</loc>
+    
+    <lastmod>2021-02-24T12:17:21.628Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://223.95.78.227/2019/07/13/terraform/</loc>
+    
+    <lastmod>2021-02-24T12:17:21.628Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://223.95.78.227/2016/08/12/tomcat/</loc>
+    
+    <lastmod>2021-02-24T12:17:21.628Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://223.95.78.227/2016/09/15/saltstack/</loc>
+    
+    <lastmod>2021-02-24T12:17:21.628Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://223.95.78.227/2016/10/13/sysadmintool/</loc>
+    
+    <lastmod>2021-02-24T12:17:21.628Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://223.95.78.227/2021/02/24/kubernetes-on-the-cloud/</loc>
+    
+    <lastmod>2021-02-24T12:17:21.624Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://223.95.78.227/2020/02/26/monitoring/</loc>
+    
+    <lastmod>2021-02-24T12:17:21.624Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://223.95.78.227/2019/09/12/networking/</loc>
+    
+    <lastmod>2021-02-24T12:17:21.624Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://223.95.78.227/2016/10/17/nginx/</loc>
+    
+    <lastmod>2021-02-24T12:17:21.624Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://223.95.78.227/2016/10/27/nginx01/</loc>
+    
+    <lastmod>2021-02-24T12:17:21.624Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://223.95.78.227/2021/02/24/photography/</loc>
+    
+    <lastmod>2021-02-24T12:17:21.624Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://223.95.78.227/2021/02/24/pipeline/</loc>
+    
+    <lastmod>2021-02-24T12:17:21.624Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://223.95.78.227/2016/08/28/mysql-backup/</loc>
+    
+    <lastmod>2021-02-24T12:17:21.624Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://223.95.78.227/2019/06/04/k8s/</loc>
     
-    <lastmod>2021-02-15T12:39:41.399Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://223.95.78.227/2019/06/28/ansible/</loc>
-    
-    <lastmod>2021-02-15T12:39:41.395Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://223.95.78.227/2019/09/19/apache-cloudstack/</loc>
-    
-    <lastmod>2021-02-15T12:39:41.395Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://223.95.78.227/2019/07/17/aws-admin/</loc>
-    
-    <lastmod>2021-02-15T12:39:41.395Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://223.95.78.227/2016/08/17/aws/</loc>
-    
-    <lastmod>2021-02-15T12:39:41.395Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://223.95.78.227/2020/06/14/azure/</loc>
-    
-    <lastmod>2021-02-15T12:39:41.395Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://223.95.78.227/2019/05/08/beginningDevOpsWithDocker/</loc>
-    
-    <lastmod>2021-02-15T12:39:41.395Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://223.95.78.227/2016/08/28/backup-script/</loc>
-    
-    <lastmod>2021-02-15T12:39:41.395Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://223.95.78.227/2016/08/29/centos7/</loc>
-    
-    <lastmod>2021-02-15T12:39:41.395Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://223.95.78.227/2019/07/04/devops-as-a-service/</loc>
-    
-    <lastmod>2021-02-15T12:39:41.395Z</lastmod>
+    <lastmod>2021-02-24T12:17:21.624Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://223.95.78.227/2019/07/15/devops-with-aws/</loc>
     
-    <lastmod>2021-02-15T12:39:41.395Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://223.95.78.227/2019/07/17/devops/</loc>
-    
-    <lastmod>2021-02-15T12:39:41.395Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://223.95.78.227/2019/05/06/git/</loc>
-    
-    <lastmod>2021-02-15T12:39:41.395Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://223.95.78.227/2020/11/11/influxdb/</loc>
-    
-    <lastmod>2021-02-15T12:39:41.395Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://223.95.78.227/2019/07/29/jenkins-blue-ocean/</loc>
-    
-    <lastmod>2021-02-15T12:39:41.395Z</lastmod>
+    <lastmod>2021-02-24T12:17:21.620Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://223.95.78.227/2019/08/16/effective-devops-with-aws/</loc>
     
-    <lastmod>2021-02-15T12:39:41.395Z</lastmod>
+    <lastmod>2021-02-24T12:17:21.620Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://223.95.78.227/2019/05/05/docker/</loc>
+    <loc>http://223.95.78.227/2019/05/06/git/</loc>
     
-    <lastmod>2021-02-15T12:39:41.395Z</lastmod>
+    <lastmod>2021-02-24T12:17:21.620Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://223.95.78.227/2020/11/11/influxdb/</loc>
+    
+    <lastmod>2021-02-24T12:17:21.620Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://223.95.78.227/2019/07/29/jenkins-blue-ocean/</loc>
+    
+    <lastmod>2021-02-24T12:17:21.620Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://223.95.78.227/2016/08/24/docker-tomcat7/</loc>
     
-    <lastmod>2021-02-15T12:39:41.395Z</lastmod>
+    <lastmod>2021-02-24T12:17:21.620Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://223.95.78.227/2020/12/08/IaC/</loc>
+    <loc>http://223.95.78.227/2019/05/05/docker/</loc>
     
-    <lastmod>2021-02-15T12:39:41.391Z</lastmod>
+    <lastmod>2021-02-24T12:17:21.620Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://223.95.78.227/2019/05/08/JenkinsForProfessionals/</loc>
+    <loc>http://223.95.78.227/2019/07/17/devops/</loc>
     
-    <lastmod>2021-02-15T12:39:41.391Z</lastmod>
+    <lastmod>2021-02-24T12:17:21.620Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://223.95.78.227/2019/07/23/LinuxSystemAdmin/</loc>
     
-    <lastmod>2021-02-15T12:39:41.391Z</lastmod>
+    <lastmod>2021-02-24T12:17:21.616Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://223.95.78.227/2020/02/09/SRE/</loc>
     
-    <lastmod>2021-02-15T12:39:41.391Z</lastmod>
+    <lastmod>2021-02-24T12:17:21.616Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://223.95.78.227/2021/02/15/agile/</loc>
+    <loc>http://223.95.78.227/2021/02/24/agile/</loc>
     
-    <lastmod>2021-02-15T12:39:41.391Z</lastmod>
+    <lastmod>2021-02-24T12:17:21.616Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://223.95.78.227/2019/05/05/amazon-linux2/</loc>
     
-    <lastmod>2021-02-15T12:39:41.391Z</lastmod>
+    <lastmod>2021-02-24T12:17:21.616Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://223.95.78.227/2019/09/20/anatomy-of-containers/</loc>
     
-    <lastmod>2021-02-15T12:39:41.391Z</lastmod>
+    <lastmod>2021-02-24T12:17:21.616Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://223.95.78.227/2019/09/19/apache-cloudstack/</loc>
+    
+    <lastmod>2021-02-24T12:17:21.616Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://223.95.78.227/2019/07/17/aws-admin/</loc>
+    
+    <lastmod>2021-02-24T12:17:21.616Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://223.95.78.227/2019/06/28/ansible/</loc>
+    
+    <lastmod>2021-02-24T12:17:21.616Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://223.95.78.227/2016/08/17/aws/</loc>
+    
+    <lastmod>2021-02-24T12:17:21.616Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://223.95.78.227/2020/06/14/azure/</loc>
+    
+    <lastmod>2021-02-24T12:17:21.616Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://223.95.78.227/2019/05/08/beginningDevOpsWithDocker/</loc>
+    
+    <lastmod>2021-02-24T12:17:21.616Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://223.95.78.227/2016/08/29/centos7/</loc>
+    
+    <lastmod>2021-02-24T12:17:21.616Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://223.95.78.227/2019/07/04/devops-as-a-service/</loc>
+    
+    <lastmod>2021-02-24T12:17:21.616Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://223.95.78.227/2016/08/28/backup-script/</loc>
+    
+    <lastmod>2021-02-24T12:17:21.616Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://223.95.78.227/2020/12/08/IaC/</loc>
+    
+    <lastmod>2021-02-24T12:17:21.612Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://223.95.78.227/2021/02/24/AKS/</loc>
+    
+    <lastmod>2021-02-24T12:17:21.612Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://223.95.78.227/2019/05/08/JenkinsForProfessionals/</loc>
+    
+    <lastmod>2021-02-24T12:17:21.612Z</lastmod>
     
   </url>
   

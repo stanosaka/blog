@@ -83,6 +83,253 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2019/07/29/jenkins-blue-ocean/" title="Jenkins Pipeline" itemprop="url">Jenkins Pipeline</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Stan Zhou" target="_blank" itemprop="author">Stan Zhou</a>
+		
+  <p class="article-time">
+    <time datetime="2019-07-29T01:00:54.000Z" itemprop="datePublished"> Published 2019-07-29</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="An-Example-of-Declarative-Pipeline"><a href="#An-Example-of-Declarative-Pipeline" class="headerlink" title="An Example of Declarative Pipeline:"></a>An Example of Declarative Pipeline:</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">pipeline &#123;</span><br><span class="line">    agent &#123;</span><br><span class="line">       node &#123;</span><br><span class="line">           label <span class="string">'master'</span></span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    stages &#123;</span><br><span class="line">       stage(<span class="string">'Build'</span>) &#123;</span><br><span class="line">           steps &#123;</span><br><span class="line">               sh <span class="string">'mvn clean verify -DskipITs=true'</span></span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       stage (<span class="string">'Static Code Analysis'</span>) &#123;</span><br><span class="line">           steps &#123;</span><br><span class="line">               sh <span class="string">'mvn clean verify sonar:sonar'</span></span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       stage (<span class="string">'Publish to Artifactory'</span>) &#123;</span><br><span class="line">           steps &#123;</span><br><span class="line">               script &#123;</span><br><span class="line">                   def server = Artifactory.server <span class="string">'Default Artifactory'</span></span><br><span class="line">                   def uploadSpec = <span class="string">""</span><span class="string">"&#123;</span></span><br><span class="line"><span class="string">                       "</span>files<span class="string">": [</span></span><br><span class="line"><span class="string">                           &#123;</span></span><br><span class="line"><span class="string">                               "</span>pattern<span class="string">": "</span>target/*.war<span class="string">",</span></span><br><span class="line"><span class="string">                               "</span>target<span class="string">": "</span>helloworld/<span class="variable">$&#123;BUILD_NUMBER&#125;</span>/<span class="string">",</span></span><br><span class="line"><span class="string">                               "</span>pattern<span class="string">": "</span>Unit-Tested=Yes<span class="string">",</span></span><br><span class="line"><span class="string">                           &#125;</span></span><br><span class="line"><span class="string">                        ]</span></span><br><span class="line"><span class="string">                    &#125;"</span><span class="string">""</span></span><br><span class="line">                    server.upload(uploadSpec)</span><br><span class="line">		&#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Jenkinsfile</strong><br>A Jenkinsfile is a file that contains Pipeline code.</p>
+<h1 id="Shared-Library"><a href="#Shared-Library" class="headerlink" title="Shared Library"></a>Shared Library</h1><p>A Jenkins Shared Library is an external source control repository containing your complex Groovy code. It acts like a function that could be used on-demand inside your Declarative Pipeline.</p>
+<p><em>A Groovy Script (example.groovy)Inside Jenkins Shared Library Repository:</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">def greet(message) &#123;</span><br><span class="line">   echo &quot;Hello $&#123;message&#125;, welcome to Jenkins Blue Ocean.&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><em>Jenkins Declarative Pipeline Utilizing the Shared Library:</em><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@Library(&apos;Example_shared_Library&apos;) _</span><br><span class="line"></span><br><span class="line">pipeline &#123;</span><br><span class="line">  agent none</span><br><span class="line">  stage (&apos;Example&apos;) &#123;</span><br><span class="line">     steps &#123;</span><br><span class="line">        script &#123;</span><br><span class="line">           example.greet &apos;Readers&apos;</span><br><span class="line">        &#125;</span><br><span class="line">     &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="Setting-up-Jenkins-Blue-Ocean"><a href="#Setting-up-Jenkins-Blue-Ocean" class="headerlink" title="Setting up Jenkins Blue Ocean"></a>Setting up Jenkins Blue Ocean</h1><h2 id="Setting-up-Blue-Ocean-using-docker"><a href="#Setting-up-Blue-Ocean-using-docker" class="headerlink" title="Setting up Blue Ocean using docker"></a>Setting up Blue Ocean using docker</h2><p><strong>Downloading the latest Jenkins Blue Ocean</strong></p>
+<ol>
+<li><p>docker pull jenkinsci/blueocean</p>
+</li>
+<li><p>To list the downloaded docker image: docker images</p>
+</li>
+</ol>
+<p>Docker containers generate and use data. When a container gets deleted, its relevant data also gets lost.<br>To make the data persistent, we use docker volumes.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker volume create jenkins_home</span><br><span class="line">docker volume ls</span><br><span class="line">docker volume inspect jenkins_home <span class="comment">#get detailed info about docker volume</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="Run-Jenkins-blue-ocrean-behind-a-reverse-proxy"><a href="#Run-Jenkins-blue-ocrean-behind-a-reverse-proxy" class="headerlink" title="Run Jenkins blue ocrean behind a reverse proxy"></a>Run Jenkins blue ocrean behind a reverse proxy</h2><ol>
+<li><p>Run a Jenkins container</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name jenkins -v jenkins_home:/var/jenkins_home jenkinsci/blueocean</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Download the docker image for Nginx</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull nginx</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Spawn a Dockr container for Nginx. Also, link the nginx container to the jenkins container using the <em>–link</em> option.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name ngingx -p 80:80 --link jenkins nginx</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Get inside the Ningx container using the <em>docker exec</em> command</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it ningx /bin/bash</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Update the Ubuntu package lists<br><code>apt-get update</code></p>
+</li>
+<li>Install vim text editor<br><code>apt-get install vim</code></li>
+<li><p>Take the backup of the default.conf file inside /etc/nginx/conf.d/</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp etc/ningx/conf.d/default.conf etc/nginx/conf.d/default.conf.backup</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Next, replace the content of the default.conf file with the following:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">upstream jenkins &#123;</span><br><span class="line">  server jenkins:8080;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">  listen 80;</span><br><span class="line">  server_name jenkins.example.com;</span><br><span class="line">  </span><br><span class="line">  location / &#123;</span><br><span class="line">     proxy_pass         http://jenkins;</span><br><span class="line">     proxy_set_header   Host <span class="variable">$host</span>;</span><br><span class="line">     proxy_set_header   X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">     proxy_set_header   X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">     proxy_set_header   X-Forwarded-Proto <span class="variable">$scheme</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Exit the Nginx container.<br><code>exit</code></p>
+</li>
+<li>Restart the Nginx container.<br><code>docker restart nginx</code></li>
+<li>Run the following docker command to fetch the content of initialAdminPassword file.<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it jenkins /bin/bash -c \ <span class="string">"cat /var/jenkins_home/secrets/initialAdminPassword"</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="Creating-Pipeline"><a href="#Creating-Pipeline" class="headerlink" title="Creating Pipeline"></a>Creating Pipeline</h1><p><strong>Prerequisites</strong>     </p>
+<ol>
+<li>fork <a href="https://github.com/Apress/beginning-jenkins-blue-ocean/tree/master/Ch03/example-maven-project">example maven project</a></li>
+<li>pulling the docker image for jenkins agent<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull nikhilpathania/jenkins_ssh_agent</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>The docker image is based on Ubuntu and comes with Git,Java JDK, Maven, and sshd installed.<br>The image also contains a user account named <em>jenkins</em>.</p>
+<p><strong>Creating credentials for the docker image in Jenkins</strong><br>Add credentials inside Jenkins that allow it to interact with the docker image nikhilpathania/jenkins_ssh_agent</p>
+<ol>
+<li>Classic Jenkins dashboard -&gt; Credentials-&gt; System-&gt; Global credential (unrestricted).</li>
+<li>Add Credentials</li>
+<li>Options<ol>
+<li>Kind: Username with password</li>
+<li>Username: the username to interact with the docker image: jenkins</li>
+<li>Password: the password to interact with the docker image: jenkins</li>
+<li>ID: add a meaningful name to recognize these credentials.</li>
+<li>Descritpion: Add a meaningful description for these credentials.<br><img src="https://i.imgur.com/pFaHQuZ.png" alt="configuring the credential"><br><strong>Installing the docker plugin</strong><br>To spawn on-demand docker containers serving as Jenkins agents, need to install the docker plugin<br><img src="https://i.imgur.com/nUi1uKk.png" alt="Installing the Docker Plugin for Jenkins">   </li>
+</ol>
+</li>
+</ol>
+<p><strong>Configuring the docker plugin</strong><br>Manage Jenkins-&gt; Configure System-&gt; Cloud-&gt; Add a new cloud-&gt; Docker</p>
+<p>Options to configure:</p>
+<ol>
+<li>Docker Host URI: This is the URL used by Jenkins to talk to the docker host.</li>
+</ol>
+<hr>
+<p><strong>ENABLING DOCKER REMOTE API (CRITICAL)</strong><br>The Docker remote API allows external applications to communicate with the Docker server using REST APIs . Jenkins (through the Docker Plugin) uses the docker remote API to communicate with a docker host.</p>
+<p>To enable the Docker remote API on your Docker host, you’ll need to modify Docker’s configuration file. Depending on your OS version and the way you have installed Docker on your machine, you might need to choose the right configuration file to modify. Shown here are two methods that work on Ubuntu. Try them one by one.</p>
+<p><strong>Modifying the docker.conf File</strong><br>Follow these steps to modify the docker.conf file :</p>
+<ol>
+<li>Log in to your docker server; make sure you have sudo privileges.</li>
+</ol>
+<ol start="2">
+<li>Execute the following command to edit the file docker.conf :</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/init/docker.conf</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>Inside the docker.conf file, go to the line containing “DOCKER_OPTS=” .</li>
+</ol>
+<p>You’ll find “DOCKER_OPTS=” variable at multiple places inside the docker.conf file. Use the DOCKER_OPTS= that is available under the pre-start script or script section.</p>
+<ol start="4">
+<li>Set the value of DOCKER_OPTS as shown here. Do not copy and paste; type it all in a single line.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DOCKER_OPTS=&apos;-H tcp://0.0.0.0:4243 -H unix:///var/run/docker.sock&apos;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>The above setting binds the Docker server to the UNIX socket as well on TCP port 4243.</p>
+<p>“0.0.0.0” makes Docker engine accept connections from anywhere. If you would like your Docker server to accept connections only from your Jenkins server, then replace “0.0.0.0” with your Jenkins Server IP.</p>
+<ol start="5">
+<li>Restart the Docker server using the following command:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service docker restart</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="6">
+<li>To check if the configuration has worked, execute the following command. It lists all the images currently present on your Docker server.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -X GET http://&lt;Docker Server IP&gt;:4243/images/json</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="7">
+<li>If this command does not return a meaningful output, try the next method.</li>
+</ol>
+<p><strong>Modifying the docker.service File</strong><br>Follow these steps to modify the docker.service file :</p>
+<ol>
+<li>Execute the following command to edit the docker.service file.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /lib/systemd/system/docker.service</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="2">
+<li>Inside the docker.service file, go to the line containing ExecStart= and set its value as shown here. Do not copy and paste; type it all in a single line.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ExecStart=/usr/bin/dockerd -H fd:// -H tcp://0.0.0.0:4243</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>The above setting binds the docker server to the UNIX socket as well on TCP port 4243.</p>
+<p>“0.0.0.0” makes the Docker engine accept connections from anywhere. If you would like your Docker server to accept connections only from your Jenkins server, then replace “0.0.0.0” with your Jenkins Server IP.</p>
+<ol start="3">
+<li>Execute the following command to make the Docker demon notice the modified configuration:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl daemon-reload</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="4">
+<li>Restart the Docker server using the below command:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service docker restart</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="5">
+<li>To check if the configuration has worked, execute the following command. It lists all the images currently present on your Docker server.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -X GET http://&lt;Docker Server IP&gt;:4243/images/json</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<hr>
+<ol start="2">
+<li>Server Credentials: If your docker host requireds a login, you need to add the credentials to Jenkins using the <strong>Add</strong> button. However, do nothing if you are using a docker host that’s running your Jenkins server container.</li>
+<li>Test Connection: Click on this to test the communication between your Jenkins server and the docker host. You should see the docker version and the API version [4] if the connection is successful.</li>
+<li>Enabled: A checkbox to enable/disable the current configuration.<br><img src="https://i.imgur.com/RKOm2V2.png" alt="Configuring the Docker host URI and testing the connection"></li>
+</ol>
+<p><strong>Add Docker Template</strong> button. Click on it to configure the docker image that Jenkins shoudl use to spawn container.<br><img src="https://i.imgur.com/6NOb5kY.png" alt="docker template figure"></p>
+<ol>
+<li>Labels: The label that you type in under the Labels field gets used inside your Pipeline to define agents for your stages. In this way, Jenkins knows that it has to use docker to spawn agents. </li>
+<li>Enabled: This checkbox is used to enable/disable the current configuration. </li>
+<li>Docker Image: Add the name of the docker image that should be used to spawn agents containers. </li>
+<li>Remote File System Root: This is the directory inside the container that holds the workspace of the Pipeline that runs inside it. </li>
+<li>Usage: We would like only to build pipelines that have the right agent label, in our case it is docker.</li>
+<li>Connect method : Choose to Connect with SSH option to allow Jenkins to connect with the container using the SSH protocol.</li>
+<li>SSH Key: Choose use configured SSH credentials from the options to use the SSH credentials as the preferred mode of authentication.</li>
+<li>SSH Credentials: From the list of options choose the credentials that you have created earlier, in the section: Creating Credentials for the Docker Image in Jenkins.</li>
+<li>Host Key Verification Strategy: Choose Non verifying Verification Strategy to keep things simple. However, this is not the recommended setting for a production Jenkins server.<h1 id="Using-the-pipeline-creation-wizard-configure-Jenkins-Blue-Ocean-with-various-types-of-source-code-repositories"><a href="#Using-the-pipeline-creation-wizard-configure-Jenkins-Blue-Ocean-with-various-types-of-source-code-repositories" class="headerlink" title="Using the pipeline creation wizard, configure Jenkins Blue Ocean with various types of source code repositories."></a>Using the pipeline creation wizard, configure Jenkins Blue Ocean with various types of source code repositories.</h1><h1 id="Using-the-Visual-Pipeline-Editor-to-design-Pipeline"><a href="#Using-the-Visual-Pipeline-Editor-to-design-Pipeline" class="headerlink" title="Using the Visual Pipeline Editor to design Pipeline."></a>Using the Visual Pipeline Editor to design Pipeline.</h1></li>
+</ol>
+<ul>
+<li>Downloads the source code from the Github repository</li>
+<li>Performs a build and some testing</li>
+<li>Publishes the testing results under the Pipeline’s Test page</li>
+<li>Uploads the built artifact to Henkins Blue Ocean</li>
+</ul>
+<p><strong>Assigning a global agent</strong><br>The pipeline that you are going to create should have two stages, and each stage is supposed to run inside a docker<br>container. You’ll define the agents for each stage sparately in the stage’s settings.<br>Therefore, let’s keep the Pipeline’s global agent setting to none.<br><img src="https://i.imgur.com/fBKsY4k.png" alt="Assigning a global agent"></p>
+<p><strong>Creating a build &amp; test stage</strong><br>Type in the name <strong>Build &amp; Test</strong> for your stage.<br><img src="https://i.imgur.com/SOXKlCZ.png" alt="Naming your stage"></p>
+<p><strong>Adding steps</strong><br>Let’s add some steps to our <strong>Build &amp; Test</strong> stage.<br><img src="https://i.imgur.com/FR5koOy.png" alt="Adding a new step"><br><strong>Adding a shell script setp</strong><br>Our source code is a Maven project, and we would like to build and test it using an mvn command, which eventually<br>gets executed inside a shell on the Jenkins agent.<br><img src="https://i.imgur.com/zdRO91W.png" alt="Adding a shell script step"><br>Paste the below code which is a maven command to build, test, and create a package out of your source code.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn -Dmaven.test,failure,ignore clean package</span><br></pre></td></tr></table></figure></p>
+<p><strong>Adding a stash step to pass artifact between stages</strong><br>Add another step to stash the build package and the testing report generated by the maven command.<br>Look for the step <strong>Stash some files to be used later in the build</strong><br><img src="https://i.imgur.com/yguB0hB.png" alt="Adding a Stash step"></p>
+<p>Add the name “build-test-artifacts” fro your stash using the Name<em> field, which is mandatory.<br>Add the following to the Included field: **/target/surefire-reports/TEST-</em>.xml,target/*.jar</p>
+<p>With this configuration you are telling Jenkins to stash any .jar file (build package) from the target directory,<br>and the TEST-*.xml file(test report) from the <code>**/target/surefire-reports/</code> directory on the build agent.<br><img src="https://i.imgur.com/ZtwyY00.png" alt="configuring a Stash step"></p>
+<p>piple line code so far:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">pipeline &#123;</span><br><span class="line">    agent none</span><br><span class="line">    stages &#123;</span><br><span class="line">        stage(&apos;Build &amp; Test&apos;) &#123;</span><br><span class="line">            steps &#123;</span><br><span class="line">                sh &apos;mvn -Dmaven.test.failure.ignore clean package&apos;</span><br><span class="line">                stash(name: &apos;build-test-artifacts&apos;, \</span><br><span class="line">                includes: &apos;**/target/surefire-reports/TEST-*.xml,target/*.jar&apos;)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Assigning an agent for the build &amp; test stage</strong><br>You’ll assign a build agent for your <strong>Build &amp; Test</strong> stage. The agent is going to be a docker container that will be spawn automatically by Jenkins. ONce the stage is complete, Jenkins will destroy the container.<br><img src="https://i.imgur.com/8QGv9eH.png" alt="assigning an agent to a stage"><br>With the following configuration, Jenkins looks for an agent with the label <strong>docker</strong>. Remember the section, wherein you configured the docker plugin in Jenkins. You specified the label <strong>docker</strong> while configure the <strong>Docker Agent<br>Template</strong>.</p>
+<p><strong>Creating a report &amp; publish stage</strong><br>Add another stage named <strong>Report &amp; Publish</strong> that will publish the testing results on the <strong>Test</strong> page of the Pipeline and that will publish the build package on the <strong>Artifacts</strong> page of the pipeline.<br><img src="https://i.imgur.com/1wyyhNT.png" alt="Naming your stage"></p>
+<p><strong>Adding an un-stash step</strong><br>Before we do anything in the <strong>Report &amp; Publish</strong> stage. it is first crucial to un-stash the files that were stashed<br>in the previous stage. So let’s add step to un-stash a stash from the previous stage.<br><img src="https://i.imgur.com/e0XDMmW.png" alt="Adding a restore files previously stashed step"><br>You’ll see a text field Name* where you should paste the name of your stash precisely as it was defined during its<br>creation.<br><img src="https://i.imgur.com/O5Do1D7.png" alt="Configuring the Restore files previously stashed step"></p>
+<p><strong>Report testing results</strong><br>The stash contains a JUnit test results .xml file that you’ll publish on the pipeline’s Test page. For this, we need<br>to add a step named <strong>Archive Junit-formatted test results</strong></p>
+<p>Use the TestResults<em> field to provide Jenkins with the path to your JUnit test result file. In our case, it is<br>`**/target/surefire-reports/TEST-</em>.xml`</p>
+<p><img src="https://i.imgur.com/Skz6Yg7.png" alt="Configuring an Archive Junit-formatted test results step"></p>
+<p><strong>Upload artifacts to blue ocean</strong><br>Add a step that will upload the build package to the Pipleine’s Artifacts page. From the un-stashed files, you also<br>have a .jar file that is the build package.</p>
+<p>To upload it to the Pipeline Artifacts page, use the <strong>Archive the artifacts</strong> step.<br>Use the Artifacts<em> filed to provide Jenkins with the path to your build package file. In our case, it is target/</em>.jar.Also, tick the option OnlyIfSuccessful to upload the artifacts only if the Pipeline status is green or yellow.<br><img src="https://i.imgur.com/X1ogakY.png" alt="Configuring the Archive the Artifacts step"> </p>
+<p><strong>Assigning an aget for the report &amp; publish stage</strong><br>you’ll assign a build agent for your Report &amp; Publish stage. The agent is going to be a docker container that will be spawn automatically by Jenkins. Once the stage is complete, Jenkins will destroy the container.</p>
+<p><img src="https://i.imgur.com/zg4Jc5G.png" alt="Assigning an agent to a stage"></p>
+<p>You are new done with creating the pipeline. To save the changes, click on the Save button.</p>
+<p>When you click on the <strong>Save</strong> button, Jenkins in the back end converts your UI configurations into a Jenkinsfile that follows the Declarative Pipeline Syntax.</p>
+<p><img src="https://i.imgur.com/2HYkBP5.png" alt="Committing your pipeline configurations changes"></p>
+<p><strong>Run an artifactory server</strong><br>To spawn an Artifactory server with docker. Artifactory is a popular tool to manage and version control software build artifacts. </p>
+<ol>
+<li>Log in to your docker host</li>
+<li>docker volume create –name artifactory_data</li>
+<li>docker pull docker.bintray.io/jfrog/artifactory-oss:latest  # downloading the latest version of Artifactory community edition</li>
+<li>docker run –name artifactory -d -v artifactory_data:/var/opt/jfrog/ -p 8081:8081 docker.bintray.io/jfrog/artifactory-oss:latest</li>
+<li>access your Artifactory server: http://&lt;Docker_host_ip&gt;:8081/artifactory/webapp/#/home</li>
+<li>using the admin credentials (username: admin, and password as password). Note the default example repository in Artifactory named example-repo-local.</li>
+</ol>
+<p><strong>Installing the artifactory plugin for jenkins</strong><br>Manage Jenkins-&gt; Manage Plugins-&gt; Artifactory</p>
+<p><strong>Configuring the artifactory plugin in jenkins</strong><br><img src="https://i.imgur.com/2HYkBP5.png" alt="configuring the artifactory plugin"></p>
+<p><strong>Creating a Publish to Artifactory Stage (Parallel Stage)</strong><br>Add a stage in parallel to existing <strong>Report &amp; Publish</strong> stage.<br><img src="https://i.imgur.com/HAq6sYq.png" alt="creating a new stage"><br><img src="https://i.imgur.com/vXUpngZ.png" alt="naming your stage"><br>Your new stage first downloads the stash files from the previous stage, and then it publishes the built artifacts to<br>the Artifactory server.</p>
+<p><strong>Adding a scripted pipeline step</strong><br>does two things</p>
+<ol>
+<li>it fetches the stash files from the previous stage.</li>
+<li>it runs a filespec that uploads the build package to the Artifactory server.<br><img src="https://i.imgur.com/9W9fTUQ.png" alt="add a scripted pipeline step"><br>Script to Un-Stash Built Artifacts and Upload Them to the Artifactory Server<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">unstash &apos;build-test-artifacts&apos;</span><br><span class="line">def server = Artifactory.server &apos;Artifactory&apos;</span><br><span class="line">def uploadSpec = &quot;&quot;&quot;&#123;</span><br><span class="line">  &quot;files&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;pattern&quot;: &quot;target/*.jar&quot;,</span><br><span class="line">      &quot;target&quot;: &quot;example-repo-local/$&#123;BRANCH_NAME&#125;/$&#123;BUILD_NUMBER&#125;/&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;&quot;&quot;&quot;</span><br><span class="line">server.upload(uploadSpec)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">███████╗██╗  ██╗██████╗ ██╗      █████╗ ██╗███╗   ██╗</span><br><span class="line">██╔════╝╚██╗██╔╝██╔══██╗██║     ██╔══██╗██║████╗  ██║</span><br><span class="line">█████╗   ╚███╔╝ ██████╔╝██║     ███████║██║██╔██╗ ██║</span><br><span class="line">██╔══╝   ██╔██╗ ██╔═══╝ ██║     ██╔══██║██║██║╚██╗██║</span><br><span class="line">███████╗██╔╝ ██╗██║     ███████╗██║  ██║██║██║ ╚████║</span><br><span class="line">╚══════╝╚═╝  ╚═╝╚═╝     ╚══════╝╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝</span><br></pre></td></tr></table></figure>
+<p>The code line unstash ‘build-test-artifacts’ downloads the previously stashed package. The rest of the code is a Filespec that uploads the target/*jar file, which is our built package file, to the Artifactory server on the repository example-repo-local.</p>
+<p>Notice that the target path contains Jenkins Global variables, ${BRANCH_NAME} and ${BUILD_NUMBER}, representing the branch name and build number, respectively. Doing so uploads the built artifacts to a unique path on Artifactory every single time a pipeline runs.</p>
+<p><strong>Assigning an Agent for the Publish to Artifactory Stage</strong><br>you’ll assign a build agent for your Publish to Artifactory stage. The agent is going to be the docker container that gets spawned automatically by Jenkins. Once the stage is complete, Jenkins destroys the container.<br><img src="https://i.imgur.com/l3VMpHu.png" alt="Assigning an agent to a stage"></p>
+<p>Final pipeline code:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">pipeline &#123;</span><br><span class="line">  agent none</span><br><span class="line">  stages &#123;</span><br><span class="line">    stage(&apos;Build &amp; Test&apos;) &#123;</span><br><span class="line">      agent &#123;</span><br><span class="line">        node &#123;</span><br><span class="line">          label &apos;docker&apos;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line">      steps &#123;</span><br><span class="line">        sh &apos;mvn -Dmaven.test.failure.ignore clean package&apos;</span><br><span class="line">        stash(name: &apos;build-test-artifacts&apos;, includes: &apos;**/target/surefire-reports/TEST-*.xml,target/*.jar&apos;)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    stage(&apos;Report &amp; Publish&apos;) &#123;</span><br><span class="line">      parallel &#123;</span><br><span class="line">        stage(&apos;Report &amp; Publish&apos;) &#123;</span><br><span class="line">          agent &#123;</span><br><span class="line">            node &#123;</span><br><span class="line">              label &apos;docker&apos;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">          &#125;</span><br><span class="line">          steps &#123;</span><br><span class="line">            unstash &apos;build-test-artifacts&apos;</span><br><span class="line">            junit &apos;**/target/surefire-reports/TEST-*.xml&apos;</span><br><span class="line">            archiveArtifacts(artifacts: &apos;target/*.jar&apos;, onlyIfSuccessful: true)</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        stage(&apos;Publish to Artifactory&apos;) &#123;</span><br><span class="line">          agent &#123;</span><br><span class="line">            node &#123;</span><br><span class="line">              label &apos;docker&apos;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">          &#125;</span><br><span class="line">          steps &#123;</span><br><span class="line">            script &#123;</span><br><span class="line">              unstash &apos;build-test-artifacts&apos;</span><br><span class="line"></span><br><span class="line">              def server = Artifactory.server &apos;Artifactory&apos;</span><br><span class="line">              def uploadSpec = &quot;&quot;&quot;&#123;</span><br><span class="line">                &quot;files&quot;: [</span><br><span class="line">                  &#123;</span><br><span class="line">                    &quot;pattern&quot;: &quot;target/*.jar&quot;,</span><br><span class="line">                    &quot;target&quot;: &quot;example-repo-local/$&#123;BRANCH_NAME&#125;/$&#123;BUILD_NUMBER&#125;/&quot;</span><br><span class="line">                  &#125;</span><br><span class="line">                ]</span><br><span class="line">              &#125;&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">              server.upload(uploadSpec)</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://i.imgur.com/id9vL50.png" alt="Committing your pipeline configurations changes"><br><img src="https://i.imgur.com/Ec4LinF.png" alt="build artifact uploaded to Artifactory"></p>
+<p><strong>Running a pipeline for a pull requrest</strong><br>Jenkins Blue Ocean can detect pull requests on your Github repositories and run a pipeline with it for you. The<br>pipeline run result (fail/pass/canceled) gets reported back to your source code repository.</p>
+<p>The person who is reponsible for accepting the pull request can then decide based on the pipeline run result whether<br>he should merge the new changes into the destination branch or not.<br><img src="https://i.imgur.com/kUvGGZM.jpg" alt="pull request"></p>
+<h2 id="Issue"><a href="#Issue" class="headerlink" title="Issue"></a>Issue</h2><p>pull requests not showing<br>fix by: <img src="https://i.imgur.com/63ETSbk.png" alt=""></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Jenkins/">Jenkins</a><a href="/tags/Devops/">Devops</a><a href="/tags/CD-CI/">CD/CI</a><a href="/tags/Pipeline/">Pipeline</a><a href="/tags/Blue-Ocean/">Blue Ocean</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2019/07/23/LinuxSystemAdmin/" title="LinuxSystemAdmin" itemprop="url">LinuxSystemAdmin</a>
   </h1>
   <p class="article-author">By
@@ -2129,128 +2376,6 @@
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2019/06/28/ansible/" title="ansible" itemprop="url">ansible</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Stan Zhou" target="_blank" itemprop="author">Stan Zhou</a>
-		
-  <p class="article-time">
-    <time datetime="2019-06-28T00:23:15.000Z" itemprop="datePublished"> Published 2019-06-28</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h1 id="Ansible-configuration"><a href="#Ansible-configuration" class="headerlink" title="Ansible configuration"></a>Ansible configuration</h1><h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><p>for ubuntu:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">apt-get install software-properties-common</span><br><span class="line">apt-add-repository ppa:ansible/ansible</span><br><span class="line">apt-get update</span><br><span class="line">apt-get install ansible</span><br><span class="line">root@ansible-host:~# ansible --version</span><br><span class="line">ansible 2.8.1</span><br><span class="line">  config file = /etc/ansible/ansible.cfg</span><br><span class="line">  configured module search path = [u&apos;/root/.ansible/plugins/modules&apos;, u&apos;/usr/share/ansible/plugins/modules&apos;]</span><br><span class="line">  ansible python module location = /usr/lib/python2.7/dist-packages/ansible</span><br><span class="line">  executable location = /usr/bin/ansible</span><br><span class="line">  python version = 2.7.12 (default, Nov 12 2018, 14:36:49) [GCC 5.4.0 20160609]</span><br></pre></td></tr></table></figure></p>
-<h2 id="Gran-access-to-modes-machines"><a href="#Gran-access-to-modes-machines" class="headerlink" title="Gran access to modes/machines:"></a>Gran access to modes/machines:</h2><ul>
-<li>ssh-keygen</li>
-<li>ssh-copy-id<br><strong>Setup:</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cp -R /etc/ansible local</span><br><span class="line">cd local</span><br><span class="line">edit ansible.cfg and hosts file</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="configuration-files"><a href="#configuration-files" class="headerlink" title="configuration files"></a>configuration files</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ANSIBLE_CONFIG #an environemtn variable</span><br><span class="line">ansible.cfg # in the current directory</span><br><span class="line">.ansible.cfg #in the home directory</span><br><span class="line">/etc/ansible/ansible.cfg</span><br></pre></td></tr></table></figure>
-<h2 id="Ansible-inventory"><a href="#Ansible-inventory" class="headerlink" title="Ansible inventory"></a>Ansible inventory</h2><p><code>/etc/ansible/hosts</code><br>INI format, support host variables, group variables and group of group<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># add to /etc/ansible/hosts</span><br><span class="line">[demo_hosts]</span><br><span class="line">node01 ansible_user=ubuntu</span><br><span class="line">node02 ansible_user=ubuntu</span><br><span class="line"># add to /etc/hosts</span><br><span class="line">172.31.5.185 node01</span><br><span class="line">172.31.8.115 node02</span><br></pre></td></tr></table></figure></p>
-<h2 id="Verify-Ansible-Inventory"><a href="#Verify-Ansible-Inventory" class="headerlink" title="Verify Ansible Inventory"></a>Verify Ansible Inventory</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">eval `ssh-agent -s`</span><br><span class="line">ssh-add ansible-key.pem</span><br><span class="line">ansible -m ping all</span><br><span class="line"># add to /etc/ansible/hosts</span><br><span class="line">[web_server]</span><br><span class="line">node01 ansible_user=ubuntu</span><br><span class="line"></span><br><span class="line">[db_server]</span><br><span class="line">node02 ansible_user=ubuntu</span><br><span class="line">ansible web-server -m ping</span><br><span class="line">ansible db-server -m ping</span><br></pre></td></tr></table></figure>
-<h1 id="Local-automation-execution-using-Ansible"><a href="#Local-automation-execution-using-Ansible" class="headerlink" title="Local automation execution using Ansible"></a>Local automation execution using Ansible</h1><p><img src="https://imgur.com/CA9XqyK" alt="architecture type"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Example: Ad hoc Linux echo command against a local system</span><br><span class="line"></span><br><span class="line">#&gt; ansible all -i &quot;localhost,&quot; -c local -m shell -a &apos;echo hello DevOps World&apos;</span><br><span class="line">cat hellodevopsworld.yml</span><br><span class="line"># File name: hellodevopsworld.yml</span><br><span class="line">--- </span><br><span class="line">- hosts: all</span><br><span class="line"> tasks:</span><br><span class="line"> - shell: echo &quot;hello DevOps world&quot;</span><br><span class="line"></span><br><span class="line"># Running a Playbook from the command line:</span><br><span class="line">#&gt; ansible-playbook -i &apos;localhost,&apos; -c local hellodevopsworld.yml</span><br></pre></td></tr></table></figure></p>
-<p><strong>Remote automation execution using Ansible</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Example command: execute the playbook hellodevopsworld.yml against rpi-01</span><br><span class="line">ansible-playbook -i &apos;rpi-01,&apos; -c local  ~/Learning/ansible/hellodevopsworld.yml</span><br></pre></td></tr></table></figure></p>
-<h1 id="Run-and-execute-ansible-tasks"><a href="#Run-and-execute-ansible-tasks" class="headerlink" title="Run and execute ansible tasks"></a>Run and execute ansible tasks</h1><h2 id="Ansible-Command-Line"><a href="#Ansible-Command-Line" class="headerlink" title="Ansible Command Line"></a>Ansible Command Line</h2><p>Two ways: ad-hoc command and playbook</p>
-<h3 id="Ansible-Ad-hoc-Commands"><a href="#Ansible-Ad-hoc-Commands" class="headerlink" title="Ansible Ad-hoc Commands"></a>Ansible Ad-hoc Commands</h3><p><code>ansible &lt;target&gt; -m &lt;module name&gt; -a arguments</code></p>
-<p>support parallelism: <code>&lt;command&gt; -f</code></p>
-<p><code>ansible demo_host -m copy -a &quot;src=/tmp/test1 dest=/tmp/test1&quot;</code> #-m means module, -a optional provided a list of arguments</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ansible-doc -l</span><br><span class="line">ansible-doc copy</span><br><span class="line">ansible-doc -l|grep shell</span><br><span class="line">touch /tmp/test1</span><br><span class="line">ansible demo_hosts -m copy -a &quot;src=/tmp/test1 dest=/tmp/test1&quot;</span><br></pre></td></tr></table></figure>
-<h2 id="Ansible-Facts"><a href="#Ansible-Facts" class="headerlink" title="Ansible Facts"></a>Ansible Facts</h2><p>A fact is a detail or piece of information collect from remote host. Can be use for grouping node, or filter node.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ansible all -m setup</span><br><span class="line">ansible demo_host -m setup</span><br></pre></td></tr></table></figure></p>
-<h2 id="Ansible-Variables"><a href="#Ansible-Variables" class="headerlink" title="Ansible Variables"></a>Ansible Variables</h2><p>Valid Variable names</p>
-<ul>
-<li>Cannot use “-“ (hyphen)</li>
-<li>Can be alphanumeric</li>
-<li>Should start with an alphabet</li>
-</ul>
-<p>Ansible Variables Naming Conventions</p>
-<p>can define variables in Inventory, playbooks file and roles.</p>
-<h2 id="Ansible-Sections"><a href="#Ansible-Sections" class="headerlink" title="Ansible Sections"></a>Ansible Sections</h2><ul>
-<li>Target Section: sepecify the host group</li>
-<li>Variable Section</li>
-<li>Task Section : list all the task</li>
-<li>Handler Section</li>
-<li>Loops</li>
-<li>Conditionals</li>
-<li>Until</li>
-<li>Notify<h2 id="Ansible-playbooks"><a href="#Ansible-playbooks" class="headerlink" title="Ansible playbooks"></a>Ansible playbooks</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">root@ansible-host:/home/ubuntu# cat sample.yaml</span><br><span class="line">---</span><br><span class="line">- hosts: demo_hosts</span><br><span class="line">  vars:</span><br><span class="line">      package1 : &quot;nginx&quot;</span><br><span class="line">      package2 : &quot;wget&quot;</span><br><span class="line">  tasks:</span><br><span class="line">   - name: Installing package nginx</span><br><span class="line">     apt: pkg=nginx state=installed update_cache=true</span><br><span class="line">     become: true</span><br><span class="line">   - name: Installing package wget</span><br><span class="line">     apt: name=&#123;&#123; package2 &#125;&#125; state=installed update_cache=true</span><br><span class="line">     become: true</span><br><span class="line">   - name: Copying test1 file</span><br><span class="line">     copy: src=/tmp/test11 dest=/tmp/test11</span><br><span class="line"></span><br><span class="line">ansible-doc apt ##check the manual for ansible apt</span><br><span class="line">ansible-playbook sample.yaml ## run ansible playbook</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h1 id="Deep-Dive-Into-Ansible-Playbooks"><a href="#Deep-Dive-Into-Ansible-Playbooks" class="headerlink" title="Deep Dive Into Ansible Playbooks"></a>Deep Dive Into Ansible Playbooks</h1><h2 id="Install-Apache-with-Ansible-Playbook"><a href="#Install-Apache-with-Ansible-Playbook" class="headerlink" title="Install Apache with Ansible Playbook"></a>Install Apache with Ansible Playbook</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">root@ansible-host:~# cat apache_install.yaml</span><br><span class="line">---</span><br><span class="line">- hosts: web_portal</span><br><span class="line">  tasks:</span><br><span class="line">    - name: Apt get update</span><br><span class="line">      apt: update_cache=yes</span><br><span class="line"></span><br><span class="line">    - name: Install Apache2</span><br><span class="line">      apt: name=apache2 update_cache=no</span><br><span class="line"></span><br><span class="line">    - name: Copy data files</span><br><span class="line">      copy: src=index.html dest=/var/www/html/</span><br><span class="line"></span><br><span class="line">    - name: Stop the service</span><br><span class="line">      service: name=apache2 state=stopped</span><br><span class="line">root@ansible-host:~# ansible-playbook apache_install.yaml -b</span><br></pre></td></tr></table></figure>
-<h2 id="Run-and-Stop-Service"><a href="#Run-and-Stop-Service" class="headerlink" title="Run and Stop Service"></a>Run and Stop Service</h2><h2 id="Template"><a href="#Template" class="headerlink" title="Template"></a>Template</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">root@ansible-host:~# cat current.html.j2</span><br><span class="line">this is my current file -</span><br><span class="line">my hostname is - &#123;&#123; ansible_hostname &#125;&#125;</span><br><span class="line">root@ansible-host:~# cat apache_install.yaml</span><br><span class="line">---</span><br><span class="line">- hosts: web_portal</span><br><span class="line">  tasks:</span><br><span class="line">    - name: Apt get update</span><br><span class="line">      apt: update_cache=yes</span><br><span class="line"></span><br><span class="line">    - name: Install Apache2</span><br><span class="line">      apt: name=apache2 update_cache=no</span><br><span class="line"></span><br><span class="line">    - name: Copy data files</span><br><span class="line">      copy: src=index.html dest=/var/www/html/</span><br><span class="line"></span><br><span class="line">    - name: Stop the service</span><br><span class="line">      service: name=apache2 state=stopped</span><br><span class="line"></span><br><span class="line">    - name: Copy template file</span><br><span class="line">      template: src=current.html.j2 dest=/var/www/html/current.html</span><br><span class="line">      notify:</span><br><span class="line">        - Start apache</span><br><span class="line">  handlers:</span><br><span class="line">    - name: Start apache</span><br><span class="line">      service: name=apache2 state=restarted</span><br><span class="line">### dry run ansible</span><br><span class="line">ansible-playbook apache_install.yaml -b --check</span><br></pre></td></tr></table></figure>
-<h2 id="Debug-Statements-In-playbook"><a href="#Debug-Statements-In-playbook" class="headerlink" title="Debug Statements In playbook"></a>Debug Statements In playbook</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line">root@ansible-host:~# cat apache_install.yaml</span><br><span class="line">---</span><br><span class="line">- hosts: web_portal</span><br><span class="line">  tasks:</span><br><span class="line">    - name: Apt get update</span><br><span class="line">      apt: update_cache=yes</span><br><span class="line"></span><br><span class="line">    - name: Install Apache2</span><br><span class="line">      apt: name=apache2 update_cache=no</span><br><span class="line"></span><br><span class="line">    - name: Copy data files</span><br><span class="line">      copy: src=index.html dest=/var/www/html/</span><br><span class="line">      register: copy_status</span><br><span class="line"></span><br><span class="line">    - name: Stop the service</span><br><span class="line">      service: name=apache2 state=stopped</span><br><span class="line"></span><br><span class="line">    - name: Copy template file</span><br><span class="line">      template: src=current.html.j2 dest=/var/www/html/current.html</span><br><span class="line">      notify:</span><br><span class="line">        - Start apache</span><br><span class="line"></span><br><span class="line">    - name: Copy status</span><br><span class="line">      debug: var=copy_status</span><br><span class="line"></span><br><span class="line">  handlers:</span><br><span class="line">    - name: Start apache</span><br><span class="line">      service: name=apache2 state=restarted</span><br><span class="line">root@ansible-host:~# ansible-playbook apache_install.yaml -b</span><br><span class="line"></span><br><span class="line">PLAY [web_portal] *************************************************************************************************************************************</span><br><span class="line"></span><br><span class="line">TASK [Gathering Facts] ********************************************************************************************************************************</span><br><span class="line">ok: [node01]</span><br><span class="line"></span><br><span class="line">TASK [Apt get update] *********************************************************************************************************************************</span><br><span class="line"> [WARNING]: Could not find aptitude. Using apt-get instead</span><br><span class="line"></span><br><span class="line">changed: [node01]</span><br><span class="line"></span><br><span class="line">TASK [Install Apache2] ********************************************************************************************************************************</span><br><span class="line">ok: [node01]</span><br><span class="line"></span><br><span class="line">TASK [Copy data files] ********************************************************************************************************************************</span><br><span class="line">ok: [node01]</span><br><span class="line"></span><br><span class="line">TASK [Stop the service] *******************************************************************************************************************************</span><br><span class="line">ok: [node01]</span><br><span class="line"></span><br><span class="line">TASK [Copy template file] *****************************************************************************************************************************</span><br><span class="line">ok: [node01]</span><br><span class="line"></span><br><span class="line">TASK [Copy status] ************************************************************************************************************************************</span><br><span class="line">ok: [node01] =&gt; &#123;</span><br><span class="line">    &quot;copy_status&quot;: &#123;</span><br><span class="line">        &quot;changed&quot;: false,</span><br><span class="line">        &quot;checksum&quot;: &quot;9be1fe2ae3529c22cf8a1b0fd1edc53048dcf277&quot;,</span><br><span class="line">        &quot;dest&quot;: &quot;/var/www/html/index.html&quot;,</span><br><span class="line">        &quot;diff&quot;: &#123;</span><br><span class="line">            &quot;after&quot;: &#123;</span><br><span class="line">                &quot;path&quot;: &quot;/var/www/html/index.html&quot;</span><br><span class="line">            &#125;,</span><br><span class="line">            &quot;before&quot;: &#123;</span><br><span class="line">                &quot;path&quot;: &quot;/var/www/html/index.html&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;failed&quot;: false,</span><br><span class="line">        &quot;gid&quot;: 0,</span><br><span class="line">        &quot;group&quot;: &quot;root&quot;,</span><br><span class="line">        &quot;mode&quot;: &quot;0644&quot;,</span><br><span class="line">        &quot;owner&quot;: &quot;root&quot;,</span><br><span class="line">        &quot;path&quot;: &quot;/var/www/html/index.html&quot;,</span><br><span class="line">        &quot;size&quot;: 24,</span><br><span class="line">        &quot;state&quot;: &quot;file&quot;,</span><br><span class="line">        &quot;uid&quot;: 0</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">PLAY RECAP ********************************************************************************************************************************************</span><br><span class="line">node01                     : ok=7    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0</span><br></pre></td></tr></table></figure>
-<h2 id="Loops-Conditionals-and-until-section"><a href="#Loops-Conditionals-and-until-section" class="headerlink" title="Loops, Conditionals and until section"></a>Loops, Conditionals and until section</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">root@ansible-host:~# cat apache_install.yaml</span><br><span class="line">---</span><br><span class="line">- hosts: web_portal</span><br><span class="line">  tasks:</span><br><span class="line">    - name: Apt get update</span><br><span class="line">      apt: update_cache=yes</span><br><span class="line"></span><br><span class="line">    - name: Install Apache2, nginx, nmap</span><br><span class="line">      apt: name=&#123;&#123; item &#125;&#125; update_cache=no</span><br><span class="line">      with_items:</span><br><span class="line">         - apache2</span><br><span class="line">         - nginx</span><br><span class="line">         - nmap</span><br><span class="line"></span><br><span class="line">    - name: Copy data files</span><br><span class="line">      copy: src=index.html dest=/var/www/html/</span><br><span class="line">      register: copy_status</span><br><span class="line"></span><br><span class="line">    - name: Stop the service</span><br><span class="line">      service: name=apache2 state=stopped</span><br><span class="line"></span><br><span class="line">    - name: Copy template file</span><br><span class="line">      template: src=current.html.j2 dest=/var/www/html/current.html</span><br><span class="line">      notify:</span><br><span class="line">        - Start apache</span><br><span class="line"></span><br><span class="line">    - name: Copy status</span><br><span class="line">      debug: var=copy_status</span><br><span class="line"></span><br><span class="line">  handlers:</span><br><span class="line">    - name: Start apache</span><br><span class="line">      service: name=apache2 state=restarted</span><br></pre></td></tr></table></figure>
-<h1 id="Putting-it-all-together-with-ansible"><a href="#Putting-it-all-together-with-ansible" class="headerlink" title="Putting it all together with ansible"></a>Putting it all together with ansible</h1><h2 id="Ansible-vault"><a href="#Ansible-vault" class="headerlink" title="Ansible vault"></a>Ansible vault</h2><p>ansible-vault create foo.yml<br>ansible-vaule view foo.yml<br>ansible-playbook site.yml -ask-vault-pass</p>
-<h2 id="Common-Ansible-Modules"><a href="#Common-Ansible-Modules" class="headerlink" title="Common Ansible Modules"></a>Common Ansible Modules</h2><ul>
-<li>Setup module<br>ansible node01 -m setup</li>
-<li>File module<br>ansible-doc file</li>
-<li>Yum module<br>for redhat, centos</li>
-<li>Apt module<br>for debian, ubuntu</li>
-<li>Service module<br>for start and stop service</li>
-<li>Copy module<br>which is used for copy the file</li>
-<li>User module<br>ansible-doc user<br>ansible node01 -m user -a “user=stancloud” -b</li>
-<li>Command module<br>ansible-doc command</li>
-<li><p>Shell module<br>ansible node01 -m shell -a “tail /var/log/syslog”</p>
-<h2 id="Ansible-Roles"><a href="#Ansible-Roles" class="headerlink" title="Ansible Roles"></a>Ansible Roles</h2><p>Roles are similar to project.</p>
-<h3 id="roles-directory-structure"><a href="#roles-directory-structure" class="headerlink" title="roles directory structure"></a>roles directory structure</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">ansible-galaxy init stan</span><br><span class="line">- stan was created successfully</span><br><span class="line">root@ansible-host:/tmp# tree stan</span><br><span class="line">stan</span><br><span class="line">├── defaults</span><br><span class="line">│   └── main.yml</span><br><span class="line">├── files</span><br><span class="line">├── handlers</span><br><span class="line">│   └── main.yml</span><br><span class="line">├── meta</span><br><span class="line">│   └── main.yml</span><br><span class="line">├── README.md</span><br><span class="line">├── tasks</span><br><span class="line">│   └── main.yml</span><br><span class="line">├── templates</span><br><span class="line">├── tests</span><br><span class="line">│   ├── inventory</span><br><span class="line">│   └── test.yml</span><br><span class="line">└── vars</span><br><span class="line">    └── main.yml</span><br><span class="line">roles/</span><br><span class="line">  role-name/</span><br><span class="line">     files/</span><br><span class="line">     templates/ #j2 files</span><br><span class="line">     tasks/</span><br><span class="line">        main.yml</span><br><span class="line">     handlers/</span><br><span class="line">        main.yml</span><br><span class="line">     vars/</span><br><span class="line">        main.yml</span><br><span class="line">     defaults/</span><br><span class="line">        main.yml</span><br><span class="line">     meta</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Common role</p>
-</li>
-<li>mySQL role</li>
-<li>Apache role</li>
-<li>WordPress role<h3 id="Deploy-wordpress"><a href="#Deploy-wordpress" class="headerlink" title="Deploy wordpress"></a>Deploy wordpress</h3></li>
-</ul>
-<h2 id="Ansible-Galaxy"><a href="#Ansible-Galaxy" class="headerlink" title="Ansible Galaxy"></a>Ansible Galaxy</h2><p>root@ansible-host:/tmp# ansible-galaxy install bennojoy.nginx</p>
-<ul>
-<li>downloading role ‘nginx’, owned by bennojoy</li>
-<li>downloading role from <a href="https://github.com/bennojoy/nginx/archive/master.tar.gz">https://github.com/bennojoy/nginx/archive/master.tar.gz</a></li>
-<li>extracting bennojoy.nginx to /root/.ansible/roles/bennojoy.nginx</li>
-<li>bennojoy.nginx (master) was installed successfully<br><a href="http://jinja.pocoo.org">jinja</a><h1 id="Manage-aws-cloud-resouces-with-ansible"><a href="#Manage-aws-cloud-resouces-with-ansible" class="headerlink" title="Manage aws cloud resouces with ansible"></a>Manage aws cloud resouces with ansible</h1><h2 id="manage-aws-ec2-instances-with-ansible"><a href="#manage-aws-ec2-instances-with-ansible" class="headerlink" title="manage aws ec2 instances with ansible"></a>manage aws ec2 instances with ansible</h2>ansible-doc -l|grep aws<br>ansible-doc -l|grep ec2<h2 id="Deploy-new-aws-ec2-instances-using-ansible-playbook"><a href="#Deploy-new-aws-ec2-instances-using-ansible-playbook" class="headerlink" title="Deploy new aws ec2 instances using ansible playbook"></a>Deploy new aws ec2 instances using ansible playbook</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">cat ec2_create.yaml</span><br><span class="line">---</span><br><span class="line">- hosts: localhost</span><br><span class="line">  tasks:</span><br><span class="line">    - name: Create AWS instances</span><br><span class="line">      ec2:</span><br><span class="line">        key_name: ansible-key</span><br><span class="line">        instance_type: t2.micro</span><br><span class="line">        image: ami-001dae151248753a2</span><br><span class="line">        count: 3</span><br><span class="line">        vpc_subnet_id: subnet-20615347</span><br><span class="line">        assign_public_ip: no</span><br><span class="line">        region: ap-southeast-2</span><br><span class="line"></span><br><span class="line">ansible-playbook -i &quot;localhost,&quot; -c local ec2_create.yaml</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/ansbile/">ansbile</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <a class="extend prev" rel="prev" href="/page/2/"><span></span>Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/">Next<span></span></a>
@@ -2301,11 +2426,11 @@
 			
 		
 			
-				<li><a href="/tags/docker/" title="docker">docker<sup>3</sup></a></li>
+				<li><a href="/tags/linux/" title="linux">linux<sup>3</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/linux/" title="linux">linux<sup>3</sup></a></li>
+				<li><a href="/tags/docker/" title="docker">docker<sup>3</sup></a></li>
 			
 		
 			
@@ -2329,15 +2454,15 @@
 			
 		
 			
-				<li><a href="/tags/backup/" title="backup">backup<sup>2</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/github/" title="github">github<sup>2</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/nginx/" title="nginx">nginx<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/backup/" title="backup">backup<sup>2</sup></a></li>
 			
 		
 			
