@@ -4,35 +4,25 @@
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
   
-    <title>effective devops with aws | Stan Zhou&#39;s Hexo Technical Blog</title>
+    <title>mysql-replication | Stan Zhou&#39;s Hexo Technical Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Stan Zhou">
     
 
     
-    <meta name="description" content="Code source code ansiblesource code helloworld Continuous Delivery123npm config set registry http://registry.npmjs.org/ npm install./node_modules/mocha/bin/mocha Creating the new cloudformation stack">
+    <meta name="description" content="Myql replicatoinProcess Clean the salve db1234DROP_DB_LIST=`mysql -Nse &amp;quot;SET group_concat_max_len = 81920; SELECT GROUP_CONCAT(SCHEMA_NAME SEPARATOR &amp;apos;;\nDROP DATABASE &amp;apos;) FROM information">
+<meta name="keywords" content="mysql, replication">
 <meta property="og:type" content="article">
-<meta property="og:title" content="effective devops with aws">
-<meta property="og:url" content="http://223.95.78.227/2019/08/16/effective-devops-with-aws/index.html">
+<meta property="og:title" content="mysql-replication">
+<meta property="og:url" content="http://223.95.78.227/2021/02/25/mysql-replication/index.html">
 <meta property="og:site_name" content="Stan Zhou&#39;s Hexo Technical Blog">
-<meta property="og:description" content="Code source code ansiblesource code helloworld Continuous Delivery123npm config set registry http://registry.npmjs.org/ npm install./node_modules/mocha/bin/mocha Creating the new cloudformation stack">
+<meta property="og:description" content="Myql replicatoinProcess Clean the salve db1234DROP_DB_LIST=`mysql -Nse &amp;quot;SET group_concat_max_len = 81920; SELECT GROUP_CONCAT(SCHEMA_NAME SEPARATOR &amp;apos;;\nDROP DATABASE &amp;apos;) FROM information">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://i.imgur.com/QOYWSYb.png">
-<meta property="og:image" content="https://i.imgur.com/an0PPjD.png">
-<meta property="og:image" content="https://i.imgur.com/P7gdZBo.png">
-<meta property="og:image" content="https://i.imgur.com/O6LNT3M.png">
-<meta property="og:image" content="https://i.imgur.com/gD0EYZ7.png">
-<meta property="og:image" content="https://i.imgur.com/uAnMDQk.png">
-<meta property="og:image" content="https://i.imgur.com/OoeILa2.png">
-<meta property="og:image" content="https://i.imgur.com/Mz3RM0I.png">
-<meta property="og:image" content="https://i.imgur.com/88C8zGu.png">
-<meta property="og:image" content="https://i.imgur.com/7YXnt5L.png">
-<meta property="og:updated_time" content="2021-02-24T12:17:21.620Z">
+<meta property="og:updated_time" content="2021-02-25T00:26:18.720Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="effective devops with aws">
-<meta name="twitter:description" content="Code source code ansiblesource code helloworld Continuous Delivery123npm config set registry http://registry.npmjs.org/ npm install./node_modules/mocha/bin/mocha Creating the new cloudformation stack">
-<meta name="twitter:image" content="https://i.imgur.com/QOYWSYb.png">
+<meta name="twitter:title" content="mysql-replication">
+<meta name="twitter:description" content="Myql replicatoinProcess Clean the salve db1234DROP_DB_LIST=`mysql -Nse &amp;quot;SET group_concat_max_len = 81920; SELECT GROUP_CONCAT(SCHEMA_NAME SEPARATOR &amp;apos;;\nDROP DATABASE &amp;apos;) FROM information">
 <meta name="twitter:creator" content="@stanosaka">
 
     
@@ -93,14 +83,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2019/08/16/effective-devops-with-aws/" title="effective devops with aws" itemprop="url">effective devops with aws</a>
+      <a href="/2021/02/25/mysql-replication/" title="mysql-replication" itemprop="url">mysql-replication</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Stan Zhou" target="_blank" itemprop="author">Stan Zhou</a>
 		
   <p class="article-time">
-    <time datetime="2019-08-15T14:15:29.000Z" itemprop="datePublished"> Published 2019-08-16</time>
+    <time datetime="2021-02-25T00:20:35.000Z" itemprop="datePublished"> Published 2021-02-25</time>
     
   </p>
 </header>
@@ -109,19 +99,26 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Continuous-Delivery"><span class="toc-number">1.</span> <span class="toc-text">Continuous Delivery</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Myql-replicatoin"><span class="toc-number">1.</span> <span class="toc-text">Myql replicatoin</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Process"><span class="toc-number">1.1.</span> <span class="toc-text">Process</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#common-problems"><span class="toc-number">1.2.</span> <span class="toc-text">common problems</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#dropping-a-database-with-a-special-character-in-the-databsename"><span class="toc-number">1.2.1.</span> <span class="toc-text">dropping a database with a special character in the databsename</span></a></li></ol></li></ol></li></ol>
 		
 		</div>
 		
-		<p><strong>Code</strong></p>
-<p><a href="https://github.com/stanosaka/ansible">source code ansible</a><br><a href="https://github.com/00root/helloworld">source code helloworld</a></p>
-<h1 id="Continuous-Delivery"><a href="#Continuous-Delivery" class="headerlink" title="Continuous Delivery"></a>Continuous Delivery</h1><p><img src="https://i.imgur.com/QOYWSYb.png" alt="codepipline01"><br><img src="https://i.imgur.com/an0PPjD.png" alt="codepipline02"><br><img src="https://i.imgur.com/P7gdZBo.png" alt="Source"><br><img src="https://i.imgur.com/O6LNT3M.png" alt="Test"><br><img src="https://i.imgur.com/gD0EYZ7.png" alt="Deploy"><br><img src="https://i.imgur.com/uAnMDQk.png" alt="Approval"><br><img src="https://i.imgur.com/OoeILa2.png" alt="Production"><br><img src="https://i.imgur.com/Mz3RM0I.png" alt="Jenkins01"><br><img src="https://i.imgur.com/88C8zGu.png" alt="Jenkins02"><br><img src="https://i.imgur.com/7YXnt5L.png" alt="Jenkins03"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm config set registry http://registry.npmjs.org/ </span><br><span class="line">npm install</span><br><span class="line">./node_modules/mocha/bin/mocha</span><br></pre></td></tr></table></figure></p>
-<p><strong>Creating the new cloudformation stack for production</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">aws cloudformation create-stack --capabilities CAPABILITY_IAM --stack-name helloworld-production --template-body file://nodeserver-cf.template --parameters ParameterKey=KeyPair,ParameterValue=EffectiveDevOpsAWS</span><br><span class="line">aws cloudformation wait stack-create-complete --stack-name helloworld-production</span><br><span class="line">arn=$(aws deploy get-deployment-group --application-name helloworld --deployment-group-name staging --query &apos;deploymentGroupInfo.serviceRoleArn&apos;)</span><br><span class="line">aws deploy create-deployment-group --application-name helloworld --ec2-tag-filters Key=aws:cloudformation:stack-name,Type=KEY_AND_VALUE,Value=helloworld-production --deployment-group-name production --service-role-arn $arn</span><br><span class="line">aws deploy create-deployment-group --application-name helloworld --ec2-tag-filters Key=aws:cloudformation:stack-name,Type=KEY_AND_VALUE,Value=helloworld-production --deployment-group-name production --service-role-arn arn:aws:iam::012152306932:role/CodeDeployRole</span><br><span class="line">aws deploy list-deployment-groups --application-name helloworld</span><br><span class="line">aws sns create-topic --name production-deploy-approval</span><br><span class="line">aws sns subscribe --topic-arn arn:aws:sns:ap-southeast-2:012152306932:production-deploy-approval --protocol email --notification-endpoint foobar@gmail.com</span><br></pre></td></tr></table></figure></p>
+		<h1 id="Myql-replicatoin"><a href="#Myql-replicatoin" class="headerlink" title="Myql replicatoin"></a>Myql replicatoin</h1><h2 id="Process"><a href="#Process" class="headerlink" title="Process"></a>Process</h2><ol>
+<li>Clean the salve db<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">DROP_DB_LIST=`mysql -Nse &quot;SET group_concat_max_len = 81920; SELECT GROUP_CONCAT(SCHEMA_NAME SEPARATOR &apos;;\nDROP DATABASE &apos;) FROM information_schema.SCHEMATA WHERE SCHEMA_NAME NOT IN (&apos;mysql&apos;,&apos;information_schema&apos;,&apos;performance_schema&apos;,&apos;sys&apos;);&quot;`</span><br><span class="line">echo -e $DROP_DB_LIST &gt; /tmp/delete.sh </span><br><span class="line">vim /tmp/delete.sh</span><br><span class="line">mysql &lt; /tmp/delete.sh</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="common-problems"><a href="#common-problems" class="headerlink" title="common problems"></a>common problems</h2><h3 id="dropping-a-database-with-a-special-character-in-the-databsename"><a href="#dropping-a-database-with-a-special-character-in-the-databsename" class="headerlink" title="dropping a database with a special character in the databsename"></a>dropping a database with a special character in the databsename</h3><p>error message:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@au3-db-03 mysql]# mysql &lt; /tmp/deletenewnew.sh</span><br><span class="line">ERROR 1064 (42000) at line 267: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near &apos;-123&apos; at line 1</span><br></pre></td></tr></table></figure></p>
+<p>fix by:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; drop database `supd-123`</span><br><span class="line">    -&gt; ;</span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br></pre></td></tr></table></figure></p>
   
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/mysql-replication/">mysql, replication</a>
+  </div>
 
 </div>
 
@@ -129,7 +126,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://223.95.78.227/2019/08/16/effective-devops-with-aws/" data-title="effective devops with aws | Stan Zhou&#39;s Hexo Technical Blog" data-tsina="undefined" class="share clearfix">
+	  <div data-url="http://223.95.78.227/2021/02/25/mysql-replication/" data-title="mysql-replication | Stan Zhou&#39;s Hexo Technical Blog" data-tsina="undefined" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -142,19 +139,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2019/09/12/networking/" title="networking">
-  <strong>上一篇：</strong><br/>
-  <span>
-  networking</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2019/08/03/vagrant/"  title="vagrant">
+<a href="/2021/02/25/azure-mysql/"  title="azure-mysql">
  <strong>下一篇：</strong><br/> 
- <span>vagrant
+ <span>azure-mysql
 </span>
 </a>
 </div>
@@ -169,7 +158,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Continuous-Delivery"><span class="toc-number">1.</span> <span class="toc-text">Continuous Delivery</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Myql-replicatoin"><span class="toc-number">1.</span> <span class="toc-text">Myql replicatoin</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Process"><span class="toc-number">1.1.</span> <span class="toc-text">Process</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#common-problems"><span class="toc-number">1.2.</span> <span class="toc-text">common problems</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#dropping-a-database-with-a-special-character-in-the-databsename"><span class="toc-number">1.2.1.</span> <span class="toc-text">dropping a database with a special character in the databsename</span></a></li></ol></li></ol></li></ol>
  
   </div>
 

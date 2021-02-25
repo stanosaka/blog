@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://223.95.78.227/"/>
-  <updated>2021-02-25T00:02:44.490Z</updated>
+  <updated>2021-02-25T00:26:18.720Z</updated>
   <id>http://223.95.78.227/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>mysql-replication</title>
+    <link href="http://223.95.78.227/2021/02/25/mysql-replication/"/>
+    <id>http://223.95.78.227/2021/02/25/mysql-replication/</id>
+    <published>2021-02-25T00:20:35.000Z</published>
+    <updated>2021-02-25T00:26:18.720Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Myql-replicatoin"><a href="#Myql-replicatoin" class="headerlink" title="Myql replicatoin"></a>Myql replicatoin</h1><h2 id="Process"><a href="#Process" class="headerlink" title="Process"></a>Process</h2><ol><li>Clean the salve db<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">DROP_DB_LIST=`mysql -Nse &quot;SET group_concat_max_len = 81920; SELECT GROUP_CONCAT(SCHEMA_NAME SEPARATOR &apos;;\nDROP DATABASE &apos;) FROM information_schema.SCHEMATA WHERE SCHEMA_NAME NOT IN (&apos;mysql&apos;,&apos;information_schema&apos;,&apos;performance_schema&apos;,&apos;sys&apos;);&quot;`</span><br><span class="line">echo -e $DROP_DB_LIST &gt; /tmp/delete.sh </span><br><span class="line">vim /tmp/delete.sh</span><br><span class="line">mysql &lt; /tmp/delete.sh</span><br></pre></td></tr></table></figure></li></ol><h2 id="common-problems"><a href="#common-problems" class="headerlink" title="common problems"></a>common problems</h2><h3 id="dropping-a-database-with-a-special-character-in-the-databsename"><a href="#dropping-a-database-with-a-special-character-in-the-databsename" class="headerlink" title="dropping a database with a special character in the databsename"></a>dropping a database with a special character in the databsename</h3><p>error message:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@au3-db-03 mysql]# mysql &lt; /tmp/deletenewnew.sh</span><br><span class="line">ERROR 1064 (42000) at line 267: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near &apos;-123&apos; at line 1</span><br></pre></td></tr></table></figure></p><p>fix by:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; drop database `supd-123`</span><br><span class="line">    -&gt; ;</span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Myql-replicatoin&quot;&gt;&lt;a href=&quot;#Myql-replicatoin&quot; class=&quot;headerlink&quot; title=&quot;Myql replicatoin&quot;&gt;&lt;/a&gt;Myql replicatoin&lt;/h1&gt;&lt;h2 id=&quot;Process&quot;&gt;
+      
+    
+    </summary>
+    
+    
+      <category term="mysql, replication" scheme="http://223.95.78.227/tags/mysql-replication/"/>
+    
+  </entry>
   
   <entry>
     <title>azure-mysql</title>
@@ -462,32 +485,6 @@
     
     </summary>
     
-    
-  </entry>
-  
-  <entry>
-    <title>vagrant</title>
-    <link href="http://223.95.78.227/2019/08/03/vagrant/"/>
-    <id>http://223.95.78.227/2019/08/03/vagrant/</id>
-    <published>2019-08-03T13:35:53.000Z</published>
-    <updated>2021-02-24T12:17:21.632Z</updated>
-    
-    <content type="html"><![CDATA[<p>Vagrant can be used for automatically provisioning VMs, and even whole development environments.</p><p>On ubuntu host:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt install vagrant</span><br><span class="line">$ vagrant --version</span><br><span class="line">$ mkdir Vagrant;cd Vagrant</span><br><span class="line">$ vagrant init</span><br><span class="line"># Every Vagrant development environment requires a box. You can search for</span><br><span class="line">  # boxes at https://vagrantcloud.com/search.</span><br><span class="line">  config.vm.box = &quot;base&quot;</span><br><span class="line">$ sed -i &apos;s#config.vm.box = &quot;base&quot;#config.vm.box = &quot;centos/7&quot;#g&apos; Vagrantfile</span><br><span class="line">$ vagrant up</span><br><span class="line">$ vagrant ssh</span><br><span class="line">$ vagrant destroy</span><br></pre></td></tr></table></figure></p><p><strong>Components</strong></p><ul><li>Providers:<ul><li>Backend of Vagrant</li><li>VirtualBox</li><li>VMware</li><li>Hyper-V</li><li>vCloud</li><li>AWS</li></ul></li><li>Boxes:<ul><li>Predefined images</li><li><a href="https://app.vagrantup.com/boxes/search">Public Vagrant box catalog</a></li></ul></li><li>Vagrantfile:<ul><li>A Ruby file</li><li>How many VMs</li><li>Configure VMs</li><li>Provision VMs</li><li>Committed to version control<br><img src="https://i.imgur.com/lb7muP9.png" alt="example of Vagrantfile"></li></ul></li><li>Provisioners:<ul><li>Automatically install software, alter configurations</li><li>Boxes may not be a complete use case for you</li><li>Multiple options</li><li>Shell Script</li><li>Ansible</li><li>Chef</li><li>Docker</li><li>Puppet<br><img src="https://i.imgur.com/U5cISEK.png" alt="workflow of vagrant"></li></ul></li></ul><p><strong>Operations</strong></p><ul><li>Adding a vagrant box:<ul><li>Syntax: vagrant box add <name> <url> <provider></li><li>Example: vagrant box add ubuntu/trusty32</li></ul></li><li>Listing and removing vagrant boxes:<ul><li>vagrant box list</li><li>vagrant box remove</li></ul></li><li>Creating a VM environment:<ul><li>Syntax: vagrant init <your box name></li><li>Example: vagrant init ubuntu/trusty32</li></ul></li><li>Starting a VM environment:<ul><li>vagrant up ubuntu/trusty32</li><li>vagrant up </li></ul></li><li>Connecting:<ul><li>vagrant ssh ubuntu/trusty32</li><li>vagrant ssh</li></ul></li><li>Stopping, restarting, and destroying<ul><li>vagrant halt</li><li>vagrant reload</li><li>vagrant destroy</li></ul></li></ul><p><strong>Provisioning of vagrant</strong></p><ul><li>Creating a VM and provisioning it with Apache installed and prot forwarding</li><li><p>Add theses lines in Vagrantfile:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">config.vm.network &quot;forwarded_port&quot;, guest: 80, host: 8080</span><br><span class="line">config.vm.provision &apos;shell&apos;, path: &apos;provision.sh&apos;</span><br></pre></td></tr></table></figure></li><li><p>Create provision.sh file with these entries:</p><ul><li>sudo apt-get update</li><li>sudo apt-get install -y apache2</li></ul></li><li><p>Destroy and start the virtual machine:</p><ul><li>vagrant destroy</li><li>vagrant up</li></ul></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Vagrant can be used for automatically provisioning VMs, and even whole development environments.&lt;/p&gt;
-&lt;p&gt;On ubuntu host:&lt;br&gt;&lt;figure class=
-      
-    
-    </summary>
-    
-    
-      <category term="vagrant" scheme="http://223.95.78.227/tags/vagrant/"/>
-    
-      <category term="Hashicorp" scheme="http://223.95.78.227/tags/Hashicorp/"/>
     
   </entry>
   

@@ -83,6 +83,222 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2019/07/03/version-control/" title="version control" itemprop="url">version control</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Stan Zhou" target="_blank" itemprop="author">Stan Zhou</a>
+		
+  <p class="article-time">
+    <time datetime="2019-07-03T01:55:35.000Z" itemprop="datePublished"> Published 2019-07-03</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="Common-Terminologies"><a href="#Common-Terminologies" class="headerlink" title="Common Terminologies"></a>Common Terminologies</h1><p><strong>Repository</strong>: A unit of storage and change tracking that represents a direcotry whose contents are tacked by Git</p>
+<p><strong>Brach</strong>: A version of a repository that represents the current state of the set of files that constitute a repository</p>
+<p><strong>Master</strong>: The frault or main branch, it is a version of the repository that is considered the single source of truth</p>
+<p><strong>Refrence</strong>: A Git ref or reference is a name corresponding to a commit hash</p>
+<p><strong>HEAD</strong>: A reference to the most recent commit on a branch</p>
+<p><strong>Working Tree</strong>: This refers to the section in which we view and make changes to the files in branch</p>
+<p><strong>Index</strong>: This is an area where Git holds files that have been changed, added, or removed in readiness for a commit</p>
+<p><strong>Commit</strong>: This is an entry into Git’s history that represents a change made to a set of files at a given point in time</p>
+<p><strong>Merge</strong>: A merge is the process of incorporating change from one branch to another</p>
+<p><strong>Workflows</strong>: Workflows refer to the approach a team takes to introduce changes to a code base.</p>
+<h2 id="Workflows"><a href="#Workflows" class="headerlink" title="Workflows"></a>Workflows</h2><p><strong>Gitflow workflow</strong></p>
+<ul>
+<li>This uses two branches: master and develop</li>
+<li>The master branch is used to track release history, while the develop branch is used to track feature integration into the product.</li>
+</ul>
+<p><strong>Centralized workflow</strong></p>
+<ul>
+<li>This approach uses the master branch as the default development branch.</li>
+<li>The changes are committed to the master branch.</li>
+<li>It’s a suitable workflow for small size teams and teams transitioning from Apache Subversion.</li>
+<li>In Apache Subversion, the trunk is the equivalent of the master branch.</li>
+</ul>
+<p><strong>Feature branch workflow</strong></p>
+<ul>
+<li>In this workflow, feature development is carried out in a dedicated branch.</li>
+<li>The branch is then merged to the master once the intended changes are approved.</li>
+</ul>
+<p><strong>Forking workflow</strong></p>
+<ul>
+<li>The individual seeking to make a change to a repository, makes a copy of the desired repository in their respective GitHub account.</li>
+<li>The changes are made in the copy of the source repository and then it’s merged to the source repository throught a pull request.</li>
+</ul>
+<h1 id="Navigating-GitHub"><a href="#Navigating-GitHub" class="headerlink" title="Navigating GitHub"></a>Navigating GitHub</h1><h2 id="Organizations"><a href="#Organizations" class="headerlink" title="Organizations"></a>Organizations</h2><p><strong>Role-based membership</strong></p>
+<ul>
+<li><p>Each personal account that is added to an organization can belong to one of the aforementioned roles.</p>
+</li>
+<li><p>The owner role is the most superior and is used to conduct administrative procedures.<br><strong>Repository level permissions</strong></p>
+<pre class="mermaid">graph TD;
+ Read-->Write;
+ Write-->Admin;</pre></li>
+<li>Teams or their respective members can be assigned read, write, or admin-level permissions to a repository.</li>
+<li>Each level dictates activities that the assigned members undertake, with a varying degree of limitations.<br><strong>Teams</strong></li>
+<li>There are members of an organization that can be grouped into teams, with the option of nesting the teams to match an organization’s structure.<br><strong>Multi-factor authentication</strong></li>
+<li>Organizations support the enforcement of two-factor authentication as well as business-specific single sign-on approaches such as <strong>Security Assertion Markup Language (SAML)</strong> and <strong>System for Corss-domain Identity Management</strong> (SCIM).<h3 id="Market-place-install-codacy"><a href="#Market-place-install-codacy" class="headerlink" title="Market place install codacy"></a>Market place install codacy</h3></li>
+</ul>
+<h1 id="Runtime-config"><a href="#Runtime-config" class="headerlink" title="Runtime config"></a>Runtime config</h1><p>Git configurations are set in three levels:</p>
+<ul>
+<li>System-wide configuration<ul>
+<li>set in the <strong>/etc/gitconfig</strong> file</li>
+<li>access use <strong>git config –system</strong></li>
+</ul>
+</li>
+<li>User specific configuraton<ul>
+<li>~/.gitconfig</li>
+<li>git config –global</li>
+</ul>
+</li>
+<li>Repository-specific configuration<ul>
+<li>Repository specific settings are set in the <strong>path_to_repository/.git/config</strong></li>
+<li>An example of configuration is the GitHub URL of a repository, which set at this level.</li>
+<li>There settings are accessed via <strong>git config –local</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="Removing-configuratoin"><a href="#Removing-configuratoin" class="headerlink" title="Removing configuratoin"></a>Removing configuratoin</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global --unset [section_name].[section_variable]</span><br></pre></td></tr></table></figure>
+<p>exampel:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global --unset user.name</span><br></pre></td></tr></table></figure></p>
+<p>create a ssh key:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096 -C foobar@cwzhou.win</span><br></pre></td></tr></table></figure></p>
+<h1 id="Fundamentails-of-repositories"><a href="#Fundamentails-of-repositories" class="headerlink" title="Fundamentails of repositories"></a>Fundamentails of repositories</h1><p><strong>Tags</strong><br>There are used for the purpose of identifying specific significant points on a repository’s history.</p>
+<ul>
+<li><p>lightweight tages<br>Lightweight tags act as pointers to a specific commit. It only stores the reference to the commit: <strong>git tag v2.5</strong></p>
+</li>
+<li><p>annotated tags<br>Annotated tags act as pointers to a specific commit and additionally store information about the creator of the tag, the email, and date of creation:<br> <strong>git tag -a v2.6 -m “Support sdk version 3”</strong></p>
+</li>
+</ul>
+<h1 id="Versioning-Commits"><a href="#Versioning-Commits" class="headerlink" title="Versioning Commits"></a>Versioning Commits</h1><p>In git, files can have the following statuses:</p>
+<ul>
+<li>Untracked: This is a file that exists in the working tree whose changes are not being monitored by Git and aren’t listed in the <strong>gitignore</strong> file.</li>
+<li>Unstaged: This is a file whose changes are being tracked by Git; the file has been changed since the last commit and has yet to be moved to the <strong>index</strong>.</li>
+<li>Staged: This is a file whose changes are being tracked by Git; the file has been changed since the last commit and has been moved to the index.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
+<ul>
+<li>It’s used to retrieve the details of files that are untracked, unstaged, or staged.</li>
+<li><strong>git status</strong> lists files in order of their statuses.</li>
+<li>The <strong>git status</strong> output is lengthy in nature</li>
+<li>To view a brief list and status, use the <strong>-s</strong> or <strong>–short</strong> option with the <strong>git status</strong> command.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">szhou@armitage:~/DevOps/github/foobar|master</span><br><span class="line">⇒  git branch ft-add-encapsulating-class</span><br><span class="line">szhou@armitage:~/DevOps/github/foobar|master</span><br><span class="line">⇒  git checkout ft-add-encapsulating-class</span><br><span class="line">Switched to branch &apos;ft-add-encapsulating-class&apos;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>ft is feature branch, bg for bug, fs for rolling out hard fixes, ch for<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add . &amp;&amp; git commit -m &quot;Added a class for match functions&quot; &amp;&amp; git push origin ft-add-encapsulating-class</span><br></pre></td></tr></table></figure></p>
+<p><strong>git diff</strong></p>
+<ul>
+<li>The git diff command is uesed to compare one snapshot of changes to another.</li>
+</ul>
+<p>zoom in the change:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">szhou@armitage:~/DevOps/github/foobar|ft-add-encapsulating-class⚡</span><br><span class="line">⇒  git diff</span><br><span class="line">szhou@armitage:~/DevOps/github/foobar|ft-add-encapsulating-class⚡</span><br><span class="line">⇒  git diff src/lib</span><br><span class="line">szhou@armitage:~/DevOps/github/foobar|ft-add-encapsulating-class⚡</span><br><span class="line">⇒  git diff src/lib/compute.py</span><br></pre></td></tr></table></figure></p>
+<p>Undo the change<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rest --hard</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git diff HEAD -- src/</span><br><span class="line">git log</span><br><span class="line">git diff master</span><br><span class="line">git diff --cached</span><br><span class="line">git diff ft-add-encapsulating-class..ft-support-multiplication-arithmetic</span><br></pre></td></tr></table></figure>
+<p><strong>git add</strong></p>
+<ul>
+<li>is used to add files to the index from the working tree.</li>
+<li>syntax: <strong>git add [options] [path_to_files]</strong></li>
+</ul>
+<p>The options used with <strong>git add</strong> include <strong>-n</strong> and <strong>–dry-run</strong>: simulates the behaviour of git add for the specified file.</p>
+<p><strong>-f</strong> or <strong>–force</strong>: adds ignored files to the index.</p>
+<p><strong>-i</strong> or <strong>–interactive</strong>: creates an interactive prompt that can be used for adding files from the working tree to the index.</p>
+<p><strong>-por –patch</strong>: caters for adding portions of a file to the index.</p>
+<p><strong>options</strong>:</p>
+<ul>
+<li>?: Print help</li>
+<li>y: Stage this hunk</li>
+<li>n: Do not stage this hunk</li>
+<li>q: Exit or quit. Do not stage this hunk or any of the remaining hunks.</li>
+<li>a: Stage this hunk and all later hunks in the specified files</li>
+<li>d: Do not stage this hunk or any of the remaining hunks in the file</li>
+<li>g: Select a hunk to go to</li>
+<li>/: Search for the hunk that matches the specified regex pattern</li>
+<li>j: Leave this hunk undecided; see the next undecided hunk</li>
+<li>J: Leave this hunk undecided; see the next hunk</li>
+<li>k: Leave this hunk undecided; see the previous undecided hunk</li>
+<li>K: Leave this hunk undecided; see the previous hunk</li>
+<li>s: Split the current hunk into more granular hunks</li>
+<li>e: Manually edit the current hunk</li>
+</ul>
+<p><strong>git commit</strong></p>
+<ul>
+<li>The <strong>git commit</strong> command saves the files in the index.</li>
+<li>The commit operation stores a message along with the commit.</li>
+<li>This message describes the additions or alterations associated with the created snapshot.</li>
+</ul>
+<p>Note: the <strong>git commit</strong> command requires that a message be provided for each commit operation.<br><strong>options</strong>:</p>
+<ul>
+<li>-m [text] or –message [text]: associate the index file with the commit action</li>
+<li>-a or -all: stage tracked files that are unstaged</li>
+<li>-p or –patch: interactive patch tool</li>
+<li>-C [commit hash] or –resue-message=[commit hash]: resue a commit message and the author information of the specified commit hash</li>
+<li>-F [file] or –file=[file]: specifies a file from which a commit message should be obtained</li>
+<li>-t [file] or –template [file]: specifies the commit message template file</li>
+<li>-e or –edit: edits the provided commit message</li>
+<li>–no-edit: uses the specified message as is</li>
+<li>–author=[author]: overrides the details fo a commit author</li>
+<li>–date=[date]: overrides the data details used in a commit</li>
+<li>-q or –quiet: suppresses the summary message that’s returned after running the <strong>git commit</strong> command</li>
+</ul>
+<p><strong>git rm</strong></p>
+<p>The <strong>git rm</strong> command performs two roles.</p>
+<ul>
+<li>Removes files from the working directory and the index</li>
+<li>Remove files from index<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vim src/lib/scientific.py</span><br><span class="line">git add . &amp;&amp; git commit -m &quot;Added sci module&quot;</span><br><span class="line">git rm src/lib/scientific.py</span><br><span class="line">git status</span><br><span class="line">git commit -m &quot;Removed sci module&quot;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>git mv</strong></p>
+<ul>
+<li>used to rename or move a file or a directory</li>
+<li>This command has two forms of implementation:<ul>
+<li>git mv [options][source][destination]: used to rename a file</li>
+<li>git mv [options][source]…[destination]: used to move a file</li>
+</ul>
+</li>
+</ul>
+<p><strong>git log command</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">git log --follow src/lib/advanced/advanced_compute.py</span><br><span class="line">git log --decorate=full</span><br><span class="line">git log --decorate=short</span><br><span class="line">git log --decorate=no</span><br><span class="line">git log -L 6,12:src/lib/compute.py</span><br><span class="line">git log -n 3</span><br><span class="line">git log -3</span><br><span class="line">git log --skip=4</span><br><span class="line">git log --since=01/01/2018</span><br><span class="line">git log --pretty=oneline</span><br><span class="line">git log --pretty=short</span><br><span class="line">git log --pretty=medium</span><br><span class="line">git log --pretty=format:&quot;%H %an&quot;</span><br></pre></td></tr></table></figure></p>
+<h2 id="Amending-commits"><a href="#Amending-commits" class="headerlink" title="Amending commits"></a>Amending commits</h2><p>The most recent commit can be edited using the –amend option of the <strong>git commit</strong> command.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">git commit --amend</span><br><span class="line">git rebase -i HEAD~4  # retrv the last 4 commits</span><br><span class="line">pick 721d2ec Removed sci module</span><br><span class="line">pick fc150d2 Added sci module</span><br><span class="line">pick 4be4d85 Rename scientific module</span><br><span class="line">pick 9a8a4ea Moved scientific module</span><br><span class="line"></span><br><span class="line">change pick to reword save and quit the file.</span><br><span class="line"></span><br><span class="line">## change the file</span><br><span class="line">git rebase -i HEAD~3</span><br><span class="line">change pick to edit save and quit the file.</span><br><span class="line">vim src/lib/advanced/advanced_compute.py</span><br><span class="line">git status</span><br><span class="line">git add .</span><br><span class="line">git commit --amend</span><br><span class="line">git rebase --continue</span><br><span class="line">git log -4</span><br></pre></td></tr></table></figure></p>
+<p><a href="https://dev.to/lydiahallie/cs-visualized-useful-git-commands-37p1">CS Visualized: Useful Git Commands</a></p>
+<h1 id="Git-merge-with-No-Fast-Forward-technique"><a href="#Git-merge-with-No-Fast-Forward-technique" class="headerlink" title="Git merge with No-Fast-Forward technique"></a>Git merge with No-Fast-Forward technique</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">git-demo-project git:(demo-branch) ✗ git commit -am &quot;commit 1 from demo-branch&quot;</span><br><span class="line">[demo-branch 0280912] commit 1 from demo-branch</span><br><span class="line"> 1 file changed, 1 insertion(+)</span><br><span class="line"> create mode 100644 test-no-ff-merge-file</span><br><span class="line">➜  git-demo-project git:(demo-branch) echo &apos;line 2&apos; &gt;&gt; test-no-ff-merge-file</span><br><span class="line">➜  git-demo-project git:(demo-branch) ✗ git commit -am &quot;commit 2 from demo-branch&quot;</span><br><span class="line">[demo-branch ca0b8d0] commit 2 from demo-branch</span><br><span class="line"> 1 file changed, 1 insertion(+)</span><br><span class="line">➜  git-demo-project git:(demo-branch) git log --oneline</span><br><span class="line">➜  git-demo-project git:(demo-branch) cat test-no-ff-merge-file</span><br><span class="line">line 1</span><br><span class="line">line 2</span><br><span class="line">➜  git-demo-project git:(demo-branch) git checkout master</span><br><span class="line">Switched to branch &apos;master&apos;</span><br><span class="line">➜  git-demo-project git:(master) git log --oneline</span><br><span class="line">➜  git-demo-project git:(master) ls</span><br><span class="line">readme.md  testffmergefile  test.html</span><br><span class="line">➜  git-demo-project git:(master) git diff master demo-branch</span><br><span class="line">➜  git-demo-project git:(master) git merge demo-branch --no-ff</span><br><span class="line">Merge made by the &apos;recursive&apos; strategy.</span><br><span class="line"> test-no-ff-merge-file | 2 ++</span><br><span class="line"> 1 file changed, 2 insertions(+)</span><br><span class="line"> create mode 100644 test-no-ff-merge-file</span><br><span class="line">➜  git-demo-project git:(master) cat test-no-ff-merge-file</span><br><span class="line">line 1</span><br><span class="line">line 2</span><br><span class="line">➜  git-demo-project git:(master) git log --oneline --decorate --graph</span><br><span class="line">➜  git-demo-project git:(master) git branch -d demo-branch</span><br><span class="line">Deleted branch demo-branch (was ca0b8d0).</span><br></pre></td></tr></table></figure>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/git/">git</a><a href="/tags/github/">github</a><a href="/tags/version-control/">version control</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2019/06/28/ansible/" title="ansible" itemprop="url">ansible</a>
   </h1>
   <p class="article-author">By
@@ -652,7 +868,6 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line">[ec2-user@ip-172-31-4-9 ~]$ kubectl get all -n monitoring</span><br><span class="line">NAME                                                         READY   STATUS    RESTARTS   AGE</span><br><span class="line">pod/alertmanager-monitoring-prometheus-oper-alertmanager-0   2/2     Running   0          4m</span><br><span class="line">pod/monitoring-grafana-c768bb86f-cgmj8                       2/2     Running   0          4m27s</span><br><span class="line">pod/monitoring-kube-state-metrics-6488587c6-zrjmg            1/1     Running   0          4m27s</span><br><span class="line">pod/monitoring-prometheus-node-exporter-5cp7v                1/1     Running   0          4m27s</span><br><span class="line">pod/monitoring-prometheus-node-exporter-75v99                1/1     Running   0          4m27s</span><br><span class="line">pod/monitoring-prometheus-node-exporter-jcl7r                1/1     Running   0          4m27s</span><br><span class="line">pod/monitoring-prometheus-node-exporter-vptns                1/1     Running   0          4m27s</span><br><span class="line">pod/monitoring-prometheus-oper-operator-7b54f56766-j8k6c     1/1     Running   0          4m27s</span><br><span class="line">pod/prometheus-monitoring-prometheus-oper-prometheus-0       3/3     Running   1          3m52s</span><br><span class="line"></span><br><span class="line">NAME                                              TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)             AGE</span><br><span class="line">service/alertmanager-operated                     ClusterIP   None             &lt;none&gt;        9093/TCP,6783/TCP   4m</span><br><span class="line">service/monitoring-grafana                        ClusterIP   100.70.116.236   &lt;none&gt;        80/TCP              4m28s</span><br><span class="line">service/monitoring-kube-state-metrics             ClusterIP   100.67.183.154   &lt;none&gt;        8080/TCP            4m28s</span><br><span class="line">service/monitoring-prometheus-node-exporter       ClusterIP   100.68.145.110   &lt;none&gt;        9100/TCP            4m28s</span><br><span class="line">service/monitoring-prometheus-oper-alertmanager   ClusterIP   100.70.75.68     &lt;none&gt;        9093/TCP            4m28s</span><br><span class="line">service/monitoring-prometheus-oper-operator       ClusterIP   100.66.237.147   &lt;none&gt;        8080/TCP            4m28s</span><br><span class="line">service/monitoring-prometheus-oper-prometheus     ClusterIP   100.67.205.22    &lt;none&gt;        9090/TCP            4m28s</span><br><span class="line">service/prometheus-operated                       ClusterIP   None             &lt;none&gt;        9090/TCP            3m53s</span><br><span class="line"></span><br><span class="line">NAME                                                 DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE</span><br><span class="line">daemonset.apps/monitoring-prometheus-node-exporter   4         4         4       4            4           &lt;none&gt;          4m27s</span><br><span class="line"></span><br><span class="line">NAME                                                  DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE</span><br><span class="line">deployment.apps/monitoring-grafana                    1         1         1            1           4m27s</span><br><span class="line">deployment.apps/monitoring-kube-state-metrics         1         1         1            1           4m27s</span><br><span class="line">deployment.apps/monitoring-prometheus-oper-operator   1         1         1            1           4m27s</span><br><span class="line"></span><br><span class="line">NAME                                                             DESIRED   CURRENT   READY   AGE</span><br><span class="line">replicaset.apps/monitoring-grafana-c768bb86f                     1         1         1       4m27s</span><br><span class="line">replicaset.apps/monitoring-kube-state-metrics-6488587c6          1         1         1       4m27s</span><br><span class="line">replicaset.apps/monitoring-prometheus-oper-operator-7b54f56766   1         1         1       4m27s</span><br><span class="line"></span><br><span class="line">NAME                                                                    DESIRED   CURRENT   AGE</span><br><span class="line">statefulset.apps/alertmanager-monitoring-prometheus-oper-alertmanager   1         1         4m</span><br><span class="line">statefulset.apps/prometheus-monitoring-prometheus-oper-prometheus       1         1         3m53s</span><br><span class="line"></span><br><span class="line">[ec2-user@ip-172-31-4-9 ~]$ kubectl edit -n monitoring service/monitoring-prometheus-oper-prometheus</span><br><span class="line"></span><br><span class="line">Change type from ClusterIP to LoadBalancer</span><br><span class="line"></span><br><span class="line">[ec2-user@ip-172-31-4-9 ~]$ kubectl get all -n monitoring</span><br><span class="line">NAME                                                         READY   STATUS    RESTARTS   AGE</span><br><span class="line">pod/alertmanager-monitoring-prometheus-oper-alertmanager-0   2/2     Running   0          16m</span><br><span class="line">pod/monitoring-grafana-c768bb86f-cgmj8                       2/2     Running   0          17m</span><br><span class="line">pod/monitoring-kube-state-metrics-6488587c6-zrjmg            1/1     Running   0          17m</span><br><span class="line">pod/monitoring-prometheus-node-exporter-5cp7v                1/1     Running   0          17m</span><br><span class="line">pod/monitoring-prometheus-node-exporter-75v99                1/1     Running   0          17m</span><br><span class="line">pod/monitoring-prometheus-node-exporter-jcl7r                1/1     Running   0          17m</span><br><span class="line">pod/monitoring-prometheus-node-exporter-vptns                1/1     Running   0          17m</span><br><span class="line">pod/monitoring-prometheus-oper-operator-7b54f56766-j8k6c     1/1     Running   0          17m</span><br><span class="line">pod/prometheus-monitoring-prometheus-oper-prometheus-0       3/3     Running   1          16m</span><br><span class="line"></span><br><span class="line">NAME                                              TYPE           CLUSTER-IP       EXTERNAL-IP                                                                    PORT(S)             AGE</span><br><span class="line">service/alertmanager-operated                     ClusterIP      None             &lt;none&gt;                                                                         9093/TCP,6783/TCP   16m</span><br><span class="line">service/monitoring-grafana                        ClusterIP      100.70.116.236   &lt;none&gt;                                                                         80/TCP              17m</span><br><span class="line">service/monitoring-kube-state-metrics             ClusterIP      100.67.183.154   &lt;none&gt;                                                                         8080/TCP            17m</span><br><span class="line">service/monitoring-prometheus-node-exporter       ClusterIP      100.68.145.110   &lt;none&gt;                                                                         9100/TCP            17m</span><br><span class="line">service/monitoring-prometheus-oper-alertmanager   ClusterIP      100.70.75.68     &lt;none&gt;                                                                         9093/TCP            17m</span><br><span class="line">service/monitoring-prometheus-oper-operator       ClusterIP      100.66.237.147   &lt;none&gt;                                                                         8080/TCP            17m</span><br><span class="line">service/monitoring-prometheus-oper-prometheus     LoadBalancer   100.67.205.22    a86903ccd8ce211e9bef7028ed3b83c9-1698452662.ap-southeast-2.elb.amazonaws.com   9090:32096/TCP      17m</span><br><span class="line">service/prometheus-operated                       ClusterIP      None             &lt;none&gt;                                                                         9090/TCP            16m</span><br><span class="line"></span><br><span class="line">NAME                                                 DESIRED   CURRENT   READY   UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE</span><br><span class="line">daemonset.apps/monitoring-prometheus-node-exporter   4         4         4       4            4           &lt;none&gt;          17m</span><br><span class="line"></span><br><span class="line">NAME                                                  DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE</span><br><span class="line">deployment.apps/monitoring-grafana                    1         1         1            1           17m</span><br><span class="line">deployment.apps/monitoring-kube-state-metrics         1         1         1            1           17m</span><br><span class="line">deployment.apps/monitoring-prometheus-oper-operator   1         1         1            1           17m</span><br><span class="line"></span><br><span class="line">NAME                                                             DESIRED   CURRENT   READY   AGE</span><br><span class="line">replicaset.apps/monitoring-grafana-c768bb86f                     1         1         1       17m</span><br><span class="line">replicaset.apps/monitoring-kube-state-metrics-6488587c6          1         1         1       17m</span><br><span class="line">replicaset.apps/monitoring-prometheus-oper-operator-7b54f56766   1         1         1       17m</span><br><span class="line"></span><br><span class="line">NAME                                                                    DESIRED   CURRENT   AGE</span><br><span class="line">statefulset.apps/alertmanager-monitoring-prometheus-oper-alertmanager   1         1         16m</span><br><span class="line">statefulset.apps/prometheus-monitoring-prometheus-oper-prometheus       1         1         16m</span><br></pre></td></tr></table></figure>
 <h2 id="Working-with-Grafana"><a href="#Working-with-Grafana" class="headerlink" title="Working with Grafana"></a>Working with Grafana</h2><p>change back from LoadBalancer to ClusterIP on service/monitoring-prometheus-oper-prometheus<br>change from ClusterIP to LoadBalancer on service/monitoring-grafana </p>
 <h1 id="The-Alert-Manager"><a href="#The-Alert-Manager" class="headerlink" title="The Alert Manager"></a>The Alert Manager</h1><h2 id="Alerting"><a href="#Alerting" class="headerlink" title="Alerting"></a>Alerting</h2><h1 id="Kubernetes-Tutorial"><a href="#Kubernetes-Tutorial" class="headerlink" title="Kubernetes Tutorial"></a>Kubernetes Tutorial</h1><p><a href="https://gitlab.com/nanuchi/youtube-tutorial-series">https://gitlab.com/nanuchi/youtube-tutorial-series</a></p>
-<p>stan test</p>
 
         
         
@@ -1247,208 +1462,9 @@
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2019/05/05/docker/" title="docker" itemprop="url">docker</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Stan Zhou" target="_blank" itemprop="author">Stan Zhou</a>
-		
-  <p class="article-time">
-    <time datetime="2019-05-05T06:47:47.000Z" itemprop="datePublished"> Published 2019-05-05</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p><strong>what is docker</strong></p>
-<ul>
-<li>Open platform</li>
-<li>Build, ship, and run applications</li>
-<li>Popular because:<ul>
-<li>Flexible</li>
-<li>Lightweight</li>
-<li>Interchangeable</li>
-<li>Portable</li>
-<li>Scalable<h2 id="List-Docker-CLI-commands"><a href="#List-Docker-CLI-commands" class="headerlink" title="List Docker CLI commands"></a>List Docker CLI commands</h2></li>
-</ul>
-</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">docker</span><br><span class="line">docker container --<span class="built_in">help</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## Display Docker version and info</span></span><br><span class="line">docker --version</span><br><span class="line">docker version</span><br><span class="line">docker info</span><br><span class="line"></span><br><span class="line"><span class="comment">## Execute Docker image</span></span><br><span class="line">docker run hello-world</span><br><span class="line"></span><br><span class="line"><span class="comment">## List Docker images</span></span><br><span class="line">docker image ls</span><br><span class="line"></span><br><span class="line"><span class="comment">## List Docker containers (running, all, all in quiet mode)</span></span><br><span class="line">docker container ls</span><br><span class="line">docker container ls --all</span><br><span class="line">docker container ls -aq</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">docker build -t friendlyhello .  <span class="comment"># Create image using this directory's Dockerfile</span></span><br><span class="line">docker run -p 4000:80 friendlyhello  <span class="comment"># Run "friendlyhello" mapping port 4000 to 80</span></span><br><span class="line">docker run -d -p 4000:80 friendlyhello         <span class="comment"># Same thing, but in detached mode</span></span><br><span class="line">docker container ls                                <span class="comment"># List all running containers</span></span><br><span class="line">docker container ls -a             <span class="comment"># List all containers, even those not running</span></span><br><span class="line">docker container stop &lt;<span class="built_in">hash</span>&gt;           <span class="comment"># Gracefully stop the specified container</span></span><br><span class="line">docker container <span class="built_in">kill</span> &lt;<span class="built_in">hash</span>&gt;         <span class="comment"># Force shutdown of the specified container</span></span><br><span class="line">docker container rm &lt;<span class="built_in">hash</span>&gt;        <span class="comment"># Remove specified container from this machine</span></span><br><span class="line">docker container rm $(docker container ls -a -q)         <span class="comment"># Remove all containers</span></span><br><span class="line">docker image ls -a                             <span class="comment"># List all images on this machine</span></span><br><span class="line">docker image rm &lt;image id&gt;            <span class="comment"># Remove specified image from this machine</span></span><br><span class="line">docker image rm $(docker image ls -a -q)   <span class="comment"># Remove all images from this machine</span></span><br><span class="line">docker login             <span class="comment"># Log in this CLI session using your Docker credentials</span></span><br><span class="line">docker tag &lt;image&gt; username/repository:tag  <span class="comment"># Tag &lt;image&gt; for upload to registry</span></span><br><span class="line">docker push username/repository:tag            <span class="comment"># Upload tagged image to registry</span></span><br><span class="line">docker run username/repository:tag                   <span class="comment"># Run image from a registry</span></span><br></pre></td></tr></table></figure>
-<h1 id="Beginning-Devops-with-Docker"><a href="#Beginning-Devops-with-Docker" class="headerlink" title="Beginning Devops with Docker"></a>Beginning Devops with Docker</h1><h2 id="Chapter-1-Images-and-Containers"><a href="#Chapter-1-Images-and-Containers" class="headerlink" title="Chapter 1. Images and Containers"></a>Chapter 1. Images and Containers</h2><p><strong>Virtualization versus Containerization</strong><br><img src="https://i.imgur.com/KKfsLxn.png" alt="virtual machine block diagram"><br>In virtual machines, the physical hardware is abstracted, therefore we have may server running on one server. Virtual machines do sometimes take time to start up and are expensive in capacity (they can be GBs in size), although the greatest advantage they have over containers is the ability to run different Linux distributions such as CentOS instead of just Ubuntu.</p>
-<p><img src="https://i.imgur.com/rWfUi8x.png" alt="containerization"><br>In containerization, it is only the app layer (where code and dependencies are packaged) that is abstracted, making it possible for many containers to run on the same OS kernel but on separate user space.</p>
-<p>Containers use less space and boot fast.</p>
-<ul>
-<li>Describe how Docker improves a DevOps workflow<br>Normally, we have two pieces to a working application: the project code base and the provisioning script. The code base is the application code. It is managed by version control and hosted in GitHub, among other platforms.<br><img src="https://i.imgur.com/7bpoPrj.png" alt="Docker implements"><br>The <strong>Dockerfile</strong> takes the place of the provisioning script. The two combined (project code and Dockerfile) make a <strong>Docker image</strong>. A Docker image can be run as an application. This running application sourced from a Docker image is called a <strong>Docker container</strong>.</li>
-</ul>
-<p><strong>Basic Docker Terminal Commands</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">docker info ## displays system-wide information</span><br><span class="line">docker search &lt;term&gt; (foir example. docker search ubuntu) ##searches Docker Hub for Images</span><br><span class="line">docker pull ## pulls an image from the registry to your local machine eg docker pull ubuntu</span><br><span class="line">docker images ## lists the Docker images we have locally</span><br><span class="line">docker run &lt;image&gt; #will check whether the image by the name hello-world exists locally,if the image is</span><br><span class="line">not local, it will be pulled form the default registry, Docker Hub, and run as a container, by default</span><br><span class="line"></span><br><span class="line">docker ps ## lists the running containers</span><br><span class="line">docker stop &lt;container ID&gt;  ## stop the container </span><br><span class="line">docker rm &lt;container ID&gt; ## Delete the container and the image</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li>Interpret Dockerfile syntax</li>
-<li>Build images</li>
-<li>Set up containers and images</li>
-<li>Set up a local dynamic environment</li>
-<li>Run applications in Docker containers</li>
-<li>Obtain a basic overview of how Docker manages images via Docker Hub</li>
-<li>Deploy a Docker image to Docker Hub</li>
-</ul>
-<p><strong>The Dockerfile</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">FROM openjdk:8-jre-alpine</span><br><span class="line"></span><br><span class="line">ENV SPRING_OUTPUT_ANSI_ENABLED=ALWAYS \</span><br><span class="line">    JHIPSTER_SLEEP=0 \</span><br><span class="line">    JAVA_OPTS=&quot;&quot;</span><br><span class="line"></span><br><span class="line">CMD echo &quot;The application will start in $&#123;JHIPSTER_SLEEP&#125;s...&quot; &amp;&amp; \</span><br><span class="line">    sleep $&#123;JHIPSTER_SLEEP&#125; &amp;&amp; \</span><br><span class="line">    java $&#123;JAVA_OPTS&#125; -Djava.security.egd=file:/dev/./urandom -jar /app.war</span><br><span class="line"></span><br><span class="line">EXPOSE 8080 5701/udp</span><br><span class="line"></span><br><span class="line">ADD *.war /app.war</span><br></pre></td></tr></table></figure></p>
-<p>The <strong>FROM</strong> instruction specifies the base image to use while initializing the build. Here, we specify open JDK 8 as our Java runtime.</p>
-<p>The <strong>ENV</strong> instruction is used to set environment variables, and the <strong>CMD</strong> instruction is used to specify commands to be executed.</p>
-<p>The <strong>EXPOSE</strong> instruction is used to specify the port that the container listens to during runtime.</p>
-<p><strong>useful commands for Docker and Docker compose</strong><br><img src="https://i.imgur.com/FAExCVU.png" alt="commands1"><br><img src="https://i.imgur.com/LtTRrfD.png" alt="commands2"></p>
-<h2 id="Docker-compose"><a href="#Docker-compose" class="headerlink" title="Docker-compose"></a>Docker-compose</h2><p><strong>Sample docker-compose file that will start a Rdis database on port 5000</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">version: &apos;3&apos;</span><br><span class="line">services:</span><br><span class="line">  web:</span><br><span class="line">    build: .</span><br><span class="line">    ports:</span><br><span class="line">     - &quot;5000:5000&quot;</span><br><span class="line">  redis:</span><br><span class="line">    image: &quot;redis:alpine&quot;</span><br></pre></td></tr></table></figure></p>
-<p>The first line of the <em>docker-compose</em> file should be the version of the <em>docker-compose</em> tool. </p>
-<p>Then we need to specify all the necessary services that we need for our application to run. They should be defined in the <em>services:</em> section.</p>
-<p>We can also define multiple services inside here, giving a name to each (<em>web</em> and <em>redis</em>).</p>
-<p>This is followed by how to build the <em>service</em> (either via a command to build or referring a Dockerfile). </p>
-<p>If the application needs any port access, we can configure it using <em>5000:5000</em> (that is internal port: external port). </p>
-<p>Then, we have to specify the volume information. This basically tells <em>docker-compose</em> to serve the files from the location specified.   </p>
-<p>Once we have specified the services required for our application, then we can start the application via <em>docker-compose</em>. This will start your entire application along with the services, and expose the <em>services</em> on the port specified. </p>
-<p>With <em>docker-compose</em>, we can perform the following operations:</p>
-<ul>
-<li><strong>Start</strong>: docker-compose -f &lt;docker_file&gt; up</li>
-<li><p><strong>Stop</strong>: docker-compose -f &lt;docker_file&gt; down<br>We can also perform the following operations:</p>
-</li>
-<li><p><strong>List the running services and their status</strong>: <em>docker ps</em></p>
-</li>
-<li><strong>Logs</strong>: <em>docker log &lt;container_id&gt;</em></li>
-</ul>
-<h2 id="Kubernetes"><a href="#Kubernetes" class="headerlink" title="Kubernetes"></a>Kubernetes</h2><p>A single deployable component is called a <strong>pod</strong> in Kubernetes. This can be as simple as a running process in the container. A group of pods can be combined together to form a <strong>deployment</strong>. </p>
-<p>The following code is a sample Kubernetes file that will start a Nginx server:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: v1</span><br><span class="line">kind: Service</span><br><span class="line">metadata:</span><br><span class="line">  name: nginxsvc</span><br><span class="line">  labels:</span><br><span class="line">    app: nginx</span><br><span class="line">spec:</span><br><span class="line">  type: NodePort</span><br><span class="line">  ports:</span><br><span class="line">  - port: 80</span><br><span class="line">    protocol: TCP</span><br><span class="line">    name: http</span><br><span class="line">  - port: 443</span><br><span class="line">    protocol: TCP</span><br><span class="line">    name: https</span><br><span class="line">  selector:</span><br><span class="line">    app: nginx</span><br></pre></td></tr></table></figure></p>
-<ol>
-<li><p>Start with an <em>apiVersion</em> in a Kubernetes deployment file.</p>
-</li>
-<li><p>Followed by the type, which takes either a pod, deployment, namespace, ingress (load balancing the pods), role, and many more.</p>
-</li>
-</ol>
-<p>Ingress forms a layer between the services and the internet so that all the inbound connections are controlled or configured with the ingress controller before sending them to Kubernetes services on the cluster. On the other hand, the egress controller controls or configures services going out of the Kubernetes cluster.</p>
-<ol start="3">
-<li><p>This is followed by the metadata information, such as the type of environments, the application name (nginxsvc), and labels (Kubernetes uses this information to identify and segregate the pods). Kubernetes uses this metadata information to identify the particular pods or a group of pods, and we can manage the instances with this metadata. This is one of the key differences with docker-compose, where docker-compose doesn’t have the flexibility of defining the metadata about the containers.</p>
-</li>
-<li><p>This is followed by the spec, where we define the specification of the images or our application. We can also define the pull strategy for our images as well as define the environment variables along with the exposed ports. We can define the resource limitations on the machine (or VM) for a particular service. They provide health checks, that is, each service is monitored for the health and when some services fail, they are immediately replaced by newer ones. They also provide service discovery out of the box, by assigning each pod an IP, which makes it easier for the services to identify and interact with them. They also provide a better dashboard, to visualize your architecture and the status of the application. You can do most of the management via this dashboard, such as checking the status, logs, scale up, or down the services, and so on.</p>
-</li>
-</ol>
-<h2 id="Docker-ps-command"><a href="#Docker-ps-command" class="headerlink" title="Docker ps command"></a>Docker ps command</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">docker ps --format <span class="string">"table &#123;&#123;.ID&#125;&#125; \t &#123;&#123;.Image&#125;&#125; \t &#123;&#123;.Ports&#125;&#125; \t &#123;&#123;.Names&#125;&#125;"</span></span><br><span class="line">CONTAINER ID         IMAGE                   PORTS                                                NAMES</span><br><span class="line">7d3a6d518e8e         jenkinsci/blueocean     0.0.0.0:8080-&gt;8080/tcp, 0.0.0.0:50000-&gt;50000/tcp     jenkins</span><br><span class="line">9655eb0e836e         alpine                                                                       quotes</span><br><span class="line">root@stan-OptiPlex-380:~|⇒  docker ps --format <span class="string">"table &#123;&#123;.ID&#125;&#125; \t &#123;&#123;.Names &#125;&#125; \t &#123;&#123;.Status&#125;&#125;"</span></span><br><span class="line">CONTAINER ID         NAMES               STATUS</span><br><span class="line">7d3a6d518e8e         jenkins             Up 2 minutes</span><br><span class="line">9655eb0e836e         quotes              Up 4 hours</span><br></pre></td></tr></table></figure>
-<h2 id="Docker-networking"><a href="#Docker-networking" class="headerlink" title="Docker networking"></a>Docker networking</h2><p>-Mostly used types</p>
-<ul>
-<li>Bridge networks<ul>
-<li>The default network driver</li>
-<li>Applications run in standalone containers that need to communicate</li>
-</ul>
-</li>
-<li>Overlay networks:<ul>
-<li>Connect multiple Docker daemons together</li>
-<li>Enable swarm services to communicate with each other</li>
-</ul>
-</li>
-</ul>
-<p><strong>Docker basic networking</strong></p>
-<ul>
-<li>Step 1: create a network and volume</li>
-</ul>
-<p>Listing and creating a network:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker network ls</span><br><span class="line">docker network create net1</span><br></pre></td></tr></table></figure></p>
-<p>Listing and creating a volume:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker volume ls</span><br><span class="line">docker volume create --driver=local --name=volume1</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><p>Step 2: start docker containers</p>
-<ul>
-<li>Starting docker containers:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker run -it --name=container1 -v volume1:/opt --network=net1 busybox sh</span><br><span class="line">docker run -it --name=container2 -v volume1:/opt --network=net1 busybox sh</span><br><span class="line">#-t is used for interactive session and t will give you the terminal</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>Step 3: test connectivity between these containers</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># ping container2</span><br><span class="line">PING container2 (172.19.0.3): 56 data bytes</span><br><span class="line">64 bytes from 172.19.0.3: seq=0 ttl=64 time=0.170 ms</span><br><span class="line">64 bytes from 172.19.0.3: seq=1 ttl=64 time=0.134 ms</span><br><span class="line">64 bytes from 172.19.0.3: seq=2 ttl=64 time=0.133 ms</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><strong>Overlay networking</strong></p>
-<p><strong>What does an overlay network do?</strong></p>
-<ul>
-<li>Containers only connect to other containers on the same network </li>
-<li>Connecting to containers on other hosts requires that the container publish the needed port </li>
-<li>Overlay network allows containers running on different hosts to connect on a private network<br><img src="https://i.imgur.com/KjgJtA0.png" alt="overlay networking"></li>
-<li>Step 1: Initiate docker swarm<blockquote>
-<p>Host1: Check networks and initiate docker swarm:<br> docker network ls<br> docker swarm init<br>Host2: Initiate swarm worker and check its networks:<br> docker swarm join –toaken foobar 192.168.10.91:2377<br> docker network ls</p>
-</blockquote>
-</li>
-<li><p>Step 2: Create overlay network and spin a docker container on host1</p>
-<blockquote>
-<p>Create an overlay network:<br> docker network create -d overlay –atachable=true swarmnet</p>
-<ul>
-<li>List networks:<br>docker network ls</li>
-<li>Spin a Docker container:<br>docker run -itd –name container1 –network swarmnet busybox</li>
-</ul>
-</blockquote>
-</li>
-<li><p>Step 3: Spin a container on host2 and check its networks</p>
-<blockquote>
-<p>List networks:<br> docker network ls</p>
-<ul>
-<li>Spin a Docker container:<br>docker run -itd –name container2 –network swarmnet busybox</li>
-<li>List networks and see new network:<br>docker network ls</li>
-</ul>
-</blockquote>
-</li>
-<li><p>Step 4: Login to the containers check its networks and sing each other</p>
-<blockquote>
-<p>Host1: Log in to the container, check IPs, and ping container on Host2:<br>   docker exec -it container1 sh<br>   ifconfig<br>   ping container2<br>Host2:  Log in to the container, check IPs, and ping container on Host1:<br>   docker exec -it container2 sh<br>   ifconfig<br>   ping container1</p>
-</blockquote>
-</li>
-</ul>
-<h1 id="upload-that-new-image-to-dockerhub"><a href="#upload-that-new-image-to-dockerhub" class="headerlink" title="upload that new image to dockerhub"></a>upload that new image to dockerhub</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker tag helloworld stanosaka/helloworld</span><br><span class="line">docker push stanosaka/helloworld</span><br></pre></td></tr></table></figure>
-<p>Cleaning up containers:We can clean up everything by stopping and removing all containers with these two handy one-line commands:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker stop $(docker ps -a -q)</span><br><span class="line">$ docker system prune</span><br></pre></td></tr></table></figure></p>
-<h1 id="Amazon-web-services-and-docker-development"><a href="#Amazon-web-services-and-docker-development" class="headerlink" title="Amazon web services and docker development"></a>Amazon web services and docker development</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">apt-get update</span><br><span class="line">apt-get install     apt-transport-https     ca-certificates     curl</span><br><span class="line">curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key</span><br><span class="line">add-apt-repository    &quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu \</span><br><span class="line">   $(lsb_release -cs) \</span><br><span class="line">   stable&quot;</span><br><span class="line">apt update</span><br><span class="line">apt-get install docker-ce docker-ce-cli containerd.io</span><br><span class="line">systemctl start docker</span><br><span class="line">systemctl status docker</span><br><span class="line"></span><br><span class="line">root@ip-172-31-6-219:~# cat dockerfile</span><br><span class="line">FROM ubuntu:16.04</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">RUN apt update</span><br><span class="line">RUN apt install -y apache2</span><br><span class="line">RUN echo &quot;Welcome to my web site&quot; &gt; /var/www/html/index.html</span><br><span class="line">CMD /usr/sbin/apache2ctl -D FOREGROUND</span><br><span class="line">EXPOSE 80</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">docker info</span><br><span class="line">docker run -it --detach=true ubuntu bash</span><br><span class="line">docker ps</span><br><span class="line">docker renmae nervous_visvesvaraya newname</span><br><span class="line">docker network inspect newnet|less</span><br><span class="line">docker network connect newnet newname</span><br><span class="line">docker inspect newname|less</span><br><span class="line">ping 172.18.0.2</span><br><span class="line">ping 172.17.0.2</span><br><span class="line">docker build -t &quot;webserver&quot; .</span><br><span class="line">docker images</span><br><span class="line">docker run -d -p 80:80 webserver /usr/sbin/apache2ctl -D FOREGROUND</span><br><span class="line">docker ps</span><br><span class="line">curl localhost</span><br><span class="line"> aws iam create-service-linked-role --aws-service-name ecs.amazonaws.com</span><br><span class="line">&#123;</span><br><span class="line">    &quot;Role&quot;: &#123;</span><br><span class="line">        &quot;AssumeRolePolicyDocument&quot;: &#123;</span><br><span class="line">            &quot;Version&quot;: &quot;2012-10-17&quot;,</span><br><span class="line">            &quot;Statement&quot;: [</span><br><span class="line">                &#123;</span><br><span class="line">                    &quot;Action&quot;: [</span><br><span class="line">                        &quot;sts:AssumeRole&quot;</span><br><span class="line">                    ],</span><br><span class="line">                    &quot;Effect&quot;: &quot;Allow&quot;,</span><br><span class="line">                    &quot;Principal&quot;: &#123;</span><br><span class="line">                        &quot;Service&quot;: [</span><br><span class="line">                            &quot;ecs.amazonaws.com&quot;</span><br><span class="line">                        ]</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            ]</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;RoleId&quot;: &quot;AROAYYRUPCKTK7Z2M2PLO&quot;,</span><br><span class="line">        &quot;CreateDate&quot;: &quot;2019-09-02T02:28:51Z&quot;,</span><br><span class="line">        &quot;RoleName&quot;: &quot;AWSServiceRoleForECS&quot;,</span><br><span class="line">        &quot;Path&quot;: &quot;/aws-service-role/ecs.amazonaws.com/&quot;,</span><br><span class="line">        &quot;Arn&quot;: &quot;arn:aws:iam::602479202982:role/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Working-with-ecs-throught-the-aws-cli"><a href="#Working-with-ecs-throught-the-aws-cli" class="headerlink" title="Working with ecs throught the aws cli"></a>Working with ecs throught the aws cli</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">aws ecs list-clusters</span><br><span class="line">aws ecs describe-clusters</span><br><span class="line">aws ecs create-cluster --cluster-name newcluster</span><br></pre></td></tr></table></figure>
-<p><strong>Configure ECS to authenticate with Docker Hub</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#1.ssh to ecs server</span><br><span class="line">cd /etc/ecs</span><br><span class="line">[root@ip-172-31-13-18 ecs]# vim ecs.config</span><br><span class="line">ECS_ENGINE_AUTH_TYPE=docker</span><br><span class="line">ECS_ENGINE_AUTH_DATA=&#123;&quot;https://index.docker.io/v1/&quot;:&#123;&quot;username&quot;:&quot;foobar&quot;,&quot;password&quot;:&quot;badpassword&quot;,&quot;email&quot;:&quot;foo.bar@gmail.com&quot;&#125;&#125;</span><br><span class="line">[root@ip-172-31-13-18 ecs]# stop ecs</span><br><span class="line">ecs stop/waiting</span><br><span class="line">[root@ip-172-31-13-18 ecs]# start ecs</span><br><span class="line">ecs start/running, process 4996</span><br><span class="line">[root@ip-172-31-13-18 ecs]# docker inspect ecs-agent|grep ECS_DATADIR</span><br><span class="line">                &quot;ECS_DATADIR=/data&quot;,</span><br><span class="line">#2. make repo private in docker hub</span><br><span class="line">#3. configure in aws console about ecs</span><br></pre></td></tr></table></figure></p>
-<p><strong>working with ec2 container registry (ECR)</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">aws ecr get-login help</span><br><span class="line">docker login -u AWS -p badpassword https://602479202982.dkr.ecr.ap-southeast-2.amazonaws.com</span><br><span class="line">docker images</span><br><span class="line">docker tag c0a44e0f3831 602479202982.dkr.ecr.ap-southeast-2.amazonaws.com/myrepo</span><br><span class="line">docker push 602479202982.dkr.ecr.ap-southeast-2.amazonaws.com/myrepo</span><br></pre></td></tr></table></figure></p>
-<h2 id="Docker-registry"><a href="#Docker-registry" class="headerlink" title="Docker registry"></a>Docker registry</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 5000:5000 --restart always --name registry registry:2</span><br><span class="line">docker pull hello-world</span><br><span class="line">docker tag hello-world localhost:5000/hello-world</span><br><span class="line">docker push localhost:5000/hello-world</span><br><span class="line">docker exec -it registry /bin/sh</span><br><span class="line">docker images</span><br><span class="line">docker rmi hello-world</span><br><span class="line">docker rmi localhost:5000/hello-world</span><br><span class="line">docker images</span><br><span class="line">docker pull localhost:5000/hello-world</span><br><span class="line">docker run \</span><br><span class="line">  -d \</span><br><span class="line">  -e ENV_DOCKER_REGISTRY_HOST=registry \</span><br><span class="line">  -e ENV_DOCKER_REGISTRY_PORT=5000 \</span><br><span class="line">  -p 8080:80 \</span><br><span class="line">  --link registry:registry \</span><br><span class="line">  konradkleine/docker-registry-frontend:v2</span><br></pre></td></tr></table></figure>
-<h2 id="Error"><a href="#Error" class="headerlink" title="Error"></a>Error</h2><ol>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> docker login 127.0.0.1:5000</span><br><span class="line">Username: myuser</span><br><span class="line">Password:</span><br><span class="line">** Message: 17:25:24.126: Remote error from secret service: org.freedesktop.Secret.Error.IsLocked: Cannot create an item in a locked collection</span><br><span class="line">Error saving credentials: error storing credentials - err: exit status 1, out: `Cannot create an item in a locked collection`</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>Fix by:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">docker logout</span><br><span class="line">Removing login credentials for https://index.docker.io/v1/</span><br><span class="line">➜  outyet git:(master) mv ~/.docker/config.json ~/.docker/config_old.json</span><br><span class="line">➜  outyet git:(master) docke login</span><br><span class="line">zsh: command not found: docke</span><br><span class="line">➜  outyet git:(master) docker login 127.0.0.1:5000</span><br><span class="line">Username: myuser</span><br><span class="line">Password:</span><br><span class="line">WARNING! Your password will be stored unencrypted in /home/stan/.docker/config.json.</span><br><span class="line">Configure a credential helper to remove this warning. See</span><br><span class="line">https://docs.docker.com/engine/reference/commandline/login/#credentials-store</span><br><span class="line"></span><br><span class="line">Login Succeeded</span><br></pre></td></tr></table></figure>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/docker/">docker</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
-    <a class="extend prev" rel="prev" href="/page/3/"><span></span>Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/">Next<span></span></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><span></span>Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/">Next<span></span></a>
   </nav>
 
 </div>
@@ -1500,11 +1516,11 @@
 			
 		
 			
-				<li><a href="/tags/linux/" title="linux">linux<sup>3</sup></a></li>
+				<li><a href="/tags/git/" title="git">git<sup>3</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/git/" title="git">git<sup>3</sup></a></li>
+				<li><a href="/tags/linux/" title="linux">linux<sup>3</sup></a></li>
 			
 		
 			
@@ -1520,6 +1536,10 @@
 			
 		
 			
+				<li><a href="/tags/ec2/" title="ec2">ec2<sup>2</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/backup/" title="backup">backup<sup>2</sup></a></li>
 			
 		
@@ -1529,10 +1549,6 @@
 		
 			
 				<li><a href="/tags/nginx/" title="nginx">nginx<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/ec2/" title="ec2">ec2<sup>2</sup></a></li>
 			
 		
 			

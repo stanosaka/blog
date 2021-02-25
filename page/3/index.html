@@ -83,6 +83,151 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2019/08/03/vagrant/" title="vagrant" itemprop="url">vagrant</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Stan Zhou" target="_blank" itemprop="author">Stan Zhou</a>
+		
+  <p class="article-time">
+    <time datetime="2019-08-03T13:35:53.000Z" itemprop="datePublished"> Published 2019-08-03</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>Vagrant can be used for automatically provisioning VMs, and even whole development environments.</p>
+<p>On ubuntu host:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt install vagrant</span><br><span class="line">$ vagrant --version</span><br><span class="line">$ mkdir Vagrant;cd Vagrant</span><br><span class="line">$ vagrant init</span><br><span class="line"># Every Vagrant development environment requires a box. You can search for</span><br><span class="line">  # boxes at https://vagrantcloud.com/search.</span><br><span class="line">  config.vm.box = &quot;base&quot;</span><br><span class="line">$ sed -i &apos;s#config.vm.box = &quot;base&quot;#config.vm.box = &quot;centos/7&quot;#g&apos; Vagrantfile</span><br><span class="line">$ vagrant up</span><br><span class="line">$ vagrant ssh</span><br><span class="line">$ vagrant destroy</span><br></pre></td></tr></table></figure></p>
+<p><strong>Components</strong></p>
+<ul>
+<li>Providers:<ul>
+<li>Backend of Vagrant</li>
+<li>VirtualBox</li>
+<li>VMware</li>
+<li>Hyper-V</li>
+<li>vCloud</li>
+<li>AWS</li>
+</ul>
+</li>
+<li>Boxes:<ul>
+<li>Predefined images</li>
+<li><a href="https://app.vagrantup.com/boxes/search">Public Vagrant box catalog</a></li>
+</ul>
+</li>
+<li>Vagrantfile:<ul>
+<li>A Ruby file</li>
+<li>How many VMs</li>
+<li>Configure VMs</li>
+<li>Provision VMs</li>
+<li>Committed to version control<br><img src="https://i.imgur.com/lb7muP9.png" alt="example of Vagrantfile"></li>
+</ul>
+</li>
+<li>Provisioners:<ul>
+<li>Automatically install software, alter configurations</li>
+<li>Boxes may not be a complete use case for you</li>
+<li>Multiple options</li>
+<li>Shell Script</li>
+<li>Ansible</li>
+<li>Chef</li>
+<li>Docker</li>
+<li>Puppet<br><img src="https://i.imgur.com/U5cISEK.png" alt="workflow of vagrant"></li>
+</ul>
+</li>
+</ul>
+<p><strong>Operations</strong></p>
+<ul>
+<li>Adding a vagrant box:<ul>
+<li>Syntax: vagrant box add <name> <url> <provider></li>
+<li>Example: vagrant box add ubuntu/trusty32</li>
+</ul>
+</li>
+<li>Listing and removing vagrant boxes:<ul>
+<li>vagrant box list</li>
+<li>vagrant box remove</li>
+</ul>
+</li>
+<li>Creating a VM environment:<ul>
+<li>Syntax: vagrant init <your box name></li>
+<li>Example: vagrant init ubuntu/trusty32</li>
+</ul>
+</li>
+<li>Starting a VM environment:<ul>
+<li>vagrant up ubuntu/trusty32</li>
+<li>vagrant up </li>
+</ul>
+</li>
+<li>Connecting:<ul>
+<li>vagrant ssh ubuntu/trusty32</li>
+<li>vagrant ssh</li>
+</ul>
+</li>
+<li>Stopping, restarting, and destroying<ul>
+<li>vagrant halt</li>
+<li>vagrant reload</li>
+<li>vagrant destroy</li>
+</ul>
+</li>
+</ul>
+<p><strong>Provisioning of vagrant</strong></p>
+<ul>
+<li>Creating a VM and provisioning it with Apache installed and prot forwarding</li>
+<li><p>Add theses lines in Vagrantfile:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">config.vm.network &quot;forwarded_port&quot;, guest: 80, host: 8080</span><br><span class="line">config.vm.provision &apos;shell&apos;, path: &apos;provision.sh&apos;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Create provision.sh file with these entries:</p>
+<ul>
+<li>sudo apt-get update</li>
+<li>sudo apt-get install -y apache2</li>
+</ul>
+</li>
+<li><p>Destroy and start the virtual machine:</p>
+<ul>
+<li>vagrant destroy</li>
+<li>vagrant up</li>
+</ul>
+</li>
+</ul>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/vagrant/">vagrant</a><a href="/tags/Hashicorp/">Hashicorp</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2019/07/29/jenkins-blue-ocean/" title="Jenkins Pipeline" itemprop="url">Jenkins Pipeline</a>
   </h1>
   <p class="article-author">By
@@ -289,6 +434,7 @@
 <p><strong>Running a pipeline for a pull requrest</strong><br>Jenkins Blue Ocean can detect pull requests on your Github repositories and run a pipeline with it for you. The<br>pipeline run result (fail/pass/canceled) gets reported back to your source code repository.</p>
 <p>The person who is reponsible for accepting the pull request can then decide based on the pipeline run result whether<br>he should merge the new changes into the destination branch or not.<br><img src="https://i.imgur.com/kUvGGZM.jpg" alt="pull request"></p>
 <h2 id="Issue"><a href="#Issue" class="headerlink" title="Issue"></a>Issue</h2><p>pull requests not showing<br>fix by: <img src="https://i.imgur.com/63ETSbk.png" alt=""></p>
+<h3 id="simple-Jenkinsfile"><a href="#simple-Jenkinsfile" class="headerlink" title="simple Jenkinsfile"></a>simple Jenkinsfile</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">pipeline &#123;</span><br><span class="line">  agent any</span><br><span class="line">  stages &#123;</span><br><span class="line">    stage(&apos;Build our webiste&apos;)&#123;</span><br><span class="line">      steps &#123;</span><br><span class="line">         sh &quot;$PWD/scripts/build.sh&quot;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    stage(&apos;Run unit tests&apos;)&#123;</span><br><span class="line">      steps &#123;</span><br><span class="line">         sh &quot;$PWD/scripts/unit_test.sh&quot;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    stage(&apos;Deploy webiste&apos;)&#123;</span><br><span class="line">      steps &#123;</span><br><span class="line">         sh &quot;$PWD/scripts/deploy_website.sh&quot;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
         
         
@@ -2160,225 +2306,9 @@
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2019/07/03/version-control/" title="version control" itemprop="url">version control</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Stan Zhou" target="_blank" itemprop="author">Stan Zhou</a>
-		
-  <p class="article-time">
-    <time datetime="2019-07-03T01:55:35.000Z" itemprop="datePublished"> Published 2019-07-03</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h1 id="Common-Terminologies"><a href="#Common-Terminologies" class="headerlink" title="Common Terminologies"></a>Common Terminologies</h1><p><strong>Repository</strong>: A unit of storage and change tracking that represents a direcotry whose contents are tacked by Git</p>
-<p><strong>Brach</strong>: A version of a repository that represents the current state of the set of files that constitute a repository</p>
-<p><strong>Master</strong>: The frault or main branch, it is a version of the repository that is considered the single source of truth</p>
-<p><strong>Refrence</strong>: A Git ref or reference is a name corresponding to a commit hash</p>
-<p><strong>HEAD</strong>: A reference to the most recent commit on a branch</p>
-<p><strong>Working Tree</strong>: This refers to the section in which we view and make changes to the files in branch</p>
-<p><strong>Index</strong>: This is an area where Git holds files that have been changed, added, or removed in readiness for a commit</p>
-<p><strong>Commit</strong>: This is an entry into Git’s history that represents a change made to a set of files at a given point in time</p>
-<p><strong>Merge</strong>: A merge is the process of incorporating change from one branch to another</p>
-<p><strong>Workflows</strong>: Workflows refer to the approach a team takes to introduce changes to a code base.</p>
-<h2 id="Workflows"><a href="#Workflows" class="headerlink" title="Workflows"></a>Workflows</h2><p><strong>Gitflow workflow</strong></p>
-<ul>
-<li>This uses two branches: master and develop</li>
-<li>The master branch is used to track release history, while the develop branch is used to track feature integration into the product.</li>
-</ul>
-<p><strong>Centralized workflow</strong></p>
-<ul>
-<li>This approach uses the master branch as the default development branch.</li>
-<li>The changes are committed to the master branch.</li>
-<li>It’s a suitable workflow for small size teams and teams transitioning from Apache Subversion.</li>
-<li>In Apache Subversion, the trunk is the equivalent of the master branch.</li>
-</ul>
-<p><strong>Feature branch workflow</strong></p>
-<ul>
-<li>In this workflow, feature development is carried out in a dedicated branch.</li>
-<li>The branch is then merged to the master once the intended changes are approved.</li>
-</ul>
-<p><strong>Forking workflow</strong></p>
-<ul>
-<li>The individual seeking to make a change to a repository, makes a copy of the desired repository in their respective GitHub account.</li>
-<li>The changes are made in the copy of the source repository and then it’s merged to the source repository throught a pull request.</li>
-</ul>
-<h1 id="Navigating-GitHub"><a href="#Navigating-GitHub" class="headerlink" title="Navigating GitHub"></a>Navigating GitHub</h1><h2 id="Organizations"><a href="#Organizations" class="headerlink" title="Organizations"></a>Organizations</h2><p><strong>Role-based membership</strong></p>
-<ul>
-<li><p>Each personal account that is added to an organization can belong to one of the aforementioned roles.</p>
-</li>
-<li><p>The owner role is the most superior and is used to conduct administrative procedures.<br><strong>Repository level permissions</strong></p>
-<pre class="mermaid">graph TD;
- Read-->Write;
- Write-->Admin;</pre></li>
-<li>Teams or their respective members can be assigned read, write, or admin-level permissions to a repository.</li>
-<li>Each level dictates activities that the assigned members undertake, with a varying degree of limitations.<br><strong>Teams</strong></li>
-<li>There are members of an organization that can be grouped into teams, with the option of nesting the teams to match an organization’s structure.<br><strong>Multi-factor authentication</strong></li>
-<li>Organizations support the enforcement of two-factor authentication as well as business-specific single sign-on approaches such as <strong>Security Assertion Markup Language (SAML)</strong> and <strong>System for Corss-domain Identity Management</strong> (SCIM).<h3 id="Market-place-install-codacy"><a href="#Market-place-install-codacy" class="headerlink" title="Market place install codacy"></a>Market place install codacy</h3></li>
-</ul>
-<h1 id="Runtime-config"><a href="#Runtime-config" class="headerlink" title="Runtime config"></a>Runtime config</h1><p>Git configurations are set in three levels:</p>
-<ul>
-<li>System-wide configuration<ul>
-<li>set in the <strong>/etc/gitconfig</strong> file</li>
-<li>access use <strong>git config –system</strong></li>
-</ul>
-</li>
-<li>User specific configuraton<ul>
-<li>~/.gitconfig</li>
-<li>git config –global</li>
-</ul>
-</li>
-<li>Repository-specific configuration<ul>
-<li>Repository specific settings are set in the <strong>path_to_repository/.git/config</strong></li>
-<li>An example of configuration is the GitHub URL of a repository, which set at this level.</li>
-<li>There settings are accessed via <strong>git config –local</strong></li>
-</ul>
-</li>
-</ul>
-<h2 id="Removing-configuratoin"><a href="#Removing-configuratoin" class="headerlink" title="Removing configuratoin"></a>Removing configuratoin</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global --unset [section_name].[section_variable]</span><br></pre></td></tr></table></figure>
-<p>exampel:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global --unset user.name</span><br></pre></td></tr></table></figure></p>
-<p>create a ssh key:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096 -C foobar@cwzhou.win</span><br></pre></td></tr></table></figure></p>
-<h1 id="Fundamentails-of-repositories"><a href="#Fundamentails-of-repositories" class="headerlink" title="Fundamentails of repositories"></a>Fundamentails of repositories</h1><p><strong>Tags</strong><br>There are used for the purpose of identifying specific significant points on a repository’s history.</p>
-<ul>
-<li><p>lightweight tages<br>Lightweight tags act as pointers to a specific commit. It only stores the reference to the commit: <strong>git tag v2.5</strong></p>
-</li>
-<li><p>annotated tags<br>Annotated tags act as pointers to a specific commit and additionally store information about the creator of the tag, the email, and date of creation:<br> <strong>git tag -a v2.6 -m “Support sdk version 3”</strong></p>
-</li>
-</ul>
-<h1 id="Versioning-Commits"><a href="#Versioning-Commits" class="headerlink" title="Versioning Commits"></a>Versioning Commits</h1><p>In git, files can have the following statuses:</p>
-<ul>
-<li>Untracked: This is a file that exists in the working tree whose changes are not being monitored by Git and aren’t listed in the <strong>gitignore</strong> file.</li>
-<li>Unstaged: This is a file whose changes are being tracked by Git; the file has been changed since the last commit and has yet to be moved to the <strong>index</strong>.</li>
-<li>Staged: This is a file whose changes are being tracked by Git; the file has been changed since the last commit and has been moved to the index.</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure>
-<ul>
-<li>It’s used to retrieve the details of files that are untracked, unstaged, or staged.</li>
-<li><strong>git status</strong> lists files in order of their statuses.</li>
-<li>The <strong>git status</strong> output is lengthy in nature</li>
-<li>To view a brief list and status, use the <strong>-s</strong> or <strong>–short</strong> option with the <strong>git status</strong> command.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">szhou@armitage:~/DevOps/github/foobar|master</span><br><span class="line">⇒  git branch ft-add-encapsulating-class</span><br><span class="line">szhou@armitage:~/DevOps/github/foobar|master</span><br><span class="line">⇒  git checkout ft-add-encapsulating-class</span><br><span class="line">Switched to branch &apos;ft-add-encapsulating-class&apos;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>ft is feature branch, bg for bug, fs for rolling out hard fixes, ch for<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add . &amp;&amp; git commit -m &quot;Added a class for match functions&quot; &amp;&amp; git push origin ft-add-encapsulating-class</span><br></pre></td></tr></table></figure></p>
-<p><strong>git diff</strong></p>
-<ul>
-<li>The git diff command is uesed to compare one snapshot of changes to another.</li>
-</ul>
-<p>zoom in the change:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">szhou@armitage:~/DevOps/github/foobar|ft-add-encapsulating-class⚡</span><br><span class="line">⇒  git diff</span><br><span class="line">szhou@armitage:~/DevOps/github/foobar|ft-add-encapsulating-class⚡</span><br><span class="line">⇒  git diff src/lib</span><br><span class="line">szhou@armitage:~/DevOps/github/foobar|ft-add-encapsulating-class⚡</span><br><span class="line">⇒  git diff src/lib/compute.py</span><br></pre></td></tr></table></figure></p>
-<p>Undo the change<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rest --hard</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git diff HEAD -- src/</span><br><span class="line">git log</span><br><span class="line">git diff master</span><br><span class="line">git diff --cached</span><br><span class="line">git diff ft-add-encapsulating-class..ft-support-multiplication-arithmetic</span><br></pre></td></tr></table></figure>
-<p><strong>git add</strong></p>
-<ul>
-<li>is used to add files to the index from the working tree.</li>
-<li>syntax: <strong>git add [options] [path_to_files]</strong></li>
-</ul>
-<p>The options used with <strong>git add</strong> include <strong>-n</strong> and <strong>–dry-run</strong>: simulates the behaviour of git add for the specified file.</p>
-<p><strong>-f</strong> or <strong>–force</strong>: adds ignored files to the index.</p>
-<p><strong>-i</strong> or <strong>–interactive</strong>: creates an interactive prompt that can be used for adding files from the working tree to the index.</p>
-<p><strong>-por –patch</strong>: caters for adding portions of a file to the index.</p>
-<p><strong>options</strong>:</p>
-<ul>
-<li>?: Print help</li>
-<li>y: Stage this hunk</li>
-<li>n: Do not stage this hunk</li>
-<li>q: Exit or quit. Do not stage this hunk or any of the remaining hunks.</li>
-<li>a: Stage this hunk and all later hunks in the specified files</li>
-<li>d: Do not stage this hunk or any of the remaining hunks in the file</li>
-<li>g: Select a hunk to go to</li>
-<li>/: Search for the hunk that matches the specified regex pattern</li>
-<li>j: Leave this hunk undecided; see the next undecided hunk</li>
-<li>J: Leave this hunk undecided; see the next hunk</li>
-<li>k: Leave this hunk undecided; see the previous undecided hunk</li>
-<li>K: Leave this hunk undecided; see the previous hunk</li>
-<li>s: Split the current hunk into more granular hunks</li>
-<li>e: Manually edit the current hunk</li>
-</ul>
-<p><strong>git commit</strong></p>
-<ul>
-<li>The <strong>git commit</strong> command saves the files in the index.</li>
-<li>The commit operation stores a message along with the commit.</li>
-<li>This message describes the additions or alterations associated with the created snapshot.</li>
-</ul>
-<p>Note: the <strong>git commit</strong> command requires that a message be provided for each commit operation.<br><strong>options</strong>:</p>
-<ul>
-<li>-m [text] or –message [text]: associate the index file with the commit action</li>
-<li>-a or -all: stage tracked files that are unstaged</li>
-<li>-p or –patch: interactive patch tool</li>
-<li>-C [commit hash] or –resue-message=[commit hash]: resue a commit message and the author information of the specified commit hash</li>
-<li>-F [file] or –file=[file]: specifies a file from which a commit message should be obtained</li>
-<li>-t [file] or –template [file]: specifies the commit message template file</li>
-<li>-e or –edit: edits the provided commit message</li>
-<li>–no-edit: uses the specified message as is</li>
-<li>–author=[author]: overrides the details fo a commit author</li>
-<li>–date=[date]: overrides the data details used in a commit</li>
-<li>-q or –quiet: suppresses the summary message that’s returned after running the <strong>git commit</strong> command</li>
-</ul>
-<p><strong>git rm</strong></p>
-<p>The <strong>git rm</strong> command performs two roles.</p>
-<ul>
-<li>Removes files from the working directory and the index</li>
-<li>Remove files from index<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vim src/lib/scientific.py</span><br><span class="line">git add . &amp;&amp; git commit -m &quot;Added sci module&quot;</span><br><span class="line">git rm src/lib/scientific.py</span><br><span class="line">git status</span><br><span class="line">git commit -m &quot;Removed sci module&quot;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><strong>git mv</strong></p>
-<ul>
-<li>used to rename or move a file or a directory</li>
-<li>This command has two forms of implementation:<ul>
-<li>git mv [options][source][destination]: used to rename a file</li>
-<li>git mv [options][source]…[destination]: used to move a file</li>
-</ul>
-</li>
-</ul>
-<p><strong>git log command</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">git log --follow src/lib/advanced/advanced_compute.py</span><br><span class="line">git log --decorate=full</span><br><span class="line">git log --decorate=short</span><br><span class="line">git log --decorate=no</span><br><span class="line">git log -L 6,12:src/lib/compute.py</span><br><span class="line">git log -n 3</span><br><span class="line">git log -3</span><br><span class="line">git log --skip=4</span><br><span class="line">git log --since=01/01/2018</span><br><span class="line">git log --pretty=oneline</span><br><span class="line">git log --pretty=short</span><br><span class="line">git log --pretty=medium</span><br><span class="line">git log --pretty=format:&quot;%H %an&quot;</span><br></pre></td></tr></table></figure></p>
-<h2 id="Amending-commits"><a href="#Amending-commits" class="headerlink" title="Amending commits"></a>Amending commits</h2><p>The most recent commit can be edited using the –amend option of the <strong>git commit</strong> command.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">git commit --amend</span><br><span class="line">git rebase -i HEAD~4  # retrv the last 4 commits</span><br><span class="line">pick 721d2ec Removed sci module</span><br><span class="line">pick fc150d2 Added sci module</span><br><span class="line">pick 4be4d85 Rename scientific module</span><br><span class="line">pick 9a8a4ea Moved scientific module</span><br><span class="line"></span><br><span class="line">change pick to reword save and quit the file.</span><br><span class="line"></span><br><span class="line">## change the file</span><br><span class="line">git rebase -i HEAD~3</span><br><span class="line">change pick to edit save and quit the file.</span><br><span class="line">vim src/lib/advanced/advanced_compute.py</span><br><span class="line">git status</span><br><span class="line">git add .</span><br><span class="line">git commit --amend</span><br><span class="line">git rebase --continue</span><br><span class="line">git log -4</span><br></pre></td></tr></table></figure></p>
-<p><a href="https://dev.to/lydiahallie/cs-visualized-useful-git-commands-37p1">CS Visualized: Useful Git Commands</a></p>
-<h1 id="Git-merge-with-No-Fast-Forward-technique"><a href="#Git-merge-with-No-Fast-Forward-technique" class="headerlink" title="Git merge with No-Fast-Forward technique"></a>Git merge with No-Fast-Forward technique</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">git-demo-project git:(demo-branch) ✗ git commit -am &quot;commit 1 from demo-branch&quot;</span><br><span class="line">[demo-branch 0280912] commit 1 from demo-branch</span><br><span class="line"> 1 file changed, 1 insertion(+)</span><br><span class="line"> create mode 100644 test-no-ff-merge-file</span><br><span class="line">➜  git-demo-project git:(demo-branch) echo &apos;line 2&apos; &gt;&gt; test-no-ff-merge-file</span><br><span class="line">➜  git-demo-project git:(demo-branch) ✗ git commit -am &quot;commit 2 from demo-branch&quot;</span><br><span class="line">[demo-branch ca0b8d0] commit 2 from demo-branch</span><br><span class="line"> 1 file changed, 1 insertion(+)</span><br><span class="line">➜  git-demo-project git:(demo-branch) git log --oneline</span><br><span class="line">➜  git-demo-project git:(demo-branch) cat test-no-ff-merge-file</span><br><span class="line">line 1</span><br><span class="line">line 2</span><br><span class="line">➜  git-demo-project git:(demo-branch) git checkout master</span><br><span class="line">Switched to branch &apos;master&apos;</span><br><span class="line">➜  git-demo-project git:(master) git log --oneline</span><br><span class="line">➜  git-demo-project git:(master) ls</span><br><span class="line">readme.md  testffmergefile  test.html</span><br><span class="line">➜  git-demo-project git:(master) git diff master demo-branch</span><br><span class="line">➜  git-demo-project git:(master) git merge demo-branch --no-ff</span><br><span class="line">Merge made by the &apos;recursive&apos; strategy.</span><br><span class="line"> test-no-ff-merge-file | 2 ++</span><br><span class="line"> 1 file changed, 2 insertions(+)</span><br><span class="line"> create mode 100644 test-no-ff-merge-file</span><br><span class="line">➜  git-demo-project git:(master) cat test-no-ff-merge-file</span><br><span class="line">line 1</span><br><span class="line">line 2</span><br><span class="line">➜  git-demo-project git:(master) git log --oneline --decorate --graph</span><br><span class="line">➜  git-demo-project git:(master) git branch -d demo-branch</span><br><span class="line">Deleted branch demo-branch (was ca0b8d0).</span><br></pre></td></tr></table></figure>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/git/">git</a><a href="/tags/github/">github</a><a href="/tags/version-control/">version control</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
-    <a class="extend prev" rel="prev" href="/page/2/"><span></span>Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/">Next<span></span></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><span></span>Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/">Next<span></span></a>
   </nav>
 
 </div>
@@ -2430,11 +2360,11 @@
 			
 		
 			
-				<li><a href="/tags/linux/" title="linux">linux<sup>3</sup></a></li>
+				<li><a href="/tags/git/" title="git">git<sup>3</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/git/" title="git">git<sup>3</sup></a></li>
+				<li><a href="/tags/linux/" title="linux">linux<sup>3</sup></a></li>
 			
 		
 			
@@ -2450,6 +2380,10 @@
 			
 		
 			
+				<li><a href="/tags/ec2/" title="ec2">ec2<sup>2</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/backup/" title="backup">backup<sup>2</sup></a></li>
 			
 		
@@ -2459,10 +2393,6 @@
 		
 			
 				<li><a href="/tags/nginx/" title="nginx">nginx<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/ec2/" title="ec2">ec2<sup>2</sup></a></li>
 			
 		
 			
