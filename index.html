@@ -100,7 +100,7 @@
 <li>When creating role and granting privileges, please use ‘%’ instead of ‘localhost’. For PaaS, ‘localhost’ means physical host machine that cannot be accessed in cloud considering security.</li>
 <li>After creating role and granting role privileges to the target user, please run [SET DEFAULT ROLE ALL TO ‘{username}’]</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">create user &apos;ipscapereader&apos;@&apos;%&apos; identified by &apos;StrongPassword!&apos;;</span><br><span class="line">create role &apos;ipscape_read_only&apos;;</span><br><span class="line"></span><br><span class="line">grant select on analytics_50198.* to &apos;ipscape_read_only&apos;;</span><br><span class="line"></span><br><span class="line">mysql&gt; grant &apos;ipscape_read_only&apos; to &apos;ipscapereader&apos;@&apos;%&apos;;</span><br><span class="line"></span><br><span class="line">mysql&gt; set default role all to &apos;ipscapereader&apos;;</span><br><span class="line"></span><br><span class="line">mysql&gt; show grants for &apos;ipscapereader&apos;@&apos;%&apos;;</span><br><span class="line"></span><br><span class="line">mysql&gt; show grants for &apos;ipscapereader&apos;@&apos;%&apos; using &apos;ipscape_read_only&apos;;</span><br><span class="line"></span><br><span class="line">## check by login via new created user and test show databases</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">create user &apos;foobarreader&apos;@&apos;%&apos; identified by &apos;StrongPassword!&apos;;</span><br><span class="line">create role &apos;foobar_read_only&apos;;</span><br><span class="line"></span><br><span class="line">grant select on foobardb.* to &apos;foobar_read_only&apos;;</span><br><span class="line"></span><br><span class="line">mysql&gt; grant &apos;foobar_read_only&apos; to &apos;foobarreader&apos;@&apos;%&apos;;</span><br><span class="line"></span><br><span class="line">mysql&gt; set default role all to &apos;foobarreader&apos;;</span><br><span class="line"></span><br><span class="line">mysql&gt; show grants for &apos;foobarreader&apos;@&apos;%&apos;;</span><br><span class="line"></span><br><span class="line">mysql&gt; show grants for &apos;foobarreader&apos;@&apos;%&apos; using &apos;foobar_read_only&apos;;</span><br><span class="line"></span><br><span class="line">## check by login via new created user and test show databases</span><br></pre></td></tr></table></figure>
 <p><a href="https://dev.mysql.com/doc/refman/8.0/en/set-default-role.html" title="role permission control">Mysql 8 role permission control system</a></p>
 
         
@@ -2079,11 +2079,11 @@
 			
 		
 			
-				<li><a href="/tags/linux/" title="linux">linux<sup>3</sup></a></li>
+				<li><a href="/tags/docker/" title="docker">docker<sup>3</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/docker/" title="docker">docker<sup>3</sup></a></li>
+				<li><a href="/tags/linux/" title="linux">linux<sup>3</sup></a></li>
 			
 		
 			
@@ -2103,7 +2103,7 @@
 			
 		
 			
-				<li><a href="/tags/ec2/" title="ec2">ec2<sup>2</sup></a></li>
+				<li><a href="/tags/backup/" title="backup">backup<sup>2</sup></a></li>
 			
 		
 			
@@ -2115,7 +2115,7 @@
 			
 		
 			
-				<li><a href="/tags/backup/" title="backup">backup<sup>2</sup></a></li>
+				<li><a href="/tags/ec2/" title="ec2">ec2<sup>2</sup></a></li>
 			
 		
 			
