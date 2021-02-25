@@ -9,18 +9,18 @@ tags: azure, mysql
 2. After creating role and granting role privileges to the target user, please run [SET DEFAULT ROLE ALL TO ‘{username}’]
 
 ```
-create user 'ipscapereader'@'%' identified by 'StrongPassword!';
-create role 'ipscape_read_only';
+create user 'foobarreader'@'%' identified by 'StrongPassword!';
+create role 'foobar_read_only';
 
-grant select on analytics_50198.* to 'ipscape_read_only';
+grant select on foobardb.* to 'foobar_read_only';
 
-mysql> grant 'ipscape_read_only' to 'ipscapereader'@'%';
+mysql> grant 'foobar_read_only' to 'foobarreader'@'%';
 
-mysql> set default role all to 'ipscapereader';
+mysql> set default role all to 'foobarreader';
 
-mysql> show grants for 'ipscapereader'@'%';
+mysql> show grants for 'foobarreader'@'%';
 
-mysql> show grants for 'ipscapereader'@'%' using 'ipscape_read_only';
+mysql> show grants for 'foobarreader'@'%' using 'foobar_read_only';
 
 ## check by login via new created user and test show databases
 ```
