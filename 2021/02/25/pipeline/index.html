@@ -15,7 +15,7 @@
 <meta name="keywords" content="pipeline">
 <meta property="og:type" content="article">
 <meta property="og:title" content="pipeline">
-<meta property="og:url" content="http://223.95.78.227/2019/09/20/pipeline/index.html">
+<meta property="og:url" content="http://223.95.78.227/2021/02/25/pipeline/index.html">
 <meta property="og:site_name" content="Stan Zhou&#39;s Hexo Technical Blog">
 <meta property="og:description" content="Pipeline Represents a part of:  Software delivery Quality assurance process  Benefits:  Operation grouping Visibility FeedbackAutomated deployment pipeline3 stages:code change-&amp;gt; Continuous Integrat">
 <meta property="og:locale" content="en">
@@ -28,7 +28,7 @@
 <meta property="og:image" content="https://i.imgur.com/5gDLWLc.png">
 <meta property="og:image" content="https://i.imgur.com/06nJoTO.png">
 <meta property="og:image" content="https://i.imgur.com/L4k4cb0.png">
-<meta property="og:updated_time" content="2019-09-20T12:54:52.122Z">
+<meta property="og:updated_time" content="2021-02-25T06:03:34.525Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="pipeline">
 <meta name="twitter:description" content="Pipeline Represents a part of:  Software delivery Quality assurance process  Benefits:  Operation grouping Visibility FeedbackAutomated deployment pipeline3 stages:code change-&amp;gt; Continuous Integrat">
@@ -93,14 +93,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2019/09/20/pipeline/" title="pipeline" itemprop="url">pipeline</a>
+      <a href="/2021/02/25/pipeline/" title="pipeline" itemprop="url">pipeline</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Stan Zhou" target="_blank" itemprop="author">Stan Zhou</a>
 		
   <p class="article-time">
-    <time datetime="2019-09-20T12:54:52.122Z" itemprop="datePublished"> Published 2019-09-20</time>
+    <time datetime="2021-02-25T06:03:34.525Z" itemprop="datePublished"> Published 2021-02-25</time>
     
   </p>
 </header>
@@ -218,21 +218,25 @@
 <li>Stage - Logical separation</li>
 <li>Setp - Used to visualize process<br><img src="https://i.imgur.com/J7xJ8KG.png" alt="elements"></li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">pipeline &#123;</span><br><span class="line">   agent any</span><br><span class="line">   stages &#123;</span><br><span class="line">      stage(&apos;First Stage&apos;) &#123;</span><br><span class="line">          steps &#123;</span><br><span class="line">              echo &apos;Step 1. Hello World&apos;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      stage(&apos;Second Stage&apos;) &#123;</span><br><span class="line">          steps &#123;</span><br><span class="line">              echo &apos;Step 2. Second time Hello&apos;</span><br><span class="line">              echo &apos;Step 3. Third time Hello&apos;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">pipeline &#123;</span><br><span class="line">   //agent any</span><br><span class="line">   agent &#123;</span><br><span class="line">      label &apos;linux&apos;</span><br><span class="line">   &#125;</span><br><span class="line">   stages &#123;</span><br><span class="line">      stage(&apos;First Stage&apos;) &#123;</span><br><span class="line">          steps &#123;</span><br><span class="line">              echo &apos;Step 1. Hello World&apos;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      stage(&apos;Second Stage&apos;) &#123;</span><br><span class="line">          steps &#123;</span><br><span class="line">              echo &apos;Step 2. Second time Hello&apos;</span><br><span class="line">              echo &apos;Step 3. Third time Hello&apos;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   post &#123;</span><br><span class="line">     always &#123;</span><br><span class="line">        echo &quot;Pipeline executed!&quot;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>Define pipeline structure<br>A declarative pipeline is always specified inside the pipeline block and contains sections, directives and steps. </li>
 </ul>
+<p>A declarative pipeline has a simplified and opinionated syntax on top of the pipeline sub-system.</p>
 <p><strong>Sections</strong></p>
 <ul>
 <li>Keywords are:<ul>
-<li>Stages</li>
+<li>Agent-defines on which agent the pipeline or the stage will be executed</li>
+<li>Stages-defines the stages of the pipeline</li>
 <li>Step</li>
-<li>Post<br>Sections define the pipeline structure and usually contain one or more directives or steps. They are defined with the key words, stages, step and post.</li>
+<li>Post-defines the post build steps</li>
 </ul>
 </li>
 </ul>
+<p>Sections define the pipeline structure and usually contain one or more directives or steps. They are defined with the key words, stages, step and post.</p>
 <p>Stages defines a series of one or more stage directives.</p>
-<p>Steps defines a series of one or more step instructions.<br>Steps are the most fundamental part of the pipeline they define the operations that are executed so they actually tell Jenkins what to do.</p>
+<p>Steps defines a series of one or more step instructions.</p>
+<p>Steps are the most fundamental part of the pipeline they define the operations that are executed so they actually tell Jenkins what to do.</p>
 <p>Defined using:</p>
 <ul>
 <li>sh: executes the shell command</li>
@@ -249,11 +253,13 @@
 <li>Options: specified pipeline specific options</li>
 <li>Environment: deinfes a set of key values used a s environment variables</li>
 <li>Parameters: define a list of user input parameters</li>
-<li>Stage: allows for logical grouping of steps </li>
+<li>Tools: defines the tools configured on Jenkins</li>
+<li>Stage: allows for logical grouping of steps; contains steps and agent </li>
 <li>When: determines whether the stage should be executed depending on the given condition</li>
 </ul>
 </li>
 </ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">pipeline &#123;</span><br><span class="line">   agent any</span><br><span class="line">   tools &#123;</span><br><span class="line">      maven &apos;M3&apos;</span><br><span class="line">   &#125;</span><br><span class="line">  </span><br><span class="line">   parameters &#123;</span><br><span class="line">      string(name: &apos;VERSION&apos;,</span><br><span class="line">          defaultValue: &apos;1.0.0&apos;,</span><br><span class="line">          description: &apos;What is the version to build?&apos;)</span><br><span class="line">   &#125;</span><br><span class="line">  </span><br><span class="line">   stages &#123;</span><br><span class="line">      stage(&apos;Build&apos;)&#123;</span><br><span class="line">          steps &#123;</span><br><span class="line">             sh &quot;./build.sh $&#123;params.VERSION&#125;&quot;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="Commit-Pipeline"><a href="#Commit-Pipeline" class="headerlink" title="Commit Pipeline"></a>Commit Pipeline</h2><ul>
 <li>Basic continuous integration process</li>
 <li>Results in a report about the build</li>
@@ -400,7 +406,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://223.95.78.227/2019/09/20/pipeline/" data-title="pipeline | Stan Zhou&#39;s Hexo Technical Blog" data-tsina="undefined" class="share clearfix">
+	  <div data-url="http://223.95.78.227/2021/02/25/pipeline/" data-title="pipeline | Stan Zhou&#39;s Hexo Technical Blog" data-tsina="undefined" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -415,9 +421,9 @@
  
 
 <div class="next">
-<a href="/2019/09/20/anatomy-of-containers/"  title="anatomy-of-containers">
+<a href="/2021/02/25/photography/"  title="photography">
  <strong>下一篇：</strong><br/> 
- <span>anatomy-of-containers
+ <span>photography
 </span>
 </a>
 </div>
@@ -490,11 +496,11 @@
 			
 		
 			
-				<li><a href="/tags/tomcat/" title="tomcat">tomcat<sup>3</sup></a></li>
+				<li><a href="/tags/saltstack/" title="saltstack">saltstack<sup>3</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/saltstack/" title="saltstack">saltstack<sup>3</sup></a></li>
+				<li><a href="/tags/tomcat/" title="tomcat">tomcat<sup>3</sup></a></li>
 			
 		
 			
@@ -502,11 +508,11 @@
 			
 		
 			
-				<li><a href="/tags/backup/" title="backup">backup<sup>2</sup></a></li>
+				<li><a href="/tags/ec2/" title="ec2">ec2<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/nginx/" title="nginx">nginx<sup>2</sup></a></li>
+				<li><a href="/tags/backup/" title="backup">backup<sup>2</sup></a></li>
 			
 		
 			
@@ -514,7 +520,7 @@
 			
 		
 			
-				<li><a href="/tags/ec2/" title="ec2">ec2<sup>2</sup></a></li>
+				<li><a href="/tags/nginx/" title="nginx">nginx<sup>2</sup></a></li>
 			
 		
 			
@@ -526,15 +532,15 @@
 			
 		
 			
-				<li><a href="/tags/agile/" title="agile">agile<sup>1</sup></a></li>
+				<li><a href="/tags/python/" title="python">python<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/software-development/" title="software development">software development<sup>1</sup></a></li>
+				<li><a href="/tags/AKS/" title="AKS">AKS<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/agile-development/" title="agile development">agile development<sup>1</sup></a></li>
+				<li><a href="/tags/Linux/" title="Linux">Linux<sup>1</sup></a></li>
 			
 		
 		</ul>
@@ -547,13 +553,31 @@
         
           <li>
             
-            	<a href="https://zety.com/mycv/00root" target="_blank" title="Stan&#39;s resume">Stan&#39;s resume</a>
+            	<a href="https://github.com/kahun/awesome-sysadmin" target="_blank" title="Awesome-sysadmin">Awesome-sysadmin</a>
             
           </li>
         
           <li>
             
-            	<a href="https://cloud.ibm.com/docs/tutorials?topic=solution-tutorials-tutorials" target="_blank" title="IBM cloud solution tutorial">IBM cloud solution tutorial</a>
+            	<a href="https://github.com/crazy-canux/awesome-monitoring" target="_blank" title="Awesome-monitoring">Awesome-monitoring</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://www.opsschool.org/index.html" target="_blank" title="Ops School Curriculum">Ops School Curriculum</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://kupczynski.info/2018/04/18/spacemacs.html" target="_blank" title="Learning Spacemacs">Learning Spacemacs</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://landing.google.com/sre/books/" target="_blank" title="SRE Books">SRE Books</a>
             
           </li>
         
@@ -677,6 +701,36 @@
             
           </li>
         
+          <li>
+            
+            	<a href="https://www.nerdfonts.com" target="_blank" title="Nred Fonts">Nred Fonts</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://cb.vu/unixtoolbox.xhtml" target="_blank" title="UNIX TOOLBOX">UNIX TOOLBOX</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://github.com/Ben-PH/spacemacs-cheatsheet" target="_blank" title="spacemacs-cheatsheet">spacemacs-cheatsheet</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://rubular.com/" target="_blank" title="Regular expression editor 1">Regular expression editor 1</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://pythex.org/" target="_blank" title="Regular expression editor 2">Regular expression editor 2</a>
+            
+          </li>
+        
     </ul>
 </div>
 
@@ -696,8 +750,8 @@
 	
 	
 	<section class="info">
-		<p> Hello ,I&#39;m Stan live in Sydney. <br/>
-			I am a lifelong technology learner.</p>
+		<p> Hello ,I&#39;m Stan. <br/>
+			I am a Site Reliability Engineer working and living in Sydney.</p>
 	</section>
 	 
 	<div class="social-font" class="clearfix">
@@ -732,7 +786,7 @@
 		
 
 		<p class="copyright">
-		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2019 
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2021 
 		
 		<a href="/about" target="_blank" title="Stan Zhou">Stan Zhou</a>
 		

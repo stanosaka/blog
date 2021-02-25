@@ -83,25 +83,295 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2021/02/25/mysql-replication/" title="mysql-replication" itemprop="url">mysql-replication</a>
+      <a href="/2021/02/25/pipeline/" title="pipeline" itemprop="url">pipeline</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Stan Zhou" target="_blank" itemprop="author">Stan Zhou</a>
 		
   <p class="article-time">
-    <time datetime="2021-02-25T00:20:35.000Z" itemprop="datePublished"> Published 2021-02-25</time>
+    <time datetime="2021-02-25T06:03:34.525Z" itemprop="datePublished"> Published 2021-02-25</time>
     
   </p>
 </header>
     <div class="article-content">
         
-        <h1 id="Myql-replicatoin"><a href="#Myql-replicatoin" class="headerlink" title="Myql replicatoin"></a>Myql replicatoin</h1><h2 id="Process"><a href="#Process" class="headerlink" title="Process"></a>Process</h2><ol>
-<li>Clean the salve db<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">DROP_DB_LIST=`mysql -Nse &quot;SET group_concat_max_len = 81920; SELECT GROUP_CONCAT(SCHEMA_NAME SEPARATOR &apos;;\nDROP DATABASE &apos;) FROM information_schema.SCHEMATA WHERE SCHEMA_NAME NOT IN (&apos;mysql&apos;,&apos;information_schema&apos;,&apos;performance_schema&apos;,&apos;sys&apos;);&quot;`</span><br><span class="line">echo -e $DROP_DB_LIST &gt; /tmp/delete.sh </span><br><span class="line">vim /tmp/delete.sh</span><br><span class="line">mysql &lt; /tmp/delete.sh</span><br></pre></td></tr></table></figure>
+        <p>Pipeline</p>
+<p>Represents a part of:</p>
+<ul>
+<li>Software delivery</li>
+<li>Quality assurance process</li>
+</ul>
+<p>Benefits:</p>
+<ul>
+<li>Operation grouping</li>
+<li>Visibility</li>
+<li>Feedback<br><strong>Automated deployment pipeline</strong><br>3 stages:<br>code change-&gt; Continuous Integration-&gt; Automated acceptance testing-&gt; Configuration management</li>
+</ul>
+<ol>
+<li>Continuous Integration<br>The continuous integration phase provides the first feedback to the developers. It checks out the code from the repository, compiles it, runs unit tests and verifies the code quality. If any step fails the pipeline execution is stopped and the first thing the developer should do is fix the continuous integration build. The continuous integration pipeline is usually the starting point.</li>
+</ol>
+<ul>
+<li>first feedback</li>
+<li>checks code</li>
+<li>starting point</li>
+<li>simple to setup</li>
+</ul>
+<ol start="2">
+<li>Automated acceptance testing</li>
+</ol>
+<ul>
+<li>Suites of tests</li>
+<li>A quality gate</li>
+<li>Pipeline execution is stopped if test fails</li>
+<li>Prevents movement</li>
+<li>Lot of confusion</li>
+</ul>
+<p><img src="https://i.imgur.com/KGWFQPx.png" alt="Agile testing matrix"></p>
+<ol>
+<li>Acceptance testing</li>
+</ol>
+<ul>
+<li>Represent functional requirements</li>
+<li>Wrtten in the form of stories or examples</li>
+</ul>
+<ol start="2">
+<li>Unit Testing</li>
+</ol>
+<ul>
+<li>Provide the high-quality software</li>
+<li>Minimize the number of bugs</li>
+</ul>
+<ol start="3">
+<li>Exploratory Testing</li>
+</ol>
+<ul>
+<li>Manual black-box testing</li>
+<li>Breaks or improves the system</li>
+</ul>
+<ol start="4">
+<li>Non-functional testing</li>
+</ol>
+<ul>
+<li>Represent properties:<ul>
+<li>Performance</li>
+<li>Scalability</li>
+<li>Security</li>
+</ul>
 </li>
+</ul>
+<ol start="3">
+<li>Configuration management</li>
 </ol>
-<h2 id="common-problems"><a href="#common-problems" class="headerlink" title="common problems"></a>common problems</h2><h3 id="dropping-a-database-with-a-special-character-in-the-databsename"><a href="#dropping-a-database-with-a-special-character-in-the-databsename" class="headerlink" title="dropping a database with a special character in the databsename"></a>dropping a database with a special character in the databsename</h3><p>error message:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@au3-db-03 mysql]# mysql &lt; /tmp/deletenewnew.sh</span><br><span class="line">ERROR 1064 (42000) at line 267: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near &apos;-123&apos; at line 1</span><br></pre></td></tr></table></figure></p>
-<p>fix by:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; drop database `supd-123`</span><br><span class="line">    -&gt; ;</span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>Replaces the manual operations</li>
+<li>Responsible for tracking and controlling changes</li>
+<li>Solution to the problems</li>
+<li>Enable storing configuration files<br>Configuration management is a solution to the problems posed by manually deploying and configuring applications on the production. Configuration management tools enables storing configuration files in the version control system and tracking every change that was made on the production servers.</li>
+</ul>
+<p><strong>Technical and development prerequisites</strong></p>
+<ul>
+<li>Automated build, test, package, and deploy operations</li>
+<li>Quick pipeline execution</li>
+<li>Quick failure recovery</li>
+<li>Zero-downtime deployment</li>
+<li>Trunk-based deployment</li>
+</ul>
+<p><strong>Building the continuous delivery process</strong><br>Jenkins</p>
+<ul>
+<li>Popular automation server</li>
+<li>Helps create automated sequence of scripts</li>
+<li>Plugin-oriented</li>
+</ul>
+<p>Ansible<br>Helps with:</p>
+<ul>
+<li>Software provisioning</li>
+<li>Configuration management</li>
+<li>Application deployment</li>
+</ul>
+<p>Java</p>
+<ul>
+<li>Most popular programming language</li>
+<li>Develop with the Spring framework</li>
+<li>Gradle-build tool<br>Jenkins is by far the most popular automation server on the market. It helps to create continuous integration and continuous delivery pipelines and in general any other automated sequence of scripts. Highly plug-in oriented it has a greater community which constantly extends it with new features. Another one is Ansible. Ansible is an automation tool that helps with software provisioning configuration management and application deployment. Next comes Java. Java has been the most popular programming language for years, that is why it is being used for most code examples. Together with Java, most companies develop with the Spring framework so we used it to create a simple web service needed to explain some concepts. Gradle is used as a build tool. It is less popular than Maven however trending much faster.</li>
+</ul>
+<p><strong>Pipeline elements</strong></p>
+<ul>
+<li>Basic elements</li>
+<li>Stage - Logical separation</li>
+<li>Setp - Used to visualize process<br><img src="https://i.imgur.com/J7xJ8KG.png" alt="elements"></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">pipeline &#123;</span><br><span class="line">   //agent any</span><br><span class="line">   agent &#123;</span><br><span class="line">      label &apos;linux&apos;</span><br><span class="line">   &#125;</span><br><span class="line">   stages &#123;</span><br><span class="line">      stage(&apos;First Stage&apos;) &#123;</span><br><span class="line">          steps &#123;</span><br><span class="line">              echo &apos;Step 1. Hello World&apos;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      stage(&apos;Second Stage&apos;) &#123;</span><br><span class="line">          steps &#123;</span><br><span class="line">              echo &apos;Step 2. Second time Hello&apos;</span><br><span class="line">              echo &apos;Step 3. Third time Hello&apos;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   post &#123;</span><br><span class="line">     always &#123;</span><br><span class="line">        echo &quot;Pipeline executed!&quot;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Define pipeline structure<br>A declarative pipeline is always specified inside the pipeline block and contains sections, directives and steps. </li>
+</ul>
+<p>A declarative pipeline has a simplified and opinionated syntax on top of the pipeline sub-system.</p>
+<p><strong>Sections</strong></p>
+<ul>
+<li>Keywords are:<ul>
+<li>Agent-defines on which agent the pipeline or the stage will be executed</li>
+<li>Stages-defines the stages of the pipeline</li>
+<li>Step</li>
+<li>Post-defines the post build steps</li>
+</ul>
+</li>
+</ul>
+<p>Sections define the pipeline structure and usually contain one or more directives or steps. They are defined with the key words, stages, step and post.</p>
+<p>Stages defines a series of one or more stage directives.</p>
+<p>Steps defines a series of one or more step instructions.</p>
+<p>Steps are the most fundamental part of the pipeline they define the operations that are executed so they actually tell Jenkins what to do.</p>
+<p>Defined using:</p>
+<ul>
+<li>sh: executes the shell command</li>
+<li>custom</li>
+<li>script</li>
+</ul>
+<p>Posts defines a series of one or more step instructions that are run at the end of the pipeline build.</p>
+<p><strong>Directives</strong></p>
+<ul>
+<li>Expresses the configuration of a pipeline or its parts</li>
+<li>Defined by:<ul>
+<li>Agent: specifies where the execution takes place</li>
+<li>Triggers: define automated ways to trigger the pipeline and can use cron to set the time based scheduling</li>
+<li>Options: specified pipeline specific options</li>
+<li>Environment: deinfes a set of key values used a s environment variables</li>
+<li>Parameters: define a list of user input parameters</li>
+<li>Tools: defines the tools configured on Jenkins</li>
+<li>Stage: allows for logical grouping of steps; contains steps and agent </li>
+<li>When: determines whether the stage should be executed depending on the given condition</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">pipeline &#123;</span><br><span class="line">   agent any</span><br><span class="line">   tools &#123;</span><br><span class="line">      maven &apos;M3&apos;</span><br><span class="line">   &#125;</span><br><span class="line">  </span><br><span class="line">   parameters &#123;</span><br><span class="line">      string(name: &apos;VERSION&apos;,</span><br><span class="line">          defaultValue: &apos;1.0.0&apos;,</span><br><span class="line">          description: &apos;What is the version to build?&apos;)</span><br><span class="line">   &#125;</span><br><span class="line">  </span><br><span class="line">   stages &#123;</span><br><span class="line">      stage(&apos;Build&apos;)&#123;</span><br><span class="line">          steps &#123;</span><br><span class="line">             sh &quot;./build.sh $&#123;params.VERSION&#125;&quot;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Commit-Pipeline"><a href="#Commit-Pipeline" class="headerlink" title="Commit Pipeline"></a>Commit Pipeline</h2><ul>
+<li>Basic continuous integration process</li>
+<li>Results in a report about the build</li>
+<li>Runs after each change in the code</li>
+<li>Consume a reasonable amount of resources</li>
+<li>Starting point</li>
+</ul>
+<p>Since it runs after every change in the code, the build should take no more than five minutes and should consume a reasonable amount of resources. The commit phase is always the starting point of the continuous delivery process and it provides the most important feedback cycle in the development process.</p>
+<p>In the commit phase a developer checks in the code to the repository.<br>The continuous integration server detects the change and the build starts.<br>The most fundamental commit pipeline contains three stages </p>
+<ul>
+<li>checkout</li>
+<li>compile</li>
+<li>unit test</li>
+</ul>
+<h2 id="Code-Quality-Stages"><a href="#Code-Quality-Stages" class="headerlink" title="Code Quality Stages"></a>Code Quality Stages</h2><p><strong>Extending continuous integration</strong></p>
+<ul>
+<li>The most widely used are: Code coverage and Static analysis</li>
+</ul>
+<p><strong>Code coverage</strong></p>
+<ul>
+<li>Scenario:<ul>
+<li>Nobody writes unit tests</li>
+<li>Passes all the builds</li>
+</ul>
+</li>
+<li>Solution:<ul>
+<li>Add coverage code tools</li>
+</ul>
+</li>
+<li>Creates report</li>
+<li>Make build fail<br><strong>Available tools</strong></li>
+<li>JaCoCo</li>
+<li>Clover</li>
+<li>Cobertura<br><strong>Static Code Analysis</strong></li>
+<li>Checks without execution</li>
+<li>Checks number of rules</li>
+<li>Rules apply to wide range of aspects</li>
+<li>Popular tools are Checkstyle, FindBugs, and PMD</li>
+</ul>
+<p><strong>SonarQube</strong></p>
+<ul>
+<li>Quality management tool</li>
+<li>An alternative</li>
+<li>Aggregates different code analysis frameworks</li>
+<li>Has own dashboards</li>
+<li>User friendly web interface</li>
+</ul>
+<h2 id="Triggers-and-notifications"><a href="#Triggers-and-notifications" class="headerlink" title="Triggers and notifications"></a>Triggers and notifications</h2><p><strong>Triggers</strong></p>
+<ul>
+<li>Automatic action to start the build</li>
+<li>Manay options to choose from</li>
+<li>Three types:<ul>
+<li>External</li>
+<li>Polling SCM</li>
+<li>Scheduled build<br><strong>External Trigger</strong></li>
+</ul>
+</li>
+<li>Natural to understand</li>
+<li>Starts the build after it’s called by the notifier</li>
+</ul>
+<p>GitHub -&gt; trigger-&gt; Jenkins</p>
+<p><strong>Polling SCM</strong></p>
+<ul>
+<li>Periodically calls Github</li>
+<li>Sound counter-intuitive<br>Polling SCM trigger is less intuitive.<br><img src="https://i.imgur.com/s6L2bbo.png" alt="Polling SCM figure"><br>Jenkins periodically calls GitHub and checks if there were any push to the repository. Then it starts the build.</li>
+</ul>
+<p><strong>Scheduled build</strong></p>
+<ul>
+<li>Jenkins runs the build periodically</li>
+<li>No communication with any system</li>
+<li>Implementation of scheduled build is same as polling SCM</li>
+<li>Used for the commit pipeline</li>
+</ul>
+<p><strong>Notifications</strong></p>
+<ul>
+<li>Lot</li>
+</ul>
+<h2 id="Team-development-strategies"><a href="#Team-development-strategies" class="headerlink" title="Team development strategies"></a>Team development strategies</h2><p><strong>Development workflows</strong></p>
+<ul>
+<li>Put the code into the repostitory</li>
+<li>Depends on many factors</li>
+<li>Classify into three types:<ul>
+<li><img src="https://i.imgur.com/WXIl9qU.png" alt="Trunk-based workflow"></li>
+<li><img src="https://i.imgur.com/Oiury7J.png" alt="Branching workflow"></li>
+<li><img src="https://i.imgur.com/5Uo3Ac9.png" alt="Forking workflow"><br><strong>Feature toggle</strong><br>Feature toggle is a technique that is an alternative to maintaining multiple source code branches such that the feature can be tested before it is completed and ready for use. It is used to disable the feature for users but enables it for developers while testing. Feature toggles are essentially variables used in conditional statements the simplest implementation of feature toggles are flags and the if statements.</li>
+</ul>
+</li>
+</ul>
+<p><strong>acceptance testing</strong><br>Acceptance testing is a test performed to determine if business requirements or contracts are met. </p>
+<ul>
+<li>Invovles black-box testing</li>
+<li>Imply the acceptance of the software delivery</li>
+<li>Also called UAT</li>
+<li>Rely on manual steps</li>
+<li>Reaonable to run them as programmed repeatable operations<br><strong>Artifact repository</strong><br>While the source control management stores the source code the artifact repository is dedicated for storing software binary artifacts, for example, compiled libraries or components later used to build a complete application.</li>
+<li>Store binaries on a separate server due to:<ul>
+<li>File size</li>
+<li>Versions</li>
+<li>Revision mapping</li>
+<li>Packages</li>
+<li>Access Control</li>
+<li>Clients</li>
+<li>Use cases<br><img src="https://i.imgur.com/5gDLWLc.png" alt="working"><br><strong>private docker registry</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p certs</span><br><span class="line"></span><br><span class="line">openssl req \\n  -newkey rsa:4096 -nodes -sha256 -keyout certs/domain.key \\n  -x509 -days 365 -out certs/domain.crt</span><br><span class="line"></span><br><span class="line">docker run -d -p 5000:5000 --restart=always --name registry -v `pwd`/auth:/auth -e &quot;REGISTRY_AUTH=htpasswd&quot; -e &quot;REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm&quot; -e REGISTRY_AUTH_HTPASSWD_PATH=/auth/passwords -v `pwd`/certs:/certs -e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/domain.crt -e REGISTRY_HTTP_TLS_KEY=/certs/domain.key registry:2</span><br><span class="line"></span><br><span class="line">docker tag ubuntu_with_python stanosaka/ubuntu_with_python:1</span><br><span class="line">docker push stanosaka/ubuntu_with_python:1</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Acceptance test in pipeline</strong><br><img src="https://i.imgur.com/06nJoTO.png" alt="process"></p>
+<ol>
+<li>The developer pushes a code change to Github.</li>
+<li>Jenkins detects the change, triggers the build and checks out the current code.</li>
+<li>Jenkins executes the commit phase and builds the Docker image</li>
+<li>Jenkins pushes the image to Docker Registry</li>
+<li>Jenkins runs the Docker container in the staging environment</li>
+</ol>
+<p><strong>Configuration management</strong></p>
+<ul>
+<li>Process of controlling configuration changes</li>
+<li>Used to refer to the software and the hardware</li>
+</ul>
+<p>Application Configuration| Infrastructre Configuration<br>Decides how the system works| Server infrastructure and environment configuration<br>Expressed in the form of flags| Takes care of the deployment process<br><img src="https://i.imgur.com/L4k4cb0.png" alt="working"><br><strong>Traits</strong></p>
+<ul>
+<li>Automation</li>
+<li>Version Control</li>
+<li>Incremental changes</li>
+<li>Server provisioning</li>
+<li>Security</li>
+<li>Simplicity</li>
+</ul>
 
         
         
@@ -115,7 +385,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/mysql-replication/">mysql, replication</a>
+  <span></span> <a href="/tags/pipeline/">pipeline</a>
   </div>
 
 </div>
@@ -143,25 +413,29 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2021/02/25/azure-mysql/" title="azure-mysql" itemprop="url">azure-mysql</a>
+      <a href="/2021/02/25/photography/" title="photography" itemprop="url">photography</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Stan Zhou" target="_blank" itemprop="author">Stan Zhou</a>
 		
   <p class="article-time">
-    <time datetime="2021-02-24T23:41:47.000Z" itemprop="datePublished"> Published 2021-02-25</time>
+    <time datetime="2021-02-25T06:03:34.525Z" itemprop="datePublished"> Published 2021-02-25</time>
     
   </p>
 </header>
     <div class="article-content">
         
-        <h1 id="Create-a-read-only-account-with-azure-mysql-8-0"><a href="#Create-a-read-only-account-with-azure-mysql-8-0" class="headerlink" title="Create a read-only account with azure mysql 8.0"></a>Create a read-only account with azure mysql 8.0</h1><h2 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a>Notes</h2><ol>
-<li>When creating role and granting privileges, please use ‘%’ instead of ‘localhost’. For PaaS, ‘localhost’ means physical host machine that cannot be accessed in cloud considering security.</li>
-<li>After creating role and granting role privileges to the target user, please run [SET DEFAULT ROLE ALL TO ‘{username}’]</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">create user &apos;foobarreader&apos;@&apos;%&apos; identified by &apos;StrongPassword!&apos;;</span><br><span class="line">create role &apos;foobar_read_only&apos;;</span><br><span class="line"></span><br><span class="line">grant select on foobardb.* to &apos;foobar_read_only&apos;;</span><br><span class="line"></span><br><span class="line">mysql&gt; grant &apos;foobar_read_only&apos; to &apos;foobarreader&apos;@&apos;%&apos;;</span><br><span class="line"></span><br><span class="line">mysql&gt; set default role all to &apos;foobarreader&apos;;</span><br><span class="line"></span><br><span class="line">mysql&gt; show grants for &apos;foobarreader&apos;@&apos;%&apos;;</span><br><span class="line"></span><br><span class="line">mysql&gt; show grants for &apos;foobarreader&apos;@&apos;%&apos; using &apos;foobar_read_only&apos;;</span><br><span class="line"></span><br><span class="line">## check by login via new created user and test show databases</span><br></pre></td></tr></table></figure>
-<p><a href="https://dev.mysql.com/doc/refman/8.0/en/set-default-role.html" title="role permission control">Mysql 8 role permission control system</a></p>
+        <p><strong>Exposure</strong>: Aperture, ISO speed, and shutter speed are the three core controls that manipulate exposure. </p>
+<p><strong>Camera metering</strong>: The engine that assesses light and exposure. </p>
+<p><strong>Depth of field</strong>: An important characteristic that influences our perception of space.</p>
+<h2 id="Understanding-exposure"><a href="#Understanding-exposure" class="headerlink" title="Understanding exposure"></a>Understanding exposure</h2><h3 id="Exposure-triangle"><a href="#Exposure-triangle" class="headerlink" title="Exposure triangle"></a>Exposure triangle</h3><p><img src="https://i.imgur.com/qViBe1j.jpg" alt="the exposure triangle"><br><strong>Shutter speed</strong>: Controls the duration of the exposure</p>
+<p>The shutter spped, or exposure time, refers to how long this light is permitted to enter the camera.</p>
+<p>Range of Shutter Speeds<br>SHUTTER SPEED|TYPICAL EXAMPLE<br>—|—<br>1 to 30+ seconds|To take specialty night and low-light photos on a tripod<br>1/2 to 2 seconds|To add a silky look to flowing water landscape photos on a tripod for enhanced depth of field<br>1/30 to 1/2 second|To add motion blur to the background of moving-subject, carefully taken, handheld photos with stabilization<br>1/250 to 1/50 second|To take typical handheld photos without substantial zoom<br>1/500 to 1/250 second|To freeze everyday sports/action, in moving-subject, handheld photos with substantial zoom (telephoto lens)<br>1/8000 to 1/1000 second|To freeze extremely fast, up-close subject motion</p>
+<p><em>Note that the range in shutter speeds spans a 100,000× ratio between the shortest exposure and longest exposure, enabling cameras with this capability to record a wide variety of subject motion.</em></p>
+<p><strong>Aperture</strong>: Controls the area through which light can enter your camera<br>A camera’s aperture setting controls the width of the opening that lets light into your camera lens.<br>We measure a camera’s aperture using an f-stop value, which can be counterintuitive because the area of the opening increases as the f-stop decreases. For example, when photographers say they’re “stopping down” or “opening up” their lens, they’re referring to increasing and decreasing the f-stop value, respectively<br><img src="https://i.imgur.com/BSiRQZX.jpg" alt="F-stop values and the corresponding aperture area"></p>
+<p><strong>ISO speed</strong>: Controls the sensitivity of your camera’s sensor to a given amount of light</p>
+<p><img src="https://i.imgur.com/5R1Mq0c.png" alt="Typical Focal Lengths and Their Uses"></p>
 
         
         
@@ -172,11 +446,6 @@
     <footer class="article-footer clearfix">
 <div class="article-catetags">
 
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/azure-mysql/">azure, mysql</a>
-  </div>
 
 </div>
 
@@ -203,14 +472,14 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2021/02/24/spacemacs/" title="spacemacs" itemprop="url">spacemacs</a>
+      <a href="/2021/02/25/spacemacs/" title="spacemacs" itemprop="url">spacemacs</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Stan Zhou" target="_blank" itemprop="author">Stan Zhou</a>
 		
   <p class="article-time">
-    <time datetime="2021-02-24T12:17:21.628Z" itemprop="datePublished"> Published 2021-02-24</time>
+    <time datetime="2021-02-25T06:03:34.525Z" itemprop="datePublished"> Published 2021-02-25</time>
     
   </p>
 </header>
@@ -570,14 +839,14 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2021/02/24/kubernetes-on-the-cloud/" title="kubernetes-on-the-cloud" itemprop="url">kubernetes-on-the-cloud</a>
+      <a href="/2021/02/25/kubernetes-on-the-cloud/" title="kubernetes-on-the-cloud" itemprop="url">kubernetes-on-the-cloud</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Stan Zhou" target="_blank" itemprop="author">Stan Zhou</a>
 		
   <p class="article-time">
-    <time datetime="2021-02-24T12:17:21.624Z" itemprop="datePublished"> Published 2021-02-24</time>
+    <time datetime="2021-02-25T06:03:34.521Z" itemprop="datePublished"> Published 2021-02-25</time>
     
   </p>
 </header>
@@ -1031,403 +1300,14 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2021/02/24/photography/" title="photography" itemprop="url">photography</a>
+      <a href="/2021/02/25/agile/" title="agile" itemprop="url">agile</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Stan Zhou" target="_blank" itemprop="author">Stan Zhou</a>
 		
   <p class="article-time">
-    <time datetime="2021-02-24T12:17:21.624Z" itemprop="datePublished"> Published 2021-02-24</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p><strong>Exposure</strong>: Aperture, ISO speed, and shutter speed are the three core controls that manipulate exposure. </p>
-<p><strong>Camera metering</strong>: The engine that assesses light and exposure. </p>
-<p><strong>Depth of field</strong>: An important characteristic that influences our perception of space.</p>
-<h2 id="Understanding-exposure"><a href="#Understanding-exposure" class="headerlink" title="Understanding exposure"></a>Understanding exposure</h2><h3 id="Exposure-triangle"><a href="#Exposure-triangle" class="headerlink" title="Exposure triangle"></a>Exposure triangle</h3><p><img src="https://i.imgur.com/qViBe1j.jpg" alt="the exposure triangle"><br><strong>Shutter speed</strong>: Controls the duration of the exposure</p>
-<p>The shutter spped, or exposure time, refers to how long this light is permitted to enter the camera.</p>
-<p>Range of Shutter Speeds<br>SHUTTER SPEED|TYPICAL EXAMPLE<br>—|—<br>1 to 30+ seconds|To take specialty night and low-light photos on a tripod<br>1/2 to 2 seconds|To add a silky look to flowing water landscape photos on a tripod for enhanced depth of field<br>1/30 to 1/2 second|To add motion blur to the background of moving-subject, carefully taken, handheld photos with stabilization<br>1/250 to 1/50 second|To take typical handheld photos without substantial zoom<br>1/500 to 1/250 second|To freeze everyday sports/action, in moving-subject, handheld photos with substantial zoom (telephoto lens)<br>1/8000 to 1/1000 second|To freeze extremely fast, up-close subject motion</p>
-<p><em>Note that the range in shutter speeds spans a 100,000× ratio between the shortest exposure and longest exposure, enabling cameras with this capability to record a wide variety of subject motion.</em></p>
-<p><strong>Aperture</strong>: Controls the area through which light can enter your camera<br>A camera’s aperture setting controls the width of the opening that lets light into your camera lens.<br>We measure a camera’s aperture using an f-stop value, which can be counterintuitive because the area of the opening increases as the f-stop decreases. For example, when photographers say they’re “stopping down” or “opening up” their lens, they’re referring to increasing and decreasing the f-stop value, respectively<br><img src="https://i.imgur.com/BSiRQZX.jpg" alt="F-stop values and the corresponding aperture area"></p>
-<p><strong>ISO speed</strong>: Controls the sensitivity of your camera’s sensor to a given amount of light</p>
-<p><img src="https://i.imgur.com/5R1Mq0c.png" alt="Typical Focal Lengths and Their Uses"></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2021/02/24/pipeline/" title="pipeline" itemprop="url">pipeline</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Stan Zhou" target="_blank" itemprop="author">Stan Zhou</a>
-		
-  <p class="article-time">
-    <time datetime="2021-02-24T12:17:21.624Z" itemprop="datePublished"> Published 2021-02-24</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>Pipeline</p>
-<p>Represents a part of:</p>
-<ul>
-<li>Software delivery</li>
-<li>Quality assurance process</li>
-</ul>
-<p>Benefits:</p>
-<ul>
-<li>Operation grouping</li>
-<li>Visibility</li>
-<li>Feedback<br><strong>Automated deployment pipeline</strong><br>3 stages:<br>code change-&gt; Continuous Integration-&gt; Automated acceptance testing-&gt; Configuration management</li>
-</ul>
-<ol>
-<li>Continuous Integration<br>The continuous integration phase provides the first feedback to the developers. It checks out the code from the repository, compiles it, runs unit tests and verifies the code quality. If any step fails the pipeline execution is stopped and the first thing the developer should do is fix the continuous integration build. The continuous integration pipeline is usually the starting point.</li>
-</ol>
-<ul>
-<li>first feedback</li>
-<li>checks code</li>
-<li>starting point</li>
-<li>simple to setup</li>
-</ul>
-<ol start="2">
-<li>Automated acceptance testing</li>
-</ol>
-<ul>
-<li>Suites of tests</li>
-<li>A quality gate</li>
-<li>Pipeline execution is stopped if test fails</li>
-<li>Prevents movement</li>
-<li>Lot of confusion</li>
-</ul>
-<p><img src="https://i.imgur.com/KGWFQPx.png" alt="Agile testing matrix"></p>
-<ol>
-<li>Acceptance testing</li>
-</ol>
-<ul>
-<li>Represent functional requirements</li>
-<li>Wrtten in the form of stories or examples</li>
-</ul>
-<ol start="2">
-<li>Unit Testing</li>
-</ol>
-<ul>
-<li>Provide the high-quality software</li>
-<li>Minimize the number of bugs</li>
-</ul>
-<ol start="3">
-<li>Exploratory Testing</li>
-</ol>
-<ul>
-<li>Manual black-box testing</li>
-<li>Breaks or improves the system</li>
-</ul>
-<ol start="4">
-<li>Non-functional testing</li>
-</ol>
-<ul>
-<li>Represent properties:<ul>
-<li>Performance</li>
-<li>Scalability</li>
-<li>Security</li>
-</ul>
-</li>
-</ul>
-<ol start="3">
-<li>Configuration management</li>
-</ol>
-<ul>
-<li>Replaces the manual operations</li>
-<li>Responsible for tracking and controlling changes</li>
-<li>Solution to the problems</li>
-<li>Enable storing configuration files<br>Configuration management is a solution to the problems posed by manually deploying and configuring applications on the production. Configuration management tools enables storing configuration files in the version control system and tracking every change that was made on the production servers.</li>
-</ul>
-<p><strong>Technical and development prerequisites</strong></p>
-<ul>
-<li>Automated build, test, package, and deploy operations</li>
-<li>Quick pipeline execution</li>
-<li>Quick failure recovery</li>
-<li>Zero-downtime deployment</li>
-<li>Trunk-based deployment</li>
-</ul>
-<p><strong>Building the continuous delivery process</strong><br>Jenkins</p>
-<ul>
-<li>Popular automation server</li>
-<li>Helps create automated sequence of scripts</li>
-<li>Plugin-oriented</li>
-</ul>
-<p>Ansible<br>Helps with:</p>
-<ul>
-<li>Software provisioning</li>
-<li>Configuration management</li>
-<li>Application deployment</li>
-</ul>
-<p>Java</p>
-<ul>
-<li>Most popular programming language</li>
-<li>Develop with the Spring framework</li>
-<li>Gradle-build tool<br>Jenkins is by far the most popular automation server on the market. It helps to create continuous integration and continuous delivery pipelines and in general any other automated sequence of scripts. Highly plug-in oriented it has a greater community which constantly extends it with new features. Another one is Ansible. Ansible is an automation tool that helps with software provisioning configuration management and application deployment. Next comes Java. Java has been the most popular programming language for years, that is why it is being used for most code examples. Together with Java, most companies develop with the Spring framework so we used it to create a simple web service needed to explain some concepts. Gradle is used as a build tool. It is less popular than Maven however trending much faster.</li>
-</ul>
-<p><strong>Pipeline elements</strong></p>
-<ul>
-<li>Basic elements</li>
-<li>Stage - Logical separation</li>
-<li>Setp - Used to visualize process<br><img src="https://i.imgur.com/J7xJ8KG.png" alt="elements"></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">pipeline &#123;</span><br><span class="line">   //agent any</span><br><span class="line">   agent &#123;</span><br><span class="line">      label &apos;linux&apos;</span><br><span class="line">   &#125;</span><br><span class="line">   stages &#123;</span><br><span class="line">      stage(&apos;First Stage&apos;) &#123;</span><br><span class="line">          steps &#123;</span><br><span class="line">              echo &apos;Step 1. Hello World&apos;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      stage(&apos;Second Stage&apos;) &#123;</span><br><span class="line">          steps &#123;</span><br><span class="line">              echo &apos;Step 2. Second time Hello&apos;</span><br><span class="line">              echo &apos;Step 3. Third time Hello&apos;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   post &#123;</span><br><span class="line">     always &#123;</span><br><span class="line">        echo &quot;Pipeline executed!&quot;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>Define pipeline structure<br>A declarative pipeline is always specified inside the pipeline block and contains sections, directives and steps. </li>
-</ul>
-<p>A declarative pipeline has a simplified and opinionated syntax on top of the pipeline sub-system.</p>
-<p><strong>Sections</strong></p>
-<ul>
-<li>Keywords are:<ul>
-<li>Agent-defines on which agent the pipeline or the stage will be executed</li>
-<li>Stages-defines the stages of the pipeline</li>
-<li>Step</li>
-<li>Post-defines the post build steps</li>
-</ul>
-</li>
-</ul>
-<p>Sections define the pipeline structure and usually contain one or more directives or steps. They are defined with the key words, stages, step and post.</p>
-<p>Stages defines a series of one or more stage directives.</p>
-<p>Steps defines a series of one or more step instructions.</p>
-<p>Steps are the most fundamental part of the pipeline they define the operations that are executed so they actually tell Jenkins what to do.</p>
-<p>Defined using:</p>
-<ul>
-<li>sh: executes the shell command</li>
-<li>custom</li>
-<li>script</li>
-</ul>
-<p>Posts defines a series of one or more step instructions that are run at the end of the pipeline build.</p>
-<p><strong>Directives</strong></p>
-<ul>
-<li>Expresses the configuration of a pipeline or its parts</li>
-<li>Defined by:<ul>
-<li>Agent: specifies where the execution takes place</li>
-<li>Triggers: define automated ways to trigger the pipeline and can use cron to set the time based scheduling</li>
-<li>Options: specified pipeline specific options</li>
-<li>Environment: deinfes a set of key values used a s environment variables</li>
-<li>Parameters: define a list of user input parameters</li>
-<li>Tools: defines the tools configured on Jenkins</li>
-<li>Stage: allows for logical grouping of steps; contains steps and agent </li>
-<li>When: determines whether the stage should be executed depending on the given condition</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">pipeline &#123;</span><br><span class="line">   agent any</span><br><span class="line">   tools &#123;</span><br><span class="line">      maven &apos;M3&apos;</span><br><span class="line">   &#125;</span><br><span class="line">  </span><br><span class="line">   parameters &#123;</span><br><span class="line">      string(name: &apos;VERSION&apos;,</span><br><span class="line">          defaultValue: &apos;1.0.0&apos;,</span><br><span class="line">          description: &apos;What is the version to build?&apos;)</span><br><span class="line">   &#125;</span><br><span class="line">  </span><br><span class="line">   stages &#123;</span><br><span class="line">      stage(&apos;Build&apos;)&#123;</span><br><span class="line">          steps &#123;</span><br><span class="line">             sh &quot;./build.sh $&#123;params.VERSION&#125;&quot;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Commit-Pipeline"><a href="#Commit-Pipeline" class="headerlink" title="Commit Pipeline"></a>Commit Pipeline</h2><ul>
-<li>Basic continuous integration process</li>
-<li>Results in a report about the build</li>
-<li>Runs after each change in the code</li>
-<li>Consume a reasonable amount of resources</li>
-<li>Starting point</li>
-</ul>
-<p>Since it runs after every change in the code, the build should take no more than five minutes and should consume a reasonable amount of resources. The commit phase is always the starting point of the continuous delivery process and it provides the most important feedback cycle in the development process.</p>
-<p>In the commit phase a developer checks in the code to the repository.<br>The continuous integration server detects the change and the build starts.<br>The most fundamental commit pipeline contains three stages </p>
-<ul>
-<li>checkout</li>
-<li>compile</li>
-<li>unit test</li>
-</ul>
-<h2 id="Code-Quality-Stages"><a href="#Code-Quality-Stages" class="headerlink" title="Code Quality Stages"></a>Code Quality Stages</h2><p><strong>Extending continuous integration</strong></p>
-<ul>
-<li>The most widely used are: Code coverage and Static analysis</li>
-</ul>
-<p><strong>Code coverage</strong></p>
-<ul>
-<li>Scenario:<ul>
-<li>Nobody writes unit tests</li>
-<li>Passes all the builds</li>
-</ul>
-</li>
-<li>Solution:<ul>
-<li>Add coverage code tools</li>
-</ul>
-</li>
-<li>Creates report</li>
-<li>Make build fail<br><strong>Available tools</strong></li>
-<li>JaCoCo</li>
-<li>Clover</li>
-<li>Cobertura<br><strong>Static Code Analysis</strong></li>
-<li>Checks without execution</li>
-<li>Checks number of rules</li>
-<li>Rules apply to wide range of aspects</li>
-<li>Popular tools are Checkstyle, FindBugs, and PMD</li>
-</ul>
-<p><strong>SonarQube</strong></p>
-<ul>
-<li>Quality management tool</li>
-<li>An alternative</li>
-<li>Aggregates different code analysis frameworks</li>
-<li>Has own dashboards</li>
-<li>User friendly web interface</li>
-</ul>
-<h2 id="Triggers-and-notifications"><a href="#Triggers-and-notifications" class="headerlink" title="Triggers and notifications"></a>Triggers and notifications</h2><p><strong>Triggers</strong></p>
-<ul>
-<li>Automatic action to start the build</li>
-<li>Manay options to choose from</li>
-<li>Three types:<ul>
-<li>External</li>
-<li>Polling SCM</li>
-<li>Scheduled build<br><strong>External Trigger</strong></li>
-</ul>
-</li>
-<li>Natural to understand</li>
-<li>Starts the build after it’s called by the notifier</li>
-</ul>
-<p>GitHub -&gt; trigger-&gt; Jenkins</p>
-<p><strong>Polling SCM</strong></p>
-<ul>
-<li>Periodically calls Github</li>
-<li>Sound counter-intuitive<br>Polling SCM trigger is less intuitive.<br><img src="https://i.imgur.com/s6L2bbo.png" alt="Polling SCM figure"><br>Jenkins periodically calls GitHub and checks if there were any push to the repository. Then it starts the build.</li>
-</ul>
-<p><strong>Scheduled build</strong></p>
-<ul>
-<li>Jenkins runs the build periodically</li>
-<li>No communication with any system</li>
-<li>Implementation of scheduled build is same as polling SCM</li>
-<li>Used for the commit pipeline</li>
-</ul>
-<p><strong>Notifications</strong></p>
-<ul>
-<li>Lot</li>
-</ul>
-<h2 id="Team-development-strategies"><a href="#Team-development-strategies" class="headerlink" title="Team development strategies"></a>Team development strategies</h2><p><strong>Development workflows</strong></p>
-<ul>
-<li>Put the code into the repostitory</li>
-<li>Depends on many factors</li>
-<li>Classify into three types:<ul>
-<li><img src="https://i.imgur.com/WXIl9qU.png" alt="Trunk-based workflow"></li>
-<li><img src="https://i.imgur.com/Oiury7J.png" alt="Branching workflow"></li>
-<li><img src="https://i.imgur.com/5Uo3Ac9.png" alt="Forking workflow"><br><strong>Feature toggle</strong><br>Feature toggle is a technique that is an alternative to maintaining multiple source code branches such that the feature can be tested before it is completed and ready for use. It is used to disable the feature for users but enables it for developers while testing. Feature toggles are essentially variables used in conditional statements the simplest implementation of feature toggles are flags and the if statements.</li>
-</ul>
-</li>
-</ul>
-<p><strong>acceptance testing</strong><br>Acceptance testing is a test performed to determine if business requirements or contracts are met. </p>
-<ul>
-<li>Invovles black-box testing</li>
-<li>Imply the acceptance of the software delivery</li>
-<li>Also called UAT</li>
-<li>Rely on manual steps</li>
-<li>Reaonable to run them as programmed repeatable operations<br><strong>Artifact repository</strong><br>While the source control management stores the source code the artifact repository is dedicated for storing software binary artifacts, for example, compiled libraries or components later used to build a complete application.</li>
-<li>Store binaries on a separate server due to:<ul>
-<li>File size</li>
-<li>Versions</li>
-<li>Revision mapping</li>
-<li>Packages</li>
-<li>Access Control</li>
-<li>Clients</li>
-<li>Use cases<br><img src="https://i.imgur.com/5gDLWLc.png" alt="working"><br><strong>private docker registry</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p certs</span><br><span class="line"></span><br><span class="line">openssl req \\n  -newkey rsa:4096 -nodes -sha256 -keyout certs/domain.key \\n  -x509 -days 365 -out certs/domain.crt</span><br><span class="line"></span><br><span class="line">docker run -d -p 5000:5000 --restart=always --name registry -v `pwd`/auth:/auth -e &quot;REGISTRY_AUTH=htpasswd&quot; -e &quot;REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm&quot; -e REGISTRY_AUTH_HTPASSWD_PATH=/auth/passwords -v `pwd`/certs:/certs -e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/domain.crt -e REGISTRY_HTTP_TLS_KEY=/certs/domain.key registry:2</span><br><span class="line"></span><br><span class="line">docker tag ubuntu_with_python stanosaka/ubuntu_with_python:1</span><br><span class="line">docker push stanosaka/ubuntu_with_python:1</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-<p><strong>Acceptance test in pipeline</strong><br><img src="https://i.imgur.com/06nJoTO.png" alt="process"></p>
-<ol>
-<li>The developer pushes a code change to Github.</li>
-<li>Jenkins detects the change, triggers the build and checks out the current code.</li>
-<li>Jenkins executes the commit phase and builds the Docker image</li>
-<li>Jenkins pushes the image to Docker Registry</li>
-<li>Jenkins runs the Docker container in the staging environment</li>
-</ol>
-<p><strong>Configuration management</strong></p>
-<ul>
-<li>Process of controlling configuration changes</li>
-<li>Used to refer to the software and the hardware</li>
-</ul>
-<p>Application Configuration| Infrastructre Configuration<br>Decides how the system works| Server infrastructure and environment configuration<br>Expressed in the form of flags| Takes care of the deployment process<br><img src="https://i.imgur.com/L4k4cb0.png" alt="working"><br><strong>Traits</strong></p>
-<ul>
-<li>Automation</li>
-<li>Version Control</li>
-<li>Incremental changes</li>
-<li>Server provisioning</li>
-<li>Security</li>
-<li>Simplicity</li>
-</ul>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/pipeline/">pipeline</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2021/02/24/agile/" title="agile" itemprop="url">agile</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Stan Zhou" target="_blank" itemprop="author">Stan Zhou</a>
-		
-  <p class="article-time">
-    <time datetime="2021-02-24T12:17:21.616Z" itemprop="datePublished"> Published 2021-02-24</time>
+    <time datetime="2021-02-25T06:03:34.513Z" itemprop="datePublished"> Published 2021-02-25</time>
     
   </p>
 </header>
@@ -1619,6 +1499,126 @@
   <div class="article-tags">
   
   <span></span> <a href="/tags/agile/">agile</a><a href="/tags/software-development/">software development</a><a href="/tags/agile-development/">agile development</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2021/02/25/mysql-replication/" title="mysql-replication" itemprop="url">mysql-replication</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Stan Zhou" target="_blank" itemprop="author">Stan Zhou</a>
+		
+  <p class="article-time">
+    <time datetime="2021-02-25T00:20:35.000Z" itemprop="datePublished"> Published 2021-02-25</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="Myql-replicatoin"><a href="#Myql-replicatoin" class="headerlink" title="Myql replicatoin"></a>Myql replicatoin</h1><h2 id="Process"><a href="#Process" class="headerlink" title="Process"></a>Process</h2><ol>
+<li>Clean the salve db<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">DROP_DB_LIST=`mysql -Nse &quot;SET group_concat_max_len = 81920; SELECT GROUP_CONCAT(SCHEMA_NAME SEPARATOR &apos;;\nDROP DATABASE &apos;) FROM information_schema.SCHEMATA WHERE SCHEMA_NAME NOT IN (&apos;mysql&apos;,&apos;information_schema&apos;,&apos;performance_schema&apos;,&apos;sys&apos;);&quot;`</span><br><span class="line">echo -e $DROP_DB_LIST &gt; /tmp/delete.sh </span><br><span class="line">vim /tmp/delete.sh</span><br><span class="line">mysql &lt; /tmp/delete.sh</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="common-problems"><a href="#common-problems" class="headerlink" title="common problems"></a>common problems</h2><h3 id="dropping-a-database-with-a-special-character-in-the-databsename"><a href="#dropping-a-database-with-a-special-character-in-the-databsename" class="headerlink" title="dropping a database with a special character in the databsename"></a>dropping a database with a special character in the databsename</h3><p>error message:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@au3-db-03 mysql]# mysql &lt; /tmp/deletenewnew.sh</span><br><span class="line">ERROR 1064 (42000) at line 267: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near &apos;-123&apos; at line 1</span><br></pre></td></tr></table></figure></p>
+<p>fix by:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; drop database `supd-123`</span><br><span class="line">    -&gt; ;</span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br></pre></td></tr></table></figure></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/mysql-replication/">mysql, replication</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2021/02/25/azure-mysql/" title="azure-mysql" itemprop="url">azure-mysql</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Stan Zhou" target="_blank" itemprop="author">Stan Zhou</a>
+		
+  <p class="article-time">
+    <time datetime="2021-02-24T23:41:47.000Z" itemprop="datePublished"> Published 2021-02-25</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="Create-a-read-only-account-with-azure-mysql-8-0"><a href="#Create-a-read-only-account-with-azure-mysql-8-0" class="headerlink" title="Create a read-only account with azure mysql 8.0"></a>Create a read-only account with azure mysql 8.0</h1><h2 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a>Notes</h2><ol>
+<li>When creating role and granting privileges, please use ‘%’ instead of ‘localhost’. For PaaS, ‘localhost’ means physical host machine that cannot be accessed in cloud considering security.</li>
+<li>After creating role and granting role privileges to the target user, please run [SET DEFAULT ROLE ALL TO ‘{username}’]</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">create user &apos;foobarreader&apos;@&apos;%&apos; identified by &apos;StrongPassword!&apos;;</span><br><span class="line">create role &apos;foobar_read_only&apos;;</span><br><span class="line"></span><br><span class="line">grant select on foobardb.* to &apos;foobar_read_only&apos;;</span><br><span class="line"></span><br><span class="line">mysql&gt; grant &apos;foobar_read_only&apos; to &apos;foobarreader&apos;@&apos;%&apos;;</span><br><span class="line"></span><br><span class="line">mysql&gt; set default role all to &apos;foobarreader&apos;;</span><br><span class="line"></span><br><span class="line">mysql&gt; show grants for &apos;foobarreader&apos;@&apos;%&apos;;</span><br><span class="line"></span><br><span class="line">mysql&gt; show grants for &apos;foobarreader&apos;@&apos;%&apos; using &apos;foobar_read_only&apos;;</span><br><span class="line"></span><br><span class="line">## check by login via new created user and test show databases</span><br></pre></td></tr></table></figure>
+<p><a href="https://dev.mysql.com/doc/refman/8.0/en/set-default-role.html" title="role permission control">Mysql 8 role permission control system</a></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/azure-mysql/">azure, mysql</a>
   </div>
 
 </div>
@@ -1946,11 +1946,11 @@
 			
 		
 			
-				<li><a href="/tags/git/" title="git">git<sup>3</sup></a></li>
+				<li><a href="/tags/linux/" title="linux">linux<sup>3</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/linux/" title="linux">linux<sup>3</sup></a></li>
+				<li><a href="/tags/git/" title="git">git<sup>3</sup></a></li>
 			
 		
 			
