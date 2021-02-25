@@ -83,203 +83,6 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2020/08/09/tools/" title="tools" itemprop="url">tools</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Stan Zhou" target="_blank" itemprop="author">Stan Zhou</a>
-		
-  <p class="article-time">
-    <time datetime="2020-08-09T04:15:15.000Z" itemprop="datePublished"> Published 2020-08-09</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-<p><strong>Table of Contents</strong></p>
-<ul>
-<li><a href="#-">-</a></li>
-<li><a href="#multiplexers">Multiplexers</a><ul>
-<li><a href="#byobu">byobu</a></li>
-<li><a href="#mosh">mosh</a></li>
-<li><a href="#ss">ss</a></li>
-<li><a href="#mtr">mtr</a></li>
-<li><a href="#iftop">iftop</a></li>
-<li><a href="#iperf">iperf</a></li>
-<li><a href="#troubleshooting-layer-1-problems">Troubleshooting layer 1 problems</a></li>
-<li><a href="#http-core-protocol">HTTP core protocol</a><ul>
-<li><a href="#request">Request</a></li>
-<li><a href="#response">Response</a></li>
-</ul>
-</li>
-<li><a href="#curl">cURL</a></li>
-<li><a href="#netcat">netcat</a><ul>
-<li><a href="#basic-clientserver">Basic client/server</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<!-- markdown-toc end -->
-<h1 id="Multiplexers"><a href="#Multiplexers" class="headerlink" title="Multiplexers"></a>Multiplexers</h1><h2 id="byobu"><a href="#byobu" class="headerlink" title="byobu"></a>byobu</h2><p>F2: Create a new windows.<br>F3: Go to the previous windows.<br>F4: Go to the next windows.<br>F9: help and configuration</p>
-<p>Quitting a byobu session: locking and disconnecting.<br>F12: Lock access</p>
-<p>F6: disconnect<br>byobu -r: reconnect<br>F7: scrollback, spacebar for mark the start of buffer, spacebar again to mark the end of selection.<br>Paste: Byobu-Escape + [</p>
-<h2 id="mosh"><a href="#mosh" class="headerlink" title="mosh"></a>mosh</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mosh jdoe@10.10.10.101</span><br><span class="line">mosh username@remoteserver.org --ssh=&quot;ssh -i ~/.ssh/identity_file -p 1234&quot;</span><br></pre></td></tr></table></figure>
-<h2 id="ss"><a href="#ss" class="headerlink" title="ss"></a>ss</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">user@opsschool ~$ ss -tuln</span><br><span class="line">Netid  State      Recv-Q Send-Q         Local Address:Port         Peer Address:Port</span><br><span class="line">tcp    LISTEN     0      128                        *:80                      *:*</span><br><span class="line">tcp    LISTEN     0      50                         *:4242                    *:*</span><br><span class="line">tcp    LISTEN     0      50                        :::4242                   :::*</span><br><span class="line">tcp    LISTEN     0      50                         *:2003                    *:*</span><br><span class="line">tcp    LISTEN     0      50                         *:2004                    *:*</span><br><span class="line">tcp    LISTEN     0      128                       :::22                     :::*</span><br><span class="line">tcp    LISTEN     0      128                        *:22                      *:*</span><br><span class="line">tcp    LISTEN     0      100                        *:3000                    *:*</span><br><span class="line">tcp    LISTEN     0      100                      ::1:25                     :::*</span><br><span class="line">tcp    LISTEN     0      100                127.0.0.1:25                      *:*</span><br><span class="line">tcp    LISTEN     0      50                         *:7002                    *:*</span><br></pre></td></tr></table></figure>
-<ul>
-<li>means the deamon is listening on all IP addresses the server might have.</li>
-</ul>
-<p>127.0.0.1 means the daemon is listening only to the loopback interface</p>
-<p>::: is the same thing as *, but for IPv6</p>
-<p>::1 is the same as 127.0.0.1, but for IPv6</p>
-<h2 id="mtr"><a href="#mtr" class="headerlink" title="mtr"></a>mtr</h2><p>is a program that combines the functionality of ping and traceroute into one utility<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"> mtr -r uow.edu.au</span><br><span class="line">Start: 2020-08-09T15:14:55+1000</span><br><span class="line">HOST: stan-OptiPlex-380           Loss%   Snt   Last   Avg  Best  Wrst StDev</span><br><span class="line">  1.|-- router.lan                 0.0%    10    0.4   0.4   0.3   0.4   0.0</span><br><span class="line">  2.|-- 58.162.27.77               0.0%    10    8.6  12.7   8.0  17.5   3.4</span><br><span class="line">  3.|-- 10.2.2.150                 0.0%    10    8.6  13.7   8.3  29.7   6.6</span><br><span class="line">  4.|-- 10.2.1.149                 0.0%    10   15.2  13.6  10.2  16.1   2.0</span><br><span class="line">  5.|-- Bundle-Ether77.chw-edge90  0.0%    10   12.2  14.0  10.1  23.7   3.9</span><br><span class="line">  6.|-- bundle-ether2.ken-edge903  0.0%    10   12.1  13.3   9.2  26.3   4.8</span><br><span class="line">  7.|-- aar3533567.lnk.telstra.ne  0.0%    10   14.3  14.1  10.4  31.7   6.5</span><br><span class="line">  8.|-- xe-0-2-1.pe1.rsby.nsw.aar  0.0%    10   12.7  12.0   8.9  14.8   2.2</span><br><span class="line">  9.|-- 138.44.5.111               0.0%    10   10.2  14.5  10.2  17.5   2.5</span><br><span class="line"> 10.|-- 203.10.91.20               0.0%    10   11.8  16.6   9.9  27.2   6.1</span><br><span class="line"> 11.|-- www.uow.edu.au             0.0%    10   11.8  13.7  11.8  16.4   1.5</span><br></pre></td></tr></table></figure></p>
-<h2 id="iftop"><a href="#iftop" class="headerlink" title="iftop"></a>iftop</h2><p>Displays bandwith usage on a specific interface, broken down by remote host<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo iftop -i eth0</span><br></pre></td></tr></table></figure></p>
-<h2 id="iperf"><a href="#iperf" class="headerlink" title="iperf"></a>iperf</h2><p>a bandwidth testing utility. It consists of a daemon and client, running on separate machines.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo iperf3 -c remote-host</span><br></pre></td></tr></table></figure></p>
-<h2 id="Troubleshooting-layer-1-problems"><a href="#Troubleshooting-layer-1-problems" class="headerlink" title="Troubleshooting layer 1 problems"></a>Troubleshooting layer 1 problems</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ip -s link show eth0</span><br><span class="line">sudo ethtool eth0</span><br><span class="line">## -S, which shows all the same metrics as the ip command, plus many, many more</span><br><span class="line">sudo ethtool -S eth0</span><br></pre></td></tr></table></figure>
-<h2 id="HTTP-core-protocol"><a href="#HTTP-core-protocol" class="headerlink" title="HTTP core protocol"></a>HTTP core protocol</h2><h3 id="Request"><a href="#Request" class="headerlink" title="Request"></a>Request</h3><table>
-<thead>
-<tr>
-<th>Method</th>
-<th style="text-align:center">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>GET</td>
-<td style="text-align:center">Tranfers a current representation of the target resource.</td>
-</tr>
-<tr>
-<td>HEAD</td>
-<td style="text-align:center">Same as GET, but only transfer the status line and header section.</td>
-</tr>
-<tr>
-<td>POST</td>
-<td style="text-align:center">Perform resource-specific processing on the request payload.</td>
-</tr>
-<tr>
-<td>PUT</td>
-<td style="text-align:center">Replace all current representations of the target resource with the requested payload.</td>
-</tr>
-<tr>
-<td>DELETE</td>
-<td style="text-align:center">Remove all current representations of the target resource.</td>
-</tr>
-<tr>
-<td>CONNECT</td>
-<td style="text-align:center">Establish a tunnel to the server identified by the target resource.</td>
-</tr>
-<tr>
-<td>OPTIONS</td>
-<td style="text-align:center">Describe the communication options for the target resource.</td>
-</tr>
-<tr>
-<td>TRACE</td>
-<td style="text-align:center">Perform a message loop-back test along the path to the target resource.</td>
-</tr>
-</tbody>
-</table>
-<h3 id="Response"><a href="#Response" class="headerlink" title="Response"></a>Response</h3><table>
-<thead>
-<tr>
-<th>Code</th>
-<th style="text-align:center">Reason</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>200</td>
-<td style="text-align:center">OK</td>
-<td>The request has succeeded.</td>
-</tr>
-<tr>
-<td>301</td>
-<td style="text-align:center">Moved Permenantly</td>
-<td>The target has moved to a new location and future references should use a new location. The server should mention the new location in the Location header in the response.</td>
-</tr>
-<tr>
-<td>302</td>
-<td style="text-align:center">Found</td>
-<td>The target resources been temporarily moved. As the move is temporarily, future references should still use the same location.</td>
-</tr>
-<tr>
-<td>400</td>
-<td style="text-align:center">Bad Request</td>
-<td>The server cannot process the request as it is perceived as invalid.</td>
-</tr>
-<tr>
-<td>401</td>
-<td style="text-align:center">Unauthorized</td>
-<td>The request to the target resource is not allowed due to missing or incorrect authentication credentials.</td>
-</tr>
-<tr>
-<td>403</td>
-<td style="text-align:center">Forbidden</td>
-<td>The request to the target resource is not allowed for reasons unrelated to authentication.</td>
-</tr>
-<tr>
-<td>404</td>
-<td style="text-align:center">Not Found</td>
-<td>The target resource was not found.</td>
-</tr>
-<tr>
-<td>500</td>
-<td style="text-align:center">Internal Server Error</td>
-<td>The server encountered an unexpected error.</td>
-</tr>
-<tr>
-<td>502</td>
-<td style="text-align:center">Bad Gateway</td>
-<td>The server is acting as a gateway/proxy and received an invalid response from a server it contacted to fulfill the request.</td>
-</tr>
-<tr>
-<td>503</td>
-<td style="text-align:center">Service Unavailable</td>
-<td>The server is currently unable to fulfill the request.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="cURL"><a href="#cURL" class="headerlink" title="cURL"></a>cURL</h2><p>is a tool and library for transferring data with URL syntax, capable of handling various protocols.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">curl http://foobar/index.html</span><br><span class="line">With the --request or -X parameter, the method can be specified. To include the the headers in the output.</span><br><span class="line">curl -I --request GET  http://www.opsschool.org/en/latest/http_101.html</span><br><span class="line">The -O switch makes cURL write output to a local file named like the remote file.</span><br><span class="line">$ curl -O http://localhost/bigfile</span><br></pre></td></tr></table></figure></p>
-<p>By default cURL does not follow HTTP redirects, and instead a 3xx redirection message is given.<br>The -L switch makes cURL automatically follow redirects and issue another request to the given localtion till it finds the targeted resource.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -IL foobar.org</span><br></pre></td></tr></table></figure></p>
-<h2 id="netcat"><a href="#netcat" class="headerlink" title="netcat"></a>netcat</h2><p>a networking tool capable of reading and writing data across a network connection.</p>
-<h3 id="Basic-client-server"><a href="#Basic-client-server" class="headerlink" title="Basic client/server"></a>Basic client/server</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ nc -l 192.168.0.1 1234 &gt; output.log</span><br><span class="line">### then in another terminal, pipe some data to netcat that is connected to the destination ip and port</span><br><span class="line">$ echo &quot;I&apos;m connected as client&quot;| nc 192.168.0.1 1234</span><br><span class="line">## Then again in the first (server) terminal, the data is displayed:</span><br><span class="line">$ cat output.log</span><br><span class="line">I&apos;m connected as client</span><br></pre></td></tr></table></figure>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
       <a href="/2020/06/28/puppet6/" title="puppet6" itemprop="url">puppet6</a>
   </h1>
   <p class="article-author">By
@@ -549,6 +352,70 @@
     <footer class="article-footer clearfix">
 <div class="article-catetags">
 
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2020/02/25/photography/" title="photography" itemprop="url">photography</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Stan Zhou" target="_blank" itemprop="author">Stan Zhou</a>
+		
+  <p class="article-time">
+    <time datetime="2020-02-25T10:46:29.000Z" itemprop="datePublished"> Published 2020-02-25</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p><strong>Exposure</strong>: Aperture, ISO speed, and shutter speed are the three core controls that manipulate exposure. </p>
+<p><strong>Camera metering</strong>: The engine that assesses light and exposure. </p>
+<p><strong>Depth of field</strong>: An important characteristic that influences our perception of space.</p>
+<h2 id="Understanding-exposure"><a href="#Understanding-exposure" class="headerlink" title="Understanding exposure"></a>Understanding exposure</h2><h3 id="Exposure-triangle"><a href="#Exposure-triangle" class="headerlink" title="Exposure triangle"></a>Exposure triangle</h3><p><img src="https://i.imgur.com/qViBe1j.jpg" alt="the exposure triangle"><br><strong>Shutter speed</strong>: Controls the duration of the exposure</p>
+<p>The shutter spped, or exposure time, refers to how long this light is permitted to enter the camera.</p>
+<p>Range of Shutter Speeds<br>SHUTTER SPEED|TYPICAL EXAMPLE<br>—|—<br>1 to 30+ seconds|To take specialty night and low-light photos on a tripod<br>1/2 to 2 seconds|To add a silky look to flowing water landscape photos on a tripod for enhanced depth of field<br>1/30 to 1/2 second|To add motion blur to the background of moving-subject, carefully taken, handheld photos with stabilization<br>1/250 to 1/50 second|To take typical handheld photos without substantial zoom<br>1/500 to 1/250 second|To freeze everyday sports/action, in moving-subject, handheld photos with substantial zoom (telephoto lens)<br>1/8000 to 1/1000 second|To freeze extremely fast, up-close subject motion</p>
+<p><em>Note that the range in shutter speeds spans a 100,000× ratio between the shortest exposure and longest exposure, enabling cameras with this capability to record a wide variety of subject motion.</em></p>
+<p><strong>Aperture</strong>: Controls the area through which light can enter your camera<br>A camera’s aperture setting controls the width of the opening that lets light into your camera lens.<br>We measure a camera’s aperture using an f-stop value, which can be counterintuitive because the area of the opening increases as the f-stop decreases. For example, when photographers say they’re “stopping down” or “opening up” their lens, they’re referring to increasing and decreasing the f-stop value, respectively<br><img src="https://i.imgur.com/BSiRQZX.jpg" alt="F-stop values and the corresponding aperture area"></p>
+<p><strong>ISO speed</strong>: Controls the sensitivity of your camera’s sensor to a given amount of light</p>
+<p><img src="https://i.imgur.com/5R1Mq0c.png" alt="Typical Focal Lengths and Their Uses"></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/photograph/">photograph</a>
+  </div>
 
 </div>
 

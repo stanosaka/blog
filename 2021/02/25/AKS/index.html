@@ -4,24 +4,27 @@
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
   
-    <title>monitoring | Stan Zhou&#39;s Hexo Technical Blog</title>
+    <title>AKS | Stan Zhou&#39;s Hexo Technical Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Stan Zhou">
     
 
     
-    <meta name="description" content="Frontend MonitoringTwo approaches to frontend monitoring real user monitoring (RUM) synthetic tools: webpagetest.orgBrowsers expose page performance metrics visa the Navigation Timing API    Applicati">
+    <meta name="description" content="1. K8s on AzureDeployment models Create the Azure Container Registry12az group create --name myResourceGroup --location australiaeastaz acr create --resource-group myResourceGroup --name cwzhou --sku">
+<meta name="keywords" content="AKS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="monitoring">
-<meta property="og:url" content="http://223.95.78.227/2020/02/26/monitoring/index.html">
+<meta property="og:title" content="AKS">
+<meta property="og:url" content="http://223.95.78.227/2021/02/25/AKS/index.html">
 <meta property="og:site_name" content="Stan Zhou&#39;s Hexo Technical Blog">
-<meta property="og:description" content="Frontend MonitoringTwo approaches to frontend monitoring real user monitoring (RUM) synthetic tools: webpagetest.orgBrowsers expose page performance metrics visa the Navigation Timing API    Applicati">
+<meta property="og:description" content="1. K8s on AzureDeployment models Create the Azure Container Registry12az group create --name myResourceGroup --location australiaeastaz acr create --resource-group myResourceGroup --name cwzhou --sku">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2021-02-25T06:14:08.318Z">
+<meta property="og:image" content="https://i.imgur.com/XQNAABL.png">
+<meta property="og:updated_time" content="2021-02-25T10:47:24.608Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="monitoring">
-<meta name="twitter:description" content="Frontend MonitoringTwo approaches to frontend monitoring real user monitoring (RUM) synthetic tools: webpagetest.orgBrowsers expose page performance metrics visa the Navigation Timing API    Applicati">
+<meta name="twitter:title" content="AKS">
+<meta name="twitter:description" content="1. K8s on AzureDeployment models Create the Azure Container Registry12az group create --name myResourceGroup --location australiaeastaz acr create --resource-group myResourceGroup --name cwzhou --sku">
+<meta name="twitter:image" content="https://i.imgur.com/XQNAABL.png">
 <meta name="twitter:creator" content="@stanosaka">
 
     
@@ -82,14 +85,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2020/02/26/monitoring/" title="monitoring" itemprop="url">monitoring</a>
+      <a href="/2021/02/25/AKS/" title="AKS" itemprop="url">AKS</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Stan Zhou" target="_blank" itemprop="author">Stan Zhou</a>
 		
   <p class="article-time">
-    <time datetime="2020-02-26T10:52:07.000Z" itemprop="datePublished"> Published 2020-02-26</time>
+    <time datetime="2021-02-25T10:46:29.000Z" itemprop="datePublished"> Published 2021-02-25</time>
     
   </p>
 </header>
@@ -98,34 +101,41 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Frontend-Monitoring"><span class="toc-number">1.</span> <span class="toc-text">Frontend Monitoring</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Two-approaches-to-frontend-monitoring"><span class="toc-number">1.1.</span> <span class="toc-text">Two approaches to frontend monitoring</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Application-Monitoring"><span class="toc-number">2.</span> <span class="toc-text">Application Monitoring</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Telegraf-InfluxDB-Grafana"><span class="toc-number">3.</span> <span class="toc-text">Telegraf, InfluxDB + Grafana</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-K8s-on-Azure"><span class="toc-number">1.</span> <span class="toc-text">1. K8s on Azure</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Deployment-models"><span class="toc-number">1.1.</span> <span class="toc-text">Deployment models</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Create-the-Azure-Container-Registry"><span class="toc-number">1.2.</span> <span class="toc-text">Create the Azure Container Registry</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Push-a-container-to-the-registry"><span class="toc-number">1.3.</span> <span class="toc-text">Push a container to the registry</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Login-to-your-ACR-instance"><span class="toc-number">1.3.1.</span> <span class="toc-text">Login to your ACR instance:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Verify-that-you-have-a-local-copy-of-your-application-image"><span class="toc-number">1.3.2.</span> <span class="toc-text">Verify that you have a local copy of your application image:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Tag-your-nginx-image-with-the-server-address-and-verion-v1-in-this-case"><span class="toc-number">1.3.3.</span> <span class="toc-text">Tag your nginx image with the server address and verion (v1 in this case):</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Verify-that-your-tags-have-been-applied"><span class="toc-number">1.3.4.</span> <span class="toc-text">Verify that your tags have been applied:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Verify-container-registry-image"><span class="toc-number">1.3.5.</span> <span class="toc-text">Verify container registry image</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Establish-AKS-specific-credentials"><span class="toc-number">1.3.6.</span> <span class="toc-text">Establish AKS specific credentials</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Launch-an-AKS-cluster"><span class="toc-number">1.3.7.</span> <span class="toc-text">Launch an AKS cluster</span></a></li></ol></li></ol></li></ol>
 		
 		</div>
 		
-		<h1 id="Frontend-Monitoring"><a href="#Frontend-Monitoring" class="headerlink" title="Frontend Monitoring"></a>Frontend Monitoring</h1><h2 id="Two-approaches-to-frontend-monitoring"><a href="#Two-approaches-to-frontend-monitoring" class="headerlink" title="Two approaches to frontend monitoring"></a>Two approaches to frontend monitoring</h2><ul>
-<li>real user monitoring (RUM)</li>
-<li>synthetic<ul>
-<li>tools: webpagetest.org<br><strong>Browsers expose page performance metrics visa the Navigation Timing API</strong></li>
-</ul>
-</li>
-</ul>
-<h1 id="Application-Monitoring"><a href="#Application-Monitoring" class="headerlink" title="Application Monitoring"></a>Application Monitoring</h1><p><strong>Application Performance Monitoring(APM) Tools</strong></p>
-<ul>
-<li>StatsD is a tool used to add metrics inside of your code.</li>
-</ul>
-<h1 id="Telegraf-InfluxDB-Grafana"><a href="#Telegraf-InfluxDB-Grafana" class="headerlink" title="Telegraf, InfluxDB + Grafana"></a>Telegraf, InfluxDB + Grafana</h1><ul>
-<li><p>Grafana: Grafana is “The open platform for beautiful analytics and monitoring.” It makes it easy to create dashboards for displaying data from many sources, particularly time-series data. It works with several different data sources such as Graphite, Elasticsearch, InfluxDB, and OpenTSDB. We’re going to use this as our main front end for visualizing our network statistics.</p>
-</li>
-<li><p>InfluxDB: InfluxDB is “…a data store for any use case involving large amounts of timestamped data.” This is where we’re going to store our network statistics. It is designed for exactly this use-case, where metrics are collected over time.</p>
-</li>
-<li><p>Telegraf: Telegraf is “…a plugin-driven server agent for collecting and reporting metrics.” This can collect data from a wide variety of sources, e.g. system statistics, API calls, DB queries, and SNMP. It can then send those metrics to a variety of datastores, e.g. Graphite, OpenTSDB, Datadog, Librato. Telegraf is maintained by InfluxData, the people behind InfluxDB. So it has very good support for writing data to InfluxDB.</p>
-</li>
-</ul>
+		<h1 id="1-K8s-on-Azure"><a href="#1-K8s-on-Azure" class="headerlink" title="1. K8s on Azure"></a>1. K8s on Azure</h1><h2 id="Deployment-models"><a href="#Deployment-models" class="headerlink" title="Deployment models"></a>Deployment models</h2><p><img src="https://i.imgur.com/XQNAABL.png" alt="architecure" title="architecture"></p>
+<h2 id="Create-the-Azure-Container-Registry"><a href="#Create-the-Azure-Container-Registry" class="headerlink" title="Create the Azure Container Registry"></a>Create the Azure Container Registry</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">az group create --name myResourceGroup --location australiaeast</span><br><span class="line">az acr create --resource-group myResourceGroup --name cwzhou --sku Basic</span><br></pre></td></tr></table></figure>
+<h2 id="Push-a-container-to-the-registry"><a href="#Push-a-container-to-the-registry" class="headerlink" title="Push a container to the registry"></a>Push a container to the registry</h2><h3 id="Login-to-your-ACR-instance"><a href="#Login-to-your-ACR-instance" class="headerlink" title="Login to your ACR instance:"></a>Login to your ACR instance:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">az acr login --name akscourse</span><br></pre></td></tr></table></figure>
+<h3 id="Verify-that-you-have-a-local-copy-of-your-application-image"><a href="#Verify-that-you-have-a-local-copy-of-your-application-image" class="headerlink" title="Verify that you have a local copy of your application image:"></a>Verify that you have a local copy of your application image:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
+<p>If you don’t have an application, you can quickly build your own mini-application image (see the app_example/README.md file):<br>docker build app_example/ -t hostname:v1</p>
+<p>We need to tag the image with the registry login server address which we can get with:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export aLS=`az acr list --resource-group myResourceGroup --query &quot;[].&#123;acrLoginServer:loginServer&#125;&quot; --output tsv`</span><br></pre></td></tr></table></figure></p>
+<h3 id="Tag-your-nginx-image-with-the-server-address-and-verion-v1-in-this-case"><a href="#Tag-your-nginx-image-with-the-server-address-and-verion-v1-in-this-case" class="headerlink" title="Tag your nginx image with the server address and verion (v1 in this case):"></a>Tag your nginx image with the server address and verion (v1 in this case):</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker tag hostname:v1 $&#123;aLS&#125;/hostname:v1</span><br></pre></td></tr></table></figure>
+<h3 id="Verify-that-your-tags-have-been-applied"><a href="#Verify-that-your-tags-have-been-applied" class="headerlink" title="Verify that your tags have been applied:"></a>Verify that your tags have been applied:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
+<p>Push the image to the Registry:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker push $&#123;aLS&#125;/hostname:v1</span><br></pre></td></tr></table></figure></p>
+<p>Verify that the image has been pushed correctly:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">az acr repository list --name cwzhou --output tsv</span><br><span class="line">repository=&lt;repository_output&gt;</span><br></pre></td></tr></table></figure></p>
+<p>You can verify that the image is appropriately tagged with (repository is the output of the previous step):<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">az acr repository show-tags --name cwzhou --repository $&#123;repository&#125; --output tsv</span><br></pre></td></tr></table></figure></p>
+<h3 id="Verify-container-registry-image"><a href="#Verify-container-registry-image" class="headerlink" title="Verify container registry image"></a>Verify container registry image</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">docker rmi &lt;registry/image:version&gt;</span><br><span class="line">docker pull &lt;registry/image:version&gt;</span><br><span class="line"></span><br><span class="line">It should also then be possible to run the image locally to verify operation:</span><br><span class="line"></span><br><span class="line">docker run --rm --name hostname -p 8080:80 &lt;registry/image:version&gt;</span><br><span class="line">curl localhost:8080</span><br><span class="line">docker stop hostname</span><br><span class="line">docker rmi &lt;registry/image:version&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="Establish-AKS-specific-credentials"><a href="#Establish-AKS-specific-credentials" class="headerlink" title="Establish AKS specific credentials"></a>Establish AKS specific credentials</h3><p>To allow an AKS cluster to interact with other Azure resources such as the Azure Container Registry we created in a previous chapter, an Azure Active Directory (ad) service principal is used. To create the service principal:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">az ad sp create-for-rbac --skip-assignment</span><br></pre></td></tr></table></figure></p>
+<p>Make a note of the appId and password, you will need these. Better yet, save this credential somewhere secure.</p>
+<p>Get the ACR resource ID:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">az acr show --resource-group myResourceGroup --name cwzhou --query &quot;id&quot; --output tsv</span><br></pre></td></tr></table></figure></p>
+<p>Create a role assignment:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">az role assignment create --assignee &lt;appId&gt; --scope &lt;acrId&gt; --role Reader</span><br></pre></td></tr></table></figure>
+<p>It is also possible to integrate AKS with Azure Active Directory in a much deeper fashion, which may be appropriate in an enterprise environment. Further instructions can be found here:</p>
+<p><a href="https://docs.microsoft.com/en-us/azure/aks/aad-integration">https://docs.microsoft.com/en-us/azure/aks/aad-integration</a></p>
+<h3 id="Launch-an-AKS-cluster"><a href="#Launch-an-AKS-cluster" class="headerlink" title="Launch an AKS cluster"></a>Launch an AKS cluster</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">Finally we can create an AKS cluster (you will need your &lt;appId&gt; and &lt;password&gt; from the previous section):</span><br><span class="line"></span><br><span class="line">cat ../sp.txt</span><br><span class="line"></span><br><span class="line">az aks create \</span><br><span class="line">    --resource-group myResourceGroup \</span><br><span class="line">    --name myAKSCluster \</span><br><span class="line">    --node-count 1 \</span><br><span class="line">    --max-pods 20 \</span><br><span class="line">    --kubernetes-version 1.12.4 \</span><br><span class="line">    --generate-ssh-keys \</span><br><span class="line">    --enable-vmss \</span><br><span class="line">    --enable-cluster-autoscaler \</span><br><span class="line">    --min-count 1 \</span><br><span class="line">    --max-count 3 \</span><br><span class="line">    --service-principal &lt;appId&gt; --client-secret &lt;password&gt; </span><br><span class="line"></span><br><span class="line">This will create a cluster (which may take 5-10 minutes). Once done, we can connect to the kubernetes environment via the Kubernetes CLI. If you are using the Azure Cloud Shell, the kubernetes client (kubectl) is already installed. You can also install locally if you haven&apos;t previously installed a version of kubectl:</span><br><span class="line">az aks install-cli</span><br><span class="line"></span><br><span class="line">az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --admin</span><br><span class="line"></span><br><span class="line">The resource-group and name were set during the creation process, and you should use those if different from what we&apos;re using here.</span><br><span class="line"></span><br><span class="line">Check your connection and that the kubernetes cli is working with:</span><br><span class="line">kubectl get nodes</span><br><span class="line"></span><br><span class="line">If you have issues with connecting, one thing you can check is the version of your kubernetes client:</span><br><span class="line">kubectl version</span><br><span class="line"></span><br><span class="line">This will tell you both the local client, and the configured kubernetes service version, make sure the client is at least the same if not newer than the server.</span><br></pre></td></tr></table></figure>
+<p>update</p>
   
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/AKS/">AKS</a>
+  </div>
 
 </div>
 
@@ -133,7 +143,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://223.95.78.227/2020/02/26/monitoring/" data-title="monitoring | Stan Zhou&#39;s Hexo Technical Blog" data-tsina="undefined" class="share clearfix">
+	  <div data-url="http://223.95.78.227/2021/02/25/AKS/" data-title="AKS | Stan Zhou&#39;s Hexo Technical Blog" data-tsina="undefined" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -146,19 +156,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2020/04/26/puppet/" title="puppet">
-  <strong>上一篇：</strong><br/>
-  <span>
-  puppet</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2020/02/25/photography/"  title="photography">
+<a href="/2021/02/25/spacemacs/"  title="spacemacs">
  <strong>下一篇：</strong><br/> 
- <span>photography
+ <span>spacemacs
 </span>
 </a>
 </div>
@@ -173,7 +175,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Frontend-Monitoring"><span class="toc-number">1.</span> <span class="toc-text">Frontend Monitoring</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Two-approaches-to-frontend-monitoring"><span class="toc-number">1.1.</span> <span class="toc-text">Two approaches to frontend monitoring</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Application-Monitoring"><span class="toc-number">2.</span> <span class="toc-text">Application Monitoring</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Telegraf-InfluxDB-Grafana"><span class="toc-number">3.</span> <span class="toc-text">Telegraf, InfluxDB + Grafana</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-K8s-on-Azure"><span class="toc-number">1.</span> <span class="toc-text">1. K8s on Azure</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Deployment-models"><span class="toc-number">1.1.</span> <span class="toc-text">Deployment models</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Create-the-Azure-Container-Registry"><span class="toc-number">1.2.</span> <span class="toc-text">Create the Azure Container Registry</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Push-a-container-to-the-registry"><span class="toc-number">1.3.</span> <span class="toc-text">Push a container to the registry</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Login-to-your-ACR-instance"><span class="toc-number">1.3.1.</span> <span class="toc-text">Login to your ACR instance:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Verify-that-you-have-a-local-copy-of-your-application-image"><span class="toc-number">1.3.2.</span> <span class="toc-text">Verify that you have a local copy of your application image:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Tag-your-nginx-image-with-the-server-address-and-verion-v1-in-this-case"><span class="toc-number">1.3.3.</span> <span class="toc-text">Tag your nginx image with the server address and verion (v1 in this case):</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Verify-that-your-tags-have-been-applied"><span class="toc-number">1.3.4.</span> <span class="toc-text">Verify that your tags have been applied:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Verify-container-registry-image"><span class="toc-number">1.3.5.</span> <span class="toc-text">Verify container registry image</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Establish-AKS-specific-credentials"><span class="toc-number">1.3.6.</span> <span class="toc-text">Establish AKS specific credentials</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Launch-an-AKS-cluster"><span class="toc-number">1.3.7.</span> <span class="toc-text">Launch an AKS cluster</span></a></li></ol></li></ol></li></ol>
  
   </div>
 
