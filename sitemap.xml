@@ -282,13 +282,6 @@
   </url>
   
   <url>
-    <loc>http://223.95.78.227/2016/08/24/docker-tomcat7/</loc>
-    
-    <lastmod>2021-02-25T06:14:08.314Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://223.95.78.227/2019/05/05/docker/</loc>
     
     <lastmod>2021-02-25T06:14:08.314Z</lastmod>
@@ -297,6 +290,13 @@
   
   <url>
     <loc>http://223.95.78.227/2019/07/17/devops/</loc>
+    
+    <lastmod>2021-02-25T06:14:08.314Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://223.95.78.227/2016/08/24/docker-tomcat7/</loc>
     
     <lastmod>2021-02-25T06:14:08.314Z</lastmod>
     
