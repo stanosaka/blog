@@ -5,9 +5,9 @@
   <subtitle>Innovation Evangelist</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://223.95.78.227/"/>
+  <link href="http://cwzhou.win/"/>
   <updated>2021-02-25T10:47:24.608Z</updated>
-  <id>http://223.95.78.227/</id>
+  <id>http://cwzhou.win/</id>
   
   <author>
     <name>Stan Zhou</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>AKS</title>
-    <link href="http://223.95.78.227/2021/02/25/AKS/"/>
-    <id>http://223.95.78.227/2021/02/25/AKS/</id>
+    <link href="http://cwzhou.win/2021/02/25/AKS/"/>
+    <id>http://cwzhou.win/2021/02/25/AKS/</id>
     <published>2021-02-25T10:46:29.000Z</published>
     <updated>2021-02-25T10:47:24.608Z</updated>
     
@@ -35,14 +35,14 @@
     </summary>
     
     
-      <category term="AKS" scheme="http://223.95.78.227/tags/AKS/"/>
+      <category term="AKS" scheme="http://cwzhou.win/tags/AKS/"/>
     
   </entry>
   
   <entry>
     <title>spacemacs</title>
-    <link href="http://223.95.78.227/2021/02/25/spacemacs/"/>
-    <id>http://223.95.78.227/2021/02/25/spacemacs/</id>
+    <link href="http://cwzhou.win/2021/02/25/spacemacs/"/>
+    <id>http://cwzhou.win/2021/02/25/spacemacs/</id>
     <published>2021-02-25T06:14:08.326Z</published>
     <updated>2021-02-25T06:14:08.330Z</updated>
     
@@ -62,14 +62,14 @@
     </summary>
     
     
-      <category term="spacemacs" scheme="http://223.95.78.227/tags/spacemacs/"/>
+      <category term="spacemacs" scheme="http://cwzhou.win/tags/spacemacs/"/>
     
   </entry>
   
   <entry>
     <title>pipeline</title>
-    <link href="http://223.95.78.227/2021/02/25/pipeline/"/>
-    <id>http://223.95.78.227/2021/02/25/pipeline/</id>
+    <link href="http://cwzhou.win/2021/02/25/pipeline/"/>
+    <id>http://cwzhou.win/2021/02/25/pipeline/</id>
     <published>2021-02-25T06:14:08.322Z</published>
     <updated>2021-02-25T06:14:08.322Z</updated>
     
@@ -93,14 +93,14 @@
     </summary>
     
     
-      <category term="pipeline" scheme="http://223.95.78.227/tags/pipeline/"/>
+      <category term="pipeline" scheme="http://cwzhou.win/tags/pipeline/"/>
     
   </entry>
   
   <entry>
     <title>kubernetes-on-the-cloud</title>
-    <link href="http://223.95.78.227/2021/02/25/kubernetes-on-the-cloud/"/>
-    <id>http://223.95.78.227/2021/02/25/kubernetes-on-the-cloud/</id>
+    <link href="http://cwzhou.win/2021/02/25/kubernetes-on-the-cloud/"/>
+    <id>http://cwzhou.win/2021/02/25/kubernetes-on-the-cloud/</id>
     <published>2021-02-25T06:14:08.318Z</published>
     <updated>2021-02-25T06:14:08.318Z</updated>
     
@@ -116,14 +116,14 @@
     </summary>
     
     
-      <category term="k8s" scheme="http://223.95.78.227/tags/k8s/"/>
+      <category term="k8s" scheme="http://cwzhou.win/tags/k8s/"/>
     
   </entry>
   
   <entry>
     <title>agile</title>
-    <link href="http://223.95.78.227/2021/02/25/agile/"/>
-    <id>http://223.95.78.227/2021/02/25/agile/</id>
+    <link href="http://cwzhou.win/2021/02/25/agile/"/>
+    <id>http://cwzhou.win/2021/02/25/agile/</id>
     <published>2021-02-25T06:14:08.306Z</published>
     <updated>2021-02-25T06:14:08.306Z</updated>
     
@@ -139,18 +139,18 @@
     </summary>
     
     
-      <category term="agile" scheme="http://223.95.78.227/tags/agile/"/>
+      <category term="agile" scheme="http://cwzhou.win/tags/agile/"/>
     
-      <category term="software development" scheme="http://223.95.78.227/tags/software-development/"/>
+      <category term="software development" scheme="http://cwzhou.win/tags/software-development/"/>
     
-      <category term="agile development" scheme="http://223.95.78.227/tags/agile-development/"/>
+      <category term="agile development" scheme="http://cwzhou.win/tags/agile-development/"/>
     
   </entry>
   
   <entry>
     <title>mysql-replication</title>
-    <link href="http://223.95.78.227/2021/02/25/mysql-replication/"/>
-    <id>http://223.95.78.227/2021/02/25/mysql-replication/</id>
+    <link href="http://cwzhou.win/2021/02/25/mysql-replication/"/>
+    <id>http://cwzhou.win/2021/02/25/mysql-replication/</id>
     <published>2021-02-25T00:20:35.000Z</published>
     <updated>2021-02-25T06:14:08.322Z</updated>
     
@@ -166,14 +166,14 @@
     </summary>
     
     
-      <category term="mysql, replication" scheme="http://223.95.78.227/tags/mysql-replication/"/>
+      <category term="mysql, replication" scheme="http://cwzhou.win/tags/mysql-replication/"/>
     
   </entry>
   
   <entry>
     <title>azure-mysql</title>
-    <link href="http://223.95.78.227/2021/02/25/azure-mysql/"/>
-    <id>http://223.95.78.227/2021/02/25/azure-mysql/</id>
+    <link href="http://cwzhou.win/2021/02/25/azure-mysql/"/>
+    <id>http://cwzhou.win/2021/02/25/azure-mysql/</id>
     <published>2021-02-24T23:41:47.000Z</published>
     <updated>2021-02-25T06:14:08.310Z</updated>
     
@@ -189,14 +189,14 @@
     </summary>
     
     
-      <category term="azure, mysql" scheme="http://223.95.78.227/tags/azure-mysql/"/>
+      <category term="azure, mysql" scheme="http://cwzhou.win/tags/azure-mysql/"/>
     
   </entry>
   
   <entry>
     <title>IaC (Infrastructure as Code)</title>
-    <link href="http://223.95.78.227/2020/12/08/IaC/"/>
-    <id>http://223.95.78.227/2020/12/08/IaC/</id>
+    <link href="http://cwzhou.win/2020/12/08/IaC/"/>
+    <id>http://cwzhou.win/2020/12/08/IaC/</id>
     <published>2020-12-08T01:07:49.000Z</published>
     <updated>2021-02-25T06:14:08.302Z</updated>
     
@@ -216,8 +216,8 @@
   
   <entry>
     <title>influxdb</title>
-    <link href="http://223.95.78.227/2020/11/11/influxdb/"/>
-    <id>http://223.95.78.227/2020/11/11/influxdb/</id>
+    <link href="http://cwzhou.win/2020/11/11/influxdb/"/>
+    <id>http://cwzhou.win/2020/11/11/influxdb/</id>
     <published>2020-11-11T01:09:59.000Z</published>
     <updated>2021-02-25T06:14:08.314Z</updated>
     
@@ -238,8 +238,8 @@
   
   <entry>
     <title>tools</title>
-    <link href="http://223.95.78.227/2020/08/09/tools/"/>
-    <id>http://223.95.78.227/2020/08/09/tools/</id>
+    <link href="http://cwzhou.win/2020/08/09/tools/"/>
+    <id>http://cwzhou.win/2020/08/09/tools/</id>
     <published>2020-08-09T04:15:15.000Z</published>
     <updated>2021-02-25T06:14:08.334Z</updated>
     
@@ -262,8 +262,8 @@
   
   <entry>
     <title>puppet6</title>
-    <link href="http://223.95.78.227/2020/06/28/puppet6/"/>
-    <id>http://223.95.78.227/2020/06/28/puppet6/</id>
+    <link href="http://cwzhou.win/2020/06/28/puppet6/"/>
+    <id>http://cwzhou.win/2020/06/28/puppet6/</id>
     <published>2020-06-28T11:26:20.000Z</published>
     <updated>2021-02-25T06:14:08.326Z</updated>
     
@@ -279,14 +279,14 @@
     </summary>
     
     
-      <category term="puppet6, puppet" scheme="http://223.95.78.227/tags/puppet6-puppet/"/>
+      <category term="puppet6, puppet" scheme="http://cwzhou.win/tags/puppet6-puppet/"/>
     
   </entry>
   
   <entry>
     <title>azure</title>
-    <link href="http://223.95.78.227/2020/06/14/azure/"/>
-    <id>http://223.95.78.227/2020/06/14/azure/</id>
+    <link href="http://cwzhou.win/2020/06/14/azure/"/>
+    <id>http://cwzhou.win/2020/06/14/azure/</id>
     <published>2020-06-14T09:38:55.000Z</published>
     <updated>2021-02-25T06:14:08.310Z</updated>
     
@@ -302,14 +302,14 @@
     </summary>
     
     
-      <category term="azure" scheme="http://223.95.78.227/tags/azure/"/>
+      <category term="azure" scheme="http://cwzhou.win/tags/azure/"/>
     
   </entry>
   
   <entry>
     <title>puppet</title>
-    <link href="http://223.95.78.227/2020/04/26/puppet/"/>
-    <id>http://223.95.78.227/2020/04/26/puppet/</id>
+    <link href="http://cwzhou.win/2020/04/26/puppet/"/>
+    <id>http://cwzhou.win/2020/04/26/puppet/</id>
     <published>2020-04-26T12:41:23.000Z</published>
     <updated>2021-02-25T06:14:08.326Z</updated>
     
@@ -325,14 +325,14 @@
     </summary>
     
     
-      <category term="puppet" scheme="http://223.95.78.227/tags/puppet/"/>
+      <category term="puppet" scheme="http://cwzhou.win/tags/puppet/"/>
     
   </entry>
   
   <entry>
     <title>monitoring</title>
-    <link href="http://223.95.78.227/2020/02/26/monitoring/"/>
-    <id>http://223.95.78.227/2020/02/26/monitoring/</id>
+    <link href="http://cwzhou.win/2020/02/26/monitoring/"/>
+    <id>http://cwzhou.win/2020/02/26/monitoring/</id>
     <published>2020-02-26T10:52:07.000Z</published>
     <updated>2021-02-25T06:14:08.318Z</updated>
     
@@ -352,8 +352,8 @@
   
   <entry>
     <title>photography</title>
-    <link href="http://223.95.78.227/2020/02/25/photography/"/>
-    <id>http://223.95.78.227/2020/02/25/photography/</id>
+    <link href="http://cwzhou.win/2020/02/25/photography/"/>
+    <id>http://cwzhou.win/2020/02/25/photography/</id>
     <published>2020-02-25T10:46:29.000Z</published>
     <updated>2021-02-25T10:56:13.062Z</updated>
     
@@ -370,14 +370,14 @@
     </summary>
     
     
-      <category term="photograph" scheme="http://223.95.78.227/tags/photograph/"/>
+      <category term="photograph" scheme="http://cwzhou.win/tags/photograph/"/>
     
   </entry>
   
   <entry>
     <title>SRE</title>
-    <link href="http://223.95.78.227/2020/02/09/SRE/"/>
-    <id>http://223.95.78.227/2020/02/09/SRE/</id>
+    <link href="http://cwzhou.win/2020/02/09/SRE/"/>
+    <id>http://cwzhou.win/2020/02/09/SRE/</id>
     <published>2020-02-09T01:10:52.000Z</published>
     <updated>2021-02-25T06:14:08.306Z</updated>
     
@@ -393,14 +393,14 @@
     </summary>
     
     
-      <category term="SRE" scheme="http://223.95.78.227/tags/SRE/"/>
+      <category term="SRE" scheme="http://cwzhou.win/tags/SRE/"/>
     
   </entry>
   
   <entry>
     <title>anatomy-of-containers</title>
-    <link href="http://223.95.78.227/2019/09/20/anatomy-of-containers/"/>
-    <id>http://223.95.78.227/2019/09/20/anatomy-of-containers/</id>
+    <link href="http://cwzhou.win/2019/09/20/anatomy-of-containers/"/>
+    <id>http://cwzhou.win/2019/09/20/anatomy-of-containers/</id>
     <published>2019-09-20T00:05:28.000Z</published>
     <updated>2021-02-25T06:14:08.306Z</updated>
     
@@ -416,16 +416,16 @@
     </summary>
     
     
-      <category term="docker" scheme="http://223.95.78.227/tags/docker/"/>
+      <category term="docker" scheme="http://cwzhou.win/tags/docker/"/>
     
-      <category term="containers" scheme="http://223.95.78.227/tags/containers/"/>
+      <category term="containers" scheme="http://cwzhou.win/tags/containers/"/>
     
   </entry>
   
   <entry>
     <title>apache-cloudstack</title>
-    <link href="http://223.95.78.227/2019/09/19/apache-cloudstack/"/>
-    <id>http://223.95.78.227/2019/09/19/apache-cloudstack/</id>
+    <link href="http://cwzhou.win/2019/09/19/apache-cloudstack/"/>
+    <id>http://cwzhou.win/2019/09/19/apache-cloudstack/</id>
     <published>2019-09-19T12:56:11.000Z</published>
     <updated>2021-02-25T06:14:08.306Z</updated>
     
@@ -441,14 +441,14 @@
     </summary>
     
     
-      <category term="cloudstack" scheme="http://223.95.78.227/tags/cloudstack/"/>
+      <category term="cloudstack" scheme="http://cwzhou.win/tags/cloudstack/"/>
     
   </entry>
   
   <entry>
     <title>networking</title>
-    <link href="http://223.95.78.227/2019/09/12/networking/"/>
-    <id>http://223.95.78.227/2019/09/12/networking/</id>
+    <link href="http://cwzhou.win/2019/09/12/networking/"/>
+    <id>http://cwzhou.win/2019/09/12/networking/</id>
     <published>2019-09-12T08:37:21.000Z</published>
     <updated>2021-02-25T06:14:08.322Z</updated>
     
@@ -464,14 +464,14 @@
     </summary>
     
     
-      <category term="networking" scheme="http://223.95.78.227/tags/networking/"/>
+      <category term="networking" scheme="http://cwzhou.win/tags/networking/"/>
     
   </entry>
   
   <entry>
     <title>effective devops with aws</title>
-    <link href="http://223.95.78.227/2019/08/16/effective-devops-with-aws/"/>
-    <id>http://223.95.78.227/2019/08/16/effective-devops-with-aws/</id>
+    <link href="http://cwzhou.win/2019/08/16/effective-devops-with-aws/"/>
+    <id>http://cwzhou.win/2019/08/16/effective-devops-with-aws/</id>
     <published>2019-08-15T14:15:29.000Z</published>
     <updated>2021-02-25T06:14:08.314Z</updated>
     

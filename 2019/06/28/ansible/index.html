@@ -15,16 +15,16 @@
 <meta name="keywords" content="ansbile">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ansible">
-<meta property="og:url" content="http://223.95.78.227/2019/06/28/ansible/index.html">
+<meta property="og:url" content="http://cwzhou.win/2019/06/28/ansible/index.html">
 <meta property="og:site_name" content="Stan Zhou&#39;s Hexo Technical Blog">
 <meta property="og:description" content="Ansible configurationInstallationfor ubuntu:1234567891011apt-get install software-properties-commonapt-add-repository ppa:ansible/ansibleapt-get updateapt-get install ansibleroot@ansible-host:~# ansib">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://imgur.com/CA9XqyK">
-<meta property="og:updated_time" content="2021-02-25T06:14:08.306Z">
+<meta property="og:image" content="https://imgur.com/CA9XqyK.png">
+<meta property="og:updated_time" content="2021-02-27T07:27:24.510Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ansible">
 <meta name="twitter:description" content="Ansible configurationInstallationfor ubuntu:1234567891011apt-get install software-properties-commonapt-add-repository ppa:ansible/ansibleapt-get updateapt-get install ansibleroot@ansible-host:~# ansib">
-<meta name="twitter:image" content="https://imgur.com/CA9XqyK">
+<meta name="twitter:image" content="https://imgur.com/CA9XqyK.png">
 <meta name="twitter:creator" content="@stanosaka">
 
     
@@ -70,7 +70,7 @@
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
 						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
-						<input type="hidden" name="q" value="site:223.95.78.227">
+						<input type="hidden" name="q" value="site:cwzhou.win">
 					</form>
 					
 					</li>
@@ -114,7 +114,7 @@
 <h2 id="configuration-files"><a href="#configuration-files" class="headerlink" title="configuration files"></a>configuration files</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ANSIBLE_CONFIG #an environemtn variable</span><br><span class="line">ansible.cfg # in the current directory</span><br><span class="line">.ansible.cfg #in the home directory</span><br><span class="line">/etc/ansible/ansible.cfg</span><br></pre></td></tr></table></figure>
 <h2 id="Ansible-inventory"><a href="#Ansible-inventory" class="headerlink" title="Ansible inventory"></a>Ansible inventory</h2><p><code>/etc/ansible/hosts</code><br>INI format, support host variables, group variables and group of group<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># add to /etc/ansible/hosts</span><br><span class="line">[demo_hosts]</span><br><span class="line">node01 ansible_user=ubuntu</span><br><span class="line">node02 ansible_user=ubuntu</span><br><span class="line"># add to /etc/hosts</span><br><span class="line">172.31.5.185 node01</span><br><span class="line">172.31.8.115 node02</span><br></pre></td></tr></table></figure></p>
 <h2 id="Verify-Ansible-Inventory"><a href="#Verify-Ansible-Inventory" class="headerlink" title="Verify Ansible Inventory"></a>Verify Ansible Inventory</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">eval `ssh-agent -s`</span><br><span class="line">ssh-add ansible-key.pem</span><br><span class="line">ansible -m ping all</span><br><span class="line"># add to /etc/ansible/hosts</span><br><span class="line">[web_server]</span><br><span class="line">node01 ansible_user=ubuntu</span><br><span class="line"></span><br><span class="line">[db_server]</span><br><span class="line">node02 ansible_user=ubuntu</span><br><span class="line">ansible web-server -m ping</span><br><span class="line">ansible db-server -m ping</span><br></pre></td></tr></table></figure>
-<h1 id="Local-automation-execution-using-Ansible"><a href="#Local-automation-execution-using-Ansible" class="headerlink" title="Local automation execution using Ansible"></a>Local automation execution using Ansible</h1><p><img src="https://imgur.com/CA9XqyK" alt="architecture type"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Example: Ad hoc Linux echo command against a local system</span><br><span class="line"></span><br><span class="line">#&gt; ansible all -i &quot;localhost,&quot; -c local -m shell -a &apos;echo hello DevOps World&apos;</span><br><span class="line">cat hellodevopsworld.yml</span><br><span class="line"># File name: hellodevopsworld.yml</span><br><span class="line">--- </span><br><span class="line">- hosts: all</span><br><span class="line"> tasks:</span><br><span class="line"> - shell: echo &quot;hello DevOps world&quot;</span><br><span class="line"></span><br><span class="line"># Running a Playbook from the command line:</span><br><span class="line">#&gt; ansible-playbook -i &apos;localhost,&apos; -c local hellodevopsworld.yml</span><br></pre></td></tr></table></figure></p>
+<h1 id="Local-automation-execution-using-Ansible"><a href="#Local-automation-execution-using-Ansible" class="headerlink" title="Local automation execution using Ansible"></a>Local automation execution using Ansible</h1><p><img src="https://imgur.com/CA9XqyK.png" alt="architecture type"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Example: Ad hoc Linux echo command against a local system</span><br><span class="line"></span><br><span class="line">#&gt; ansible all -i &quot;localhost,&quot; -c local -m shell -a &apos;echo hello DevOps World&apos;</span><br><span class="line">cat hellodevopsworld.yml</span><br><span class="line"># File name: hellodevopsworld.yml</span><br><span class="line">--- </span><br><span class="line">- hosts: all</span><br><span class="line"> tasks:</span><br><span class="line"> - shell: echo &quot;hello DevOps world&quot;</span><br><span class="line"></span><br><span class="line"># Running a Playbook from the command line:</span><br><span class="line">#&gt; ansible-playbook -i &apos;localhost,&apos; -c local hellodevopsworld.yml</span><br></pre></td></tr></table></figure></p>
 <p><strong>Remote automation execution using Ansible</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Example command: execute the playbook hellodevopsworld.yml against rpi-01</span><br><span class="line">ansible-playbook -i &apos;rpi-01,&apos; -c local  ~/Learning/ansible/hellodevopsworld.yml</span><br></pre></td></tr></table></figure></p>
 <h1 id="Run-and-execute-ansible-tasks"><a href="#Run-and-execute-ansible-tasks" class="headerlink" title="Run and execute ansible tasks"></a>Run and execute ansible tasks</h1><h2 id="Ansible-Command-Line"><a href="#Ansible-Command-Line" class="headerlink" title="Ansible Command Line"></a>Ansible Command Line</h2><p>Two ways: ad-hoc command and playbook</p>
 <h3 id="Ansible-Ad-hoc-Commands"><a href="#Ansible-Ad-hoc-Commands" class="headerlink" title="Ansible Ad-hoc Commands"></a>Ansible Ad-hoc Commands</h3><p><code>ansible &lt;target&gt; -m &lt;module name&gt; -a arguments</code></p>
@@ -190,7 +190,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://223.95.78.227/2019/06/28/ansible/" data-title="ansible | Stan Zhou&#39;s Hexo Technical Blog" data-tsina="undefined" class="share clearfix">
+	  <div data-url="http://cwzhou.win/2019/06/28/ansible/" data-title="ansible | Stan Zhou&#39;s Hexo Technical Blog" data-tsina="undefined" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -288,11 +288,11 @@
 			
 		
 			
-				<li><a href="/tags/saltstack/" title="saltstack">saltstack<sup>3</sup></a></li>
+				<li><a href="/tags/tomcat/" title="tomcat">tomcat<sup>3</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/tomcat/" title="tomcat">tomcat<sup>3</sup></a></li>
+				<li><a href="/tags/saltstack/" title="saltstack">saltstack<sup>3</sup></a></li>
 			
 		
 			
@@ -300,11 +300,11 @@
 			
 		
 			
-				<li><a href="/tags/ec2/" title="ec2">ec2<sup>2</sup></a></li>
+				<li><a href="/tags/backup/" title="backup">backup<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/backup/" title="backup">backup<sup>2</sup></a></li>
+				<li><a href="/tags/ec2/" title="ec2">ec2<sup>2</sup></a></li>
 			
 		
 			
@@ -332,7 +332,7 @@
 			
 		
 			
-				<li><a href="/tags/Linux/" title="Linux">Linux<sup>1</sup></a></li>
+				<li><a href="/tags/SRE/" title="SRE">SRE<sup>1</sup></a></li>
 			
 		
 		</ul>
