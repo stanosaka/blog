@@ -39,3 +39,8 @@ tags: azure
 
 Azure bastion
 
+
+# setup storage account readonly account
+The few roles have given to user:
+1. Reader on subscription: let user view everthing, but not make any change
+2. Storage Blob Data Reader on Storage account: Read and list azure storage containers and blobs.

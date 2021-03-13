@@ -11,9 +11,15 @@ tags:
 
 What Is DevOps?
 **Dev**elopment + **Op**erations**s**
+involving three main principles:
 - Systems thinking: Avoid focusing on only one piece
+By systems we mean not just the software what we create, not just the computers what we run it on, but we think about the entire
+process that's involved in human beings interacting with the system.
+Everything that needs to happen in order for it to be useful and what we say is we want to avoid any kind of focus on one piece of that whole system that is not good for the entire system. So, we might make a change that is easier for the programmers but, if it makes the system harder to use for the users, that might not be a good change. We might make a change that makes the user interface easier or simpler but, if it means that there are lots of calls back to the database and performance goes down, that's not a good change. That's not systems thinking.
+
 - Feedback: Keeping production healthy is everyone's job
 - Learning: Continual experimentation and learing
+we can continuously make updates to the system, make continuous improvements, and see the result of that in our feedback.
 
 What is GitLab CI?
 

@@ -47,10 +47,13 @@ docker container rm $(docker container ls -a -q)         # Remove all containers
 docker image ls -a                             # List all images on this machine
 docker image rm <image id>            # Remove specified image from this machine
 docker image rm $(docker image ls -a -q)   # Remove all images from this machine
+docker rm   # deletes a stopped container
+docker rmi  # deletes a container image
 docker login             # Log in this CLI session using your Docker credentials
 docker tag <image> username/repository:tag  # Tag <image> for upload to registry
 docker push username/repository:tag            # Upload tagged image to registry
 docker run username/repository:tag                   # Run image from a registry
+docker system prune -fa #will remove any container images that are not tied to an existing runningcontainer, along with any other resources in your Docker environment
 ```
 
 # Beginning Devops with Docker
