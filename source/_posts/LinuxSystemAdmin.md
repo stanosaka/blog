@@ -334,3 +334,27 @@ awk '$1~/Value/' sau2-db-06.txt |cut -d ":" -f 2|xsel -b
 ## Print the line start with string
 awk '/^Variable_name/' eqx1-db-02.txt |cut -d ":" -f 2|xsel -b
 ```
+# System access troubleshooting
+## Server is not reachable
+- Ping the destination server name
+  - if server name is not pingable
+- Ping the destination server by IP
+  - if IP is pingable = Name resolution issue
+     - Check /etc/hosts file
+     - Check /etc/resolv.conf
+     - Check /etc/nsswitch.conf
+  - if IP is NOT pingable
+    - Ping another server by name and then by IP
+    - Checking if your server has an IP address
+    - Ping your gateway/modem ip (check gateway by netstat -rnv)
+    - Check physical cable connection
+## Cannot connect to a Website or an application
+service down or server down?
+- Ping server by hostname and IP
+  - If not pingable = go back to "server not reachable" lecture
+  - If pingable = connect to service
+    # tlenet 192.168.1.5 80 (http)
+    - if connected = service is running
+      Must be sth wrong with the client machine
+    - if Not connected = service (http) not running
+      Login to the server and start the service (http)
