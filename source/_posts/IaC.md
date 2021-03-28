@@ -2,6 +2,9 @@
 title: IaC (Infrastructure as Code)
 date: 2020-12-08 12:07:49
 tags:
+  - IaC
+  - devops
+  - SRE
 ---
 # Infrastructure automation tool registries
 - Chef Infra Server

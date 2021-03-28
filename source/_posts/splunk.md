@@ -1,7 +1,9 @@
 ---
 title: splunk
 date: 2019-07-15 10:40:04
-tags: [splunk,monitoring]
+tags: 
+  - splunk
+  - monitoring
 ---
 [code](https://github.com/PacktPublishing/Splunk-7.x-Quick-Start-Guide)
 # What is Splunk?

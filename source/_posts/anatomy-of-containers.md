@@ -1,7 +1,9 @@
 ---
-title: anatomy-of-containers
+title: anatomy of containers
 date: 2019-09-20 10:05:28
-tags: [containers,docker]
+tags: 
+  - containers
+  - docker
 ---
 # Anatomy of containers
 Containers are specially encapsulated and secured processes running on the host system.

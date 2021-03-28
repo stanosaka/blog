@@ -1,6 +1,8 @@
 ---
 title: Complete Git and Github Masterclass
-tags: [git,github]
+tags: 
+  - git
+  - github
 date: 2019-05-06 00:25:42
 ---
 # Git material

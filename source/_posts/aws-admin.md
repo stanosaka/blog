@@ -1,7 +1,10 @@
 ---
 title: aws administration
 date: 2019-07-17 18:02:52
-tags: [aws, Codecommit]
+tags: 
+  - aws 
+  - Codecommit
+  - CICD
 ---
 # CodeCommit
 Codecommit is a source control service provided by aws(hosts private git repositories)

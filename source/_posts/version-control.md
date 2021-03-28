@@ -1,7 +1,10 @@
 ---
 title: version control
 date: 2019-07-03 11:55:35
-tags: [version control, git, github]
+tags: 
+  - version control
+  - git
+  - github
 ---
 # Common Terminologies
 **Repository**: A unit of storage and change tracking that represents a direcotry whose contents are tacked by Git

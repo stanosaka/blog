@@ -1,7 +1,10 @@
 ---
-title: LinuxSystemAdmin
+title: Linux System Admin
 date: 2019-07-23 09:00:22
-tags: [Linux]
+tags: 
+  - Linux
+  - devops
+  - SRE
 ---
 # TCP/IP networking
 
@@ -93,7 +96,7 @@ rsync -azv simple-php-website/ pi@rpi-01:~/backup/
 rsync -azv  pi@rpi-01:~/backup/ simple-php-website
 ```
 **advanced ssh options with rsync**
-``` sh
+``` 
 ssh-keygen
 ssh-copy-id pi@rpi-01 
 rsync -avz -e "ssh -p 2222" simple-php-website/ pi@rpi-01:~/backup/ # specify the ssh port
@@ -102,7 +105,7 @@ rsync -avzi simple-php-website/ pi@rpi-01:~/backup/ # i show what has been chang
 dd if=/dev/zero of=data.bin bs=102400 count=10240
 rsync -azv --progress simple-php-website/ pi@rpi-01:~/backup/ #show the transfers info
 rsync -azv --include '*.php' --exclude '*.jpg' simple-php-website/ pi@rpi-01:~/backup/
-```  
+```
 
 ## Performance Analysis
 **How to improve performance?**

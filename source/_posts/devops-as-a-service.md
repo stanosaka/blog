@@ -1,7 +1,11 @@
 ---
 title: Devops As A Service
 date: 2019-07-04 09:54:43
-tags: [Devops,aws,git,Azure]
+tags: 
+  - devops
+  - aws
+  - git
+  - azure
 ---
 ![Imgur](https://i.imgur.com/5ci7g2C.png)
 Business Requirements

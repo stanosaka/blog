@@ -2,6 +2,8 @@
 title: influxdb
 date: 2020-11-11 12:09:59
 tags:
+  - database
+  - influxdb
 ---
 # 1. Connect 
 `influx`

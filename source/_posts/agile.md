@@ -1,9 +1,11 @@
 ---
 title: agile
+date: 2020-02-24 20:39:06
 tags:
-- agile
-- software development 
-- agile development
+  - agile
+  - software development 
+  - agile development
+  - devops
 ---
 # Agile is a movement.
 Movement: a group of people working together to advance their shared political, social, or artistic ideas.

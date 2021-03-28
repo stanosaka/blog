@@ -2,6 +2,8 @@
 title: tools
 date: 2020-08-09 14:15:15
 tags:
+  - Linux
+  - devops
 ---
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 **Table of Contents**
@@ -25,22 +27,6 @@ tags:
 <!-- markdown-toc end -->
 
 # Multiplexers
-
-## byobu
-
-F2: Create a new windows.
-F3: Go to the previous windows.
-F4: Go to the next windows.
-F9: help and configuration
-
-Quitting a byobu session: locking and disconnecting.
-F12: Lock access
-
-F6: disconnect
-byobu -r: reconnect
-F7: scrollback, spacebar for mark the start of buffer, spacebar again to mark the end of selection.
-Paste: Byobu-Escape + [
-
 ## mosh
 ```
 mosh jdoe@10.10.10.101

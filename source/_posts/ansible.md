@@ -1,7 +1,10 @@
 ---
 title: ansible
 date: 2019-06-28 10:23:15
-tags: [ansbile]
+tags: 
+  - ansbile
+  - IaC
+  - devops
 ---
 
 # Ansible configuration

@@ -1,7 +1,9 @@
 ---
 title: mysql-replication
 date: 2021-02-25 11:20:35
-tags: mysql, replication
+tags: 
+  - mysql
+  - replication
 ---
 # Myql replicatoin
 ## Process
@@ -38,7 +40,6 @@ ERROR 1064 (42000) at line 267: You have an error in your SQL syntax; check the 
 ```
 fix by:
 ```
-mysql> drop database `supd-123`
-    -> ;
+mysql> drop database `supd-123`;
 Query OK, 0 rows affected (0.01 sec)
 ```

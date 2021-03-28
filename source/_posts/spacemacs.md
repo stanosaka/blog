@@ -1,6 +1,10 @@
 ---
 title: spacemacs
-tags: spacemacs
+date: 2021-02-01 20:39:06
+tags: 
+  - spacemacs
+  - emacs
+  - editor
 ---
 # Basic
 | Key                     | Description                                                                                                                               |

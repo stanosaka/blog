@@ -1,6 +1,7 @@
 ---
 title: photography
-tags:
+date: 2020-02-24 20:39:06
+tags: photography
 ---
 **Exposure**: Aperture, ISO speed, and shutter speed are the three core controls that manipulate exposure. 
 

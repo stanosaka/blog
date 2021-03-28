@@ -1,7 +1,10 @@
 ---
 title: puppet6
 date: 2020-06-28 21:26:20
-tags: puppet6, puppet
+tags: 
+   - puppet6 
+   - puppet
+   - devops
 ---
 # puppet 6
 ## Local environment installation

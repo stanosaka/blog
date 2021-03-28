@@ -1,6 +1,8 @@
 ---
 title: backup script
-tags: backup
+tags: 
+  - backup
+  - mysql
 date: 2016-08-28 16:13:25
 ---
 

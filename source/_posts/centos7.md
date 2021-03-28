@@ -1,6 +1,9 @@
 ---
 title: centos7
-tags: [centos,shell script]
+tags: 
+  - centos
+  - shell script
+  - Linux
 date: 2016-08-29 16:18:03
 ---
 ### CentOS quck start guide

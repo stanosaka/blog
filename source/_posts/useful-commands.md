@@ -1,7 +1,9 @@
 ---
 title: useful commands
 date: 2019-06-19 17:11:17
-tags: [linux, commands]
+tags: 
+  - Linux 
+  - commands
 ---
 ```
 cp /etc/vsftpd/vsftpd.conf{,.bak}
@@ -382,7 +384,7 @@ Type "help" for help.
 postgres-# \dd
          Object descriptions
  Schema | Name | Object | Description
---------+------+--------+-------------
+--------|------|--------|-------------
 (0 rows)
 ```
 $ mkdir vagrant_ubuntu_xenial_1 && cd $_

@@ -1,6 +1,9 @@
 ---
-title: devops-with-aws
-tags: [Jenkins, Devops, CD/CI]
+title: devops with aws
+tags: 
+  - Jenkins
+  - devops 
+  - CICD
 date: 2019-07-15 23:44:53
 ---
 # Project setup

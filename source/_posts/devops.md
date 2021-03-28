@@ -1,7 +1,7 @@
 ---
 title: DevOps
 date: 2019-07-17 21:23:02
-tags: [Devops]
+tags: devops
 ---
 **What is DevOps?**
 - Speed and agility enable organizations to better serve their customers and compete more effectively in the market

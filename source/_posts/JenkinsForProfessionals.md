@@ -1,6 +1,9 @@
 ---
 title: Jenkins For Professionals
-tags: [Jenkins, Devops, CD/CI]
+tags: 
+  - Jenkins 
+  - devops 
+  - CICD
 date: 2019-05-08 21:26:40
 ---
 

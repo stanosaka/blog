@@ -3,8 +3,8 @@ title: Jenkins Pipeline
 date: 2019-07-29 11:00:54
 tags:
   - Jenkins
-  - Devops
-  - CD/CI
+  - devops
+  - CICD
   - Pipeline
   - Blue Ocean
 ---

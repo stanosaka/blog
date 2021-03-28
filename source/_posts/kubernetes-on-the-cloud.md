@@ -1,6 +1,10 @@
 ---
-title: kubernetes-on-the-cloud
-tags: k8s
+title: kubernetes on the cloud
+date: 2019-02-01 20:39:06
+tags: 
+  - k8s
+  - GKE
+  - devops
 ---
 # Kubernetes on the GKE
 **use cloud shell**

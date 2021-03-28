@@ -1,6 +1,8 @@
 ---
 title: Beginning DevOps with Docker
-tags: [Devops,Docker]
+tags: 
+  - devops
+  - Docker
 date: 2019-05-08 23:20:43
 ---
 

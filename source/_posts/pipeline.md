@@ -1,6 +1,9 @@
 ---
 title: pipeline
-tags: [pipeline]
+date: 2019-02-24 20:39:06
+tags: 
+  - pipeline
+  - devops
 ---
 Pipeline
 

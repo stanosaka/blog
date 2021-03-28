@@ -2,6 +2,9 @@
 title: effective devops with aws
 date: 2019-08-16 00:15:29
 tags:
+  - aws
+  - devops
+  - CICD
 ---
 **Code**
 

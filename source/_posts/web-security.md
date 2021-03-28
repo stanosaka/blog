@@ -1,6 +1,8 @@
 ---
 title: web security
-tags: [web security,linux]
+tags: 
+  - web security
+  - Linux
 date: 2016-10-10 11:03:50
 ---
 web安全

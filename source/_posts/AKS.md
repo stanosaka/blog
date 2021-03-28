@@ -1,7 +1,10 @@
 ---
 title: AKS
 date: 2021-02-24 20:39:06
-tags: AKS
+tags: 
+  - AKS
+  - Azure
+  - K8s
 ---
 # 1. K8s on Azure
 

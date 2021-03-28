@@ -1,6 +1,8 @@
 ---
 title: aws ec2 init setup
-tags: [aws,ec2]
+tags: 
+  - aws
+  - ec2
 date: 2016-08-17 14:07:13
 ---
 

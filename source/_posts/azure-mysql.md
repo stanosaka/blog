@@ -1,7 +1,10 @@
 ---
-title: azure-mysql
+title: azure mysql
 date: 2021-02-25 10:41:47
-tags: azure, mysql
+tags: 
+  - azure
+  - mysql
+  - PaaS
 ---
 # Create a read-only account with azure mysql 8.0
 ## Notes

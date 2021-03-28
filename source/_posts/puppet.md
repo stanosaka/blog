@@ -1,7 +1,9 @@
 ---
 title: puppet
 date: 2020-04-26 22:41:23
-tags: puppet
+tags: 
+  - puppet
+  - devops
 ---
 
 # Puppet Code Directory Layout #
